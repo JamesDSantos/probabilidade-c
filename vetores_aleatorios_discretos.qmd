@@ -1,0 +1,510 @@
+
+# Distribuição de vetores aleatórios discretos
+
+Os objetivos deste capítulo são:
+
+1.  Definir e estudar as propriedades relacionadas a distribuição de
+    vetores aleatórios discretos
+
+2.  Estudar funções de vetores aleatórios discretos e apresentar
+    exemplos relevantes de distribuições
+
+## Função de probabilidade conjunta
+
+
+::: {#def-}
+Sejam $X_1,\ldots,X_n$ variáveis aleatórias discretas. Então, a função
+
+$$P(\textbf{X}=\textbf{x})=P(X_1=x_1,\ldots,X_n=x_n),$$ é denominada
+**função de probabilidade conjunta.**
+:::
+
+
+::: {#prp-}
+Seja $\textbf{X}$ um vetor de variáveis aleatórias discretas. Teremos
+que $$P(\textbf{X}=\textbf{x})=P(X_1=x_1,\ldots,X_n=x_n)$$ é uma função
+de probabilidade se:
+
+$$
+\sum_{\textbf{x}\in\mathbb{Z}^n}P(\textbf{X}=\textbf{x})=1$$ e se
+$$P(\textbf{X}=\textbf{x})\geq 0,\;\;\forall\;\textbf{x}\in\mathbb{Z}^n.$$
+:::
+
+::: {#exm-}
+Seja $\textbf{X}=(X_1,X_2)$ um vetor aleatório discreto e considere a
+função
+
+$$P(X_1=x_1,X_2=x_2)=\left\{\begin{array}{ll}\frac{1}{20},& x_1=1,x_2=1\\
+\frac{4}{20},&x_1=1,x_2=2\\
+\frac{5}{20},&x_1=2,x_2=1\\
+\frac{7}{20},&x_1=2,x_2=2\\
+\frac{2}{20},&x_1=3,x_2=1\\
+\frac{1}{20},&x_1=3,x_2=2\\ 0,&\hbox{caso contrário}\end{array}\right.$$
+
+Observe que todas as probabilidades são não negativas a soma para todos os pares $(x_1,x_2)\in\mathbb{Z}^2$ é igual a 1, logo a função dada é de
+fato uma função de probabilidade conjunta para o vetor $\textbf{X}$.
+:::
+
+::: {#exr-}
+Seja
+
+$$P(\textbf{X}=\textbf{x})=P(X_1=x_1,X_2=x_2)=cq^{x_1+x_2},$$ onde
+$(x_1,x_2)\in\{0,1\}^2$ e $q>0$. Encontre o valor de $c$ para que
+$P(\textbf{X}=\textbf{x})$ seja uma função de probabilidade.
+:::
+
+Observe que a função de probabilidade conjunta é a interseção dos
+eventos $\{X_1=x_1\},\ldots,\{X_n=x_n\}$. Portanto, se $X_1,\ldots,X_n$
+são mutuamente independentes, teremos
+
+$$P(\textbf{X}=\textbf{x})=\prod_{i=1}^n P(X_i=x_i).$$ Também é possível
+que subconjuntos de variáveis do vetor sejam independentes. Por exemplo,
+$\tilde{\textbf{X}}_1=\{X_1,\ldots,X_m\}$ podem ser independentes de
+$\tilde{\textbf{X}}_2=\{X_{m+1},\ldots,X_n\}$, o que resulta em
+
+$$P(\textbf{X}=\textbf{x})=P(\tilde{\textbf{X}}_1=\tilde{\textbf{x}}_1)P(\tilde{\textbf{X}}_2=\tilde{\textbf{x}}_2).$$
+
+::: {#exm-}
+Considere uma moeda com os números 0 e 1 em cada lado. Considere ainda
+que os dois resultados são equiprováveis. A moeda é lançada duas vezes.
+Seja $X_i$ o resultado do $i$-ésimo lançamento. Considerando que $X_1$ e
+$X_2$ são independentes, encontre a função de probabilidade conjunta de
+$\textbf{X}=(X_1,X_2)$.
+
+**Solução**. Para $i=1,2$, teremos que
+
+$$P(X_i=0)=P(X_i=1)=\frac{1}{2}.$$
+
+Como $X_1$ e $X_2$ são lançamentos independentes, teremos
+
+$$P(\textbf{X}=(0,0))=P(X_1=0,X_2=0)=P(X_1=0)P(X_2=0)=\frac{1}{4}.$$
+Todos os resultados possíveis são $\{(0,0),(0,1),(1,0),(1,1)\}$ e
+podemos mostrar, de modo análogo ao que foi exposto acima, todos esses
+eventos têm probabilidade 1/4.
+:::
+
+::: {#exr-}
+Lança-se um dado de 6 faces. Seja $\textbf{X}=(X_1,X_2)$ onde
+
+$$X_1=\left\{\begin{array}{ll}1,& \hbox{ se o resultado é par}\\0,&\hbox{ caso contrário}\end{array}\right.$$
+e
+
+$$X_2=\left\{\begin{array}{ll}1,& \hbox{ se o resultado é maior que 3}\\ 0,&\hbox{ caso contrário}\end{array}\right.$$
+
+Encontre a função de probabilidade conjunta de $\textbf{X}$.
+:::
+
+
+::: {#exr-}
+Considere o vetor aleatório $\mathbf{X} = (X_1, X_2, X_3)$ e os
+subconjuntos $\tilde{\mathbf{X}}_1 = \{X_1\}$ e
+$\tilde{\mathbf{X}}_2 = \{X_2, X_3\}$. A função de probabilidade
+conjunta de $\tilde{\mathbf{X}}_2$ é dada pela tabela abaixo:
+
+| $x_2 \setminus x_3$ |    0    |    1    | $P(X_2 = x_2)$ |
+|:-------------------:|:-------:|:-------:|:--------------:|
+|        **0**        |   0,2   |   0,3   |    **0,5**     |
+|        **1**        |   0,1   |   0,4   |    **0,5**     |
+|   $P(X_3 = x_3)$    | **0,3** | **0,7** |    **1,0**     |
+
+Sabendo que $X_1$ assume valores no conjunto $\{0, 1\}$ com
+probabilidades $P(X_1=0)=0,6$ e $P(X_1=1)=0,4$, e que o bloco
+$\tilde{\mathbf{X}}_1$ é **independente** do bloco
+$\tilde{\mathbf{X}}_2$:
+
+Calcule a probabilidade conjunta do vetor completo para o ponto
+$(X_1=0, X_2=1, X_3=0)$.
+:::
+
+
+## Função de distribuição conjunta
+
+::: {#def-}
+A função de distribuição conjunta é definida por
+
+$$F(\textbf{x})=P(X_1\leq x_1,\ldots,X_n\leq x_n)=\sum_{u_1=-\infty}^{x_1}\cdots\sum_{u_n=-\infty}^{x_n}P(X_1=u_1,\ldots,X_n=u_n).$$
+:::
+
+::: {#exm-}
+Considere novamente a função de probabilidade conjunta dada por
+
+$$P(X=x,Y=y)=\left\{\begin{array}{ll}\frac{1}{10},& x=1,y=1\\
+\frac{4}{10},&x=1,y=2\\
+\frac{3}{10},&x=2,y=1\\
+\frac{2}{10},&x=2,y=2\\
+\\ 0,&\hbox{caso contrário}\end{array}\right.$$
+
+A função de distribuição conjunta é dada por
+
+$$F(x,y)=\left\{\begin{array}{ll}0,& x<1,y<1\\
+P(X=1,Y=1)=\frac{1}{10},& x=1,y=1\\
+P(X=1,Y=1)+P(X=1,Y=2)=\frac{5}{10},&x=1,y=2\\
+P(X=1,Y=1)+P(X=2,Y=1)=\frac{4}{10},&x=2,y=1\\
+1,&x\geq 2,y\geq 2\end{array}\right.$$
+:::
+
+::: {#exr-}
+Considere o vetor $(X,Y)$ de variáveis aleatórias com função de
+probabilidade conjunta dada por
+
+$$P(X=x,Y=y)=\frac{2^{x+y}}{9},$$ com $(x,y)\in\{0,1\}^2$. Encontre a
+função de distribuição conjunta deste vetor aleatório.
+:::
+
+## Distribuição marginal
+
+::: {#def-}
+{#def-}Seja $\textbf{X} = (X_1, \ldots, X_n)$ um vetor aleatório discreto. Considere um subvetor $\textbf{X}_a$ com índices $a \subset \{1, \ldots, n\}$. A função de probabilidade marginal de $\textbf{X}_a$ é obtida somando-se a função conjunta sobre todos os valores possíveis das variáveis cujos índices não estão em $a$ (denotados por $a^c$):$$P(\textbf{X}_a = \textbf{x}_a) = \sum_{\textbf{x}_{a^c}} P(X_1=x_1, \ldots, X_n=x_n)$$onde o somatório é estendido a todos os valores possíveis de cada $x_j$ tal que $j \notin a$.
+:::
+
+**Nota:** No caso de um vetor bidimensional $\textbf{X} = (X, Y)$, se quisermos a marginal de $X$, marginalizamos $Y$ somando sobre todos os seus valores:$$P(X=x) = \sum_{y=-\infty}^\infty P(X=x, Y=y)$$
+
+::: {#exm-}
+Considere a tabela abaixo, cujo corpo contém a função distribuição de
+probabilidade conjunta das variáveis $X$ e $Y$.
+
+$$\begin{array}{c|cccc}\hline
+&y\\
+x&  1&  2&  3&  4\\ \hline
+1&  0,1&    0,05&   0,02&   0,07\\
+2&  0,08&   0,05&   0,1&    0,19\\
+3&  0,1&    0,2&    0,04&   0\\ \hline\end{array}$$
+
+Vamos encontrar as distribuições marginais de $X$ e $Y$:
+
+$$\begin{align}
+P(X=1)&=\sum_{y=1}^4P(X=1,Y=y)=0,24\\
+P(X=2)&=\sum_{y=1}^4P(X=2,Y=y)=0,42\\
+P(X=3)&=\sum_{y=1}^4P(X=3,Y=y)=0,34\end{align}$$ e $$\begin{align}
+P(Y=1)&=\sum_{x=1}^3P(X=x,Y=1)=0,28\\
+P(Y=2)&=\sum_{x=1}^3P(X=x,Y=1)=0,3\\
+P(Y=3)&=\sum_{x=1}^3P(X=x,Y=1)=0,16\\
+P(Y=4)&=\sum_{x=1}^3P(X=x,Y=1)=0,26.
+\end{align}$$
+
+Observe que a função de probabilidade marginal de $X$ é obtida a partir
+da soma das linhas da tabela, enquanto que a função de probabilidade
+marginal de $Y$ é obtida a partir da soma das colunas. Nessas funções
+podem ser colocadas nas **margens** da tabela:
+
+$$\begin{array}{c|cccc|c}\hline
+&y\\
+x&  1&  2&  3&  4& P(X=x)\\ \hline
+1&  0,10&   0,05&   0,02&   0,07&0,24\\
+2&  0,08&   0,05&   0,10&   0,19&0,42\\
+3&  0,10&   0,20&   0,04&   0,00&0,34\\ \hline
+P(Y=y)&0,28&0,30&0,16&0,26&\end{array}$$
+:::
+
+::: {#exr-}
+Considere a tabela de probabilidade conjunta das variáveis aleatórias
+discretas $X$ (linhas) e $Y$ (colunas) apresentada abaixo, onde um dos
+valores foi substituído pela constante $k$.
+
+$$\begin{array}{c|ccc}\hline
+&y\\
+x&  1&  2&  3\\ \hline
+1&  0,15&   0,10&   k\\
+2&  0,05&   0,20&   0,15\\
+3&  0,05&   0,10&   0,10\\ \hline\end{array}$$
+
+a)  Encontre o valor de $k$ para que a tabela represente uma
+    distribuição de probabilidade conjunta válida.
+
+b)  Determine as funções de probabilidade marginais de $X$ e $Y$.
+:::
+
+::: {#exr-}
+Sejam $X$ e $Y$ variáveis aleatórias discretas com a seguinte função de
+probabilidade conjunta:
+
+$$P(X=x,Y=y)=\frac{e^{−x}x^y}{2^xy!},$$ onde $x=1,2,\ldots$ e
+$y=0,1,\ldots$. Encontre a função de probabilidade marginal de $X$.
+:::
+
+::: {#exr-}
+Considere novamente o vetor aleatório $\mathbf{X} = (X_1, X_2, X_3)$ e
+os subconjuntos $\tilde{\mathbf{X}}_1 = \{X_1\}$ e
+$\tilde{\mathbf{X}}_2 = \{X_2, X_3\}$. A função de probabilidade
+conjunta de $\tilde{\mathbf{X}}_2$ é dada pela tabela abaixo:
+
+| $x_2 \setminus x_3$ |    0    |    1    | $P(X_2 = x_2)$ |
+|:-------------------:|:-------:|:-------:|:--------------:|
+|        **0**        |   0,2   |   0,3   |    **0,5**     |
+|        **1**        |   0,1   |   0,4   |    **0,5**     |
+|   $P(X_3 = x_3)$    | **0,3** | **0,7** |    **1,0**     |
+
+Sabendo que $X_1$ assume valores no conjunto $\{0, 1\}$ com
+probabilidades $P(X_1=0)=0,6$ e $P(X_1=1)=0,4$, e que o bloco
+$\tilde{\mathbf{X}}_1$ é **independente** do bloco
+$\tilde{\mathbf{X}}_2$:
+
+a)  Mostre que $X_1$ é independente de $X_2$ e que $X_1$ é independente
+    de $X_3$
+
+b)  Mostre que $X_2$ e $X_3$ não são independentes.
+
+:::
+
+## Distribuição condicional
+
+::: {#def-}
+Sejam $\textbf{X}$ e $\textbf{Y}$ vetores aleatórios discretos. Então, a
+distribuição de probabilidade condicional de $\textbf{X}$ dado
+$\textbf{Y=y}$ é definida por
+
+$$P(\textbf{X}=\textbf{x}|\textbf{Y}=\textbf{y})=\frac{P(\textbf{X}=\textbf{x},\textbf{Y}=\textbf{y})}{P(\textbf{Y}=\textbf{y})},$$
+e a respectiva função distribuição é dada por
+
+$$F(\textbf{x}|\textbf{y})=P(\textbf{X}\leq \textbf{x}|\textbf{Y}=\textbf{y}).$$
+:::
+
+::: {#exm-}
+Considere a seguinte distribuição conjunta:
+
+$$P(X=x,Y=y)=\left\{\begin{array}{ll}0,1,&x=0,y=0\\
+0,2,&x=0,y=1\\
+0,3,&x=1,y=0\\
+0,4,&x=1,y=1\\
+0,&\hbox{caso contrário}\end{array}\right.$$
+
+Qual é a distribuição de $Y$ dado $X=1$?
+
+**Solução:** Primeiro, temos que $$P(X=1)=P(X=1,Y=0)+P(X=1,Y=1)=0,7$$
+logo, $$P(Y=y|X=1)=\left\{\begin{array}{ll}
+\frac{3}{7},&y=0\\
+\frac{4}{7},&y=1\\
+0,&\hbox{caso contrário}\end{array}\right.$$
+:::
+
+::: {#exr-}
+Considere a variável aleatória bidimensional $(X, Y)$ com a seguinte
+função de probabilidade conjunta:
+
+$$P(X=x, Y=y) = \begin{cases} 
+k, & x=1, y=1 \\
+2k, & x=1, y=2 \\
+3k, & x=2, y=1 \\
+4k, & x=2, y=2 \\
+0, & \text{caso contrário}
+\end{cases}$$
+
+a)  Determine o valor da constante $k$.
+
+b)  Calcule a probabilidade marginal de $X$, ou seja, $P(X=x)$.
+
+c)  Encontre a distribuição de probabilidade condicional de $X$ dado que
+    $Y=2$.
+:::
+
+
+::: {#exr-}
+Considere a função de probabilidade abaixo:
+$$P(X=x,Y=y)={y \choose x}\frac{1}{2^{2y}}$$ onde $x=0,\ldots,y$ e
+$y=1,2,\ldots$. Encontre a função de probabilidade de $X$ dado $Y=y$.
+:::
+::: {#exr-}
+Sejam
+
+$$P(X=x|Y=y)={y\choose x}\frac{1}{2^y}$$ onde $x=0,\ldots,y$ e
+$$P(Y=y)=\frac{e^{−1}}{y!},$$ onde $y=0,1,\ldots$. Encontre a função de
+probabilidade de $Y$ dado $X=x$.
+:::
+
+## Funções de vetores aleatórios discretos
+
+Seja $X$ uma variável aleatória e seja $g(.)$ uma função real. Considere
+a variável $Y=g(X)$, com $g:\mathbb{R}\rightarrow \mathbb{Z}$. É sempre
+verdade que
+
+$$P(Y\in A)=P(g(X)\in A)$$.
+
+Se $X$ é uma variável discreta, então
+
+$$P(Y\in A)=\sum_{x:g(x)\in A}P(X=x).$$
+
+::: {#exm-}
+Seja $X$ uma variável discreta com
+
+$$P(X=x)=\begin{cases}0,1,& x=-1\\ 0,2,& x=0,\\ 0,3,&x=1\\ 0,4,& x=2 \end{cases}.$$
+Vamos encontrar a função de probabilidade de $Y=X^2$.
+
+$$\begin{array}{c|cccc}\hline
+x&  -1 &    0&  1&  2& \\ \hline
+y=x^2   &1  &0& 1&  4\\ \hline
+P(X=x)  &0,1    &0,2    &0,3&   0,4\\
+ \hline \end{array}$$
+
+Deste modo,
+
+$$\begin{align}
+P(Y=0)&=P(X=0)=0,2\\
+P(Y=1)&=P(X=-1)+P(X=1)=0,4\\
+P(Y=4)&=P(X=2)=0,4
+\end{align}$$
+:::
+
+::: {#exr-}
+Seja $X$ uma variável discreta com$$P(X=x)=\begin{cases}0,2,& x=-1\\ 0,1,& x=0,\\ 0,4,&x=1\\ 0,3,& x=2 \end{cases}.$$ Encontre a função de probabilidade de $Y=|X|$.
+:::
+
+Observe que a extensão é natural para vetores aleatórios. Seja
+$\textbf{X}$ um vetor aleatório discreto de comprimento $n$ 
+e seja $g:\mathbb{R}^n\rightarrow \mathbb{Z}^m$. Então a função de
+probabilidade de $\textbf{Y}=g(\textbf{X})$ é dada por
+
+$$P(\textbf{Y}=\textbf{y})=P(g(\textbf{X})=\textbf{y})=\sum_{\textbf{x}\in\mathbb{Z}^n:g(\textbf{x})=\textbf{y}}P(\textbf{X}=\textbf{x}).$$
+
+::: {#exm-}
+Seja $\textbf{X}=(X_1,X_2)$ um vetor aleatório com função de
+probabilidade conjunta dada por
+
+$$P(\textbf{X}=\textbf{x})=\frac{x_1+x_2}{12},$$ onde
+$(x_1,x_2)\in\{1,2\}^2$. Vamos encontrar a função de probabilidade de
+$\textbf{Y}=g(\textbf{X})=(x_1,x_1+x_2).$ Observe que
+
+$$\begin{array}{cc|cc}
+x_1 &x_2    &y_1 & y_2 \\ \hline
+1   &1    & 1 & 2\\
+1   &2   & 1 & 3\\
+2   &1   & 2 & 3\\
+2   &2   & 2 & 4\\ \hline
+\end{array}
+$$ Então,
+
+$$\begin{align}
+P(\textbf{Y}=(1,2))=P(\textbf{X}=(1,1))=\frac{2}{12}\\
+P(\textbf{Y}=(1,3))=P(\textbf{X}=(1,2))=\frac{3}{12}\\
+P(\textbf{Y}=(2,3))=P(\textbf{X}=(2,1))=\frac{3}{12}\\
+P(\textbf{Y}=(2,4))=P(\textbf{X}=(2,2))=\frac{4}{12}\\
+\end{align}$$
+:::
+
+::: {#exr-}
+Seja $\textbf{X}=(X_1,X_2)$ um vetor aleatório com função de probabilidade conjunta dada por$$P(\textbf{X}=\textbf{x})=\frac{x_1+x_2}{12},$$ onde$(x_1,x_2)\in\{1,2\}^2$. Encontre a função de probabilidade de$\textbf{Y}=g(\textbf{X})=(X_1-X_2, X_1+X_2).$
+:::
+
+
+Até o momento, utilizamos um vetor aleatório discreto de comprimento $n$ 
+para encontrar a distribuição de $\textbf{Y}=g(\textbf{X})$, também de comprimento $n$. Contudo, é comum ter $g:\mathbb{R}^n\rightarrow \mathbb{Z}^m$, onde $m<n$. Para o caso no qual $n=2$ e $m=1$, teremos 
+
+
+$$P(Y=y)=P(g(\textbf{X})=y)=\sum_{\textbf{x}\in\mathbb{Z}^2:g(\textbf{x})=y}P(X_1=x_1,X_2=x_2).$$
+Sem perda de generalidade, assuma que para um dado $y$, existe uma função $h$ tal que a condição $g(x_1, x_2) = y$ é equivalente a $x_1 = h(x_2, y)$. Então
+$$\begin{align}P(Y=y)&=\sum_{\textbf{x}\in\mathbb{Z}^2:g(\textbf{x})=y}P(X_1=h(x_2,y),X_2=x_2)\\&=\sum_{x_2=-\infty}^\infty P(X_1=h(x_2,y),X_2=x_2).\end{align}$$
+
+
+ 
+
+::: {#exm-}
+**Soma de variáveis aleatórias** Seja $\textbf{X}=(X_1,X_2)$ um vetor aleatório discreto e considere da variável $Y=g(X_1,X_2)=X_1+X_2$. Observe que é possível escrever
+$$x_1=y-x_2=h(y,x_2),$$
+logo
+$$P(Y=y)=\sum_{x_2=-\infty}^\infty P(X_1=y-x_2,X_2=x_2).$$
+:::
+
+::: {#exm-}
+A função de probabilidade de $\textbf{X}=(X_1,X_2)$ é dada na tabela abaixo:
+
+$$\begin{array}{c|cc}\hline & x_1 \\  
+x_2 & -1 & 1 \\ \hline
+0 & 0,10 & 0,05\\
+1 & 0,15 & 0,20\\
+2 & 0,25 & 0,25 \\ \hline\end{array}$$
+
+A função de probabilidade de $Y=X_1+X_2$ é dada por
+$$\begin{align}P(Y=y)&=\sum_{x_2=0}^2 P(X_1=y-x_2,X_2=x_2)\\&=P(X_1=y,X_2=0)+P(X_1=y-1,X_2=1)+P(X_1=y-2,X_2=2)\end{align}$$
+Por exemplo, para $y=-1$ teremos
+
+$$\begin{align}P(Y=-1)&=P(X_1=-1,X_2=0)+P(X_1=-2,X_2=1)+P(X_1=-3,X_2=2)\\&=P(X_1=-1,X_2=0)=0,1\end{align}$$
+:::
+
+::: {#exr-}
+Com base no exemplo anterior, determine os valores restantes da função de probabilidade de $Y$.
+
+:::
+
+### Alguns resultados importantes
+
+Vamos discutir alguns resultados importantes sobre funções de vetores discretos. Contudo, é relevante a discussão de alguns resultados relacionados a funções indicadoras.
+
+::: {#def-}
+**Função indicadora.**Seja $A \subset \Omega$. A função $I_A: \Omega \rightarrow \{0,1\}$, definida por$$I_A(x)=\begin{cases} 1, & \text{se } x \in A \\ 0, & \text{se } x \notin A \end{cases}$$é denominada função indicadora do conjunto $A$
+:::
+
+::: {#prp-}
+**Indicadora da interseção** $$I_{A\cap B}(x)=I_A(x)I_B(x)$$
+:::
+
+::: {#exm-}
+Seja $A=\{x\in \mathbb{N}:x \leq 5 \}$ e $B=\{x\in\mathbb{N}:x\hbox{ é ímpar}\}$. É simples notar que os valores que satisfazem simultaneamente as restrições de $A$ e $B$ são 1, 3 e 5. Vamos chegar a essa conclusão utilizando indicadoras:
+
+$$\begin{array}{c|cccccc|ccc}\hline
+x & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & \cdots \\ \hline
+I_A(x)& 1 & 1 & 1& 1 & 1 & 1 & 0 & 0 & \cdots & \\\hline
+I_B(x)& 0 & 1 & 0& 1 & 0 & 1 & 0 & 1 & \cdots & \\\hline
+I_{A\cap B}(x)& 0 & 1 & 0& 1 & 0 & 1 & 0 & 0 & 0 & \\\hline\end{array}$$
+:::
+
+::: {#exr-}
+Funções Indicadoras e InterseçãoConsidere o conjunto universo $\Omega = \{0, 1, 2, 3, 4, 5, 6, 7\}$. Definimos dois subconjuntos de $\Omega$ através das seguintes propriedades:$A = \{x \in \Omega : x \text{ é múltiplo de 3}\}$$B = \{x \in \Omega : x^2 - 7x + 10 \leq 0\}$A) Liste os elementos de $A$ e $B$ e determine seus respectivos vetores indicadores $I_A(x)$ e $I_B(x)$ para todo $x \in \Omega$.B) Utilizando a proposição $I_{A \cap B}(x) = I_A(x)I_B(x)$, complete a tabela abaixo para identificar os elementos da interseção:
+
+$$\begin{array}{c|cccccccc}
+\hline
+x & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\ \hline
+I_A(x) & & & & & & & & \\ \hline
+I_B(x) & & & & & & & & \\ \hline
+I_A(x)I_B(x) & & & & & & & & \\ \hline
+\end{array}$$C) Com base no resultado da última linha da tabela, escreva o conjunto $A \cap B$ por extensão.
+:::
+
+As funções indicadoras são úteis para definir para quais valores as probabilidades são positivas. Por exemplo, em vez que escrever
+
+$$P(X=x)=p^x(1-p)^{1-x}$$
+para $x\in\{0,1\}$, podemos escrever
+
+$$P(X=x)=p^x(1-p)^{1-x}I_{\{0,1\}}(x).$$
+### Distribuição Binomial como soma de Bernoullis independentes
+
+
+Sejam $X_1$ e $X_2$ variáveis aleatórias independentes com distribuição
+Bernoulli($p$). Vamos encontrar a função de probabilidade de $Y=X_1+X_2$. Primeiro, já sabemos que
+
+$$P(Y=y)=\sum_{x_2=0}^1 P(X_1=y-x_2,X_2=x_2),$$
+e, como $X_1$ é independente de $X_2$,
+
+$$P(Y=y)=\sum_{x_2=0}^1 P(X_1=y-x_2)P(X_2=x_2).$$
+como $X_1$ e $X_2$ tem distribuição Bernoulli($p$), teremos
+
+$$\begin{align}P(Y=y)&=\sum_{x_2=0}^1 \left[p^{y-x_2}(1-p)^{1-y+x_2} I_{\{0,1\}}(x_2)\right]\left[p^{x_2}(1-p)^{1-x_2}I_{\{0,1\}}(y-x_2)\right]\\&=p^{y}(1-p)^{2-y}\sum_{x_2=0}^1 I_{\{0,1\}}(x_2)I_{\{0,1\}}(y-x_2)\\
+\\&=p^{y}(1-p)^{2-y}\left[I_{\{0,1\}}(0)I_{\{0,1\}}(y)+I_{\{0,1\}}(1)I_{\{0,1\}}(y-1)\right]\end{align},$$
+Observe que, para o somatório acima, existem as seguintes possibilidades
+
+
+* se $y=0$, 
+
+$$I_{\{0,1\}}(0)I_{\{0,1\}}(0)+I_{\{0,1\}}(1)I_{\{0,1\}}(-1)=1$$
+
+* se $y=1$, 
+
+$$I_{\{0,1\}}(0)I_{\{0,1\}}(1)+I_{\{0,1\}}(1)I_{\{0,1\}}(0)=2$$
+
+* se $y=2$, 
+
+$$I_{\{0,1\}}(0)I_{\{0,1\}}(2)+I_{\{0,1\}}(1)I_{\{0,1\}}(1)=1$$
+
+Identificando o resultado acima com ${2\choose y}$, teremos
+
+$$P(Y=y)={2\choose y}p^y(1-p)^{2-y}I_{\{0,1,2\}}(y).$$
+
+::: {#exr-}
+Sejam $X_1,X_2,X_3$ variáveis aleatórias independentes com distribuição Bernopulli$(p)$. Mostre que a distribuição de $Y=X_1+X_2+X_3$ é
+
+$$P(Y=y)={3 \choose y}p^{y}(1-p)^{3-y}I_{\{0,1,2,3\}}(y)$$
+**Dica:** Você já sabe que $Z=X_1+X_2$ é
+$$P(Z=z)={2\choose z}p^z (1-p)^{2-z}I_{\{0,1,2\}}(z),$$
+e, como $Y=X_1+X_2+X_3=Z+X_3$, basta encontrar
+$$P(Y=y)=\sum_{x_3=0}^1 P(Z=z,X_3=x_3).$$
+:::
+
+
