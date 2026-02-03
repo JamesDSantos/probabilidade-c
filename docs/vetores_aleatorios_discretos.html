@@ -172,6 +172,9 @@ window.Quarto = {
   <li><a href="#funções-de-vetores-aleatórios-discretos" id="toc-funções-de-vetores-aleatórios-discretos" class="nav-link" data-scroll-target="#funções-de-vetores-aleatórios-discretos"><span class="header-section-number">1.5</span> Funções de vetores aleatórios discretos</a>
   <ul class="collapse">
   <li><a href="#alguns-resultados-importantes" id="toc-alguns-resultados-importantes" class="nav-link" data-scroll-target="#alguns-resultados-importantes"><span class="header-section-number">1.5.1</span> Alguns resultados importantes</a></li>
+  <li><a href="#distribuição-binomial-como-soma-de-bernoullis-independentes" id="toc-distribuição-binomial-como-soma-de-bernoullis-independentes" class="nav-link" data-scroll-target="#distribuição-binomial-como-soma-de-bernoullis-independentes"><span class="header-section-number">1.5.2</span> Distribuição Binomial como soma de Bernoullis independentes</a></li>
+  <li><a href="#soma-de-poissons-independentes" id="toc-soma-de-poissons-independentes" class="nav-link" data-scroll-target="#soma-de-poissons-independentes"><span class="header-section-number">1.5.3</span> Soma de Poissons independentes</a></li>
+  <li><a href="#distribuição-binomial-negativa-como-soma-de-distribuições-geométricas-independentes" id="toc-distribuição-binomial-negativa-como-soma-de-distribuições-geométricas-independentes" class="nav-link" data-scroll-target="#distribuição-binomial-negativa-como-soma-de-distribuições-geométricas-independentes"><span class="header-section-number">1.5.4</span> Distribuição binomial negativa como soma de distribuições geométricas independentes</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -308,7 +311,7 @@ P(X=1,Y=1)+P(X=2,Y=1)=\frac{4}{10},&amp;x=2,y=1\\
 <section id="distribuição-marginal" class="level2" data-number="1.3">
 <h2 data-number="1.3" class="anchored" data-anchor-id="distribuição-marginal"><span class="header-section-number">1.3</span> Distribuição marginal</h2>
 <div id="def-" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 1.3</strong></span> {#def-}Seja <span class="math inline">\(\textbf{X} = (X_1, \ldots, X_n)\)</span> um vetor aleatório discreto. Considere um subvetor <span class="math inline">\(\textbf{X}_a\)</span> com índices <span class="math inline">\(a \subset \{1, \ldots, n\}\)</span>. A função de probabilidade marginal de <span class="math inline">\(\textbf{X}_a\)</span> é obtida somando-se a função conjunta sobre todos os valores possíveis das variáveis cujos índices não estão em <span class="math inline">\(a\)</span> (denotados por <span class="math inline">\(a^c\)</span>):<span class="math display">\[P(\textbf{X}_a = \textbf{x}_a) = \sum_{\textbf{x}_{a^c}} P(X_1=x_1, \ldots, X_n=x_n)\]</span>onde o somatório é estendido a todos os valores possíveis de cada <span class="math inline">\(x_j\)</span> tal que <span class="math inline">\(j \notin a\)</span>.</p>
+<p><span class="theorem-title"><strong>Definition 1.3</strong></span> Seja <span class="math inline">\(\textbf{X} = (X_1, \ldots, X_n)\)</span> um vetor aleatório discreto. Considere um subvetor <span class="math inline">\(\textbf{X}_a\)</span> com índices <span class="math inline">\(a \subset \{1, \ldots, n\}\)</span>. A função de probabilidade marginal de <span class="math inline">\(\textbf{X}_a\)</span> é obtida somando-se a função conjunta sobre todos os valores possíveis das variáveis cujos índices não estão em <span class="math inline">\(a\)</span> (denotados por <span class="math inline">\(a^c\)</span>):<span class="math display">\[P(\textbf{X}_a = \textbf{x}_a) = \sum_{\textbf{x}_{a^c}} P(X_1=x_1, \ldots, X_n=x_n)\]</span>onde o somatório é estendido a todos os valores possíveis de cada <span class="math inline">\(x_j\)</span> tal que <span class="math inline">\(j \notin a\)</span>.</p>
 </div>
 <p><strong>Nota:</strong> No caso de um vetor bidimensional <span class="math inline">\(\textbf{X} = (X, Y)\)</span>, se quisermos a marginal de <span class="math inline">\(X\)</span>, marginalizamos <span class="math inline">\(Y\)</span> somando sobre todos os seus valores:<span class="math display">\[P(X=x) = \sum_{y=-\infty}^\infty P(X=x, Y=y)\]</span></p>
 <div id="exm-" class="theorem example">
@@ -486,11 +489,11 @@ P(\textbf{Y}=(2,4))=P(\textbf{X}=(2,2))=\frac{4}{12}\\
 </div>
 <p>Até o momento, utilizamos um vetor aleatório discreto de comprimento <span class="math inline">\(n\)</span> para encontrar a distribuição de <span class="math inline">\(\textbf{Y}=g(\textbf{X})\)</span>, também de comprimento <span class="math inline">\(n\)</span>. Contudo, é comum ter <span class="math inline">\(g:\mathbb{R}^n\rightarrow \mathbb{Z}^m\)</span>, onde <span class="math inline">\(m&lt;n\)</span>. Para o caso no qual <span class="math inline">\(n=2\)</span> e <span class="math inline">\(m=1\)</span>, teremos</p>
 <p><span class="math display">\[P(Y=y)=P(g(\textbf{X})=y)=\sum_{\textbf{x}\in\mathbb{Z}^2:g(\textbf{x})=y}P(X_1=x_1,X_2=x_2).\]</span> Sem perda de generalidade, assuma que para um dado <span class="math inline">\(y\)</span>, existe uma função <span class="math inline">\(h\)</span> tal que a condição <span class="math inline">\(g(x_1, x_2) = y\)</span> é equivalente a <span class="math inline">\(x_1 = h(x_2, y)\)</span>. Então <span class="math display">\[\begin{align}P(Y=y)&amp;=\sum_{\textbf{x}\in\mathbb{Z}^2:g(\textbf{x})=y}P(X_1=h(x_2,y),X_2=x_2)\\&amp;=\sum_{x_2=-\infty}^\infty P(X_1=h(x_2,y),X_2=x_2).\end{align}\]</span></p>
-<div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 1.8</strong></span> <strong>Soma de variáveis aleatórias</strong> Seja <span class="math inline">\(\textbf{X}=(X_1,X_2)\)</span> um vetor aleatório discreto e considere da variável <span class="math inline">\(Y=g(X_1,X_2)=X_1+X_2\)</span>. Observe que é possível escrever <span class="math display">\[x_1=y-x_2=h(y,x_2),\]</span> logo <span class="math display">\[P(Y=y)=\sum_{x_2=-\infty}^\infty P(X_1=y-x_2,X_2=x_2).\]</span></p>
+<div id="prp-" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 1.2</strong></span> <strong>Soma de variáveis aleatórias</strong> Seja <span class="math inline">\(\textbf{X}=(X_1,X_2)\)</span> um vetor aleatório discreto e considere da variável <span class="math inline">\(Y=g(X_1,X_2)=X_1+X_2\)</span>. Observe que é possível escrever <span class="math display">\[x_1=y-x_2=h(y,x_2),\]</span> logo <span class="math display">\[P(Y=y)=\sum_{x_2=-\infty}^\infty P(X_1=y-x_2,X_2=x_2).\]</span></p>
 </div>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 1.9</strong></span> A função de probabilidade de <span class="math inline">\(\textbf{X}=(X_1,X_2)\)</span> é dada na tabela abaixo:</p>
+<p><span class="theorem-title"><strong>Example 1.8</strong></span> A função de probabilidade de <span class="math inline">\(\textbf{X}=(X_1,X_2)\)</span> é dada na tabela abaixo:</p>
 <p><span class="math display">\[\begin{array}{c|cc}\hline &amp; x_1 \\  
 x_2 &amp; -1 &amp; 1 \\ \hline
 0 &amp; 0,10 &amp; 0,05\\
@@ -504,15 +507,17 @@ x_2 &amp; -1 &amp; 1 \\ \hline
 </div>
 <section id="alguns-resultados-importantes" class="level3" data-number="1.5.1">
 <h3 data-number="1.5.1" class="anchored" data-anchor-id="alguns-resultados-importantes"><span class="header-section-number">1.5.1</span> Alguns resultados importantes</h3>
+<section id="funções-indicadoras" class="level4" data-number="1.5.1.1">
+<h4 data-number="1.5.1.1" class="anchored" data-anchor-id="funções-indicadoras"><span class="header-section-number">1.5.1.1</span> Funções indicadoras</h4>
 <p>Vamos discutir alguns resultados importantes sobre funções de vetores discretos. Contudo, é relevante a discussão de alguns resultados relacionados a funções indicadoras.</p>
-<div id="def-" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 1.5</strong></span> <strong>Função indicadora.</strong>Seja <span class="math inline">\(A \subset \Omega\)</span>. A função <span class="math inline">\(I_A: \Omega \rightarrow \{0,1\}\)</span>, definida por<span class="math display">\[I_A(x)=\begin{cases} 1, &amp; \text{se } x \in A \\ 0, &amp; \text{se } x \notin A \end{cases}\]</span>é denominada função indicadora do conjunto <span class="math inline">\(A\)</span></p>
+<div class="alert alert-success">
+<p><strong>Função indicadora.</strong>Seja <span class="math inline">\(A \subset \Omega\)</span>. A função <span class="math inline">\(I_A: \Omega \rightarrow \{0,1\}\)</span>, definida por<span class="math display">\[I_A(x)=\begin{cases} 1, &amp; \text{se } x \in A \\ 0, &amp; \text{se } x \notin A \end{cases}\]</span>é denominada função indicadora do conjunto <span class="math inline">\(A\)</span></p>
 </div>
-<div id="prp-" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 1.2</strong></span> <strong>Indicadora da interseção</strong> <span class="math display">\[I_{A\cap B}(x)=I_A(x)I_B(x)\]</span></p>
+<div class="alert alert-success">
+<p><strong>Indicadora da interseção</strong> <span class="math display">\[I_{A\cap B}(x)=I_A(x)I_B(x)\]</span></p>
 </div>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 1.10</strong></span> Seja <span class="math inline">\(A=\{x\in \mathbb{N}:x \leq 5 \}\)</span> e <span class="math inline">\(B=\{x\in\mathbb{N}:x\hbox{ é ímpar}\}\)</span>. É simples notar que os valores que satisfazem simultaneamente as restrições de <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> são 1, 3 e 5. Vamos chegar a essa conclusão utilizando indicadoras:</p>
+<p><span class="theorem-title"><strong>Example 1.9</strong></span> Seja <span class="math inline">\(A=\{x\in \mathbb{N}:x \leq 5 \}\)</span> e <span class="math inline">\(B=\{x\in\mathbb{N}:x\hbox{ é ímpar}\}\)</span>. É simples notar que os valores que satisfazem simultaneamente as restrições de <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> são 1, 3 e 5. Vamos chegar a essa conclusão utilizando indicadoras:</p>
 <p><span class="math display">\[\begin{array}{c|cccccc|ccc}\hline
 x &amp; 0 &amp; 1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 &amp; 6 &amp; 7 &amp; \cdots \\ \hline
 I_A(x)&amp; 1 &amp; 1 &amp; 1&amp; 1 &amp; 1 &amp; 1 &amp; 0 &amp; 0 &amp; \cdots &amp; \\\hline
@@ -520,7 +525,7 @@ I_B(x)&amp; 0 &amp; 1 &amp; 0&amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; \cdot
 I_{A\cap B}(x)&amp; 0 &amp; 1 &amp; 0&amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; \\\hline\end{array}\]</span></p>
 </div>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 1.14</strong></span> Funções Indicadoras e InterseçãoConsidere o conjunto universo <span class="math inline">\(\Omega = \{0, 1, 2, 3, 4, 5, 6, 7\}\)</span>. Definimos dois subconjuntos de <span class="math inline">\(\Omega\)</span> através das seguintes propriedades:<span class="math inline">\(A = \{x \in \Omega : x \text{ é múltiplo de 3}\}\)</span><span class="math inline">\(B = \{x \in \Omega : x^2 - 7x + 10 \leq 0\}\)</span>A) Liste os elementos de <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> e determine seus respectivos vetores indicadores <span class="math inline">\(I_A(x)\)</span> e <span class="math inline">\(I_B(x)\)</span> para todo <span class="math inline">\(x \in \Omega\)</span>.B) Utilizando a proposição <span class="math inline">\(I_{A \cap B}(x) = I_A(x)I_B(x)\)</span>, complete a tabela abaixo para identificar os elementos da interseção:</p>
+<p><span class="theorem-title"><strong>Exercise 1.14</strong></span> Considere o conjunto universo <span class="math inline">\(\Omega = \{0, 1, 2, 3, 4, 5, 6, 7\}\)</span>. Definimos dois subconjuntos de <span class="math inline">\(\Omega\)</span> através das seguintes propriedades:<span class="math inline">\(A = \{x \in \Omega : x \text{ é múltiplo de 3}\}\)</span><span class="math inline">\(B = \{x \in \Omega : x^2 - 7x + 10 \leq 0\}\)</span>A) Liste os elementos de <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> e determine seus respectivos vetores indicadores <span class="math inline">\(I_A(x)\)</span> e <span class="math inline">\(I_B(x)\)</span> para todo <span class="math inline">\(x \in \Omega\)</span>.B) Utilizando a proposição <span class="math inline">\(I_{A \cap B}(x) = I_A(x)I_B(x)\)</span>, complete a tabela abaixo para identificar os elementos da interseção:</p>
 <p><span class="math display">\[\begin{array}{c|cccccccc}
 \hline
 x &amp; 0 &amp; 1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 &amp; 6 &amp; 7 \\ \hline
@@ -531,29 +536,164 @@ I_A(x)I_B(x) &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; \\ \hline
 </div>
 <p>As funções indicadoras são úteis para definir para quais valores as probabilidades são positivas. Por exemplo, em vez que escrever</p>
 <p><span class="math display">\[P(X=x)=p^x(1-p)^{1-x}\]</span> para <span class="math inline">\(x\in\{0,1\}\)</span>, podemos escrever</p>
-<p><span class="math display">\[P(X=x)=p^x(1-p)^{1-x}I_{\{0,1\}}(x).\]</span> ### Distribuição Binomial como soma de Bernoullis independentes</p>
+<p><span class="math display">\[P(X=x)=p^x(1-p)^{1-x}I_{\{0,1\}}(x).\]</span></p>
+</section>
+<section id="o-método-da-indução-matemática" class="level4" data-number="1.5.1.2">
+<h4 data-number="1.5.1.2" class="anchored" data-anchor-id="o-método-da-indução-matemática"><span class="header-section-number">1.5.1.2</span> O Método da Indução Matemática</h4>
+<p>A demonstração por indução é uma ferramentada matemática para provar que uma afirmação é verdadeira para todos os números inteiros a partir de um valor inicial. O método divide-se em dois passos fundamentais:</p>
+<ul>
+<li><p>Base da Indução: Verificamos se a afirmação vale para o primeiro caso (geralmente <span class="math inline">\(n=1\)</span>).</p></li>
+<li><p>Passo Indutivo: Assumimos que a afirmação vale para um número <span class="math inline">\(k\)</span> (nossa Hipótese de Indução) e provamos que, a partir disso, ela obrigatoriamente vale para <span class="math inline">\(k+1\)</span>.</p></li>
+</ul>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 1.10</strong></span> <strong>A Soma dos Primeiros Inteiros.</strong> Prove que, para todo <span class="math inline">\(n \geq 1\)</span>:<span class="math display">\[1 + 2 + 3 + \ldots + n = \frac{n(n+1)}{2}\]</span></p>
+<p>Demonstração:</p>
+<ul>
+<li><p>Base: Para <span class="math inline">\(n=1\)</span>:O lado esquerdo é <span class="math inline">\(1\)</span>. O lado direito é <span class="math inline">\(\frac{1(1+1)}{2} = 1\)</span>. A base está verificada.</p></li>
+<li><p>Hipótese de Indução (H.I.): Supomos que para um <span class="math inline">\(k\)</span> qualquer a fórmula é válida:<span class="math display">\[S_k = 1 + 2 + \ldots + k = \frac{k(k+1)}{2}\]</span></p></li>
+<li><p>Passo Indutivo: Queremos mostrar que a soma até <span class="math inline">\(k+1\)</span> segue a mesma lógica. Note que a soma até <span class="math inline">\(k+1\)</span> é a soma até <span class="math inline">\(k\)</span> mais o próximo termo:<span class="math display">\[S_{k+1} = \underbrace{1 + 2 + \ldots + k}_{S_k} + (k+1)\]</span>Substituindo pela nossa H.I.:<span class="math display">\[S_{k+1} = \frac{k(k+1)}{2} + (k+1)\]</span>Colocando em um denominador comum:<span class="math display">\[S_{k+1} = \frac{k(k+1) + 2(k+1)}{2} = \frac{(k+1)(k+2)}{2}\]</span>Como chegamos na fórmula original com <span class="math inline">\(n\)</span> substituído por <span class="math inline">\(k+1\)</span>, a prova está concluída.</p></li>
+</ul>
+</div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1.15</strong></span> Utilize o método da indução matemática para provar que a soma das primeiras <span class="math inline">\(n\)</span> potências de 2 (começando em <span class="math inline">\(2^1\)</span>) é dada por:<span class="math display">\[2^1 + 2^2 + 2^3 + \ldots + 2^n = 2^{n+1} - 2\]</span></p>
+</div>
+</section>
+</section>
+<section id="distribuição-binomial-como-soma-de-bernoullis-independentes" class="level3" data-number="1.5.2">
+<h3 data-number="1.5.2" class="anchored" data-anchor-id="distribuição-binomial-como-soma-de-bernoullis-independentes"><span class="header-section-number">1.5.2</span> Distribuição Binomial como soma de Bernoullis independentes</h3>
+<div class="alert alert-success">
+<p><strong>Recordando</strong> Dizemos que <span class="math inline">\(X\sim\hbox{Bernoulli(p)}\)</span> se sua função de probabilidade é dada por</p>
+<p><span class="math display">\[P(X=x)=p^{x}(1-p)^{1-x}I_{\{0,1\}}(x).\]</span></p>
+<p>Dizemos que <span class="math inline">\(Y\sim\hbox{Binomial}(n,p)\)</span> se sua função de probabilidade é dada por</p>
+<p><span class="math display">\[P(Y=y)={n\choose y}p^{y}(1-p)^{n-y}I_{\{0,\ldots,n\}}(y).\]</span></p>
+</div>
+<div class="alert alert-success">
+<p><strong>Resultado chave:</strong> Para <span class="math inline">\(0&lt;y&lt;n\)</span> natural, <span class="math display">\[{n-1\choose y}+{n-1\choose y-1}={n\choose y}.\]</span></p>
+</div>
 <p>Sejam <span class="math inline">\(X_1\)</span> e <span class="math inline">\(X_2\)</span> variáveis aleatórias independentes com distribuição Bernoulli(<span class="math inline">\(p\)</span>). Vamos encontrar a função de probabilidade de <span class="math inline">\(Y=X_1+X_2\)</span>. Primeiro, já sabemos que</p>
 <p><span class="math display">\[P(Y=y)=\sum_{x_2=0}^1 P(X_1=y-x_2,X_2=x_2),\]</span> e, como <span class="math inline">\(X_1\)</span> é independente de <span class="math inline">\(X_2\)</span>,</p>
 <p><span class="math display">\[P(Y=y)=\sum_{x_2=0}^1 P(X_1=y-x_2)P(X_2=x_2).\]</span> como <span class="math inline">\(X_1\)</span> e <span class="math inline">\(X_2\)</span> tem distribuição Bernoulli(<span class="math inline">\(p\)</span>), teremos</p>
-<p><span class="math display">\[\begin{align}P(Y=y)&amp;=\sum_{x_2=0}^1 \left[p^{y-x_2}(1-p)^{1-y+x_2} I_{\{0,1\}}(x_2)\right]\left[p^{x_2}(1-p)^{1-x_2}I_{\{0,1\}}(y-x_2)\right]\\&amp;=p^{y}(1-p)^{2-y}\sum_{x_2=0}^1 I_{\{0,1\}}(x_2)I_{\{0,1\}}(y-x_2)\\
-\\&amp;=p^{y}(1-p)^{2-y}\left[I_{\{0,1\}}(0)I_{\{0,1\}}(y)+I_{\{0,1\}}(1)I_{\{0,1\}}(y-1)\right]\end{align},\]</span> Observe que, para o somatório acima, existem as seguintes possibilidades</p>
+<p><span class="math display">\[\begin{align}P(Y=y)&amp;=\sum_{x_2=0}^1 \left[p^{y-x_2}(1-p)^{1-y+x_2} I_{\{0,1\}}(y-x_2)\right]\left[p^{x_2}(1-p)^{1-x_2}I_{\{0,1\}}(x_2)\right]\\&amp;=p^{y}(1-p)^{2-y}\sum_{x_2=0}^1 I_{\{0,1\}}(x_2)I_{\{0,1\}}(y-x_2)\end{align},\]</span></p>
+<p>Sabemos que <span class="math inline">\(y\in\{0,1,2\}\)</span>. Vamos obter o valor de <span class="math inline">\(\sum_{x_2=0}^1 I_{\{0,1\}}(x_2)I_{\{0,1\}}(y-x_2)\)</span> para cada <span class="math inline">\(y\)</span>.</p>
 <ul>
 <li>se <span class="math inline">\(y=0\)</span>,</li>
 </ul>
-<p><span class="math display">\[I_{\{0,1\}}(0)I_{\{0,1\}}(0)+I_{\{0,1\}}(1)I_{\{0,1\}}(-1)=1\]</span></p>
+<p><span class="math display">\[\begin{array}{l|cc|c}
+\hline
+x_2 &amp; 0 &amp; 1 &amp;\hbox{soma}\\ \hline
+I_{\{0,1\}}(x_2) &amp; 1&amp; 1\\ \hline
+I_{\{0,1\}}(y-x_2)&amp; 1&amp; 0 \\ \hline
+I_{\{0,1\}}(x_2)I_{\{0,1\}}(y-x_2) &amp; 1&amp; 0 &amp; 1\\ \hline
+\end{array}\]</span> logo, <span class="math inline">\(\sum_{x_2=0}^1 I_{\{0,1\}}(x_2)I_{\{0,1\}}(0-x_2)=1\)</span></p>
 <ul>
 <li>se <span class="math inline">\(y=1\)</span>,</li>
 </ul>
-<p><span class="math display">\[I_{\{0,1\}}(0)I_{\{0,1\}}(1)+I_{\{0,1\}}(1)I_{\{0,1\}}(0)=2\]</span></p>
+<p><span class="math display">\[\begin{array}{l|cc|c}
+\hline
+x_2 &amp; 0 &amp; 1 &amp;\hbox{soma}\\ \hline
+I_{\{0,1\}}(x_2) &amp; 1&amp; 1\\ \hline
+I_{\{0,1\}}(y-x_2)&amp; 1&amp; 1 \\ \hline
+I_{\{0,1\}}(x_2)I_{\{0,1\}}(y-x_2) &amp; 1&amp; 1 &amp; 2\\ \hline
+\end{array}\]</span> logo, <span class="math inline">\(\sum_{x_2=0}^1 I_{\{0,1\}}(x_2)I_{\{0,1\}}(1-x_2)=2\)</span></p>
 <ul>
 <li>se <span class="math inline">\(y=2\)</span>,</li>
 </ul>
-<p><span class="math display">\[I_{\{0,1\}}(0)I_{\{0,1\}}(2)+I_{\{0,1\}}(1)I_{\{0,1\}}(1)=1\]</span></p>
-<p>Identificando o resultado acima com <span class="math inline">\({2\choose y}\)</span>, teremos</p>
+<p><span class="math display">\[\begin{array}{l|cc|c}
+\hline
+x_2 &amp; 0 &amp; 1 &amp; \hbox{soma}\\ \hline
+I_{\{0,1\}}(x_2) &amp; 1&amp; 1\\ \hline
+I_{\{0,1\}}(y-x_2)&amp; 0&amp; 1 \\ \hline
+I_{\{0,1\}}(x_2)I_{\{0,1\}}(y-x_2) &amp; 0&amp; 1 &amp; 1\\ \hline
+\end{array}\]</span> logo, <span class="math inline">\(\sum_{x_2=0}^1 I_{\{0,1\}}(x_2)I_{\{0,1\}}(2-x_2)=1\)</span></p>
+<p>Agora, note que</p>
+<p><span class="math display">\[\begin{array}{c|ccc}\hline
+y &amp; 0 &amp; 1 &amp; 2 \\ \hline
+\sum_{x_2=0}^1 I_{\{0,1\}}(x_2)I_{\{0,1\}}(y-x_2) &amp; 1 &amp; 2 &amp; 1 \\ \hline
+{2 \choose y} &amp;  1 &amp; 2 &amp; 1 \\ \hline
+\end{array}\]</span></p>
+<p>logo,</p>
 <p><span class="math display">\[P(Y=y)={2\choose y}p^y(1-p)^{2-y}I_{\{0,1,2\}}(y).\]</span></p>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 1.15</strong></span> Sejam <span class="math inline">\(X_1,X_2,X_3\)</span> variáveis aleatórias independentes com distribuição Bernopulli<span class="math inline">\((p)\)</span>. Mostre que a distribuição de <span class="math inline">\(Y=X_1+X_2+X_3\)</span> é</p>
-<p><span class="math display">\[P(Y=y)={3 \choose y}p^{y}(1-p)^{3-y}I_{\{0,1,2,3\}}(y)\]</span> <strong>Dica:</strong> Você já sabe que <span class="math inline">\(Z=X_1+X_2\)</span> é <span class="math display">\[P(Z=z)={2\choose z}p^z (1-p)^{2-z}I_{\{0,1,2\}}(z),\]</span> e, como <span class="math inline">\(Y=X_1+X_2+X_3=Z+X_3\)</span>, basta encontrar <span class="math display">\[P(Y=y)=\sum_{x_3=0}^1 P(Z=z,X_3=x_3).\]</span></p>
+<p><span class="theorem-title"><strong>Exercise 1.16</strong></span> Sejam <span class="math inline">\(X_1,X_2,X_3\)</span> variáveis aleatórias independentes com distribuição Bernoulli<span class="math inline">\((p)\)</span>. Mostre que a distribuição de <span class="math inline">\(Y=X_1+X_2+X_3\)</span> é</p>
+<p><span class="math display">\[P(Y=y)={3 \choose y}p^{y}(1-p)^{3-y}I_{\{0,1,2,3\}}(y)\]</span> <strong>Dica:</strong> Você já sabe que <span class="math inline">\(Z=X_1+X_2\)</span> é <span class="math display">\[P(Z=z)={2\choose z}p^z (1-p)^{2-z}I_{\{0,1,2\}}(z),\]</span> e, como <span class="math inline">\(Y=X_1+X_2+X_3=Z+X_3\)</span>, basta encontrar <span class="math display">\[P(Y=y)=\sum_{x_3=0}^1 P(Z=y-x_3,X_3=x_3).\]</span></p>
+</div>
+<p>Observe que <span class="math inline">\(X_1+X_2\sim\hbox{Binomial}(2,p)\)</span> e <span class="math inline">\(X_1+X_2+X_3\sim\hbox{Binomial}(3,p)\)</span>. De fato, sejam <span class="math inline">\(X_1,\ldots,X_n\)</span> variáveis aleatórias independentes com distribuição Bernoulli(<span class="math inline">\(p\)</span>). Suponha, por indução, que</p>
+<p><span class="math display">\[Z=\sum_{i=1}^{n-1} X_i\sim\hbox{Binomial}(n-1,p).\]</span> Então <span class="math display">\[Y=\sum_{i=1}^n X_i=X_n+Z\]</span> e</p>
+<p><span class="math display">\[\begin{align}
+P(Y=y)&amp;=\sum_{x=0}^1 P(X_n=x, Z=y-x)=\sum_{x=0}^1 P(X_n=x)P(Z=y-x)\\
+&amp;=\sum_{x=0}^1 P(X_n=x)P(Z=y-x)\\&amp;=\sum_{x=0}^1 \left[p^x(1-p)^{1-x}I_{\{0,1\}}(x)\right]\left[{n-1\choose y-x}p^{y-x}(1-p)^{n-1-y+x}I_{\{0,\ldots,n-1\}}(y-x)\right]\\
+&amp;=p^y(1-p)^{n-y}\sum_{x=0}^1\left[{n-1\choose y-x}I_{\{0,1\}}(x)I_{\{0,\ldots,n-1\}}(y-x)\right].
+\end{align}\]</span></p>
+<p>Vamos analizar o somatório acima:</p>
+<ul>
+<li>se <span class="math inline">\(y=0\)</span>, teremos que <span class="math inline">\(I_{\{0,\ldots,n-1\}}(0-x)=1\)</span> somente quando <span class="math inline">\(x=0\)</span>. Logo,</li>
+</ul>
+<p><span class="math display">\[\sum_{x=0}^1\left[{n-1\choose y-x}I_{\{0,1\}}(x)I_{\{0,\ldots,n-1\}}(0-x)\right]={n-1\choose 0}=1={n\choose 0}\]</span></p>
+<ul>
+<li>se <span class="math inline">\(y=n\)</span>, teremos que <span class="math inline">\(I_{\{0,\ldots,n-1\}}(n-x)=1\)</span> somente quando <span class="math inline">\(x=1\)</span>. Logo,</li>
+</ul>
+<p><span class="math display">\[\sum_{x=0}^1\left[{n-1\choose y-x}I_{\{0,1\}}(x)I_{\{0,\ldots,n-1\}}(n-x)\right]={n-1\choose n-1}=1={n\choose n}\]</span> * para <span class="math inline">\(y=1,\ldots,n-1\)</span>, teremos que <span class="math inline">\(I_{\{0,\ldots,n-1\}}(y-x)=1\)</span> para <span class="math inline">\(x=0,1\)</span>. Logo,</p>
+<p><span class="math display">\[\sum_{x=0}^1\left[{n-1\choose y-x}I_{\{0,1\}}(x)I_{\{0,\ldots,n-1\}}(y-x)\right]={n-1\choose y}+{n-1\choose y-1}={n\choose y}\]</span></p>
+<p>portanto,</p>
+<p><span class="math display">\[\begin{align}
+P(Y=y)&amp;=p^y(1-p)^{n-y}\sum_{x=0}^1\left[{n-1\choose y-x}I_{\{0,1\}}(x)I_{\{0,\ldots,n-1\}}(y-x)\right]\\&amp;={n\choose y}p^y(1-p)^{n-y}I_{\{0,\ldots,n\}}(y).
+\end{align}\]</span></p>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1.17</strong></span> Sejam <span class="math inline">\(X_1,X_2\)</span> variáveis aleatórias independentes, onde <span class="math inline">\(X_i\sim\hbox{Binomial}(m_i,p),\)</span> com <span class="math inline">\(i=1,2\)</span>.</p>
+<ol type="a">
+<li><p>Mostre que <span class="math inline">\(Y=X_1+X_2\sim\hbox{Binomial}(m_1+m_2,p)\)</span>. <strong>Sugestão:</strong> escreva <span class="math inline">\(X_i\)</span> como soma de Bernoullis independentes.</p></li>
+<li><p>E qual a distribuição de <span class="math inline">\(Z=X_1+\cdots+X_n\)</span>, onde <span class="math inline">\(X_i\sim\hbox{Binomial}(m_i,p)\)</span> e <span class="math inline">\(X_1,\ldots,X_n\)</span> são independentes?</p></li>
+</ol>
+</div>
+</section>
+<section id="soma-de-poissons-independentes" class="level3" data-number="1.5.3">
+<h3 data-number="1.5.3" class="anchored" data-anchor-id="soma-de-poissons-independentes"><span class="header-section-number">1.5.3</span> Soma de Poissons independentes</h3>
+<div class="alert alert-success">
+<p><strong>Recordando</strong> Dizemos que <span class="math inline">\(X\sim\hbox{Poisson}(\lambda)\)</span> se sua função de probabilidade é dada por</p>
+<p><span class="math display">\[P(X=x)=\frac{e^{-\lambda}\lambda^x}{x!}I_{\mathbb{N}}(x)\]</span> e <span class="math inline">\(\lambda&gt;0\)</span>.</p>
+<p><strong>Resultado chave (Teorema binomial):</strong> Para quaisquer <span class="math inline">\(a,b\)</span>, <span class="math display">\[\sum_{x=0}^n{ n\choose x}a^x b^{n-x}=(a+b)^n.\]</span></p>
+</div>
+<p>Sejam <span class="math inline">\(X_1,X_2\)</span> variáveis aleatórias independentes com distribuição <span class="math inline">\(\hbox{Poisson}(\lambda)\)</span>. Seja <span class="math inline">\(Y=X_1+X_2\)</span>. Note que</p>
+<p><span class="math display">\[\begin{align}P(Y=y)&amp;=\sum_{x_2=0}^\infty P(X_1=y-x_2,X_2=x_2)
+\\&amp;=\sum_{x_2=0}^\infty \frac{e^{-\lambda}\lambda^{y-x_2}}{(y-x_2)!}I_{\mathbb{N}}(y-x_2)\frac{e^{-\lambda}\lambda^{x_2}}{x_2!}I_{\mathbb{N}}(x_2)\\
+&amp;=e^{-2\lambda}\lambda^{y}\sum_{x_2=0}^\infty \frac{1}{x_2!(y-x_2)!}I_{\mathbb{N}}(y-x_2)I_\mathbb{N}(x_2).
+\end{align}\]</span> Para que <span class="math inline">\(I_\mathbb{N}(y-x_2)=1\)</span>, é necessário que <span class="math inline">\(x_2\leq y\)</span>. Logo, <span class="math display">\[\begin{align}P(Y=y)&amp;=e^{-2\lambda}\lambda^{y}\sum_{x_2=0}^{y} \frac{1}{x_2!(y-x_2)!}\\
+&amp;=\frac{e^{-2\lambda}\lambda^{y}}{y!}\sum_{x_2=0}^{y} \frac{y!}{x_2!(y-x_2)!}=\frac{e^{-2\lambda}\lambda^{y}}{y!}\sum_{x_2=0}^y{ y\choose x_2}.
+\end{align}\]</span></p>
+<p>Agora, observe que</p>
+<p><span class="math display">\[\sum_{x_2=0}^y{ y\choose x_2}=\sum_{x_2=0}^y{ y\choose x_2}1^{x_2}1^{y-x_2}=(1+1)^y=2^y,\]</span> portanto, <span class="math display">\[\begin{align}P(Y=y)&amp;=\frac{e^{-2\lambda}\lambda^y}{y!}2^y=\frac{e^{-2\lambda}(2\lambda)^y}{y!}.
+\end{align}\]</span></p>
+<p>Isso implica que <span class="math inline">\(X_1+X_2\sim\hbox{Poisson}(2\lambda)\)</span>.</p>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1.18</strong></span> Sejam <span class="math inline">\(X_1\)</span> e <span class="math inline">\(X_2\)</span> variáveis aleatórias independentes com <span class="math inline">\(X_1\sim\hbox{Poisson}(\lambda_1)\)</span> e <span class="math inline">\(x_2\sim\hbox{Poisson}(\lambda_2)\)</span>.</p>
+<ol type="a">
+<li><p>Mostre que <span class="math inline">\(X_1+X_2\sim\hbox{Poisson}(\lambda_1+\lambda_2)\)</span></p></li>
+<li><p>Com base nesse resultado, qual é a distribuição de <span class="math inline">\(\sum_{i=1}^n X_i\)</span> quando as variáveis são independentes com <span class="math inline">\(X_i\sim\hbox{Poisson}(\lambda_i)\)</span>?</p></li>
+</ol>
+</div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1.19</strong></span> Sejam <span class="math inline">\(X_1\)</span> e <span class="math inline">\(X_2\)</span> variáveis aleatórias independentes com <span class="math inline">\(X_1\sim\hbox{Poisson}(\lambda_1)\)</span> e <span class="math inline">\(x_2\sim\hbox{Poisson}(\lambda_2)\)</span>. Encontre</p>
+<p><span class="math display">\[P(X_1=x|X_1+X_2=n).\]</span></p>
+</div>
+</section>
+<section id="distribuição-binomial-negativa-como-soma-de-distribuições-geométricas-independentes" class="level3" data-number="1.5.4">
+<h3 data-number="1.5.4" class="anchored" data-anchor-id="distribuição-binomial-negativa-como-soma-de-distribuições-geométricas-independentes"><span class="header-section-number">1.5.4</span> Distribuição binomial negativa como soma de distribuições geométricas independentes</h3>
+<div class="alert alert-success">
+<p><strong>Recordando</strong> Dizemos que <span class="math inline">\(X\sim\hbox{Geométrica}(p)\)</span> se sua função de probabilidade é dada por <span class="math display">\[P(X=x)=p(1-p)^x I_{\mathbb{N}}(x)\]</span> e dizemos que <span class="math inline">\(Y\sim\hbox{Binomial Negativa}(n,p)\)</span> se sua função de probabilidade é dada por <span class="math display">\[P(Y=y)={y+n-1\choose y}p^n(1-p)^y I_{\mathbb{N}}(y).\]</span></p>
+</div>
+<div class="alert alert-success">
+<p><strong>Resultado relevante:</strong> para <span class="math inline">\(t&gt;0\)</span>,</p>
+<p><span class="math display">\[\sum_{j=0}^m{m+t-j\choose m-j}={m+t+1\choose m}\]</span></p>
+</div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1.20</strong></span> Sejam <span class="math inline">\(X_1,X_2\)</span> variáveis aleatórias independentes com distribuição Geométrica<span class="math inline">\((p)\)</span>. Mostre que <span class="math inline">\(Y=X_1+X_2\sim\hbox{Binomial Negativa}(2,p)\)</span></p>
+</div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1.21</strong></span> Sejam <span class="math inline">\(X_1,X_2,X_3\)</span> variáveis aleatórias independentes com distribuição Geométrica<span class="math inline">\((p)\)</span>. Mostre que <span class="math inline">\(Y=X_1+X_2+X_3\sim\hbox{Binomial Negativa}(3,p)\)</span></p>
+</div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1.22</strong></span> Sejam <span class="math inline">\(X_1,X_2,\ldots,X_n\)</span> variáveis aleatórias independentes com distribuição Geométrica<span class="math inline">\((p)\)</span>. Mostre que <span class="math inline">\(Y=\sum_{i=1}^nX_i\sim\hbox{Binomial Negativa}(n,p)\)</span>. Especificamente, suponha por indução que</p>
+<p><span class="math display">\[Z=\sum_{i=1}^{n-1}X_i\sim\hbox{Binomial Negativa}(n-1,p).\]</span> Então, conclua o exercício encontrando a distribuição de <span class="math inline">\(Y=Z+X_n\)</span>.</p>
 </div>
 
 
