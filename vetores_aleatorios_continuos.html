@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>vetores_aleatorios_continuos</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="vetores_aleatorios_continuos_files/libs/clipboard/clipboard.min.js"></script>
+<script src="vetores_aleatorios_continuos_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="vetores_aleatorios_continuos_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="vetores_aleatorios_continuos_files/libs/quarto-html/popper.min.js"></script>
+<script src="vetores_aleatorios_continuos_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="vetores_aleatorios_continuos_files/libs/quarto-html/anchor.min.js"></script>
+<link href="vetores_aleatorios_continuos_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="vetores_aleatorios_continuos_files/libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="vetores_aleatorios_continuos_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="vetores_aleatorios_continuos_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="vetores_aleatorios_continuos_files/libs/bootstrap/bootstrap-bb462d781dde1847d9e3ccf7736099dd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="fullcontent quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+
+
+
+<section id="distribuição-de-vetores-aleatórios-contínuos" class="level1">
+<h1>Distribuição de vetores aleatórios contínuos</h1>
+<p>Os objetivos deste capítulo são:</p>
+<ol type="1">
+<li><p>Definir e estudar as propriedades relacionadas a distribuição de vetores aleatórios contínuos</p></li>
+<li><p>Estudar funções de vetores aleatórios contínuos e apresentar exemplos relevantes de distribuições</p></li>
+</ol>
+<section id="função-de-densidade-conjunta" class="level2">
+<h2 class="anchored" data-anchor-id="função-de-densidade-conjunta">Função de densidade conjunta</h2>
+<p>Seja <span class="math inline">\(\textbf{X}=(X_1,…,X_n)\)</span> um vetor de variáveis aleatórias absolutamente contínuas. Dizemos que a função contínua</p>
+<p><span class="math display">\[f(\textbf{x})=f(x_1,…,x_n)\]</span> é a função de densidade conjunta de <span class="math inline">\(\textbf{X}\)</span> se</p>
+<p><span class="math display">\[P(X_1\in A_1,\ldots,X_n\in A_n)=\int_{A_1}\cdots\int_{A_n}f(\textbf{x})d\textbf{x}.\]</span></p>
+<div id="exm">
+<p>Duas máquinas do mesmo tipo são ligadas simultaneamente. Seja <span class="math inline">\(\textbf{X}=(X_1,X_2)\)</span> o vetor aleatório do tempo de vida destas máquinas (ou seja, <span class="math inline">\(X_i\)</span> é o tempo de vida da <span class="math inline">\(i\)</span>-ésima máquina). Suponha que <span class="math inline">\(X_i\sim\)</span>Exponencial(<span class="math inline">\(\lambda\)</span>), com <span class="math inline">\(\lambda&gt;0\)</span> conhecido e que <span class="math inline">\(X_1\)</span> é independente de <span class="math inline">\(X_2\)</span>.</p>
+<p>A probabilidade de que ambas as máquinas estejam funcionando até o tempo <span class="math inline">\(\textbf{x}=(x_1,x_2)\)</span> é dada por</p>
+<p><span class="math display">\[\begin{align}P(X_1&gt;x_1,X_2&gt;x_2)&amp;=P(X_1&gt;x_1)P(X_2&gt;x_2)\\&amp;=\left(\int_{x_1}^\infty \lambda e^{-\lambda y_1}dy_1\right)\left(\int_{x_2}^\infty \lambda e^{-\lambda y_2}dy_2\right)\\&amp;=\int_{x_1}^\infty\int_{x_2}^\infty \lambda^2 e^{-\lambda(y_1+y_2)}dy_1dy_2,\end{align}\]</span> e, portanto, <span class="math display">\[f(\textbf{x})=λ^2e^{−λ(x_1+x_2)}\]</span> para <span class="math inline">\(x_1,x_2&gt;0\)</span> é a densidade conjunta de <span class="math inline">\(\textbf{X}=(X_1,X_2)\)</span>.</p>
+</div>
+<div id="prp-" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 1</strong></span> Dizemos que <span class="math inline">\(f(\textbf{x})\)</span> (contínua) é a função de densidade para um vetor aleatório <span class="math inline">\(\textbf{X}\)</span> se</p>
+<span class="math display">\[f(\textbf{x})\geq 0,\;\;\forall\;\textbf{x}\in\mathbb{R}^n\]</span> e <span class="math display">\[\int_{\mathbb{R}^n}f(\textbf{x})d\textbf{x}=1.\]</span>
+</div>
+</section></section></main></div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1</strong></span> Mostre que <span class="math display">\[f(x,y)=xe^{−x(1+y)},\]</span> com <span class="math inline">\(x,y&gt;0\)</span> é uma função de densidade conjunta.</p>
+</div>
+
+<section id="função-de-distribuição-conjunta" class="level2">
+<h2 data-anchor-id="função-de-distribuição-conjunta">Função de distribuição conjunta</h2>
+<p>Como vimos no capítulo anterior, <span class="math display">\[F(\textbf{x})=P(\textbf{x}\leq \textbf{x})=P(X_1\leq x_1,\ldots,X_n\leq x_n),\]</span> é denominada função de distribuição conjunta (ou ainda função de distribuição multivariada).</p>
+<div id="prp-" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 2</strong></span> A função de distribuição de um vetor de variáveis aleatórias contínuas é dada por <span class="math display">\[F(\textbf{x})=\int_{-\infty}^{x_1}\cdots\int_{-\infty}^{x_n}f(y_1,\ldots,y_n)d\textbf{y}.\]</span></p>
+</div>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 1</strong></span> Encontre a função de distribuição conjunta a partir da densidade conjunta abaixo:</p>
+<p><span class="math display">\[f(x,y)=\frac{3}{80}(x^2+xy)\]</span>, com <span class="math inline">\(0&lt;x&lt;2\)</span> e <span class="math inline">\(0&lt;y&lt;4\)</span>.</p>
+<p><strong>Solução:</strong></p>
+<p><span class="math display">\[\begin{align}F(x,y)&amp;=\int_0^x\int_0^y \frac{3}{80}(u^2+uv)dvdu\\&amp;=\int_0^x\left[\frac{3}{80}(u^2+\frac{uy^2}{2})\right]du\\ &amp;=\frac{x^3}{80}+\frac{3x^2y^2}{320},\end{align}\]</span> se <span class="math inline">\(0&lt;x&lt;2\)</span> e <span class="math inline">\(0&lt;y&lt;4\)</span>.</p>
+</div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 2</strong></span> Considere o vetor <span class="math inline">\((X,Y)\)</span> de variáveis aleatórias com função densidade conjunta dada por <span class="math display">\[f(x,y)=xe^{−xy},\]</span> com <span class="math inline">\(y&gt;0\)</span> e <span class="math inline">\(x\in(0,1)\)</span>. Encontre a função de distribuição conjunta de <span class="math inline">\((X,Y)\)</span>.</p>
+</div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3</strong></span> Se <span class="math inline">\(\textbf{X}\)</span> é um vetor aleatório comprimento <span class="math inline">\(n\)</span>, então</p>
+<p><span class="math display">\[f(\textbf{x})=\frac{\partial}{\partial x_1}\cdots \frac{\partial}{\partial x_n} F(\textbf{x}).\]</span></p>
+</div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 4</strong></span> Seja</p>
+<p><span class="math display">\[F(x,y)=1−e^{−x}−e^{−y}+e^{-(x+y)},\]</span> com <span class="math inline">\((x,y)\in\mathbb{R}^2_+\)</span>. Encontre a densidade conjunta correspondente.</p>
+</div>
+</section>
+<section id="distribuições-marginais" class="level2">
+<h2 data-anchor-id="distribuições-marginais">Distribuições Marginais</h2>
+<p>Seja <span class="math inline">\(\textbf{X}\)</span> um vetor aleatório de dimensão <span class="math inline">\(n\)</span>. A distribuição de uma coordenada qualquer de <span class="math inline">\(\textbf{X}\)</span> é denominada distribuição marginal.</p>
+<p>Como em geral utilizamos as letras <span class="math inline">\(F\)</span>, <span class="math inline">\(P\)</span> e <span class="math inline">\(f\)</span> para designar as funções de distribuição, probabilidade e densidade, é importante acrescentar uma notação de identifique explicitamente a variável. Quando isto for necessário, adicionaremos a letra que designa a variável subscrita na função. Por exemplo, <span class="math inline">\(F_{X_1}(x)\)</span> é a função de distribuição marginal de <span class="math inline">\(X_1\)</span>.</p>
+<div id="prp-" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 3</strong></span> Seja <span class="math inline">\(\textbf{X}\)</span> um vetor de variáveis aleatórias de comprimento <span class="math inline">\(n\)</span>. A função de distribuição marginal de <span class="math inline">\(X_i\)</span> é dada por</p>
+<p><span class="math display">\[F_{X_i}(x_i)=\lim_{\textbf{x}_{(−i)}\rightarrow\infty}F(\textbf{x}),\]</span> onde <span class="math inline">\(\textbf{x}_{(−i)}=\textbf{x}\setminus x_i\)</span> (ou seja, o vetor <span class="math inline">\(\textbf{x}\)</span> sem a <span class="math inline">\(i\)</span>-ésima coordenada).</p>
+</div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 5</strong></span> Considere a seguinte função de distribuição conjunta,</p>
+<p><span class="math display">\[F(x,y)=1−e^{−x}−e^{−y}+e^{−(x+y)}.\]</span> onde <span class="math inline">\(x,y&gt;0\)</span>. Encontre a função de distribuição de <span class="math inline">\(X\)</span>.</p>
+</div>
+<div id="prp-" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 4</strong></span> Seja <span class="math inline">\(\textbf{X}\)</span> um vetor de variáveis aleatórias contínuas. A função de densidade marginal de <span class="math inline">\(X_i\)</span> é dada por <span class="math display">\[f_{X_i}(x_i)=\int_{\mathbb{R}^{n-1}}f(\textbf{x})d\textbf{x}_{(−i)}.\]</span></p>
+</div>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 2</strong></span> Seja <span class="math inline">\((X,Y)\)</span> um par de variáveis aleatórias com densidade conjunta dada por <span class="math display">\[f(x,y)=8xy,\]</span> com <span class="math inline">\(0&lt;x&lt;y&lt;1.\)</span> Determine as densidades marginais de <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>.</p>
+<p><strong>Solução</strong></p>
+<p><span class="math display">\[f_X(x)=\int_{\mathbb{R}}f(x,y)dy=8x\int_x^1 ydy=4x(1−x^2),\]</span> para <span class="math inline">\(0&lt;x&lt;1\)</span> e</p>
+<p><span class="math display">\[f_Y(y)=\int_{\mathbb{R}}f(x,y)dx=8y\int_0^y xdx=4y^3,\]</span> para <span class="math inline">\(0&lt;y&lt;1\)</span>.</p>
+</div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 6</strong></span> Considere a seguinte função de densidade conjunta, <span class="math display">\[f(x,y)=xy^2e^{−y(x+1)}.\]</span> onde <span class="math inline">\(x,y&gt;0\)</span>. Encontre a função densidade marginal de <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>.</p>
+</div>
+<p>Sejam <span class="math inline">\(\textbf{X}\)</span> e <span class="math inline">\(\textbf{Y}\)</span> vetores aleatórios contínuos. Sabemos que</p>
+<p><span class="math display">\[P(\textbf{X}\leq \textbf{x}|\textbf{Y}\in B)=\frac{P(\textbf{X}\leq\textbf{x},\textbf{Y}\in B)}{P(\textbf{Y}\in B)}.\]</span></p>
+<p>Como <span class="math inline">\(\textbf{Y}\)</span> é uma vetor de variáveis aleatórias contínias, sabemos que <span class="math inline">\(P(\textbf{Y}=\textbf{y})=0\)</span>. Entretanto, a probabilidade <span class="math inline">\(P(\textbf{X}\leq \textbf{x}|\textbf{Y}=\textbf{y})\)</span> faz todo o sentido. Para mostrar este fato, seja <span class="math inline">\(B(\varepsilon)\)</span> uma bola fechada de raio <span class="math inline">\(\varepsilon\)</span> e centro <span class="math inline">\(\textbf{y}\)</span>. Pelo Teorema do Valor Médio, existe <span class="math inline">\(\tilde{y}\in B(\varepsilon)\)</span> tal que</p>
+<p><span class="math display">\[P(\textbf{Y}\in B(\varepsilon) )=\int_{B(\varepsilon)} f_{\textbf{Y}}(\textbf{u})d\textbf{u}=\hbox{Vol}(B(\varepsilon))f_{\textbf{Y}}(\tilde{\textbf{y}})\]</span> e</p>
+<p><span class="math display">\[P(\textbf{X}\leq \textbf{x},\textbf{Y}\in B(\varepsilon) )=\int_{\textbf{v}\leq \textbf{x}}\int_{B(\varepsilon)} f_{\textbf{X},\textbf{Y}}(\textbf{v},\textbf{u})d\textbf{u}d\textbf{v}=\hbox{Vol}(B(\varepsilon))\int_{\textbf{v}\leq \textbf{x}}f_{\textbf{X},\textbf{Y}}(\textbf{v},\tilde{\textbf{y}}_{\textbf{v}})d\textbf{v}.\]</span> Portanto,</p>
+<p><span class="math display">\[P(\textbf{X}\leq \textbf{x}|\textbf{Y}\in B(\varepsilon) )=\frac{\hbox{Vol}(B(\varepsilon))\int_{\textbf{v}\leq \textbf{x}}f_{\textbf{X},\textbf{Y}}(\textbf{v},\tilde{\textbf{y}})d\textbf{v}}{\hbox{Vol}(B(\varepsilon))f_{\textbf{Y}}(\tilde{\textbf{y}})}=\int_{\textbf{v}\leq \textbf{x}}\frac{f_{\textbf{X},\textbf{Y}}(\textbf{v},\tilde{\textbf{y}}_{\textbf{v}})}{f_{\textbf{Y}}(\tilde{\textbf{y}})}d\textbf{v}.\]</span> Agora, note que <span class="math inline">\(B(\varepsilon)\rightarrow\textbf{y}\)</span> quando <span class="math inline">\(\varepsilon\rightarrow0\)</span>, logo <span class="math inline">\(\tilde{\textbf{y}}\rightarrow\textbf{y}\)</span> e <span class="math inline">\(\tilde{\textbf{y}}_{\textbf{v}}\rightarrow\textbf{y}\)</span> para todo <span class="math inline">\(\textbf{v}\)</span>, o que implica em</p>
+<p><span class="math display">\[\lim_{\varepsilon\rightarrow 0}P(\textbf{X}\leq \textbf{x}|\textbf{Y}\in B(\varepsilon) )=P(\textbf{X}\leq \textbf{x}|\textbf{Y}= \textbf{y})=F(\textbf{x}|\textbf{y})=\int_{\textbf{v}\leq \textbf{x}}\frac{f_{\textbf{X},\textbf{Y}}(\textbf{v},{\textbf{y}})}{f_{\textbf{Y}}({\textbf{y}})}d\textbf{v}.\]</span> o que implica em</p>
+<p><span class="math display">\[f(\textbf{x}|\textbf{y})=\frac{f_{\textbf{X},\textbf{Y}}(\textbf{x},\textbf{y})}{f_{\textbf{Y}}(\textbf{y})}.\]</span></p>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 3</strong></span> Seja <span class="math display">\[f(x,y)=21x^2y^3,\]</span> se <span class="math inline">\(0&lt;x&lt;y&lt;1\)</span>. Encontre a densidade condicional de <span class="math inline">\(Y|X=x\)</span>.</p>
+<p><strong>Solução.</strong></p>
+<p>Primeiro, vamos encontrar a densidade marginal de <span class="math inline">\(X\)</span>:</p>
+<p><span class="math display">\[f(x)=21x^2\int_x^1 y^3dy=\frac{21}{4}x^2(1-x^4),\]</span></p>
+<p>para <span class="math inline">\(x\in(0,1)\)</span>. Portanto,</p>
+<p><span class="math display">\[f(y|x)=\frac{f(x,y)}{f(x)}=\frac{21x^2y^3}{\frac{21}{4}x^2(1-x^4)}=\frac{4y^3}{(1-x^4)},\]</span> com <span class="math inline">\(0&lt;x&lt;y&lt;1\)</span>.</p>
+</div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 7</strong></span> Suponha que</p>
+<p><span class="math display">\[f(x,y)=\frac{1}{2\pi}\exp\left\{−\frac{1}{2}(x^2+2y^2−2xy)\right\},\]</span> com <span class="math inline">\((x,y)\in\mathbb{R}^2\)</span>. Encontre a densidade de <span class="math inline">\(X|Y=y\)</span>.</p>
+</div>
+</section>
+<section id="função-de-vetores-aleatórios-contínuos" class="level2">
+<h2 data-anchor-id="função-de-vetores-aleatórios-contínuos">Função de vetores aleatórios contínuos</h2>
+<p>Suponha que <span class="math inline">\(X\)</span> é uma variável aleatória contínua e <span class="math inline">\(g(.)\)</span> uma função real e contínua. Considerando a variável aleatória <span class="math inline">\(Y=g(X)\)</span>, teremos que</p>
+<p><span class="math display">\[P(Y\in A)=P(g(X)\in A)=\int_{x:g(x)\in A}f_X(x)dx.\]</span></p>
+<p>Em particular,</p>
+<p><span class="math display">\[F_Y(y)=P(Y\leq y)=P(g(X)\leq y)=\int_{x:g(x)\leq y}f_X(x)dx.\]</span></p>
+<p>Agora, suponha <span class="math inline">\(g(.)\)</span> possui inversa. Então, podemos utilizar o método integral por substituição. Fazendo <span class="math inline">\(u=g(x)\)</span>, teremos que <span class="math inline">\(x=g^{−1}(u)\)</span> e <span class="math inline">\(dx=\frac{d}{du}g^{−1}(u)du\)</span>. Além disso,</p>
+<p><span class="math display">\[\{x:g(x)\leq y\}\equiv\{u\leq y\},\]</span> o que implica em</p>
+<p><span class="math display">\[F_Y(y)=\int_{-\infty}^y f_X(g^{−1}(u))\left|\frac{d}{du}g^{−1}(u)\right|du\]</span> logo, <span class="math display">\[f_Y(y)=f_X(g^{−1}(y))\left|\frac{d}{dy}g^{−1}(y)\right|.\]</span> O termo dentro do módulo é denominado <strong>Jacobiano da transformação</strong> e a obtenção da densidade por esse método é denominada <strong>método do Jacobiano</strong>.</p>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 4</strong></span> Suponha que <span class="math inline">\(X\sim\hbox{Normal}(0,1)\)</span>. Considere a transformação <span class="math inline">\(Y=e^{X}\)</span>. Como <span class="math inline">\(g^{-1}(y)=\log(y)\)</span>, teremos que</p>
+<p><span class="math display">\[f_Y(y)=f_X(\log y )\left|\frac{d}{dy}\log y\right|=\frac{1}{y\sqrt{2\pi}}e^{-\frac{1}{2}\log y^2}.\]</span> Essa distribuição é denominada Lognormal(0,1).</p>
+</div>
+<p>Assim como no caso discreto, a extensão para vetores também é natural. Seja <span class="math inline">\(\textbf{X}\)</span> um vetor aleatório de comprimento <span class="math inline">\(n\)</span> e considere a nova variável <span class="math inline">\(\textbf{Y}=g(X)\)</span>, onde <span class="math inline">\(g:\mathbb{R}^n\rightarrow \mathbb{R}^m\)</span> é uma função real. Então</p>
+<p><span class="math display">\[P(\textbf{Y}\in A)=P(g(\textbf{X})\in A)=\int_{\{\textbf{x}:g(\textbf{x})\in A\}}f_\textbf{X}(\textbf{x})d\textbf{x}.\]</span></p>
+<p>Agora, suponha que <span class="math inline">\(g(.)\)</span> possui inversa (o que implica que <span class="math inline">\(g:\mathbb{R}^n\rightarrow \mathbb{R}^n\)</span>). Então, pelo método da integral por substituição, teremos que <span class="math inline">\(\textbf{u}=g^{-1}(\textbf{y})\)</span>, <span class="math inline">\(d\textbf{x}=|\mathcal{J}g^{-1}(\textbf{u})|d\textbf{u}\)</span> e <span class="math inline">\(\{\textbf{x}:g(\textbf{x})\in A\}=\{\textbf{u}\in A\}\)</span>, o que implica em</p>
+<p><span class="math display">\[P(\textbf{Y}\in A)=\int_{A}f_\textbf{X}(g^{-1}(\textbf{u})|\mathcal{J}g^{-1}(\textbf{u})|d\textbf{u}.\]</span></p>
+<p>onde <span class="math inline">\(\mathcal{J}g^{-1}(\textbf{u})\)</span> é denominada matriz Jacobiana, cujo o elemento <span class="math inline">\((i,j)\)</span> é dado por <span class="math display">\[\frac{\partial^2}{\partial u_i\partial u_j}g^{-1}(\textbf{u}).\]</span></p>
+<p>Em particular, teremos que</p>
+<p><span class="math display">\[F_{\textbf{Y}}(\textbf{y})=\int_{-\infty}^{y_1}\cdots \int_{-\infty}^{y_n}f_\textbf{X}(g^{-1}(\textbf{u}))|\mathcal{J}g^{-1}(\textbf{u})|d\textbf{u}.\]</span></p>
+<p>Portanto, concluímos que <span class="math display">\[f_\textbf{Y}(\textbf{y})=f_\textbf{X}(g^{−1}(\textbf{y}))|\mathcal{J}g^{-1}(\textbf{y})|.\]</span></p>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 5</strong></span> Sejam <span class="math inline">\(X_1\)</span> e <span class="math inline">\(X_2\)</span> variáveis aleatórias independentes com distribuição Normal(0,1). Vamos encontrar a função densidade conjunta de <span class="math inline">\(\textbf{Y}=(X_1+X_2,Y2=X_1−X_2)\)</span>.</p>
+<p>Primeiro, temos que encontrar a função inversa:</p>
+<p><span class="math display">\[\begin{array}{c}
+Y_1=X_1+X_2\\
+Y_2=X_1-X_2\\
+\end{array} \Leftrightarrow \begin{array}{c}X_1=0,5(Y_1+Y_2)\\ X_2=0,5(Y_1-Y_2)\end{array}\]</span></p>
+<p>e o Jacobiano da transformação é dado por</p>
+<p><span class="math display">\[\mathcal{J}g^{-1}(\textbf{y})=\left[\begin{array}{cc} 0,5 &amp; 0,5 \\ 0,5 &amp; - 0,5 \end{array}\right],\]</span></p>
+<p>cujo determinante é igual a 1/2. Logo,</p>
+<p><span class="math display">\[\begin{align}f_\textbf{Y}(\textbf{y})&amp;=f_{X_1}(0,5(y_1+y_2)f_{X_2}(0,5(y_1−y2_2)\frac{1}{2}=\frac{1}{4\pi}e^{-\frac{1}{8}[(y_1-y_2)^2+(y_1+y_2)^2]}\\&amp;=\frac{1}{4\pi}e^{-\frac{1}{4}(y_1^2+y_2^2)}\end{align}\]</span> Podemos notar que a densidade conjunta fatora em duas normais, ou seja <span class="math inline">\(Y_1\)</span> e <span class="math inline">\(Y2_\)</span> são independentes com marginais Normal(0,2).</p>
+</div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 8</strong></span> Sejam <span class="math inline">\(X_1\)</span> e <span class="math inline">\(X_2\)</span> variáveis aleatórias independentes com distribuição Normal(0,1).</p>
+<ol type="a">
+<li><p>Encontre a função densidade conjunta de <span class="math inline">\(Y_1=aX_1+X_2\)</span> e <span class="math inline">\(Y_2=X_1−X_2\)</span>, onde <span class="math inline">\(a\)</span> é uma constante.</p></li>
+<li><p>Quais são os valores de <span class="math inline">\(a\)</span> tais que <span class="math inline">\(Y_1\)</span> é independente de <span class="math inline">\(Y_2\)</span>?</p></li>
+</ol>
+</div>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 6</strong></span> Sejam <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> variáveis aleatórias independentes com distribuição Exponencial(1). Vamos determinar a distribuição conjunta de <span class="math inline">\(U=X+Y\)</span> e <span class="math inline">\(V=Y/X\)</span> .</p>
+<p>Antes de prosseguirmos, é importante relembrar alguns resultados sobre funções indicadoras.</p>
+<p>Seja I(x∈A) a função indicadora, onde I(x∈A)={1,0, se x∈A em caso contrário. Em particular, se x∈(a,b) , podemos escrever I(a&lt;x&lt;b) . Então, é verdade que</p>
+<p>I(a1&lt;x&lt;b1)I(a2&lt;x&lt;b2)=I(max{a1,a2}&lt;x&lt;min{b1,b2}).</p>
+<p>&lt;div class=“alert alert-success&gt; ∫RI(a&lt;x&lt;b)h(x)dx=∫bah(x)dx. Considere o agora que g:Rm→Rn , onde m&gt;n . Nesse caso, Y=g(X) ainda é um vetor aleatório, mas podemos aplicar o método discutido nesta seção porque g(.) não tem inversa. Neste caso, adicionamos um vetor W=h(X) de dimensão m−n tal que a função g∗(X)=(g(X),h(X)) tenha inversa. Então, obtemos a densidade conjunta de (Y,W) através do método discutido anteriormente, ou seja</p>
+<p>fY,W(y,w)=fX(g∗−1(y,w))|J(y,w)|. Em seguida, podemos encontrar a densidade conjunta de Y integrando a conjunta acima em W :</p>
+<p>fY(y)=∫fX(g∗−1(y,w))|J(y,w)|dw. Exemplo. Sejam X1 e X2 variáveis aleatórias independentes com distribuição Exponencial(1). Vamos encontrar a densidade de Y=X1+X2 .</p>
+<p>Note que não há inversa (ou seja, não é possível escrever X1 e X2 como função apenas de Y ). Vamos introduzir a variável auxilar W=X2 . Então,</p>
+<p>{Y=X1+X2W=X2⇒{X1=Y−WX2=W</p>
+<p>O jacobiano da transformação será J(y,w)=∣∣∣10−11∣∣∣=1 e</p>
+<p>fY,W(y,w)=fX1,X2(y−w,w)|J(y,w)|=fX1(y−w)fX2(w) Lembremos que a densidade da Exponencial(1) é dada por fX(x)=e−x, para x&gt;0 . Isso é o mesmo que escrever fX(x)=e−xI(x&gt;0). Agora, podemos escrever a densidade conjunta de (Y,W): fY,W(y,w)=e−(y−w)I(y−w&gt;0)e−wI(w&gt;0)=e−yI(y−w&gt;0)I(w&gt;0). Vamos encontrar a marginal de Y integrando o resultado acima em w:</p>
+<p><span class="math display">\[fY(y)=∫e−yI(y−w&gt;0)I(w&gt;0)dw=∫e−yI(w&lt;y)I(0&lt;w)dw=∫e−yI(−∞&lt;w&lt;y)I(0&lt;w&lt;∞)dw=∫e−yI(max{−∞,0}&lt;w&lt;min{y,∞})dw=∫e−yI(0&lt;w&lt;y)dw=∫y0e−ydw=e−y∫y0dw=ye−y.\]</span></p>
+<p>Exercício Sejam X1 e X2 variáveis aleatórias independentes com distribuição Uniforme(0,1). Encontre a distribuição de Y=X1+X2 . Solução Considere a variável auxiliar W=X1 . Neste caso, X1X2=W,=Y−W. e o Jacobiano da transformação será ∣∣∣∣∂x1∂y∂x2∂y∂x1∂w∂x2∂w∣∣∣∣=∣∣∣011−1∣∣∣=1</p>
+<p>Como fX1,X2(x1,x2)=fX1(x1)fX2(x2)=1 se 0&lt;x&lt;1 e 0&lt;y&lt;1 e 0 em caso contrário, teremos que</p>
+<p>fY,W(y,w)=fX1,X2(w,y−w)J(y,w)=I(0&lt;w&lt;1)I(0&lt;y−w&lt;1),</p>
+<p>se 0&lt;w&lt;1 e 0&lt;y−w&lt;1 e 0 em caso contrário.</p>
+<p>Agora, vamos encontrar a densidade de Y :</p>
+<p>fY(y)=∫RI(0&lt;w&lt;1)I(0&lt;y−w&lt;1)dw=∫RI(0&lt;w&lt;1)I(y−1&lt;w&lt;y)dw=∫RI(max{0,y−1}&lt;w&lt;min{1,y})dw=∫min{1,y}max{0,y−1}1dw=min{1,y}−max{0,y−1},</p>
+<p>se 0&lt;y&lt;2 e zero em caso contrário.</p>
+</div>
+</section>
+
+
+
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+ <!-- /content -->
+
+
+
+
+</body></html>

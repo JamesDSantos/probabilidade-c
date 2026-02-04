@@ -1,5 +1,7 @@
 # Introdução
 
+## Vetores aleatórios
+
 Neste curso vamos utilizar o negrito para designar um vetor. Por exemplo,
 
 $$\textbf{x}=(x_1,…,x_n)$$,
@@ -34,4 +36,6 @@ Também é possível encontrar funções de distribuição ou densidade/probabil
 
 Uma vez que essas funções, já conhecidas para o caso univariado, possuem seu equivalente para vetores, é natural expandir conceitos como espança e variância para vetores, assim como a esperança e variância para distribuições condicionais. Nesse momento, novas medidas que medem o relacionamento entre variáveis aleatórias, como covariância e correlação, serão apresentadas. 
 
+## Teoremas limites
 
+## Cadeias de Markov
