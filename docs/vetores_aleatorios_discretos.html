@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>1&nbsp; Distribuição de vetores aleatórios discretos – Probabilidade C</title>
+<title>2&nbsp; Distribuição de vetores aleatórios discretos – Probabilidade C</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./references.html" rel="next">
-<link href="./index.html" rel="prev">
+<link href="./vetores_aleatorios_continuos.html" rel="next">
+<link href="./intro.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -112,7 +112,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./vetores_aleatorios_discretos.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Distribuição de vetores aleatórios discretos</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./vetores_aleatorios_discretos.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Distribuição de vetores aleatórios discretos</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -145,8 +145,20 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./vetores_aleatorios_discretos.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Distribuição de vetores aleatórios discretos</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Distribuição de vetores aleatórios discretos</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./vetores_aleatorios_continuos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Distribuição de vetores aleatórios contínuos</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -165,16 +177,16 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#função-de-probabilidade-conjunta" id="toc-função-de-probabilidade-conjunta" class="nav-link active" data-scroll-target="#função-de-probabilidade-conjunta"><span class="header-section-number">1.1</span> Função de probabilidade conjunta</a></li>
-  <li><a href="#função-de-distribuição-conjunta" id="toc-função-de-distribuição-conjunta" class="nav-link" data-scroll-target="#função-de-distribuição-conjunta"><span class="header-section-number">1.2</span> Função de distribuição conjunta</a></li>
-  <li><a href="#distribuição-marginal" id="toc-distribuição-marginal" class="nav-link" data-scroll-target="#distribuição-marginal"><span class="header-section-number">1.3</span> Distribuição marginal</a></li>
-  <li><a href="#distribuição-condicional" id="toc-distribuição-condicional" class="nav-link" data-scroll-target="#distribuição-condicional"><span class="header-section-number">1.4</span> Distribuição condicional</a></li>
-  <li><a href="#funções-de-vetores-aleatórios-discretos" id="toc-funções-de-vetores-aleatórios-discretos" class="nav-link" data-scroll-target="#funções-de-vetores-aleatórios-discretos"><span class="header-section-number">1.5</span> Funções de vetores aleatórios discretos</a>
+  <li><a href="#função-de-probabilidade-conjunta" id="toc-função-de-probabilidade-conjunta" class="nav-link active" data-scroll-target="#função-de-probabilidade-conjunta"><span class="header-section-number">2.1</span> Função de probabilidade conjunta</a></li>
+  <li><a href="#função-de-distribuição-conjunta" id="toc-função-de-distribuição-conjunta" class="nav-link" data-scroll-target="#função-de-distribuição-conjunta"><span class="header-section-number">2.2</span> Função de distribuição conjunta</a></li>
+  <li><a href="#distribuição-marginal" id="toc-distribuição-marginal" class="nav-link" data-scroll-target="#distribuição-marginal"><span class="header-section-number">2.3</span> Distribuição marginal</a></li>
+  <li><a href="#distribuição-condicional" id="toc-distribuição-condicional" class="nav-link" data-scroll-target="#distribuição-condicional"><span class="header-section-number">2.4</span> Distribuição condicional</a></li>
+  <li><a href="#funções-de-vetores-aleatórios-discretos" id="toc-funções-de-vetores-aleatórios-discretos" class="nav-link" data-scroll-target="#funções-de-vetores-aleatórios-discretos"><span class="header-section-number">2.5</span> Funções de vetores aleatórios discretos</a>
   <ul class="collapse">
-  <li><a href="#alguns-resultados-importantes" id="toc-alguns-resultados-importantes" class="nav-link" data-scroll-target="#alguns-resultados-importantes"><span class="header-section-number">1.5.1</span> Alguns resultados importantes</a></li>
-  <li><a href="#distribuição-binomial-como-soma-de-bernoullis-independentes" id="toc-distribuição-binomial-como-soma-de-bernoullis-independentes" class="nav-link" data-scroll-target="#distribuição-binomial-como-soma-de-bernoullis-independentes"><span class="header-section-number">1.5.2</span> Distribuição Binomial como soma de Bernoullis independentes</a></li>
-  <li><a href="#soma-de-poissons-independentes" id="toc-soma-de-poissons-independentes" class="nav-link" data-scroll-target="#soma-de-poissons-independentes"><span class="header-section-number">1.5.3</span> Soma de Poissons independentes</a></li>
-  <li><a href="#distribuição-binomial-negativa-como-soma-de-distribuições-geométricas-independentes" id="toc-distribuição-binomial-negativa-como-soma-de-distribuições-geométricas-independentes" class="nav-link" data-scroll-target="#distribuição-binomial-negativa-como-soma-de-distribuições-geométricas-independentes"><span class="header-section-number">1.5.4</span> Distribuição binomial negativa como soma de distribuições geométricas independentes</a></li>
+  <li><a href="#alguns-resultados-importantes" id="toc-alguns-resultados-importantes" class="nav-link" data-scroll-target="#alguns-resultados-importantes"><span class="header-section-number">2.5.1</span> Alguns resultados importantes</a></li>
+  <li><a href="#distribuição-binomial-como-soma-de-bernoullis-independentes" id="toc-distribuição-binomial-como-soma-de-bernoullis-independentes" class="nav-link" data-scroll-target="#distribuição-binomial-como-soma-de-bernoullis-independentes"><span class="header-section-number">2.5.2</span> Distribuição Binomial como soma de Bernoullis independentes</a></li>
+  <li><a href="#soma-de-poissons-independentes" id="toc-soma-de-poissons-independentes" class="nav-link" data-scroll-target="#soma-de-poissons-independentes"><span class="header-section-number">2.5.3</span> Soma de Poissons independentes</a></li>
+  <li><a href="#distribuição-binomial-negativa-como-soma-de-distribuições-geométricas-independentes" id="toc-distribuição-binomial-negativa-como-soma-de-distribuições-geométricas-independentes" class="nav-link" data-scroll-target="#distribuição-binomial-negativa-como-soma-de-distribuições-geométricas-independentes"><span class="header-section-number">2.5.4</span> Distribuição binomial negativa como soma de distribuições geométricas independentes</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -184,7 +196,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Distribuição de vetores aleatórios discretos</span></h1>
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Distribuição de vetores aleatórios discretos</span></h1>
 </div>
 
 
@@ -206,19 +218,19 @@ window.Quarto = {
 <li><p>Definir e estudar as propriedades relacionadas a distribuição de vetores aleatórios discretos</p></li>
 <li><p>Estudar funções de vetores aleatórios discretos e apresentar exemplos relevantes de distribuições</p></li>
 </ol>
-<section id="função-de-probabilidade-conjunta" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="função-de-probabilidade-conjunta"><span class="header-section-number">1.1</span> Função de probabilidade conjunta</h2>
+<section id="função-de-probabilidade-conjunta" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="função-de-probabilidade-conjunta"><span class="header-section-number">2.1</span> Função de probabilidade conjunta</h2>
 <div id="def-" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 1.1</strong></span> Sejam <span class="math inline">\(X_1,\ldots,X_n\)</span> variáveis aleatórias discretas. Então, a função</p>
+<p><span class="theorem-title"><strong>Definition 2.1</strong></span> Sejam <span class="math inline">\(X_1,\ldots,X_n\)</span> variáveis aleatórias discretas. Então, a função</p>
 <p><span class="math display">\[P(\textbf{X}=\textbf{x})=P(X_1=x_1,\ldots,X_n=x_n),\]</span> é denominada <strong>função de probabilidade conjunta.</strong></p>
 </div>
 <div id="prp-" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 1.1</strong></span> Seja <span class="math inline">\(\textbf{X}\)</span> um vetor de variáveis aleatórias discretas. Teremos que <span class="math display">\[P(\textbf{X}=\textbf{x})=P(X_1=x_1,\ldots,X_n=x_n)\]</span> é uma função de probabilidade se:</p>
+<p><span class="theorem-title"><strong>Proposition 2.1</strong></span> Seja <span class="math inline">\(\textbf{X}\)</span> um vetor de variáveis aleatórias discretas. Teremos que <span class="math display">\[P(\textbf{X}=\textbf{x})=P(X_1=x_1,\ldots,X_n=x_n)\]</span> é uma função de probabilidade se:</p>
 <p><span class="math display">\[
 \sum_{\textbf{x}\in\mathbb{Z}^n}P(\textbf{X}=\textbf{x})=1\]</span> e se <span class="math display">\[P(\textbf{X}=\textbf{x})\geq 0,\;\;\forall\;\textbf{x}\in\mathbb{Z}^n.\]</span></p>
 </div>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 1.1</strong></span> Seja <span class="math inline">\(\textbf{X}=(X_1,X_2)\)</span> um vetor aleatório discreto e considere a função</p>
+<p><span class="theorem-title"><strong>Example 2.1</strong></span> Seja <span class="math inline">\(\textbf{X}=(X_1,X_2)\)</span> um vetor aleatório discreto e considere a função</p>
 <p><span class="math display">\[P(X_1=x_1,X_2=x_2)=\left\{\begin{array}{ll}\frac{1}{20},&amp; x_1=1,x_2=1\\
 \frac{4}{20},&amp;x_1=1,x_2=2\\
 \frac{5}{20},&amp;x_1=2,x_2=1\\
@@ -228,27 +240,27 @@ window.Quarto = {
 <p>Observe que todas as probabilidades são não negativas a soma para todos os pares <span class="math inline">\((x_1,x_2)\in\mathbb{Z}^2\)</span> é igual a 1, logo a função dada é de fato uma função de probabilidade conjunta para o vetor <span class="math inline">\(\textbf{X}\)</span>.</p>
 </div>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 1.1</strong></span> Seja</p>
+<p><span class="theorem-title"><strong>Exercise 2.1</strong></span> Seja</p>
 <p><span class="math display">\[P(\textbf{X}=\textbf{x})=P(X_1=x_1,X_2=x_2)=cq^{x_1+x_2},\]</span> onde <span class="math inline">\((x_1,x_2)\in\{0,1\}^2\)</span> e <span class="math inline">\(q&gt;0\)</span>. Encontre o valor de <span class="math inline">\(c\)</span> para que <span class="math inline">\(P(\textbf{X}=\textbf{x})\)</span> seja uma função de probabilidade.</p>
 </div>
 <p>Observe que a função de probabilidade conjunta é a interseção dos eventos <span class="math inline">\(\{X_1=x_1\},\ldots,\{X_n=x_n\}\)</span>. Portanto, se <span class="math inline">\(X_1,\ldots,X_n\)</span> são mutuamente independentes, teremos</p>
 <p><span class="math display">\[P(\textbf{X}=\textbf{x})=\prod_{i=1}^n P(X_i=x_i).\]</span> Também é possível que subconjuntos de variáveis do vetor sejam independentes. Por exemplo, <span class="math inline">\(\tilde{\textbf{X}}_1=\{X_1,\ldots,X_m\}\)</span> podem ser independentes de <span class="math inline">\(\tilde{\textbf{X}}_2=\{X_{m+1},\ldots,X_n\}\)</span>, o que resulta em</p>
 <p><span class="math display">\[P(\textbf{X}=\textbf{x})=P(\tilde{\textbf{X}}_1=\tilde{\textbf{x}}_1)P(\tilde{\textbf{X}}_2=\tilde{\textbf{x}}_2).\]</span></p>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 1.2</strong></span> Considere uma moeda com os números 0 e 1 em cada lado. Considere ainda que os dois resultados são equiprováveis. A moeda é lançada duas vezes. Seja <span class="math inline">\(X_i\)</span> o resultado do <span class="math inline">\(i\)</span>-ésimo lançamento. Considerando que <span class="math inline">\(X_1\)</span> e <span class="math inline">\(X_2\)</span> são independentes, encontre a função de probabilidade conjunta de <span class="math inline">\(\textbf{X}=(X_1,X_2)\)</span>.</p>
+<p><span class="theorem-title"><strong>Example 2.2</strong></span> Considere uma moeda com os números 0 e 1 em cada lado. Considere ainda que os dois resultados são equiprováveis. A moeda é lançada duas vezes. Seja <span class="math inline">\(X_i\)</span> o resultado do <span class="math inline">\(i\)</span>-ésimo lançamento. Considerando que <span class="math inline">\(X_1\)</span> e <span class="math inline">\(X_2\)</span> são independentes, encontre a função de probabilidade conjunta de <span class="math inline">\(\textbf{X}=(X_1,X_2)\)</span>.</p>
 <p><strong>Solução</strong>. Para <span class="math inline">\(i=1,2\)</span>, teremos que</p>
 <p><span class="math display">\[P(X_i=0)=P(X_i=1)=\frac{1}{2}.\]</span></p>
 <p>Como <span class="math inline">\(X_1\)</span> e <span class="math inline">\(X_2\)</span> são lançamentos independentes, teremos</p>
 <p><span class="math display">\[P(\textbf{X}=(0,0))=P(X_1=0,X_2=0)=P(X_1=0)P(X_2=0)=\frac{1}{4}.\]</span> Todos os resultados possíveis são <span class="math inline">\(\{(0,0),(0,1),(1,0),(1,1)\}\)</span> e podemos mostrar, de modo análogo ao que foi exposto acima, todos esses eventos têm probabilidade 1/4.</p>
 </div>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 1.2</strong></span> Lança-se um dado de 6 faces. Seja <span class="math inline">\(\textbf{X}=(X_1,X_2)\)</span> onde</p>
+<p><span class="theorem-title"><strong>Exercise 2.2</strong></span> Lança-se um dado de 6 faces. Seja <span class="math inline">\(\textbf{X}=(X_1,X_2)\)</span> onde</p>
 <p><span class="math display">\[X_1=\left\{\begin{array}{ll}1,&amp; \hbox{ se o resultado é par}\\0,&amp;\hbox{ caso contrário}\end{array}\right.\]</span> e</p>
 <p><span class="math display">\[X_2=\left\{\begin{array}{ll}1,&amp; \hbox{ se o resultado é maior que 3}\\ 0,&amp;\hbox{ caso contrário}\end{array}\right.\]</span></p>
 <p>Encontre a função de probabilidade conjunta de <span class="math inline">\(\textbf{X}\)</span>.</p>
 </div>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 1.3</strong></span> Considere o vetor aleatório <span class="math inline">\(\mathbf{X} = (X_1, X_2, X_3)\)</span> e os subconjuntos <span class="math inline">\(\tilde{\mathbf{X}}_1 = \{X_1\}\)</span> e <span class="math inline">\(\tilde{\mathbf{X}}_2 = \{X_2, X_3\}\)</span>. A função de probabilidade conjunta de <span class="math inline">\(\tilde{\mathbf{X}}_2\)</span> é dada pela tabela abaixo:</p>
+<p><span class="theorem-title"><strong>Exercise 2.3</strong></span> Considere o vetor aleatório <span class="math inline">\(\mathbf{X} = (X_1, X_2, X_3)\)</span> e os subconjuntos <span class="math inline">\(\tilde{\mathbf{X}}_1 = \{X_1\}\)</span> e <span class="math inline">\(\tilde{\mathbf{X}}_2 = \{X_2, X_3\}\)</span>. A função de probabilidade conjunta de <span class="math inline">\(\tilde{\mathbf{X}}_2\)</span> é dada pela tabela abaixo:</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -283,14 +295,14 @@ window.Quarto = {
 <p>Calcule a probabilidade conjunta do vetor completo para o ponto <span class="math inline">\((X_1=0, X_2=1, X_3=0)\)</span>.</p>
 </div>
 </section>
-<section id="função-de-distribuição-conjunta" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="função-de-distribuição-conjunta"><span class="header-section-number">1.2</span> Função de distribuição conjunta</h2>
+<section id="função-de-distribuição-conjunta" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="função-de-distribuição-conjunta"><span class="header-section-number">2.2</span> Função de distribuição conjunta</h2>
 <div id="def-" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 1.2</strong></span> A função de distribuição conjunta é definida por</p>
+<p><span class="theorem-title"><strong>Definition 2.2</strong></span> A função de distribuição conjunta é definida por</p>
 <p><span class="math display">\[F(\textbf{x})=P(X_1\leq x_1,\ldots,X_n\leq x_n)=\sum_{u_1=-\infty}^{x_1}\cdots\sum_{u_n=-\infty}^{x_n}P(X_1=u_1,\ldots,X_n=u_n).\]</span></p>
 </div>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 1.3</strong></span> Considere novamente a função de probabilidade conjunta dada por</p>
+<p><span class="theorem-title"><strong>Example 2.3</strong></span> Considere novamente a função de probabilidade conjunta dada por</p>
 <p><span class="math display">\[P(X=x,Y=y)=\left\{\begin{array}{ll}\frac{1}{10},&amp; x=1,y=1\\
 \frac{4}{10},&amp;x=1,y=2\\
 \frac{3}{10},&amp;x=2,y=1\\
@@ -304,18 +316,18 @@ P(X=1,Y=1)+P(X=2,Y=1)=\frac{4}{10},&amp;x=2,y=1\\
 1,&amp;x\geq 2,y\geq 2\end{array}\right.\]</span></p>
 </div>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 1.4</strong></span> Considere o vetor <span class="math inline">\((X,Y)\)</span> de variáveis aleatórias com função de probabilidade conjunta dada por</p>
+<p><span class="theorem-title"><strong>Exercise 2.4</strong></span> Considere o vetor <span class="math inline">\((X,Y)\)</span> de variáveis aleatórias com função de probabilidade conjunta dada por</p>
 <p><span class="math display">\[P(X=x,Y=y)=\frac{2^{x+y}}{9},\]</span> com <span class="math inline">\((x,y)\in\{0,1\}^2\)</span>. Encontre a função de distribuição conjunta deste vetor aleatório.</p>
 </div>
 </section>
-<section id="distribuição-marginal" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="distribuição-marginal"><span class="header-section-number">1.3</span> Distribuição marginal</h2>
+<section id="distribuição-marginal" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="distribuição-marginal"><span class="header-section-number">2.3</span> Distribuição marginal</h2>
 <div id="def-" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 1.3</strong></span> Seja <span class="math inline">\(\textbf{X} = (X_1, \ldots, X_n)\)</span> um vetor aleatório discreto. Considere um subvetor <span class="math inline">\(\textbf{X}_a\)</span> com índices <span class="math inline">\(a \subset \{1, \ldots, n\}\)</span>. A função de probabilidade marginal de <span class="math inline">\(\textbf{X}_a\)</span> é obtida somando-se a função conjunta sobre todos os valores possíveis das variáveis cujos índices não estão em <span class="math inline">\(a\)</span> (denotados por <span class="math inline">\(a^c\)</span>):<span class="math display">\[P(\textbf{X}_a = \textbf{x}_a) = \sum_{\textbf{x}_{a^c}} P(X_1=x_1, \ldots, X_n=x_n)\]</span>onde o somatório é estendido a todos os valores possíveis de cada <span class="math inline">\(x_j\)</span> tal que <span class="math inline">\(j \notin a\)</span>.</p>
+<p><span class="theorem-title"><strong>Definition 2.3</strong></span> Seja <span class="math inline">\(\textbf{X} = (X_1, \ldots, X_n)\)</span> um vetor aleatório discreto. Considere um subvetor <span class="math inline">\(\textbf{X}_a\)</span> com índices <span class="math inline">\(a \subset \{1, \ldots, n\}\)</span>. A função de probabilidade marginal de <span class="math inline">\(\textbf{X}_a\)</span> é obtida somando-se a função conjunta sobre todos os valores possíveis das variáveis cujos índices não estão em <span class="math inline">\(a\)</span> (denotados por <span class="math inline">\(a^c\)</span>):<span class="math display">\[P(\textbf{X}_a = \textbf{x}_a) = \sum_{\textbf{x}_{a^c}} P(X_1=x_1, \ldots, X_n=x_n)\]</span>onde o somatório é estendido a todos os valores possíveis de cada <span class="math inline">\(x_j\)</span> tal que <span class="math inline">\(j \notin a\)</span>.</p>
 </div>
 <p><strong>Nota:</strong> No caso de um vetor bidimensional <span class="math inline">\(\textbf{X} = (X, Y)\)</span>, se quisermos a marginal de <span class="math inline">\(X\)</span>, marginalizamos <span class="math inline">\(Y\)</span> somando sobre todos os seus valores:<span class="math display">\[P(X=x) = \sum_{y=-\infty}^\infty P(X=x, Y=y)\]</span></p>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 1.4</strong></span> Considere a tabela abaixo, cujo corpo contém a função distribuição de probabilidade conjunta das variáveis <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>.</p>
+<p><span class="theorem-title"><strong>Example 2.4</strong></span> Considere a tabela abaixo, cujo corpo contém a função distribuição de probabilidade conjunta das variáveis <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>.</p>
 <p><span class="math display">\[\begin{array}{c|cccc}\hline
 &amp;y\\
 x&amp;  1&amp;  2&amp;  3&amp;  4\\ \hline
@@ -342,7 +354,7 @@ x&amp;  1&amp;  2&amp;  3&amp;  4&amp; P(X=x)\\ \hline
 P(Y=y)&amp;0,28&amp;0,30&amp;0,16&amp;0,26&amp;\end{array}\]</span></p>
 </div>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 1.5</strong></span> Considere a tabela de probabilidade conjunta das variáveis aleatórias discretas <span class="math inline">\(X\)</span> (linhas) e <span class="math inline">\(Y\)</span> (colunas) apresentada abaixo, onde um dos valores foi substituído pela constante <span class="math inline">\(k\)</span>.</p>
+<p><span class="theorem-title"><strong>Exercise 2.5</strong></span> Considere a tabela de probabilidade conjunta das variáveis aleatórias discretas <span class="math inline">\(X\)</span> (linhas) e <span class="math inline">\(Y\)</span> (colunas) apresentada abaixo, onde um dos valores foi substituído pela constante <span class="math inline">\(k\)</span>.</p>
 <p><span class="math display">\[\begin{array}{c|ccc}\hline
 &amp;y\\
 x&amp;  1&amp;  2&amp;  3\\ \hline
@@ -355,11 +367,11 @@ x&amp;  1&amp;  2&amp;  3\\ \hline
 </ol>
 </div>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 1.6</strong></span> Sejam <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> variáveis aleatórias discretas com a seguinte função de probabilidade conjunta:</p>
+<p><span class="theorem-title"><strong>Exercise 2.6</strong></span> Sejam <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> variáveis aleatórias discretas com a seguinte função de probabilidade conjunta:</p>
 <p><span class="math display">\[P(X=x,Y=y)=\frac{e^{−x}x^y}{2^xy!},\]</span> onde <span class="math inline">\(x=1,2,\ldots\)</span> e <span class="math inline">\(y=0,1,\ldots\)</span>. Encontre a função de probabilidade marginal de <span class="math inline">\(X\)</span>.</p>
 </div>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 1.7</strong></span> Considere novamente o vetor aleatório <span class="math inline">\(\mathbf{X} = (X_1, X_2, X_3)\)</span> e os subconjuntos <span class="math inline">\(\tilde{\mathbf{X}}_1 = \{X_1\}\)</span> e <span class="math inline">\(\tilde{\mathbf{X}}_2 = \{X_2, X_3\}\)</span>. A função de probabilidade conjunta de <span class="math inline">\(\tilde{\mathbf{X}}_2\)</span> é dada pela tabela abaixo:</p>
+<p><span class="theorem-title"><strong>Exercise 2.7</strong></span> Considere novamente o vetor aleatório <span class="math inline">\(\mathbf{X} = (X_1, X_2, X_3)\)</span> e os subconjuntos <span class="math inline">\(\tilde{\mathbf{X}}_1 = \{X_1\}\)</span> e <span class="math inline">\(\tilde{\mathbf{X}}_2 = \{X_2, X_3\}\)</span>. A função de probabilidade conjunta de <span class="math inline">\(\tilde{\mathbf{X}}_2\)</span> é dada pela tabela abaixo:</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -397,15 +409,15 @@ x&amp;  1&amp;  2&amp;  3\\ \hline
 </ol>
 </div>
 </section>
-<section id="distribuição-condicional" class="level2" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="distribuição-condicional"><span class="header-section-number">1.4</span> Distribuição condicional</h2>
+<section id="distribuição-condicional" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="distribuição-condicional"><span class="header-section-number">2.4</span> Distribuição condicional</h2>
 <div id="def-" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 1.4</strong></span> Sejam <span class="math inline">\(\textbf{X}\)</span> e <span class="math inline">\(\textbf{Y}\)</span> vetores aleatórios discretos. Então, a distribuição de probabilidade condicional de <span class="math inline">\(\textbf{X}\)</span> dado <span class="math inline">\(\textbf{Y=y}\)</span> é definida por</p>
+<p><span class="theorem-title"><strong>Definition 2.4</strong></span> Sejam <span class="math inline">\(\textbf{X}\)</span> e <span class="math inline">\(\textbf{Y}\)</span> vetores aleatórios discretos. Então, a distribuição de probabilidade condicional de <span class="math inline">\(\textbf{X}\)</span> dado <span class="math inline">\(\textbf{Y=y}\)</span> é definida por</p>
 <p><span class="math display">\[P(\textbf{X}=\textbf{x}|\textbf{Y}=\textbf{y})=\frac{P(\textbf{X}=\textbf{x},\textbf{Y}=\textbf{y})}{P(\textbf{Y}=\textbf{y})},\]</span> e a respectiva função distribuição é dada por</p>
 <p><span class="math display">\[F(\textbf{x}|\textbf{y})=P(\textbf{X}\leq \textbf{x}|\textbf{Y}=\textbf{y}).\]</span></p>
 </div>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 1.5</strong></span> Considere a seguinte distribuição conjunta:</p>
+<p><span class="theorem-title"><strong>Example 2.5</strong></span> Considere a seguinte distribuição conjunta:</p>
 <p><span class="math display">\[P(X=x,Y=y)=\left\{\begin{array}{ll}0,1,&amp;x=0,y=0\\
 0,2,&amp;x=0,y=1\\
 0,3,&amp;x=1,y=0\\
@@ -418,7 +430,7 @@ x&amp;  1&amp;  2&amp;  3\\ \hline
 0,&amp;\hbox{caso contrário}\end{array}\right.\]</span></p>
 </div>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 1.8</strong></span> Considere a variável aleatória bidimensional <span class="math inline">\((X, Y)\)</span> com a seguinte função de probabilidade conjunta:</p>
+<p><span class="theorem-title"><strong>Exercise 2.8</strong></span> Considere a variável aleatória bidimensional <span class="math inline">\((X, Y)\)</span> com a seguinte função de probabilidade conjunta:</p>
 <p><span class="math display">\[P(X=x, Y=y) = \begin{cases}
 k, &amp; x=1, y=1 \\
 2k, &amp; x=1, y=2 \\
@@ -433,21 +445,21 @@ k, &amp; x=1, y=1 \\
 </ol>
 </div>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 1.9</strong></span> Considere a função de probabilidade abaixo: <span class="math display">\[P(X=x,Y=y)={y \choose x}\frac{1}{2^{2y}}\]</span> onde <span class="math inline">\(x=0,\ldots,y\)</span> e <span class="math inline">\(y=1,2,\ldots\)</span>. Encontre a função de probabilidade de <span class="math inline">\(X\)</span> dado <span class="math inline">\(Y=y\)</span>.</p>
+<p><span class="theorem-title"><strong>Exercise 2.9</strong></span> Considere a função de probabilidade abaixo: <span class="math display">\[P(X=x,Y=y)={y \choose x}\frac{1}{2^{2y}}\]</span> onde <span class="math inline">\(x=0,\ldots,y\)</span> e <span class="math inline">\(y=1,2,\ldots\)</span>. Encontre a função de probabilidade de <span class="math inline">\(X\)</span> dado <span class="math inline">\(Y=y\)</span>.</p>
 </div>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 1.10</strong></span> Sejam</p>
+<p><span class="theorem-title"><strong>Exercise 2.10</strong></span> Sejam</p>
 <p><span class="math display">\[P(X=x|Y=y)={y\choose x}\frac{1}{2^y}\]</span> onde <span class="math inline">\(x=0,\ldots,y\)</span> e <span class="math display">\[P(Y=y)=\frac{e^{−1}}{y!},\]</span> onde <span class="math inline">\(y=0,1,\ldots\)</span>. Encontre a função de probabilidade de <span class="math inline">\(Y\)</span> dado <span class="math inline">\(X=x\)</span>.</p>
 </div>
 </section>
-<section id="funções-de-vetores-aleatórios-discretos" class="level2" data-number="1.5">
-<h2 data-number="1.5" class="anchored" data-anchor-id="funções-de-vetores-aleatórios-discretos"><span class="header-section-number">1.5</span> Funções de vetores aleatórios discretos</h2>
+<section id="funções-de-vetores-aleatórios-discretos" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="funções-de-vetores-aleatórios-discretos"><span class="header-section-number">2.5</span> Funções de vetores aleatórios discretos</h2>
 <p>Seja <span class="math inline">\(X\)</span> uma variável aleatória e seja <span class="math inline">\(g(.)\)</span> uma função real. Considere a variável <span class="math inline">\(Y=g(X)\)</span>, com <span class="math inline">\(g:\mathbb{R}\rightarrow \mathbb{Z}\)</span>. É sempre verdade que</p>
 <p><span class="math display">\[P(Y\in A)=P(g(X)\in A)\]</span>.</p>
 <p>Se <span class="math inline">\(X\)</span> é uma variável discreta, então</p>
 <p><span class="math display">\[P(Y\in A)=\sum_{x:g(x)\in A}P(X=x).\]</span></p>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 1.6</strong></span> Seja <span class="math inline">\(X\)</span> uma variável discreta com</p>
+<p><span class="theorem-title"><strong>Example 2.6</strong></span> Seja <span class="math inline">\(X\)</span> uma variável discreta com</p>
 <p><span class="math display">\[P(X=x)=\begin{cases}0,1,&amp; x=-1\\ 0,2,&amp; x=0,\\ 0,3,&amp;x=1\\ 0,4,&amp; x=2 \end{cases}.\]</span> Vamos encontrar a função de probabilidade de <span class="math inline">\(Y=X^2\)</span>.</p>
 <p><span class="math display">\[\begin{array}{c|cccc}\hline
 x&amp;  -1 &amp;    0&amp;  1&amp;  2&amp; \\ \hline
@@ -462,12 +474,12 @@ P(Y=4)&amp;=P(X=2)=0,4
 \end{align}\]</span></p>
 </div>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 1.11</strong></span> Seja <span class="math inline">\(X\)</span> uma variável discreta com<span class="math display">\[P(X=x)=\begin{cases}0,2,&amp; x=-1\\ 0,1,&amp; x=0,\\ 0,4,&amp;x=1\\ 0,3,&amp; x=2 \end{cases}.\]</span> Encontre a função de probabilidade de <span class="math inline">\(Y=|X|\)</span>.</p>
+<p><span class="theorem-title"><strong>Exercise 2.11</strong></span> Seja <span class="math inline">\(X\)</span> uma variável discreta com<span class="math display">\[P(X=x)=\begin{cases}0,2,&amp; x=-1\\ 0,1,&amp; x=0,\\ 0,4,&amp;x=1\\ 0,3,&amp; x=2 \end{cases}.\]</span> Encontre a função de probabilidade de <span class="math inline">\(Y=|X|\)</span>.</p>
 </div>
 <p>Observe que a extensão é natural para vetores aleatórios. Seja <span class="math inline">\(\textbf{X}\)</span> um vetor aleatório discreto de comprimento <span class="math inline">\(n\)</span> e seja <span class="math inline">\(g:\mathbb{R}^n\rightarrow \mathbb{Z}^m\)</span>. Então a função de probabilidade de <span class="math inline">\(\textbf{Y}=g(\textbf{X})\)</span> é dada por</p>
 <p><span class="math display">\[P(\textbf{Y}=\textbf{y})=P(g(\textbf{X})=\textbf{y})=\sum_{\textbf{x}\in\mathbb{Z}^n:g(\textbf{x})=\textbf{y}}P(\textbf{X}=\textbf{x}).\]</span></p>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 1.7</strong></span> Seja <span class="math inline">\(\textbf{X}=(X_1,X_2)\)</span> um vetor aleatório com função de probabilidade conjunta dada por</p>
+<p><span class="theorem-title"><strong>Example 2.7</strong></span> Seja <span class="math inline">\(\textbf{X}=(X_1,X_2)\)</span> um vetor aleatório com função de probabilidade conjunta dada por</p>
 <p><span class="math display">\[P(\textbf{X}=\textbf{x})=\frac{x_1+x_2}{12},\]</span> onde <span class="math inline">\((x_1,x_2)\in\{1,2\}^2\)</span>. Vamos encontrar a função de probabilidade de <span class="math inline">\(\textbf{Y}=g(\textbf{X})=(x_1,x_1+x_2).\)</span> Observe que</p>
 <p><span class="math display">\[\begin{array}{cc|cc}
 x_1 &amp;x_2    &amp;y_1 &amp; y_2 \\ \hline
@@ -485,15 +497,15 @@ P(\textbf{Y}=(2,4))=P(\textbf{X}=(2,2))=\frac{4}{12}\\
 \end{align}\]</span></p>
 </div>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 1.12</strong></span> Seja <span class="math inline">\(\textbf{X}=(X_1,X_2)\)</span> um vetor aleatório com função de probabilidade conjunta dada por<span class="math display">\[P(\textbf{X}=\textbf{x})=\frac{x_1+x_2}{12},\]</span> onde<span class="math inline">\((x_1,x_2)\in\{1,2\}^2\)</span>. Encontre a função de probabilidade de<span class="math inline">\(\textbf{Y}=g(\textbf{X})=(X_1-X_2, X_1+X_2).\)</span></p>
+<p><span class="theorem-title"><strong>Exercise 2.12</strong></span> Seja <span class="math inline">\(\textbf{X}=(X_1,X_2)\)</span> um vetor aleatório com função de probabilidade conjunta dada por<span class="math display">\[P(\textbf{X}=\textbf{x})=\frac{x_1+x_2}{12},\]</span> onde<span class="math inline">\((x_1,x_2)\in\{1,2\}^2\)</span>. Encontre a função de probabilidade de<span class="math inline">\(\textbf{Y}=g(\textbf{X})=(X_1-X_2, X_1+X_2).\)</span></p>
 </div>
 <p>Até o momento, utilizamos um vetor aleatório discreto de comprimento <span class="math inline">\(n\)</span> para encontrar a distribuição de <span class="math inline">\(\textbf{Y}=g(\textbf{X})\)</span>, também de comprimento <span class="math inline">\(n\)</span>. Contudo, é comum ter <span class="math inline">\(g:\mathbb{R}^n\rightarrow \mathbb{Z}^m\)</span>, onde <span class="math inline">\(m&lt;n\)</span>. Para o caso no qual <span class="math inline">\(n=2\)</span> e <span class="math inline">\(m=1\)</span>, teremos</p>
 <p><span class="math display">\[P(Y=y)=P(g(\textbf{X})=y)=\sum_{\textbf{x}\in\mathbb{Z}^2:g(\textbf{x})=y}P(X_1=x_1,X_2=x_2).\]</span> Sem perda de generalidade, assuma que para um dado <span class="math inline">\(y\)</span>, existe uma função <span class="math inline">\(h\)</span> tal que a condição <span class="math inline">\(g(x_1, x_2) = y\)</span> é equivalente a <span class="math inline">\(x_1 = h(x_2, y)\)</span>. Então <span class="math display">\[\begin{align}P(Y=y)&amp;=\sum_{\textbf{x}\in\mathbb{Z}^2:g(\textbf{x})=y}P(X_1=h(x_2,y),X_2=x_2)\\&amp;=\sum_{x_2=-\infty}^\infty P(X_1=h(x_2,y),X_2=x_2).\end{align}\]</span></p>
 <div id="prp-" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 1.2</strong></span> <strong>Soma de variáveis aleatórias</strong> Seja <span class="math inline">\(\textbf{X}=(X_1,X_2)\)</span> um vetor aleatório discreto e considere da variável <span class="math inline">\(Y=g(X_1,X_2)=X_1+X_2\)</span>. Observe que é possível escrever <span class="math display">\[x_1=y-x_2=h(y,x_2),\]</span> logo <span class="math display">\[P(Y=y)=\sum_{x_2=-\infty}^\infty P(X_1=y-x_2,X_2=x_2).\]</span></p>
+<p><span class="theorem-title"><strong>Proposition 2.2</strong></span> <strong>Soma de variáveis aleatórias</strong> Seja <span class="math inline">\(\textbf{X}=(X_1,X_2)\)</span> um vetor aleatório discreto e considere da variável <span class="math inline">\(Y=g(X_1,X_2)=X_1+X_2\)</span>. Observe que é possível escrever <span class="math display">\[x_1=y-x_2=h(y,x_2),\]</span> logo <span class="math display">\[P(Y=y)=\sum_{x_2=-\infty}^\infty P(X_1=y-x_2,X_2=x_2).\]</span></p>
 </div>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 1.8</strong></span> A função de probabilidade de <span class="math inline">\(\textbf{X}=(X_1,X_2)\)</span> é dada na tabela abaixo:</p>
+<p><span class="theorem-title"><strong>Example 2.8</strong></span> A função de probabilidade de <span class="math inline">\(\textbf{X}=(X_1,X_2)\)</span> é dada na tabela abaixo:</p>
 <p><span class="math display">\[\begin{array}{c|cc}\hline &amp; x_1 \\  
 x_2 &amp; -1 &amp; 1 \\ \hline
 0 &amp; 0,10 &amp; 0,05\\
@@ -503,12 +515,12 @@ x_2 &amp; -1 &amp; 1 \\ \hline
 <p><span class="math display">\[\begin{align}P(Y=-1)&amp;=P(X_1=-1,X_2=0)+P(X_1=-2,X_2=1)+P(X_1=-3,X_2=2)\\&amp;=P(X_1=-1,X_2=0)=0,1\end{align}\]</span></p>
 </div>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 1.13</strong></span> Com base no exemplo anterior, determine os valores restantes da função de probabilidade de <span class="math inline">\(Y\)</span>.</p>
+<p><span class="theorem-title"><strong>Exercise 2.13</strong></span> Com base no exemplo anterior, determine os valores restantes da função de probabilidade de <span class="math inline">\(Y\)</span>.</p>
 </div>
-<section id="alguns-resultados-importantes" class="level3" data-number="1.5.1">
-<h3 data-number="1.5.1" class="anchored" data-anchor-id="alguns-resultados-importantes"><span class="header-section-number">1.5.1</span> Alguns resultados importantes</h3>
-<section id="funções-indicadoras" class="level4" data-number="1.5.1.1">
-<h4 data-number="1.5.1.1" class="anchored" data-anchor-id="funções-indicadoras"><span class="header-section-number">1.5.1.1</span> Funções indicadoras</h4>
+<section id="alguns-resultados-importantes" class="level3" data-number="2.5.1">
+<h3 data-number="2.5.1" class="anchored" data-anchor-id="alguns-resultados-importantes"><span class="header-section-number">2.5.1</span> Alguns resultados importantes</h3>
+<section id="funções-indicadoras" class="level4" data-number="2.5.1.1">
+<h4 data-number="2.5.1.1" class="anchored" data-anchor-id="funções-indicadoras"><span class="header-section-number">2.5.1.1</span> Funções indicadoras</h4>
 <p>Vamos discutir alguns resultados importantes sobre funções de vetores discretos. Contudo, é relevante a discussão de alguns resultados relacionados a funções indicadoras.</p>
 <div class="alert alert-success">
 <p><strong>Função indicadora.</strong>Seja <span class="math inline">\(A \subset \Omega\)</span>. A função <span class="math inline">\(I_A: \Omega \rightarrow \{0,1\}\)</span>, definida por<span class="math display">\[I_A(x)=\begin{cases} 1, &amp; \text{se } x \in A \\ 0, &amp; \text{se } x \notin A \end{cases}\]</span>é denominada função indicadora do conjunto <span class="math inline">\(A\)</span></p>
@@ -517,7 +529,7 @@ x_2 &amp; -1 &amp; 1 \\ \hline
 <p><strong>Indicadora da interseção</strong> <span class="math display">\[I_{A\cap B}(x)=I_A(x)I_B(x)\]</span></p>
 </div>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 1.9</strong></span> Seja <span class="math inline">\(A=\{x\in \mathbb{N}:x \leq 5 \}\)</span> e <span class="math inline">\(B=\{x\in\mathbb{N}:x\hbox{ é ímpar}\}\)</span>. É simples notar que os valores que satisfazem simultaneamente as restrições de <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> são 1, 3 e 5. Vamos chegar a essa conclusão utilizando indicadoras:</p>
+<p><span class="theorem-title"><strong>Example 2.9</strong></span> Seja <span class="math inline">\(A=\{x\in \mathbb{N}:x \leq 5 \}\)</span> e <span class="math inline">\(B=\{x\in\mathbb{N}:x\hbox{ é ímpar}\}\)</span>. É simples notar que os valores que satisfazem simultaneamente as restrições de <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> são 1, 3 e 5. Vamos chegar a essa conclusão utilizando indicadoras:</p>
 <p><span class="math display">\[\begin{array}{c|cccccc|ccc}\hline
 x &amp; 0 &amp; 1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 &amp; 6 &amp; 7 &amp; \cdots \\ \hline
 I_A(x)&amp; 1 &amp; 1 &amp; 1&amp; 1 &amp; 1 &amp; 1 &amp; 0 &amp; 0 &amp; \cdots &amp; \\\hline
@@ -525,7 +537,7 @@ I_B(x)&amp; 0 &amp; 1 &amp; 0&amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; \cdot
 I_{A\cap B}(x)&amp; 0 &amp; 1 &amp; 0&amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; \\\hline\end{array}\]</span></p>
 </div>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 1.14</strong></span> Considere o conjunto universo <span class="math inline">\(\Omega = \{0, 1, 2, 3, 4, 5, 6, 7\}\)</span>. Definimos dois subconjuntos de <span class="math inline">\(\Omega\)</span> através das seguintes propriedades:<span class="math inline">\(A = \{x \in \Omega : x \text{ é múltiplo de 3}\}\)</span><span class="math inline">\(B = \{x \in \Omega : x^2 - 7x + 10 \leq 0\}\)</span>A) Liste os elementos de <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> e determine seus respectivos vetores indicadores <span class="math inline">\(I_A(x)\)</span> e <span class="math inline">\(I_B(x)\)</span> para todo <span class="math inline">\(x \in \Omega\)</span>.B) Utilizando a proposição <span class="math inline">\(I_{A \cap B}(x) = I_A(x)I_B(x)\)</span>, complete a tabela abaixo para identificar os elementos da interseção:</p>
+<p><span class="theorem-title"><strong>Exercise 2.14</strong></span> Considere o conjunto universo <span class="math inline">\(\Omega = \{0, 1, 2, 3, 4, 5, 6, 7\}\)</span>. Definimos dois subconjuntos de <span class="math inline">\(\Omega\)</span> através das seguintes propriedades:<span class="math inline">\(A = \{x \in \Omega : x \text{ é múltiplo de 3}\}\)</span><span class="math inline">\(B = \{x \in \Omega : x^2 - 7x + 10 \leq 0\}\)</span>A) Liste os elementos de <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> e determine seus respectivos vetores indicadores <span class="math inline">\(I_A(x)\)</span> e <span class="math inline">\(I_B(x)\)</span> para todo <span class="math inline">\(x \in \Omega\)</span>.B) Utilizando a proposição <span class="math inline">\(I_{A \cap B}(x) = I_A(x)I_B(x)\)</span>, complete a tabela abaixo para identificar os elementos da interseção:</p>
 <p><span class="math display">\[\begin{array}{c|cccccccc}
 \hline
 x &amp; 0 &amp; 1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 &amp; 6 &amp; 7 \\ \hline
@@ -538,15 +550,15 @@ I_A(x)I_B(x) &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; \\ \hline
 <p><span class="math display">\[P(X=x)=p^x(1-p)^{1-x}\]</span> para <span class="math inline">\(x\in\{0,1\}\)</span>, podemos escrever</p>
 <p><span class="math display">\[P(X=x)=p^x(1-p)^{1-x}I_{\{0,1\}}(x).\]</span></p>
 </section>
-<section id="o-método-da-indução-matemática" class="level4" data-number="1.5.1.2">
-<h4 data-number="1.5.1.2" class="anchored" data-anchor-id="o-método-da-indução-matemática"><span class="header-section-number">1.5.1.2</span> O Método da Indução Matemática</h4>
+<section id="o-método-da-indução-matemática" class="level4" data-number="2.5.1.2">
+<h4 data-number="2.5.1.2" class="anchored" data-anchor-id="o-método-da-indução-matemática"><span class="header-section-number">2.5.1.2</span> O Método da Indução Matemática</h4>
 <p>A demonstração por indução é uma ferramentada matemática para provar que uma afirmação é verdadeira para todos os números inteiros a partir de um valor inicial. O método divide-se em dois passos fundamentais:</p>
 <ul>
 <li><p>Base da Indução: Verificamos se a afirmação vale para o primeiro caso (geralmente <span class="math inline">\(n=1\)</span>).</p></li>
 <li><p>Passo Indutivo: Assumimos que a afirmação vale para um número <span class="math inline">\(k\)</span> (nossa Hipótese de Indução) e provamos que, a partir disso, ela obrigatoriamente vale para <span class="math inline">\(k+1\)</span>.</p></li>
 </ul>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 1.10</strong></span> <strong>A Soma dos Primeiros Inteiros.</strong> Prove que, para todo <span class="math inline">\(n \geq 1\)</span>:<span class="math display">\[1 + 2 + 3 + \ldots + n = \frac{n(n+1)}{2}\]</span></p>
+<p><span class="theorem-title"><strong>Example 2.10</strong></span> <strong>A Soma dos Primeiros Inteiros.</strong> Prove que, para todo <span class="math inline">\(n \geq 1\)</span>:<span class="math display">\[1 + 2 + 3 + \ldots + n = \frac{n(n+1)}{2}\]</span></p>
 <p>Demonstração:</p>
 <ul>
 <li><p>Base: Para <span class="math inline">\(n=1\)</span>:O lado esquerdo é <span class="math inline">\(1\)</span>. O lado direito é <span class="math inline">\(\frac{1(1+1)}{2} = 1\)</span>. A base está verificada.</p></li>
@@ -555,12 +567,12 @@ I_A(x)I_B(x) &amp; &amp; &amp; &amp; &amp; &amp; &amp; &amp; \\ \hline
 </ul>
 </div>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 1.15</strong></span> Utilize o método da indução matemática para provar que a soma das primeiras <span class="math inline">\(n\)</span> potências de 2 (começando em <span class="math inline">\(2^1\)</span>) é dada por:<span class="math display">\[2^1 + 2^2 + 2^3 + \ldots + 2^n = 2^{n+1} - 2\]</span></p>
+<p><span class="theorem-title"><strong>Exercise 2.15</strong></span> Utilize o método da indução matemática para provar que a soma das primeiras <span class="math inline">\(n\)</span> potências de 2 (começando em <span class="math inline">\(2^1\)</span>) é dada por:<span class="math display">\[2^1 + 2^2 + 2^3 + \ldots + 2^n = 2^{n+1} - 2\]</span></p>
 </div>
 </section>
 </section>
-<section id="distribuição-binomial-como-soma-de-bernoullis-independentes" class="level3" data-number="1.5.2">
-<h3 data-number="1.5.2" class="anchored" data-anchor-id="distribuição-binomial-como-soma-de-bernoullis-independentes"><span class="header-section-number">1.5.2</span> Distribuição Binomial como soma de Bernoullis independentes</h3>
+<section id="distribuição-binomial-como-soma-de-bernoullis-independentes" class="level3" data-number="2.5.2">
+<h3 data-number="2.5.2" class="anchored" data-anchor-id="distribuição-binomial-como-soma-de-bernoullis-independentes"><span class="header-section-number">2.5.2</span> Distribuição Binomial como soma de Bernoullis independentes</h3>
 <div class="alert alert-success">
 <p><strong>Recordando</strong> Dizemos que <span class="math inline">\(X\sim\hbox{Bernoulli(p)}\)</span> se sua função de probabilidade é dada por</p>
 <p><span class="math display">\[P(X=x)=p^{x}(1-p)^{1-x}I_{\{0,1\}}(x).\]</span></p>
@@ -614,7 +626,7 @@ y &amp; 0 &amp; 1 &amp; 2 \\ \hline
 <p>logo,</p>
 <p><span class="math display">\[P(Y=y)={2\choose y}p^y(1-p)^{2-y}I_{\{0,1,2\}}(y).\]</span></p>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 1.16</strong></span> Sejam <span class="math inline">\(X_1,X_2,X_3\)</span> variáveis aleatórias independentes com distribuição Bernoulli<span class="math inline">\((p)\)</span>. Mostre que a distribuição de <span class="math inline">\(Y=X_1+X_2+X_3\)</span> é</p>
+<p><span class="theorem-title"><strong>Exercise 2.16</strong></span> Sejam <span class="math inline">\(X_1,X_2,X_3\)</span> variáveis aleatórias independentes com distribuição Bernoulli<span class="math inline">\((p)\)</span>. Mostre que a distribuição de <span class="math inline">\(Y=X_1+X_2+X_3\)</span> é</p>
 <p><span class="math display">\[P(Y=y)={3 \choose y}p^{y}(1-p)^{3-y}I_{\{0,1,2,3\}}(y)\]</span> <strong>Dica:</strong> Você já sabe que <span class="math inline">\(Z=X_1+X_2\)</span> é <span class="math display">\[P(Z=z)={2\choose z}p^z (1-p)^{2-z}I_{\{0,1,2\}}(z),\]</span> e, como <span class="math inline">\(Y=X_1+X_2+X_3=Z+X_3\)</span>, basta encontrar <span class="math display">\[P(Y=y)=\sum_{x_3=0}^1 P(Z=y-x_3,X_3=x_3).\]</span></p>
 </div>
 <p>Observe que <span class="math inline">\(X_1+X_2\sim\hbox{Binomial}(2,p)\)</span> e <span class="math inline">\(X_1+X_2+X_3\sim\hbox{Binomial}(3,p)\)</span>. De fato, sejam <span class="math inline">\(X_1,\ldots,X_n\)</span> variáveis aleatórias independentes com distribuição Bernoulli(<span class="math inline">\(p\)</span>). Suponha, por indução, que</p>
@@ -639,15 +651,15 @@ P(Y=y)&amp;=\sum_{x=0}^1 P(X_n=x, Z=y-x)=\sum_{x=0}^1 P(X_n=x)P(Z=y-x)\\
 P(Y=y)&amp;=p^y(1-p)^{n-y}\sum_{x=0}^1\left[{n-1\choose y-x}I_{\{0,1\}}(x)I_{\{0,\ldots,n-1\}}(y-x)\right]\\&amp;={n\choose y}p^y(1-p)^{n-y}I_{\{0,\ldots,n\}}(y).
 \end{align}\]</span></p>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 1.17</strong></span> Sejam <span class="math inline">\(X_1,X_2\)</span> variáveis aleatórias independentes, onde <span class="math inline">\(X_i\sim\hbox{Binomial}(m_i,p),\)</span> com <span class="math inline">\(i=1,2\)</span>.</p>
+<p><span class="theorem-title"><strong>Exercise 2.17</strong></span> Sejam <span class="math inline">\(X_1,X_2\)</span> variáveis aleatórias independentes, onde <span class="math inline">\(X_i\sim\hbox{Binomial}(m_i,p),\)</span> com <span class="math inline">\(i=1,2\)</span>.</p>
 <ol type="a">
 <li><p>Mostre que <span class="math inline">\(Y=X_1+X_2\sim\hbox{Binomial}(m_1+m_2,p)\)</span>. <strong>Sugestão:</strong> escreva <span class="math inline">\(X_i\)</span> como soma de Bernoullis independentes.</p></li>
 <li><p>E qual a distribuição de <span class="math inline">\(Z=X_1+\cdots+X_n\)</span>, onde <span class="math inline">\(X_i\sim\hbox{Binomial}(m_i,p)\)</span> e <span class="math inline">\(X_1,\ldots,X_n\)</span> são independentes?</p></li>
 </ol>
 </div>
 </section>
-<section id="soma-de-poissons-independentes" class="level3" data-number="1.5.3">
-<h3 data-number="1.5.3" class="anchored" data-anchor-id="soma-de-poissons-independentes"><span class="header-section-number">1.5.3</span> Soma de Poissons independentes</h3>
+<section id="soma-de-poissons-independentes" class="level3" data-number="2.5.3">
+<h3 data-number="2.5.3" class="anchored" data-anchor-id="soma-de-poissons-independentes"><span class="header-section-number">2.5.3</span> Soma de Poissons independentes</h3>
 <div class="alert alert-success">
 <p><strong>Recordando</strong> Dizemos que <span class="math inline">\(X\sim\hbox{Poisson}(\lambda)\)</span> se sua função de probabilidade é dada por</p>
 <p><span class="math display">\[P(X=x)=\frac{e^{-\lambda}\lambda^x}{x!}I_{\mathbb{N}}(x)\]</span> e <span class="math inline">\(\lambda&gt;0\)</span>.</p>
@@ -665,19 +677,19 @@ P(Y=y)&amp;=p^y(1-p)^{n-y}\sum_{x=0}^1\left[{n-1\choose y-x}I_{\{0,1\}}(x)I_{\{0
 \end{align}\]</span></p>
 <p>Isso implica que <span class="math inline">\(X_1+X_2\sim\hbox{Poisson}(2\lambda)\)</span>.</p>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 1.18</strong></span> Sejam <span class="math inline">\(X_1\)</span> e <span class="math inline">\(X_2\)</span> variáveis aleatórias independentes com <span class="math inline">\(X_1\sim\hbox{Poisson}(\lambda_1)\)</span> e <span class="math inline">\(x_2\sim\hbox{Poisson}(\lambda_2)\)</span>.</p>
+<p><span class="theorem-title"><strong>Exercise 2.18</strong></span> Sejam <span class="math inline">\(X_1\)</span> e <span class="math inline">\(X_2\)</span> variáveis aleatórias independentes com <span class="math inline">\(X_1\sim\hbox{Poisson}(\lambda_1)\)</span> e <span class="math inline">\(x_2\sim\hbox{Poisson}(\lambda_2)\)</span>.</p>
 <ol type="a">
 <li><p>Mostre que <span class="math inline">\(X_1+X_2\sim\hbox{Poisson}(\lambda_1+\lambda_2)\)</span></p></li>
 <li><p>Com base nesse resultado, qual é a distribuição de <span class="math inline">\(\sum_{i=1}^n X_i\)</span> quando as variáveis são independentes com <span class="math inline">\(X_i\sim\hbox{Poisson}(\lambda_i)\)</span>?</p></li>
 </ol>
 </div>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 1.19</strong></span> Sejam <span class="math inline">\(X_1\)</span> e <span class="math inline">\(X_2\)</span> variáveis aleatórias independentes com <span class="math inline">\(X_1\sim\hbox{Poisson}(\lambda_1)\)</span> e <span class="math inline">\(x_2\sim\hbox{Poisson}(\lambda_2)\)</span>. Encontre</p>
+<p><span class="theorem-title"><strong>Exercise 2.19</strong></span> Sejam <span class="math inline">\(X_1\)</span> e <span class="math inline">\(X_2\)</span> variáveis aleatórias independentes com <span class="math inline">\(X_1\sim\hbox{Poisson}(\lambda_1)\)</span> e <span class="math inline">\(x_2\sim\hbox{Poisson}(\lambda_2)\)</span>. Encontre</p>
 <p><span class="math display">\[P(X_1=x|X_1+X_2=n).\]</span></p>
 </div>
 </section>
-<section id="distribuição-binomial-negativa-como-soma-de-distribuições-geométricas-independentes" class="level3" data-number="1.5.4">
-<h3 data-number="1.5.4" class="anchored" data-anchor-id="distribuição-binomial-negativa-como-soma-de-distribuições-geométricas-independentes"><span class="header-section-number">1.5.4</span> Distribuição binomial negativa como soma de distribuições geométricas independentes</h3>
+<section id="distribuição-binomial-negativa-como-soma-de-distribuições-geométricas-independentes" class="level3" data-number="2.5.4">
+<h3 data-number="2.5.4" class="anchored" data-anchor-id="distribuição-binomial-negativa-como-soma-de-distribuições-geométricas-independentes"><span class="header-section-number">2.5.4</span> Distribuição binomial negativa como soma de distribuições geométricas independentes</h3>
 <div class="alert alert-success">
 <p><strong>Recordando</strong> Dizemos que <span class="math inline">\(X\sim\hbox{Geométrica}(p)\)</span> se sua função de probabilidade é dada por <span class="math display">\[P(X=x)=p(1-p)^x I_{\mathbb{N}}(x)\]</span> e dizemos que <span class="math inline">\(Y\sim\hbox{Binomial Negativa}(n,p)\)</span> se sua função de probabilidade é dada por <span class="math display">\[P(Y=y)={y+n-1\choose y}p^n(1-p)^y I_{\mathbb{N}}(y).\]</span></p>
 </div>
@@ -686,13 +698,13 @@ P(Y=y)&amp;=p^y(1-p)^{n-y}\sum_{x=0}^1\left[{n-1\choose y-x}I_{\{0,1\}}(x)I_{\{0
 <p><span class="math display">\[\sum_{j=0}^m{m+t-j\choose m-j}={m+t+1\choose m}\]</span></p>
 </div>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 1.20</strong></span> Sejam <span class="math inline">\(X_1,X_2\)</span> variáveis aleatórias independentes com distribuição Geométrica<span class="math inline">\((p)\)</span>. Mostre que <span class="math inline">\(Y=X_1+X_2\sim\hbox{Binomial Negativa}(2,p)\)</span></p>
+<p><span class="theorem-title"><strong>Exercise 2.20</strong></span> Sejam <span class="math inline">\(X_1,X_2\)</span> variáveis aleatórias independentes com distribuição Geométrica<span class="math inline">\((p)\)</span>. Mostre que <span class="math inline">\(Y=X_1+X_2\sim\hbox{Binomial Negativa}(2,p)\)</span></p>
 </div>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 1.21</strong></span> Sejam <span class="math inline">\(X_1,X_2,X_3\)</span> variáveis aleatórias independentes com distribuição Geométrica<span class="math inline">\((p)\)</span>. Mostre que <span class="math inline">\(Y=X_1+X_2+X_3\sim\hbox{Binomial Negativa}(3,p)\)</span></p>
+<p><span class="theorem-title"><strong>Exercise 2.21</strong></span> Sejam <span class="math inline">\(X_1,X_2,X_3\)</span> variáveis aleatórias independentes com distribuição Geométrica<span class="math inline">\((p)\)</span>. Mostre que <span class="math inline">\(Y=X_1+X_2+X_3\sim\hbox{Binomial Negativa}(3,p)\)</span></p>
 </div>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 1.22</strong></span> Sejam <span class="math inline">\(X_1,X_2,\ldots,X_n\)</span> variáveis aleatórias independentes com distribuição Geométrica<span class="math inline">\((p)\)</span>. Mostre que <span class="math inline">\(Y=\sum_{i=1}^nX_i\sim\hbox{Binomial Negativa}(n,p)\)</span>. Especificamente, suponha por indução que</p>
+<p><span class="theorem-title"><strong>Exercise 2.22</strong></span> Sejam <span class="math inline">\(X_1,X_2,\ldots,X_n\)</span> variáveis aleatórias independentes com distribuição Geométrica<span class="math inline">\((p)\)</span>. Mostre que <span class="math inline">\(Y=\sum_{i=1}^nX_i\sim\hbox{Binomial Negativa}(n,p)\)</span>. Especificamente, suponha por indução que</p>
 <p><span class="math display">\[Z=\sum_{i=1}^{n-1}X_i\sim\hbox{Binomial Negativa}(n-1,p).\]</span> Então, conclua o exercício encontrando a distribuição de <span class="math inline">\(Y=Z+X_n\)</span>.</p>
 </div>
 
@@ -1102,13 +1114,13 @@ P(Y=y)&amp;=p^y(1-p)^{n-y}\sum_{x=0}^1\left[{n-1\choose y-x}I_{\{0,1\}}(x)I_{\{0
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link" aria-label="Prefácio">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Prefácio</span>
+      <a href="./intro.html" class="pagination-link" aria-label="Introdução">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./references.html" class="pagination-link" aria-label="References">
-        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./vetores_aleatorios_continuos.html" class="pagination-link" aria-label="Distribuição de vetores aleatórios contínuos">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Distribuição de vetores aleatórios contínuos</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

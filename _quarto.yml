@@ -8,7 +8,9 @@ book:
   date: "05/01/2026"
   chapters:
     - index.qmd
+    - intro.qmd
     - vetores_aleatorios_discretos.qmd
+    - vetores_aleatorios_continuos.qmd
     - references.qmd
 
 bibliography: references.bib

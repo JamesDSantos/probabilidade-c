@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>vetores_aleatorios_continuos</title>
+<title>3&nbsp; Distribuição de vetores aleatórios contínuos – Probabilidade C</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,17 +23,52 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="vetores_aleatorios_continuos_files/libs/clipboard/clipboard.min.js"></script>
-<script src="vetores_aleatorios_continuos_files/libs/quarto-html/quarto.js" type="module"></script>
-<script src="vetores_aleatorios_continuos_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="vetores_aleatorios_continuos_files/libs/quarto-html/popper.min.js"></script>
-<script src="vetores_aleatorios_continuos_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="vetores_aleatorios_continuos_files/libs/quarto-html/anchor.min.js"></script>
-<link href="vetores_aleatorios_continuos_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="vetores_aleatorios_continuos_files/libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="vetores_aleatorios_continuos_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="vetores_aleatorios_continuos_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="vetores_aleatorios_continuos_files/libs/bootstrap/bootstrap-bb462d781dde1847d9e3ccf7736099dd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./references.html" rel="next">
+<link href="./vetores_aleatorios_discretos.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-ffd282cb318059e0bcb130885a47f5dc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -65,101 +100,221 @@ window.Quarto = {
 };
 </script>
 
+<link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="fullcontent quarto-light">
+<body class="nav-sidebar floating quarto-light">
 
-<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./vetores_aleatorios_continuos.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Distribuição de vetores aleatórios contínuos</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Probabilidade C</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefácio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./vetores_aleatorios_discretos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Distribuição de vetores aleatórios discretos</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./vetores_aleatorios_continuos.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Distribuição de vetores aleatórios contínuos</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#função-de-densidade-conjunta" id="toc-função-de-densidade-conjunta" class="nav-link active" data-scroll-target="#função-de-densidade-conjunta"><span class="header-section-number">3.1</span> Função de densidade conjunta</a></li>
+  <li><a href="#função-de-distribuição-conjunta" id="toc-função-de-distribuição-conjunta" class="nav-link" data-scroll-target="#função-de-distribuição-conjunta"><span class="header-section-number">3.2</span> Função de distribuição conjunta</a></li>
+  <li><a href="#distribuições-marginais" id="toc-distribuições-marginais" class="nav-link" data-scroll-target="#distribuições-marginais"><span class="header-section-number">3.3</span> Distribuições Marginais</a></li>
+  <li><a href="#distribuição-condicional" id="toc-distribuição-condicional" class="nav-link" data-scroll-target="#distribuição-condicional"><span class="header-section-number">3.4</span> Distribuição condicional</a></li>
+  <li><a href="#função-de-vetores-aleatórios-contínuos" id="toc-função-de-vetores-aleatórios-contínuos" class="nav-link" data-scroll-target="#função-de-vetores-aleatórios-contínuos"><span class="header-section-number">3.5</span> Função de vetores aleatórios contínuos</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Distribuição de vetores aleatórios contínuos</span></h1>
+</div>
 
 
 
-<section id="distribuição-de-vetores-aleatórios-contínuos" class="level1">
-<h1>Distribuição de vetores aleatórios contínuos</h1>
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
 <p>Os objetivos deste capítulo são:</p>
 <ol type="1">
 <li><p>Definir e estudar as propriedades relacionadas a distribuição de vetores aleatórios contínuos</p></li>
 <li><p>Estudar funções de vetores aleatórios contínuos e apresentar exemplos relevantes de distribuições</p></li>
 </ol>
-<section id="função-de-densidade-conjunta" class="level2">
-<h2 class="anchored" data-anchor-id="função-de-densidade-conjunta">Função de densidade conjunta</h2>
+<section id="função-de-densidade-conjunta" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="função-de-densidade-conjunta"><span class="header-section-number">3.1</span> Função de densidade conjunta</h2>
 <p>Seja <span class="math inline">\(\textbf{X}=(X_1,…,X_n)\)</span> um vetor de variáveis aleatórias absolutamente contínuas. Dizemos que a função contínua</p>
 <p><span class="math display">\[f(\textbf{x})=f(x_1,…,x_n)\]</span> é a função de densidade conjunta de <span class="math inline">\(\textbf{X}\)</span> se</p>
 <p><span class="math display">\[P(X_1\in A_1,\ldots,X_n\in A_n)=\int_{A_1}\cdots\int_{A_n}f(\textbf{x})d\textbf{x}.\]</span></p>
-<div id="exm">
-<p>Duas máquinas do mesmo tipo são ligadas simultaneamente. Seja <span class="math inline">\(\textbf{X}=(X_1,X_2)\)</span> o vetor aleatório do tempo de vida destas máquinas (ou seja, <span class="math inline">\(X_i\)</span> é o tempo de vida da <span class="math inline">\(i\)</span>-ésima máquina). Suponha que <span class="math inline">\(X_i\sim\)</span>Exponencial(<span class="math inline">\(\lambda\)</span>), com <span class="math inline">\(\lambda&gt;0\)</span> conhecido e que <span class="math inline">\(X_1\)</span> é independente de <span class="math inline">\(X_2\)</span>.</p>
-<p>A probabilidade de que ambas as máquinas estejam funcionando até o tempo <span class="math inline">\(\textbf{x}=(x_1,x_2)\)</span> é dada por</p>
-<p><span class="math display">\[\begin{align}P(X_1&gt;x_1,X_2&gt;x_2)&amp;=P(X_1&gt;x_1)P(X_2&gt;x_2)\\&amp;=\left(\int_{x_1}^\infty \lambda e^{-\lambda y_1}dy_1\right)\left(\int_{x_2}^\infty \lambda e^{-\lambda y_2}dy_2\right)\\&amp;=\int_{x_1}^\infty\int_{x_2}^\infty \lambda^2 e^{-\lambda(y_1+y_2)}dy_1dy_2,\end{align}\]</span> e, portanto, <span class="math display">\[f(\textbf{x})=λ^2e^{−λ(x_1+x_2)}\]</span> para <span class="math inline">\(x_1,x_2&gt;0\)</span> é a densidade conjunta de <span class="math inline">\(\textbf{X}=(X_1,X_2)\)</span>.</p>
-</div>
 <div id="prp-" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 1</strong></span> Dizemos que <span class="math inline">\(f(\textbf{x})\)</span> (contínua) é a função de densidade para um vetor aleatório <span class="math inline">\(\textbf{X}\)</span> se</p>
-<span class="math display">\[f(\textbf{x})\geq 0,\;\;\forall\;\textbf{x}\in\mathbb{R}^n\]</span> e <span class="math display">\[\int_{\mathbb{R}^n}f(\textbf{x})d\textbf{x}=1.\]</span>
+<p><span class="theorem-title"><strong>Proposition 3.1</strong></span> Dizemos que <span class="math inline">\(f(\textbf{x})\)</span> (contínua) é a função de densidade conjunta para um vetor aleatório <span class="math inline">\(\textbf{X}\)</span> se</p>
+<p><span class="math display">\[f(\textbf{x})\geq 0,\;\;\forall\;\textbf{x}\in\mathbb{R}^n\]</span> e <span class="math display">\[\int_{\mathbb{R}^n}f(\textbf{x})d\textbf{x}=1.\]</span></p>
 </div>
-</section></section></main></div>
+<p>::: {.alert -alert-success} <strong>Nota importante</strong> Observe que <span class="math display">\[P(\textbf{X}\in A)=\int_{A}f(\textbf{x})d\textbf{x}=\int_{\mathbb{R}^n}f(\textbf{x})I_{A}(\textbf{x})d\textbf{x}.\]</span></p>
+<p>Em palavras, o conjunto da função indicadora é sempre o conjunto de integração. :::</p>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 3.1</strong></span> Mostre que <span class="math display">\[f(x,y)=xe^{−(1+y)x},\]</span> com <span class="math inline">\(x,y&gt;0\)</span> é uma função de densidade conjunta.</p>
+<p><strong>Solução.</strong> Note que <span class="math inline">\(x&gt;0\)</span>, logo <span class="math inline">\(f(x,y)&gt;0\)</span> para todo <span class="math inline">\((x,y)&gt;0\)</span>. Portanto, basta mostrar que</p>
+<p><span class="math display">\[\int_{\mathbb{R}^2} f(x,y)dxdy=\int_{\mathbb{R}^2}xe^{-(1+y)x}I_{\mathbb{R}^+}(x)I_{\mathbb{R}^+}(y)dxdy=\int_0^\infty\int_0^\infty xe^{-(1+y)x}dxdy=1\]</span></p>
+<p>Recorde que, para <span class="math inline">\(a,b&gt;0\)</span>, <span class="math display">\[\int_0^\infty u^{a-1}e^{-bu}du=\frac{\Gamma(a)}{b^a}.\]</span></p>
+<p>Portanto, considerando apenas a integral em <span class="math inline">\(x\)</span>, teremos</p>
+<p><span class="math display">\[\int_0^\infty xe^{-x(1+y)}dx=\frac{\Gamma(2)}{(1+y)^2}=\frac{1!}{(1+y)^2}=\frac{1}{(1+y)^2}.\]</span> Então, <span class="math display">\[\int_0^\infty\int_0^\infty xe^{-(1+y)x}dxdy=\int_0^\infty \frac{1}{(1+y)^2}dy\]</span></p>
+<p>A integral da direita pode ser resolvida por integração por substituição. Fazendo <span class="math inline">\(u=1+y\)</span>, teremos e <span class="math inline">\(du=dy\)</span> e</p>
+<p><span class="math display">\[\int_0^\infty \frac{1}{(1+y)^2}dy=\int_1^\infty \frac{1}{u^2}du=\left.-\frac{1}{u}\right|_1^\infty=1.\]</span> Portanto, a função dada é uma densidade conjunta.</p>
+</div>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 1</strong></span> Mostre que <span class="math display">\[f(x,y)=xe^{−x(1+y)},\]</span> com <span class="math inline">\(x,y&gt;0\)</span> é uma função de densidade conjunta.</p>
-</div>
-
-<section id="função-de-distribuição-conjunta" class="level2">
-<h2 data-anchor-id="função-de-distribuição-conjunta">Função de distribuição conjunta</h2>
-<p>Como vimos no capítulo anterior, <span class="math display">\[F(\textbf{x})=P(\textbf{x}\leq \textbf{x})=P(X_1\leq x_1,\ldots,X_n\leq x_n),\]</span> é denominada função de distribuição conjunta (ou ainda função de distribuição multivariada).</p>
-<div id="prp-" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 2</strong></span> A função de distribuição de um vetor de variáveis aleatórias contínuas é dada por <span class="math display">\[F(\textbf{x})=\int_{-\infty}^{x_1}\cdots\int_{-\infty}^{x_n}f(y_1,\ldots,y_n)d\textbf{y}.\]</span></p>
+<p><span class="theorem-title"><strong>Exercise 3.1</strong></span> Mostre que <span class="math display">\[f(x,y)=x^2e^{−(1+y)x},\]</span> com <span class="math inline">\(x,y&gt;0\)</span> é uma função de densidade conjunta.</p>
 </div>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 1</strong></span> Encontre a função de distribuição conjunta a partir da densidade conjunta abaixo:</p>
+<p><span class="theorem-title"><strong>Example 3.2</strong></span> Seja <span class="math display">\[f(x,y)=kx^2,\]</span> onde <span class="math inline">\(x\in(0,1)\)</span> e <span class="math inline">\(y\in(0,x)\)</span>. Encontre o valor de <span class="math inline">\(k\)</span> para que <span class="math inline">\(f(x,y)\)</span> seja uma função densidade.</p>
+<p><strong>Solução.</strong> Como <span class="math inline">\(x&gt;0\)</span>, temos que <span class="math inline">\(f(x,y)&gt;0\)</span> sempre que <span class="math inline">\(k&gt;0\)</span>. Portanto, basta encontrar o valor <span class="math inline">\(k&gt;0\)</span> tal que</p>
+<p><span class="math display">\[\int_{\mathbb{R}^2}f(x,y)dxdy=\int_{\mathbb{R}^2}kx^2 I_{(0,1)}(x)I_{(0,x)}(y)dxdy=\int_0^1\int_0^x kx^2 dydx=1\]</span></p>
+<p>A integral em <span class="math inline">\(y\)</span> é</p>
+<p><span class="math display">\[\int_0^x kx^2 dy=\left.kx^2y\right|_0^x=kx^3\]</span> logo, <span class="math display">\[\int_0^1\int_0^x kx^2 dydx=\int_0^1 kx^3dx=\left.\frac{k}{4}x^4\right|_0^1=\frac{k}{4}.\]</span> Portanto, <span class="math inline">\(f(x,y)\)</span> será função densidade conjunta quando <span class="math inline">\(k=4\)</span>.</p>
+</div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.2</strong></span> Seja <span class="math display">\[f(x,y)=k yx^2,\]</span> onde <span class="math inline">\(x\in(0,1)\)</span> e <span class="math inline">\(y\in(0,x)\)</span>. Encontre o valor de <span class="math inline">\(k\)</span> para que <span class="math inline">\(f(x,y)\)</span> seja uma função densidade.</p>
+</div>
+</section>
+<section id="função-de-distribuição-conjunta" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="função-de-distribuição-conjunta"><span class="header-section-number">3.2</span> Função de distribuição conjunta</h2>
+<p>Como vimos no capítulo anterior, <span class="math display">\[F(\textbf{x})=P(\textbf{x}\leq \textbf{x})=P(X_1\leq x_1,\ldots,X_n\leq x_n),\]</span> é denominada função de distribuição conjunta (ou ainda função de distribuição multivariada).</p>
+<div id="prp-" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 3.2</strong></span> A função de distribuição de um vetor de variáveis aleatórias contínuas é dada por <span class="math display">\[F(\textbf{x})=\int_{-\infty}^{x_1}\cdots\int_{-\infty}^{x_n}f(y_1,\ldots,y_n)d\textbf{y}.\]</span></p>
+</div>
+<p>::: {.alert -alert-success} <strong>Nota importante</strong> Recorde que <span class="math display">\[I_{A\cap B}(\textbf{x})=I_{A}(\textbf{x})I_{B}(\textbf{x}).\]</span> Em particular, sejam <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> os intervalos <span class="math inline">\((a_1,a_2)\)</span> e <span class="math inline">\((b_1,b_2)\)</span>. Então</p>
+<p><span class="math display">\[I_{A\cap B}(x)=I_{(a_1,a_2)}(x)I_{(b_1,b_2)}(x)=I_{(\max\{a_1,b_1\},\min\{a_2,b_2\})}(x).\]</span> :::</p>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 3.3</strong></span> Encontre a função distribuição do vetor <span class="math inline">\((X,Y)\)</span> cuja função de densidade conjunta é</p>
+<p><span class="math display">\[f(x,y)=2xI_{(0,1)}(x)I_{(0,1)}(y).\]</span> <strong>Solução.</strong></p>
+<p><span class="math display">\[\begin{align}F(u,v)&amp;=\int_{-\infty}^u\int_{-\infty}^v f(x,y)dydx=\int_{-\infty}^u\int_{-\infty}^v 2xI_{(0,1)}(x)I_{(0,1)}(y)dydx\end{align}\]</span> Considerando que <span class="math inline">\(u,v\in(0,1)\)</span>, teremos</p>
+<p><span class="math display">\[\begin{align}I_{(-\infty,u)}(x)I_{(0,1)}(x)I_{(-\infty,v)}(y)I_{(0,1)}(y)&amp;=I_{(0,u)}(x)I_{(0,v)}(y),\end{align}\]</span> logo</p>
+<p><span class="math display">\[\begin{align}F(u,v)&amp;=\int_{0}^u\int_{0}^v 2xI_{(0,1)}(x)I_{(0,1)}(y)dydx\end{align}\]</span> A integral em <span class="math inline">\(y\)</span> é <span class="math display">\[\int_0^{v}2xdy=2x\left.y\right|_{0}^{v}=v\]</span> logo, <span class="math display">\[F(u,v)=2v\int_0^{u}xdx=2v\left.\frac{x^2}{2}\right|_0^u=vu^2\]</span> para <span class="math inline">\(u,v\in(0,1)\)</span>.</p>
+</div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.3</strong></span> Encontre a função de distribuição conjunta a partir da densidade conjunta abaixo:</p>
 <p><span class="math display">\[f(x,y)=\frac{3}{80}(x^2+xy)\]</span>, com <span class="math inline">\(0&lt;x&lt;2\)</span> e <span class="math inline">\(0&lt;y&lt;4\)</span>.</p>
-<p><strong>Solução:</strong></p>
-<p><span class="math display">\[\begin{align}F(x,y)&amp;=\int_0^x\int_0^y \frac{3}{80}(u^2+uv)dvdu\\&amp;=\int_0^x\left[\frac{3}{80}(u^2+\frac{uy^2}{2})\right]du\\ &amp;=\frac{x^3}{80}+\frac{3x^2y^2}{320},\end{align}\]</span> se <span class="math inline">\(0&lt;x&lt;2\)</span> e <span class="math inline">\(0&lt;y&lt;4\)</span>.</p>
+</div>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 3.4</strong></span> Considere o vetor aleatório com função densidade conjunta dada por <span class="math display">\[f(x,y)=e^{-y}I_{(0,\infty)}(x)I_{(x,\infty)}(y).\]</span> Encontre a função de distribuição conjunta.</p>
+<p><span class="math display">\[\begin{align}F(u,v)&amp;=\int_{-\infty}^u\int_{-\infty}^v f(x,y)dydx=\int_{-\infty}^u\int_{-\infty}^v e^{-y}I_{(0,\infty)}(x)I_{(x,\infty)}(y)dydx\end{align}\]</span> Note que <span class="math display">\[\begin{align}I_{(-\infty,u)}(x)I_{(0,\infty)}(x)I_{(-\infty,v)}(y)I_{(x,\infty)}(y)&amp;=I_{(0,u)}(x)I_{(x,v)}(y),\end{align}\]</span> logo <span class="math display">\[\begin{align}F(u,v)&amp;=\int_{0}^u\int_{x}^v e^{-y}dydx\end{align}\]</span> A integral em <span class="math inline">\(y\)</span> é <span class="math display">\[\int_x^{v}e^{-y}dy=\left.-e^{-y}\right|_{x}^{v}=e^{-x}-e^{-v}\]</span> logo, para <span class="math inline">\(u&lt;v\)</span>, <span class="math display">\[F(u,v)=\int_0^{u}e^{-x}-e^{-v}dx=\left[\left.-e^{-x}\right|_0^u\right]-ue^{-v}=1-e^{-u}-ue^{-v}.\]</span></p>
 </div>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 2</strong></span> Considere o vetor <span class="math inline">\((X,Y)\)</span> de variáveis aleatórias com função densidade conjunta dada por <span class="math display">\[f(x,y)=xe^{−xy},\]</span> com <span class="math inline">\(y&gt;0\)</span> e <span class="math inline">\(x\in(0,1)\)</span>. Encontre a função de distribuição conjunta de <span class="math inline">\((X,Y)\)</span>.</p>
+<p><span class="theorem-title"><strong>Exercise 3.4</strong></span> Seja a função densidade conjunta:<span class="math display">\[f(x, y) =\frac{3}{2}I_{(-1,1)}(x)I_{(x^2,1)}(y).\]</span> Encontre a função de distribuição.</p>
 </div>
-<div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 3</strong></span> Se <span class="math inline">\(\textbf{X}\)</span> é um vetor aleatório comprimento <span class="math inline">\(n\)</span>, então</p>
+<p>::: ::: {#prp-} Se <span class="math inline">\(\textbf{X}\)</span> é um vetor aleatório comprimento <span class="math inline">\(n\)</span>, então</p>
 <p><span class="math display">\[f(\textbf{x})=\frac{\partial}{\partial x_1}\cdots \frac{\partial}{\partial x_n} F(\textbf{x}).\]</span></p>
-</div>
+<p>:::</p>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 4</strong></span> Seja</p>
+<p><span class="theorem-title"><strong>Exercise 3.5</strong></span> Seja</p>
 <p><span class="math display">\[F(x,y)=1−e^{−x}−e^{−y}+e^{-(x+y)},\]</span> com <span class="math inline">\((x,y)\in\mathbb{R}^2_+\)</span>. Encontre a densidade conjunta correspondente.</p>
 </div>
 </section>
-<section id="distribuições-marginais" class="level2">
-<h2 data-anchor-id="distribuições-marginais">Distribuições Marginais</h2>
+<section id="distribuições-marginais" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="distribuições-marginais"><span class="header-section-number">3.3</span> Distribuições Marginais</h2>
 <p>Seja <span class="math inline">\(\textbf{X}\)</span> um vetor aleatório de dimensão <span class="math inline">\(n\)</span>. A distribuição de uma coordenada qualquer de <span class="math inline">\(\textbf{X}\)</span> é denominada distribuição marginal.</p>
-<p>Como em geral utilizamos as letras <span class="math inline">\(F\)</span>, <span class="math inline">\(P\)</span> e <span class="math inline">\(f\)</span> para designar as funções de distribuição, probabilidade e densidade, é importante acrescentar uma notação de identifique explicitamente a variável. Quando isto for necessário, adicionaremos a letra que designa a variável subscrita na função. Por exemplo, <span class="math inline">\(F_{X_1}(x)\)</span> é a função de distribuição marginal de <span class="math inline">\(X_1\)</span>.</p>
+<p>Como em geral utilizamos as letras <span class="math inline">\(F\)</span>, <span class="math inline">\(P\)</span> e <span class="math inline">\(f\)</span> para designar as funções de distribuição, probabilidade e densidade, é importante acrescentar uma notação que identifique explicitamente a variável. Quando isto for necessário, adicionaremos a letra que designa a variável subscrita na função. Por exemplo, <span class="math inline">\(F_{X_1}(x)\)</span> é a função de distribuição marginal de <span class="math inline">\(X_1\)</span>.</p>
 <div id="prp-" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 3</strong></span> Seja <span class="math inline">\(\textbf{X}\)</span> um vetor de variáveis aleatórias de comprimento <span class="math inline">\(n\)</span>. A função de distribuição marginal de <span class="math inline">\(X_i\)</span> é dada por</p>
-<p><span class="math display">\[F_{X_i}(x_i)=\lim_{\textbf{x}_{(−i)}\rightarrow\infty}F(\textbf{x}),\]</span> onde <span class="math inline">\(\textbf{x}_{(−i)}=\textbf{x}\setminus x_i\)</span> (ou seja, o vetor <span class="math inline">\(\textbf{x}\)</span> sem a <span class="math inline">\(i\)</span>-ésima coordenada).</p>
-</div>
-<div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 5</strong></span> Considere a seguinte função de distribuição conjunta,</p>
-<p><span class="math display">\[F(x,y)=1−e^{−x}−e^{−y}+e^{−(x+y)}.\]</span> onde <span class="math inline">\(x,y&gt;0\)</span>. Encontre a função de distribuição de <span class="math inline">\(X\)</span>.</p>
-</div>
-<div id="prp-" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 4</strong></span> Seja <span class="math inline">\(\textbf{X}\)</span> um vetor de variáveis aleatórias contínuas. A função de densidade marginal de <span class="math inline">\(X_i\)</span> é dada por <span class="math display">\[f_{X_i}(x_i)=\int_{\mathbb{R}^{n-1}}f(\textbf{x})d\textbf{x}_{(−i)}.\]</span></p>
+<p><span class="theorem-title"><strong>Proposition 3.3</strong></span> Seja <span class="math inline">\(\textbf{X}=(\textbf{X}_a,\textbf{X}_b)\)</span> um vetor de variáveis aleatórias contínuas. A função de densidade marginal do subvetor <span class="math inline">\(\textbf{X}_a\)</span> é dada por <span class="math display">\[f_{\textbf{X}_a}(\textbf{x}_a)=\int f(\textbf{x})d\textbf{x}_{b}.\]</span></p>
 </div>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 2</strong></span> Seja <span class="math inline">\((X,Y)\)</span> um par de variáveis aleatórias com densidade conjunta dada por <span class="math display">\[f(x,y)=8xy,\]</span> com <span class="math inline">\(0&lt;x&lt;y&lt;1.\)</span> Determine as densidades marginais de <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>.</p>
-<p><strong>Solução</strong></p>
-<p><span class="math display">\[f_X(x)=\int_{\mathbb{R}}f(x,y)dy=8x\int_x^1 ydy=4x(1−x^2),\]</span> para <span class="math inline">\(0&lt;x&lt;1\)</span> e</p>
-<p><span class="math display">\[f_Y(y)=\int_{\mathbb{R}}f(x,y)dx=8y\int_0^y xdx=4y^3,\]</span> para <span class="math inline">\(0&lt;y&lt;1\)</span>.</p>
+<p><span class="theorem-title"><strong>Example 3.5</strong></span> Seja <span class="math inline">\((X,Y)\)</span> um par de variáveis aleatórias com densidade conjunta dada por <span class="math display">\[f(x,y)=8xyI_{(0,y)}(x)I_{(0,1)}(y),\]</span> Determine as densidades marginais de <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>.</p>
+<p><strong>Solução</strong> A densidade marginal de <span class="math inline">\(Y\)</span> é</p>
+<p><span class="math display">\[\begin{align}f_Y(y)&amp;=\int_{\mathbb{R}}f(x,y)dx=8yI_{(0,1)}(y)\int_\mathbb{R} I_{(0,y)}(x)xdx\\&amp;=8yI_{(0,1)}(y)\int_0^y xdx=8yI_{(0,1)}(y)\left.\frac{x^2}{2}\right|_0^y=4y^3I_{(0,1)}(y).\end{align}\]</span></p>
+<p>Para determinar a marginal de <span class="math inline">\(X\)</span>, observe que</p>
+<p><span class="math display">\[I_{(0,y)}(x)I_{(0,1)}(y)=1\Rightarrow 0&lt;x&lt;y\hbox{ e } 0&lt;y&lt;1\]</span> note que o primeiro intervalo possui informações tanto sobre <span class="math inline">\(x\)</span> quanto sobre <span class="math inline">\(y\)</span>. Olhando apenas como função de <span class="math inline">\(y\)</span>, podemos escrever a seguinte indicadora para o primeira intervalo: <span class="math inline">\(I_{(x,\infty)}(y)\)</span>. Deste modo,</p>
+<p><span class="math display">\[I_{(0,y)}(x)I_{(0,1)}(y)=I_{(x,\infty)}(y)I_{(0,1)}(y)=I_{(x,1)}(y)I_{(0,1)}(x),\]</span> logo <span class="math display">\[f_X(x)=\int_x^1 f(x,y)dx=8xI_{(0,1)}(x)\left.\frac{y^2}{2}\right|_{x}^1=4x(1-x^2)I_{(0,1)}(x).\]</span></p>
 </div>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 6</strong></span> Considere a seguinte função de densidade conjunta, <span class="math display">\[f(x,y)=xy^2e^{−y(x+1)}.\]</span> onde <span class="math inline">\(x,y&gt;0\)</span>. Encontre a função densidade marginal de <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>.</p>
+<p><span class="theorem-title"><strong>Exercise 3.6</strong></span> Seja a função densidade conjunta:<span class="math display">\[f(x, y) =\frac{3}{2}I_{(-1,1)}(x)I_{(x^2,1)}(y).\]</span> Encontre as densidades marginais de <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>.</p>
 </div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.7</strong></span> Considere a seguinte função de densidade conjunta, <span class="math display">\[f(x,y)=xy^2e^{−y(x+1)}.\]</span> onde <span class="math inline">\(x,y&gt;0\)</span>. Encontre a função densidade marginal de <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>.</p>
+</div>
+</section>
+<section id="distribuição-condicional" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="distribuição-condicional"><span class="header-section-number">3.4</span> Distribuição condicional</h2>
 <p>Sejam <span class="math inline">\(\textbf{X}\)</span> e <span class="math inline">\(\textbf{Y}\)</span> vetores aleatórios contínuos. Sabemos que</p>
 <p><span class="math display">\[P(\textbf{X}\leq \textbf{x}|\textbf{Y}\in B)=\frac{P(\textbf{X}\leq\textbf{x},\textbf{Y}\in B)}{P(\textbf{Y}\in B)}.\]</span></p>
-<p>Como <span class="math inline">\(\textbf{Y}\)</span> é uma vetor de variáveis aleatórias contínias, sabemos que <span class="math inline">\(P(\textbf{Y}=\textbf{y})=0\)</span>. Entretanto, a probabilidade <span class="math inline">\(P(\textbf{X}\leq \textbf{x}|\textbf{Y}=\textbf{y})\)</span> faz todo o sentido. Para mostrar este fato, seja <span class="math inline">\(B(\varepsilon)\)</span> uma bola fechada de raio <span class="math inline">\(\varepsilon\)</span> e centro <span class="math inline">\(\textbf{y}\)</span>. Pelo Teorema do Valor Médio, existe <span class="math inline">\(\tilde{y}\in B(\varepsilon)\)</span> tal que</p>
+<p>Como <span class="math inline">\(\textbf{Y}\)</span> é um vetor de variáveis aleatórias contínuas, sabemos que <span class="math inline">\(P(\textbf{Y}=\textbf{y})=0\)</span>. Entretanto, a probabilidade <span class="math inline">\(P(\textbf{X}\leq \textbf{x}|\textbf{Y}=\textbf{y})\)</span> faz todo o sentido. Para mostrar este fato, seja <span class="math inline">\(B(\varepsilon)\)</span> uma bola fechada de raio <span class="math inline">\(\varepsilon\)</span> e centro <span class="math inline">\(\textbf{y}\)</span>. Pelo Teorema do Valor Médio, existe <span class="math inline">\(\tilde{y}\in B(\varepsilon)\)</span> tal que</p>
 <p><span class="math display">\[P(\textbf{Y}\in B(\varepsilon) )=\int_{B(\varepsilon)} f_{\textbf{Y}}(\textbf{u})d\textbf{u}=\hbox{Vol}(B(\varepsilon))f_{\textbf{Y}}(\tilde{\textbf{y}})\]</span> e</p>
 <p><span class="math display">\[P(\textbf{X}\leq \textbf{x},\textbf{Y}\in B(\varepsilon) )=\int_{\textbf{v}\leq \textbf{x}}\int_{B(\varepsilon)} f_{\textbf{X},\textbf{Y}}(\textbf{v},\textbf{u})d\textbf{u}d\textbf{v}=\hbox{Vol}(B(\varepsilon))\int_{\textbf{v}\leq \textbf{x}}f_{\textbf{X},\textbf{Y}}(\textbf{v},\tilde{\textbf{y}}_{\textbf{v}})d\textbf{v}.\]</span> Portanto,</p>
 <p><span class="math display">\[P(\textbf{X}\leq \textbf{x}|\textbf{Y}\in B(\varepsilon) )=\frac{\hbox{Vol}(B(\varepsilon))\int_{\textbf{v}\leq \textbf{x}}f_{\textbf{X},\textbf{Y}}(\textbf{v},\tilde{\textbf{y}})d\textbf{v}}{\hbox{Vol}(B(\varepsilon))f_{\textbf{Y}}(\tilde{\textbf{y}})}=\int_{\textbf{v}\leq \textbf{x}}\frac{f_{\textbf{X},\textbf{Y}}(\textbf{v},\tilde{\textbf{y}}_{\textbf{v}})}{f_{\textbf{Y}}(\tilde{\textbf{y}})}d\textbf{v}.\]</span> Agora, note que <span class="math inline">\(B(\varepsilon)\rightarrow\textbf{y}\)</span> quando <span class="math inline">\(\varepsilon\rightarrow0\)</span>, logo <span class="math inline">\(\tilde{\textbf{y}}\rightarrow\textbf{y}\)</span> e <span class="math inline">\(\tilde{\textbf{y}}_{\textbf{v}}\rightarrow\textbf{y}\)</span> para todo <span class="math inline">\(\textbf{v}\)</span>, o que implica em</p>
 <p><span class="math display">\[\lim_{\varepsilon\rightarrow 0}P(\textbf{X}\leq \textbf{x}|\textbf{Y}\in B(\varepsilon) )=P(\textbf{X}\leq \textbf{x}|\textbf{Y}= \textbf{y})=F(\textbf{x}|\textbf{y})=\int_{\textbf{v}\leq \textbf{x}}\frac{f_{\textbf{X},\textbf{Y}}(\textbf{v},{\textbf{y}})}{f_{\textbf{Y}}({\textbf{y}})}d\textbf{v}.\]</span> o que implica em</p>
 <p><span class="math display">\[f(\textbf{x}|\textbf{y})=\frac{f_{\textbf{X},\textbf{Y}}(\textbf{x},\textbf{y})}{f_{\textbf{Y}}(\textbf{y})}.\]</span></p>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 3</strong></span> Seja <span class="math display">\[f(x,y)=21x^2y^3,\]</span> se <span class="math inline">\(0&lt;x&lt;y&lt;1\)</span>. Encontre a densidade condicional de <span class="math inline">\(Y|X=x\)</span>.</p>
+<p><span class="theorem-title"><strong>Example 3.6</strong></span> Seja <span class="math display">\[f(x,y)=21x^2y^3,\]</span> se <span class="math inline">\(0&lt;x&lt;y&lt;1\)</span>. Encontre a densidade condicional de <span class="math inline">\(Y|X=x\)</span>.</p>
 <p><strong>Solução.</strong></p>
 <p>Primeiro, vamos encontrar a densidade marginal de <span class="math inline">\(X\)</span>:</p>
 <p><span class="math display">\[f(x)=21x^2\int_x^1 y^3dy=\frac{21}{4}x^2(1-x^4),\]</span></p>
@@ -167,12 +322,12 @@ window.Quarto = {
 <p><span class="math display">\[f(y|x)=\frac{f(x,y)}{f(x)}=\frac{21x^2y^3}{\frac{21}{4}x^2(1-x^4)}=\frac{4y^3}{(1-x^4)},\]</span> com <span class="math inline">\(0&lt;x&lt;y&lt;1\)</span>.</p>
 </div>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 7</strong></span> Suponha que</p>
+<p><span class="theorem-title"><strong>Exercise 3.8</strong></span> Suponha que</p>
 <p><span class="math display">\[f(x,y)=\frac{1}{2\pi}\exp\left\{−\frac{1}{2}(x^2+2y^2−2xy)\right\},\]</span> com <span class="math inline">\((x,y)\in\mathbb{R}^2\)</span>. Encontre a densidade de <span class="math inline">\(X|Y=y\)</span>.</p>
 </div>
 </section>
-<section id="função-de-vetores-aleatórios-contínuos" class="level2">
-<h2 data-anchor-id="função-de-vetores-aleatórios-contínuos">Função de vetores aleatórios contínuos</h2>
+<section id="função-de-vetores-aleatórios-contínuos" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="função-de-vetores-aleatórios-contínuos"><span class="header-section-number">3.5</span> Função de vetores aleatórios contínuos</h2>
 <p>Suponha que <span class="math inline">\(X\)</span> é uma variável aleatória contínua e <span class="math inline">\(g(.)\)</span> uma função real e contínua. Considerando a variável aleatória <span class="math inline">\(Y=g(X)\)</span>, teremos que</p>
 <p><span class="math display">\[P(Y\in A)=P(g(X)\in A)=\int_{x:g(x)\in A}f_X(x)dx.\]</span></p>
 <p>Em particular,</p>
@@ -181,7 +336,7 @@ window.Quarto = {
 <p><span class="math display">\[\{x:g(x)\leq y\}\equiv\{u\leq y\},\]</span> o que implica em</p>
 <p><span class="math display">\[F_Y(y)=\int_{-\infty}^y f_X(g^{−1}(u))\left|\frac{d}{du}g^{−1}(u)\right|du\]</span> logo, <span class="math display">\[f_Y(y)=f_X(g^{−1}(y))\left|\frac{d}{dy}g^{−1}(y)\right|.\]</span> O termo dentro do módulo é denominado <strong>Jacobiano da transformação</strong> e a obtenção da densidade por esse método é denominada <strong>método do Jacobiano</strong>.</p>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 4</strong></span> Suponha que <span class="math inline">\(X\sim\hbox{Normal}(0,1)\)</span>. Considere a transformação <span class="math inline">\(Y=e^{X}\)</span>. Como <span class="math inline">\(g^{-1}(y)=\log(y)\)</span>, teremos que</p>
+<p><span class="theorem-title"><strong>Example 3.7</strong></span> Suponha que <span class="math inline">\(X\sim\hbox{Normal}(0,1)\)</span>. Considere a transformação <span class="math inline">\(Y=e^{X}\)</span>. Como <span class="math inline">\(g^{-1}(y)=\log(y)\)</span>, teremos que</p>
 <p><span class="math display">\[f_Y(y)=f_X(\log y )\left|\frac{d}{dy}\log y\right|=\frac{1}{y\sqrt{2\pi}}e^{-\frac{1}{2}\log y^2}.\]</span> Essa distribuição é denominada Lognormal(0,1).</p>
 </div>
 <p>Assim como no caso discreto, a extensão para vetores também é natural. Seja <span class="math inline">\(\textbf{X}\)</span> um vetor aleatório de comprimento <span class="math inline">\(n\)</span> e considere a nova variável <span class="math inline">\(\textbf{Y}=g(X)\)</span>, onde <span class="math inline">\(g:\mathbb{R}^n\rightarrow \mathbb{R}^m\)</span> é uma função real. Então</p>
@@ -193,7 +348,7 @@ window.Quarto = {
 <p><span class="math display">\[F_{\textbf{Y}}(\textbf{y})=\int_{-\infty}^{y_1}\cdots \int_{-\infty}^{y_n}f_\textbf{X}(g^{-1}(\textbf{u}))|\mathcal{J}g^{-1}(\textbf{u})|d\textbf{u}.\]</span></p>
 <p>Portanto, concluímos que <span class="math display">\[f_\textbf{Y}(\textbf{y})=f_\textbf{X}(g^{−1}(\textbf{y}))|\mathcal{J}g^{-1}(\textbf{y})|.\]</span></p>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 5</strong></span> Sejam <span class="math inline">\(X_1\)</span> e <span class="math inline">\(X_2\)</span> variáveis aleatórias independentes com distribuição Normal(0,1). Vamos encontrar a função densidade conjunta de <span class="math inline">\(\textbf{Y}=(X_1+X_2,Y2=X_1−X_2)\)</span>.</p>
+<p><span class="theorem-title"><strong>Example 3.8</strong></span> Sejam <span class="math inline">\(X_1\)</span> e <span class="math inline">\(X_2\)</span> variáveis aleatórias independentes com distribuição Normal(0,1). Vamos encontrar a função densidade conjunta de <span class="math inline">\(\textbf{Y}=(X_1+X_2,Y2=X_1−X_2)\)</span>.</p>
 <p>Primeiro, temos que encontrar a função inversa:</p>
 <p><span class="math display">\[\begin{array}{c}
 Y_1=X_1+X_2\\
@@ -205,14 +360,14 @@ Y_2=X_1-X_2\\
 <p><span class="math display">\[\begin{align}f_\textbf{Y}(\textbf{y})&amp;=f_{X_1}(0,5(y_1+y_2)f_{X_2}(0,5(y_1−y2_2)\frac{1}{2}=\frac{1}{4\pi}e^{-\frac{1}{8}[(y_1-y_2)^2+(y_1+y_2)^2]}\\&amp;=\frac{1}{4\pi}e^{-\frac{1}{4}(y_1^2+y_2^2)}\end{align}\]</span> Podemos notar que a densidade conjunta fatora em duas normais, ou seja <span class="math inline">\(Y_1\)</span> e <span class="math inline">\(Y2_\)</span> são independentes com marginais Normal(0,2).</p>
 </div>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 8</strong></span> Sejam <span class="math inline">\(X_1\)</span> e <span class="math inline">\(X_2\)</span> variáveis aleatórias independentes com distribuição Normal(0,1).</p>
+<p><span class="theorem-title"><strong>Exercise 3.9</strong></span> Sejam <span class="math inline">\(X_1\)</span> e <span class="math inline">\(X_2\)</span> variáveis aleatórias independentes com distribuição Normal(0,1).</p>
 <ol type="a">
 <li><p>Encontre a função densidade conjunta de <span class="math inline">\(Y_1=aX_1+X_2\)</span> e <span class="math inline">\(Y_2=X_1−X_2\)</span>, onde <span class="math inline">\(a\)</span> é uma constante.</p></li>
 <li><p>Quais são os valores de <span class="math inline">\(a\)</span> tais que <span class="math inline">\(Y_1\)</span> é independente de <span class="math inline">\(Y_2\)</span>?</p></li>
 </ol>
 </div>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 6</strong></span> Sejam <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> variáveis aleatórias independentes com distribuição Exponencial(1). Vamos determinar a distribuição conjunta de <span class="math inline">\(U=X+Y\)</span> e <span class="math inline">\(V=Y/X\)</span> .</p>
+<p><span class="theorem-title"><strong>Example 3.9</strong></span> Sejam <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> variáveis aleatórias independentes com distribuição Exponencial(1). Vamos determinar a distribuição conjunta de <span class="math inline">\(U=X+Y\)</span> e <span class="math inline">\(V=Y/X\)</span> .</p>
 <p>Antes de prosseguirmos, é importante relembrar alguns resultados sobre funções indicadoras.</p>
 <p>Seja I(x∈A) a função indicadora, onde I(x∈A)={1,0, se x∈A em caso contrário. Em particular, se x∈(a,b) , podemos escrever I(a&lt;x&lt;b) . Então, é verdade que</p>
 <p>I(a1&lt;x&lt;b1)I(a2&lt;x&lt;b2)=I(max{a1,a2}&lt;x&lt;min{b1,b2}).</p>
@@ -231,12 +386,12 @@ Y_2=X_1-X_2\\
 <p>Agora, vamos encontrar a densidade de Y :</p>
 <p>fY(y)=∫RI(0&lt;w&lt;1)I(0&lt;y−w&lt;1)dw=∫RI(0&lt;w&lt;1)I(y−1&lt;w&lt;y)dw=∫RI(max{0,y−1}&lt;w&lt;min{1,y})dw=∫min{1,y}max{0,y−1}1dw=min{1,y}−max{0,y−1},</p>
 <p>se 0&lt;y&lt;2 e zero em caso contrário.</p>
+
+
 </div>
 </section>
 
-
-
-<!-- /main column -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -636,7 +791,19 @@ Y_2=X_1-X_2\\
     }
   });
   </script>
- <!-- /content -->
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./vetores_aleatorios_discretos.html" class="pagination-link" aria-label="Distribuição de vetores aleatórios discretos">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Distribuição de vetores aleatórios discretos</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./references.html" class="pagination-link" aria-label="References">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
 
 
 

@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="James D Santos">
-<meta name="dcterms.date" content="2026-05-01">
 
-<title>Probabilidade C</title>
+<title>1&nbsp; Introdução – Probabilidade C</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -32,7 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./intro.html" rel="next">
+<link href="./vetores_aleatorios_discretos.html" rel="next">
+<link href="./index.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -71,6 +70,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -84,7 +112,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Prefácio</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -111,13 +139,13 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Prefácio</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+  <a href="./intro.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></span></a>
   </div>
 </li>
@@ -149,7 +177,9 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#prefácio" id="toc-prefácio" class="nav-link active" data-scroll-target="#prefácio">Prefácio</a></li>
+  <li><a href="#vetores-aleatórios" id="toc-vetores-aleatórios" class="nav-link active" data-scroll-target="#vetores-aleatórios"><span class="header-section-number">1.1</span> Vetores aleatórios</a></li>
+  <li><a href="#teoremas-limites" id="toc-teoremas-limites" class="nav-link" data-scroll-target="#teoremas-limites"><span class="header-section-number">1.2</span> Teoremas limites</a></li>
+  <li><a href="#cadeias-de-markov" id="toc-cadeias-de-markov" class="nav-link" data-scroll-target="#cadeias-de-markov"><span class="header-section-number">1.3</span> Cadeias de Markov</a></li>
   </ul>
 </nav>
     </div>
@@ -158,26 +188,14 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Probabilidade C</h1>
+<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>James D Santos </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">May 1, 2026</p>
-    </div>
-  </div>
   
     
   </div>
@@ -187,8 +205,29 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="prefácio" class="level1 unnumbered">
-<h1 class="unnumbered">Prefácio</h1>
+<section id="vetores-aleatórios" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="vetores-aleatórios"><span class="header-section-number">1.1</span> Vetores aleatórios</h2>
+<p>Neste curso vamos utilizar o negrito para designar um vetor. Por exemplo,</p>
+<p><span class="math display">\[\textbf{x}=(x_1,…,x_n)\]</span>, é um vetor de comprimento <span class="math inline">\(n\)</span>.</p>
+<p>Agora, sejam <span class="math inline">\(X_1,…,X_n\)</span> variáveis aleatórias. Então, dizemos que</p>
+<p><span class="math display">\[\textbf{X}=(X_1,…,X_n)\]</span> é um vetor aleatório (também é usual o termo variável aleatória <span class="math inline">\(n\)</span> -dimensional).</p>
+<div id="exm">
+<p>Dois dados de seis faces são lançados. Sejam <span class="math inline">\(X_1\)</span> e <span class="math inline">\(X_2\)</span> os resultados do dado 1 e 2, respectivamente. Então, <span class="math inline">\(\textbf{X}=(X_1,X_2)\)</span> é um vetor aleatório.</p>
+</div>
+<p>Utilizamos a vírgula para denotar a interseção de eventos relacionados aos vetores aleatórios. Por exemplo,</p>
+<p><span class="math display">\[P(X_1\in A,X_2\in B)=P(\{X_1\in A\}\cap\{X_2\in B\})\]</span>,</p>
+<div id="exm">
+<p>Dois dados de seis faces são lançados. Sejam <span class="math inline">\(X_1\)</span> e <span class="math inline">\(X_2\)</span> os resultados do dado 1 e 2, respectivamente. Então, <span class="math inline">\(P(X_1=3,X_2=5)\)</span> é o mesmo que <span class="math inline">\(P(\{X_1=3\}\cap\{X_2=5\})\)</span>. Em palavras, este número representa a probabilidade de sair 3 no primeiro dado e 5 no segundo.</p>
+</div>
+<p>Assim como as variáveis aleatórias, os vetores aleatórios possuem funções de densidade/probabilidade e funções de distribuição. Para frisar que mais de uma variável está sendo considerada, utilizamos o adjetivo <strong>conjunta</strong>. Deste modo, existem para os vetores aleatórias a função de <strong>distribuição conjunta</strong> e a função de <strong>densidade/probabilidade conjunta</strong>. Por sua vez, a distribuição de um subvetor de <span class="math inline">\(\textbf{X}\)</span> é denominada <strong>marginal</strong>.</p>
+<p>Também é possível encontrar funções de distribuição ou densidade/probabilidade para o vetor aleatório <span class="math inline">\(\textbf{X}\)</span> condicionado com o vetor aleatório <span class="math inline">\(\textbf{Y}\)</span>.</p>
+<p>Uma vez que essas funções, já conhecidas para o caso univariado, possuem seu equivalente para vetores, é natural expandir conceitos como espança e variância para vetores, assim como a esperança e variância para distribuições condicionais. Nesse momento, novas medidas que medem o relacionamento entre variáveis aleatórias, como covariância e correlação, serão apresentadas.</p>
+</section>
+<section id="teoremas-limites" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="teoremas-limites"><span class="header-section-number">1.2</span> Teoremas limites</h2>
+</section>
+<section id="cadeias-de-markov" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="cadeias-de-markov"><span class="header-section-number">1.3</span> Cadeias de Markov</h2>
 
 
 </section>
@@ -595,10 +634,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./index.html" class="pagination-link" aria-label="Prefácio">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Prefácio</span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./intro.html" class="pagination-link" aria-label="Introdução">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./vetores_aleatorios_discretos.html" class="pagination-link" aria-label="Distribuição de vetores aleatórios discretos">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Distribuição de vetores aleatórios discretos</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
