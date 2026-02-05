@@ -221,8 +221,10 @@ window.Quarto = {
 <p><span class="theorem-title"><strong>Proposition 3.1</strong></span> Dizemos que <span class="math inline">\(f(\textbf{x})\)</span> (contínua) é a função de densidade conjunta para um vetor aleatório <span class="math inline">\(\textbf{X}\)</span> se</p>
 <p><span class="math display">\[f(\textbf{x})\geq 0,\;\;\forall\;\textbf{x}\in\mathbb{R}^n\]</span> e <span class="math display">\[\int_{\mathbb{R}^n}f(\textbf{x})d\textbf{x}=1.\]</span></p>
 </div>
-<p>::: {.alert -alert-success} <strong>Nota importante</strong> Observe que <span class="math display">\[P(\textbf{X}\in A)=\int_{A}f(\textbf{x})d\textbf{x}=\int_{\mathbb{R}^n}f(\textbf{x})I_{A}(\textbf{x})d\textbf{x}.\]</span></p>
-<p>Em palavras, o conjunto da função indicadora é sempre o conjunto de integração. :::</p>
+<div class="alert alert-success">
+<p><strong>Nota importante</strong> Observe que <span class="math display">\[P(\textbf{X}\in A)=\int_{A}f(\textbf{x})d\textbf{x}=\int_{\mathbb{R}^n}f(\textbf{x})I_{A}(\textbf{x})d\textbf{x}.\]</span></p>
+<p>Em palavras, o conjunto da função indicadora é sempre o conjunto de integração.</p>
+</div>
 <div id="exm-" class="theorem example">
 <p><span class="theorem-title"><strong>Example 3.1</strong></span> Mostre que <span class="math display">\[f(x,y)=xe^{−(1+y)x},\]</span> com <span class="math inline">\(x,y&gt;0\)</span> é uma função de densidade conjunta.</p>
 <p><strong>Solução.</strong> Note que <span class="math inline">\(x&gt;0\)</span>, logo <span class="math inline">\(f(x,y)&gt;0\)</span> para todo <span class="math inline">\((x,y)&gt;0\)</span>. Portanto, basta mostrar que</p>
@@ -231,7 +233,7 @@ window.Quarto = {
 <p>Portanto, considerando apenas a integral em <span class="math inline">\(x\)</span>, teremos</p>
 <p><span class="math display">\[\int_0^\infty xe^{-x(1+y)}dx=\frac{\Gamma(2)}{(1+y)^2}=\frac{1!}{(1+y)^2}=\frac{1}{(1+y)^2}.\]</span> Então, <span class="math display">\[\int_0^\infty\int_0^\infty xe^{-(1+y)x}dxdy=\int_0^\infty \frac{1}{(1+y)^2}dy\]</span></p>
 <p>A integral da direita pode ser resolvida por integração por substituição. Fazendo <span class="math inline">\(u=1+y\)</span>, teremos e <span class="math inline">\(du=dy\)</span> e</p>
-<p><span class="math display">\[\int_0^\infty \frac{1}{(1+y)^2}dy=\int_1^\infty \frac{1}{u^2}du=\left.-\frac{1}{u}\right|_1^\infty=1.\]</span> Portanto, a função dada é uma densidade conjunta.</p>
+<p><span class="math display">\[\begin{align}\int_0^\infty \frac{1}{(1+y)^2}I_{\mathbb{R}^+}(y)dy&amp;=\int_0^\infty \frac{1}{u^2}I_{\mathbb{R}^+ }(u-1)du\\&amp;=\int_1^\infty \frac{1}{u^2}du=\left.-\frac{1}{u}\right|_1^\infty=1.\end{align}\]</span> Portanto, a função dada é uma densidade conjunta.</p>
 </div>
 <div id="exr-" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 3.1</strong></span> Mostre que <span class="math display">\[f(x,y)=x^2e^{−(1+y)x},\]</span> com <span class="math inline">\(x,y&gt;0\)</span> é uma função de densidade conjunta.</p>
@@ -249,35 +251,73 @@ window.Quarto = {
 </section>
 <section id="função-de-distribuição-conjunta" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="função-de-distribuição-conjunta"><span class="header-section-number">3.2</span> Função de distribuição conjunta</h2>
+<div class="alert alert-success">
+<p><strong>Nota importante</strong> Recorde que <span class="math display">\[I_{A\cap B}(\textbf{x})=I_{A}(\textbf{x})I_{B}(\textbf{x}).\]</span> Em particular, sejam <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> os intervalos <span class="math inline">\((a_1,a_2)\)</span> e <span class="math inline">\((b_1,b_2)\)</span>. Então</p>
+<p><span class="math display">\[I_{A\cap B}(x)=I_{(a_1,a_2)}(x)I_{(b_1,b_2)}(x)=I_{(\max\{a_1,b_1\},\min\{a_2,b_2\})}(x).\]</span></p>
+</div>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 3.3</strong></span> <strong>Simplificação de Indicadoras</strong> Simplifique o produto das seguintes funções indicadoras em uma única função indicadora:<span class="math display">\[g(x) = I_{(2, 10)}(x)I_{(5, 15)}(x)I_{(-\infty, 8)}(x)\]</span></p>
+<p><strong>Solução:</strong></p>
+<p>Aplicamos a propriedade da interseção passo a passo, utilizando <span class="math inline">\(I_{A \cap B}(x) = I_{(\max\{a_1,b_1\}, \min\{a_2,b_2\})}(x)\)</span>.</p>
+<ul>
+<li>Primeiro par: <span class="math inline">\(I_{(2, 10)}(x)I_{(5, 15)}(x)\)</span></li>
+<li>Limite inferior: <span class="math inline">\(\max\{2, 5\} = 5\)</span></li>
+<li>Limite superior: <span class="math inline">\(\min\{10, 15\} = 10\)</span></li>
+<li>Indicadora resultante: <span class="math inline">\(I_{(5,10)}(x)\)</span></li>
+</ul>
+<p>Multiplicando pelo terceiro termo: <span class="math inline">\(I_{(5, 10)}(x)I_{(-\infty, 8)}(x)\)</span></p>
+<p><em>Limite inferior: <span class="math inline">\(\max\{5, -\infty\} = 5\)</span> </em>Limite superior: <span class="math inline">\(\min\{10, 8\} = 8\)</span> *Resultado final: <span class="math inline">\(I_{(5, 8)}(x)\)</span></p>
+</div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.3</strong></span> Seja a função <span class="math inline">\(h(x)\)</span> definida pelo produto de três restrições de intervalos:<span class="math display">\[h(x) = I_{(-3, 4)}(x)I_{(0, 7)}(x) \cdot I_{(x, \infty)}(2)\]</span>Dica: Note que <span class="math inline">\(I_{(x, \infty)}(2)\)</span> é o mesmo que dizer que <span class="math inline">\(x &lt; 2\)</span>.</p>
+<ol type="a">
+<li><p>Reescreva <span class="math inline">\(h(x)\)</span> como uma única função indicadora.</p></li>
+<li><p>Determine o valor da integral <span class="math inline">\(\int_{-\infty}^{\infty} h(x) dx\)</span>.</p></li>
+</ol>
+</div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.4</strong></span> Simplifique a expressão abaixo e determine o valor da função para qualquer <span class="math inline">\(x \in \mathbb{R}\)</span>:<span class="math display">\[g(x) = I_{(0, 5)}(x)I_{(10, 20)}(x)\]</span></p>
+</div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.5</strong></span> Expresse o produto das indicadoras abaixo como uma única indicadora de <span class="math inline">\(x\)</span>, mantendo <span class="math inline">\(y\)</span> como um parâmetro fixo:<span class="math display">\[k(x) = I_{(0, \infty)}(x) I_{(-\infty, y)}(x)\]</span></p>
+<ol type="a">
+<li><p>Determine a indicadora resultante.</p></li>
+<li><p>Para quais valores de <span class="math inline">\(y\)</span> a função <span class="math inline">\(k(x)\)</span> é identicamente nula (igual a zero para todo <span class="math inline">\(x\)</span>)?</p></li>
+</ol>
+</div>
 <p>Como vimos no capítulo anterior, <span class="math display">\[F(\textbf{x})=P(\textbf{x}\leq \textbf{x})=P(X_1\leq x_1,\ldots,X_n\leq x_n),\]</span> é denominada função de distribuição conjunta (ou ainda função de distribuição multivariada).</p>
 <div id="prp-" class="theorem proposition">
 <p><span class="theorem-title"><strong>Proposition 3.2</strong></span> A função de distribuição de um vetor de variáveis aleatórias contínuas é dada por <span class="math display">\[F(\textbf{x})=\int_{-\infty}^{x_1}\cdots\int_{-\infty}^{x_n}f(y_1,\ldots,y_n)d\textbf{y}.\]</span></p>
 </div>
-<p>::: {.alert -alert-success} <strong>Nota importante</strong> Recorde que <span class="math display">\[I_{A\cap B}(\textbf{x})=I_{A}(\textbf{x})I_{B}(\textbf{x}).\]</span> Em particular, sejam <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> os intervalos <span class="math inline">\((a_1,a_2)\)</span> e <span class="math inline">\((b_1,b_2)\)</span>. Então</p>
-<p><span class="math display">\[I_{A\cap B}(x)=I_{(a_1,a_2)}(x)I_{(b_1,b_2)}(x)=I_{(\max\{a_1,b_1\},\min\{a_2,b_2\})}(x).\]</span> :::</p>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 3.3</strong></span> Encontre a função distribuição do vetor <span class="math inline">\((X,Y)\)</span> cuja função de densidade conjunta é</p>
+<p><span class="theorem-title"><strong>Example 3.4</strong></span> Encontre a função distribuição do vetor <span class="math inline">\((X,Y)\)</span> cuja função de densidade conjunta é</p>
 <p><span class="math display">\[f(x,y)=2xI_{(0,1)}(x)I_{(0,1)}(y).\]</span> <strong>Solução.</strong></p>
 <p><span class="math display">\[\begin{align}F(u,v)&amp;=\int_{-\infty}^u\int_{-\infty}^v f(x,y)dydx=\int_{-\infty}^u\int_{-\infty}^v 2xI_{(0,1)}(x)I_{(0,1)}(y)dydx\end{align}\]</span> Considerando que <span class="math inline">\(u,v\in(0,1)\)</span>, teremos</p>
-<p><span class="math display">\[\begin{align}I_{(-\infty,u)}(x)I_{(0,1)}(x)I_{(-\infty,v)}(y)I_{(0,1)}(y)&amp;=I_{(0,u)}(x)I_{(0,v)}(y),\end{align}\]</span> logo</p>
-<p><span class="math display">\[\begin{align}F(u,v)&amp;=\int_{0}^u\int_{0}^v 2xI_{(0,1)}(x)I_{(0,1)}(y)dydx\end{align}\]</span> A integral em <span class="math inline">\(y\)</span> é <span class="math display">\[\int_0^{v}2xdy=2x\left.y\right|_{0}^{v}=v\]</span> logo, <span class="math display">\[F(u,v)=2v\int_0^{u}xdx=2v\left.\frac{x^2}{2}\right|_0^u=vu^2\]</span> para <span class="math inline">\(u,v\in(0,1)\)</span>.</p>
+<p><span class="math display">\[\begin{align}F(u,v)&amp;=\int_{0}^u\int_{0}^v 2xI_{(0,1)}(x)I_{(0,1)}(y)dydx.\end{align}\]</span> A integral em <span class="math inline">\(y\)</span> é <span class="math display">\[\int_0^{v}2xdy=2x\left.y\right|_{0}^{v}=v\]</span> logo, <span class="math display">\[F(u,v)=2v\int_0^{u}xdx=2v\left.\frac{x^2}{2}\right|_0^u=vu^2\]</span> para <span class="math inline">\(u,v\in(0,1)\)</span>.</p>
 </div>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 3.3</strong></span> Encontre a função de distribuição conjunta a partir da densidade conjunta abaixo:</p>
+<p><span class="theorem-title"><strong>Exercise 3.6</strong></span> Encontre a função de distribuição conjunta a partir da densidade conjunta abaixo:</p>
 <p><span class="math display">\[f(x,y)=\frac{3}{80}(x^2+xy)\]</span>, com <span class="math inline">\(0&lt;x&lt;2\)</span> e <span class="math inline">\(0&lt;y&lt;4\)</span>.</p>
 </div>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 3.4</strong></span> Considere o vetor aleatório com função densidade conjunta dada por <span class="math display">\[f(x,y)=e^{-y}I_{(0,\infty)}(x)I_{(x,\infty)}(y).\]</span> Encontre a função de distribuição conjunta.</p>
-<p><span class="math display">\[\begin{align}F(u,v)&amp;=\int_{-\infty}^u\int_{-\infty}^v f(x,y)dydx=\int_{-\infty}^u\int_{-\infty}^v e^{-y}I_{(0,\infty)}(x)I_{(x,\infty)}(y)dydx\end{align}\]</span> Note que <span class="math display">\[\begin{align}I_{(-\infty,u)}(x)I_{(0,\infty)}(x)I_{(-\infty,v)}(y)I_{(x,\infty)}(y)&amp;=I_{(0,u)}(x)I_{(x,v)}(y),\end{align}\]</span> logo <span class="math display">\[\begin{align}F(u,v)&amp;=\int_{0}^u\int_{x}^v e^{-y}dydx\end{align}\]</span> A integral em <span class="math inline">\(y\)</span> é <span class="math display">\[\int_x^{v}e^{-y}dy=\left.-e^{-y}\right|_{x}^{v}=e^{-x}-e^{-v}\]</span> logo, para <span class="math inline">\(u&lt;v\)</span>, <span class="math display">\[F(u,v)=\int_0^{u}e^{-x}-e^{-v}dx=\left[\left.-e^{-x}\right|_0^u\right]-ue^{-v}=1-e^{-u}-ue^{-v}.\]</span></p>
+<p><span class="theorem-title"><strong>Example 3.5</strong></span> Considere o vetor aleatório com função densidade conjunta dada por <span class="math display">\[f(x,y)=e^{-y}I_{(0,\infty)}(x)I_{(x,\infty)}(y).\]</span> Encontre a função de distribuição conjunta.</p>
+<p><span class="math display">\[\begin{align}F(u,v)&amp;=\int_{-\infty}^u\int_{-\infty}^v f(x,y)dydx=\int_{-\infty}^u\int_{-\infty}^v e^{-y}I_{(0,\infty)}(x)I_{(x,\infty)}(y)dydx\\&amp;=\int_{-\infty}^uI_{(0,\infty)}(x)\left[\int_{-\infty}^v e^{-y}I_{(x,\infty)}(y)dy\right]dx\end{align}\]</span> Observe que podemos fazer <span class="math display">\[\int_{-\infty}^v e^{-y}I_{(x,\infty)}dy=\int_\mathbb{R}e^{-y}I_{(x,\infty)}(y)I_{\mathbb{R}^+}(y)dy\]</span> Note que <span class="math inline">\(I_{(-\infty,v)}(y)I_{(x,\infty)}(y)=1\)</span> somente se <span class="math inline">\(x&lt;v\)</span>. Isso é o mesmo que escrever</p>
+<p><span class="math display">\[1=I_{(-\infty,v)}(y)I_{(x,\infty)}(y)I_{(-\infty,v)}(x)=I_{(x,v)}(y)I_{(-\infty,v)}(x).\]</span> Então,</p>
+<p><span class="math display">\[\begin{align}\int_{-\infty}^v e^{-y}I_{(x,\infty)}dy&amp;=I_{(-\infty),v}(x)\int_x^ve^{-y}dy=I_{(-\infty,v)}\left[\left.-e^{-y}\right|_{x}^v\right]\\&amp;=\left(e^{-x}-e^{-v}\right)I_{(-\infty,v)}(x)\end{align}\]</span></p>
+<p>Então <span class="math display">\[\begin{align}F(u,v)&amp;=\int_{-\infty}^{u}I_{(0,\infty)}(x)I_{(-\infty,v)}(x)\left(e^{-x}-e^{-v}\right)dx\\&amp;=\int_{-\infty}^{u}I_{(0,v)}(x)\left(e^{-x}-e^{-v}\right)dx\\&amp;=\int_0^{\min\{u,v\}}(e^{-x}-e^{-v})dx\\&amp;=\int_0^{\min\{u,v\}}e^{-x}dx-\int_0^{\min\{u,v\}}e^{-v}dx\\&amp;=\left[\left.-e^{-x}\right|_0^{\min\{u,v\}}\right]- \min\{u,v\}e^{-v}\\&amp;=1-e^{-\min\{u,v\}}-\min\{u,v\}e^{-v}\end{align}\]</span> para <span class="math inline">\(u,v&gt;0\)</span>.</p>
 </div>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 3.4</strong></span> Seja a função densidade conjunta:<span class="math display">\[f(x, y) =\frac{3}{2}I_{(-1,1)}(x)I_{(x^2,1)}(y).\]</span> Encontre a função de distribuição.</p>
+<p><span class="theorem-title"><strong>Exercise 3.7</strong></span> Considere o vetor aleatório <span class="math inline">\((X, Y)\)</span> com função densidade conjunta dada por:<span class="math display">\[f(x, y) = 2e^{-(x+y)} I_{(0, y)}(x) I_{(0, \infty)}(y)\]</span></p>
+<p>Encontre a função de distribuição conjunta.</p>
+</div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.8</strong></span> Seja a função densidade conjunta:<span class="math display">\[f(x, y) =\frac{3}{2}I_{(-1,1)}(x)I_{(x^2,1)}(y).\]</span> Encontre a função de distribuição.</p>
 </div>
 <p>::: ::: {#prp-} Se <span class="math inline">\(\textbf{X}\)</span> é um vetor aleatório comprimento <span class="math inline">\(n\)</span>, então</p>
 <p><span class="math display">\[f(\textbf{x})=\frac{\partial}{\partial x_1}\cdots \frac{\partial}{\partial x_n} F(\textbf{x}).\]</span></p>
 <p>:::</p>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 3.5</strong></span> Seja</p>
+<p><span class="theorem-title"><strong>Exercise 3.9</strong></span> Seja</p>
 <p><span class="math display">\[F(x,y)=1−e^{−x}−e^{−y}+e^{-(x+y)},\]</span> com <span class="math inline">\((x,y)\in\mathbb{R}^2_+\)</span>. Encontre a densidade conjunta correspondente.</p>
 </div>
 </section>
@@ -289,18 +329,18 @@ window.Quarto = {
 <p><span class="theorem-title"><strong>Proposition 3.3</strong></span> Seja <span class="math inline">\(\textbf{X}=(\textbf{X}_a,\textbf{X}_b)\)</span> um vetor de variáveis aleatórias contínuas. A função de densidade marginal do subvetor <span class="math inline">\(\textbf{X}_a\)</span> é dada por <span class="math display">\[f_{\textbf{X}_a}(\textbf{x}_a)=\int f(\textbf{x})d\textbf{x}_{b}.\]</span></p>
 </div>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 3.5</strong></span> Seja <span class="math inline">\((X,Y)\)</span> um par de variáveis aleatórias com densidade conjunta dada por <span class="math display">\[f(x,y)=8xyI_{(0,y)}(x)I_{(0,1)}(y),\]</span> Determine as densidades marginais de <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>.</p>
+<p><span class="theorem-title"><strong>Example 3.6</strong></span> Seja <span class="math inline">\((X,Y)\)</span> um par de variáveis aleatórias com densidade conjunta dada por <span class="math display">\[f(x,y)=8xyI_{(0,y)}(x)I_{(0,1)}(y),\]</span> Determine as densidades marginais de <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>.</p>
 <p><strong>Solução</strong> A densidade marginal de <span class="math inline">\(Y\)</span> é</p>
 <p><span class="math display">\[\begin{align}f_Y(y)&amp;=\int_{\mathbb{R}}f(x,y)dx=8yI_{(0,1)}(y)\int_\mathbb{R} I_{(0,y)}(x)xdx\\&amp;=8yI_{(0,1)}(y)\int_0^y xdx=8yI_{(0,1)}(y)\left.\frac{x^2}{2}\right|_0^y=4y^3I_{(0,1)}(y).\end{align}\]</span></p>
 <p>Para determinar a marginal de <span class="math inline">\(X\)</span>, observe que</p>
-<p><span class="math display">\[I_{(0,y)}(x)I_{(0,1)}(y)=1\Rightarrow 0&lt;x&lt;y\hbox{ e } 0&lt;y&lt;1\]</span> note que o primeiro intervalo possui informações tanto sobre <span class="math inline">\(x\)</span> quanto sobre <span class="math inline">\(y\)</span>. Olhando apenas como função de <span class="math inline">\(y\)</span>, podemos escrever a seguinte indicadora para o primeira intervalo: <span class="math inline">\(I_{(x,\infty)}(y)\)</span>. Deste modo,</p>
-<p><span class="math display">\[I_{(0,y)}(x)I_{(0,1)}(y)=I_{(x,\infty)}(y)I_{(0,1)}(y)=I_{(x,1)}(y)I_{(0,1)}(x),\]</span> logo <span class="math display">\[f_X(x)=\int_x^1 f(x,y)dx=8xI_{(0,1)}(x)\left.\frac{y^2}{2}\right|_{x}^1=4x(1-x^2)I_{(0,1)}(x).\]</span></p>
+<p><span class="math display">\[I_{(0,y)}(x)I_{(0,1)}(y)=1\Rightarrow 0&lt;x&lt;y\hbox{ e } 0&lt;y&lt;1\]</span> note que é possívei inferir que: <span class="math inline">\(0&lt;x&lt;1\)</span> e <span class="math inline">\(x&lt;y&lt;1\)</span>. Portanto,</p>
+<p><span class="math display">\[I_{(0,y)}(x)I_{(0,1)}(y)=I_{(x,1)}(y)I_{(0,1)}(x),\]</span> logo <span class="math display">\[f_X(x)=\int_x^1 f(x,y)dx=8xI_{(0,1)}(x)\left.\frac{y^2}{2}\right|_{x}^1=4x(1-x^2)I_{(0,1)}(x).\]</span></p>
 </div>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 3.6</strong></span> Seja a função densidade conjunta:<span class="math display">\[f(x, y) =\frac{3}{2}I_{(-1,1)}(x)I_{(x^2,1)}(y).\]</span> Encontre as densidades marginais de <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>.</p>
+<p><span class="theorem-title"><strong>Exercise 3.10</strong></span> Seja a função densidade conjunta:<span class="math display">\[f(x, y) =\frac{3}{2}I_{(-1,1)}(x)I_{(x^2,1)}(y).\]</span> Encontre as densidades marginais de <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>.</p>
 </div>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 3.7</strong></span> Considere a seguinte função de densidade conjunta, <span class="math display">\[f(x,y)=xy^2e^{−y(x+1)}.\]</span> onde <span class="math inline">\(x,y&gt;0\)</span>. Encontre a função densidade marginal de <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>.</p>
+<p><span class="theorem-title"><strong>Exercise 3.11</strong></span> Considere a seguinte função de densidade conjunta, <span class="math display">\[f(x,y)=xy^2e^{−y(x+1)}.\]</span> onde <span class="math inline">\(x,y&gt;0\)</span>. Encontre a função densidade marginal de <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>.</p>
 </div>
 </section>
 <section id="distribuição-condicional" class="level2" data-number="3.4">
@@ -314,15 +354,15 @@ window.Quarto = {
 <p><span class="math display">\[\lim_{\varepsilon\rightarrow 0}P(\textbf{X}\leq \textbf{x}|\textbf{Y}\in B(\varepsilon) )=P(\textbf{X}\leq \textbf{x}|\textbf{Y}= \textbf{y})=F(\textbf{x}|\textbf{y})=\int_{\textbf{v}\leq \textbf{x}}\frac{f_{\textbf{X},\textbf{Y}}(\textbf{v},{\textbf{y}})}{f_{\textbf{Y}}({\textbf{y}})}d\textbf{v}.\]</span> o que implica em</p>
 <p><span class="math display">\[f(\textbf{x}|\textbf{y})=\frac{f_{\textbf{X},\textbf{Y}}(\textbf{x},\textbf{y})}{f_{\textbf{Y}}(\textbf{y})}.\]</span></p>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 3.6</strong></span> Seja <span class="math display">\[f(x,y)=21x^2y^3,\]</span> se <span class="math inline">\(0&lt;x&lt;y&lt;1\)</span>. Encontre a densidade condicional de <span class="math inline">\(Y|X=x\)</span>.</p>
+<p><span class="theorem-title"><strong>Example 3.7</strong></span> Seja <span class="math display">\[f(x,y)=21x^2y^3,\]</span> se <span class="math inline">\(0&lt;x&lt;y&lt;1\)</span>. Encontre a densidade condicional de <span class="math inline">\(Y|X=x\)</span>.</p>
 <p><strong>Solução.</strong></p>
 <p>Primeiro, vamos encontrar a densidade marginal de <span class="math inline">\(X\)</span>:</p>
-<p><span class="math display">\[f(x)=21x^2\int_x^1 y^3dy=\frac{21}{4}x^2(1-x^4),\]</span></p>
+<p><span class="math display">\[\begin{align}f_X(x)&amp;=21x^2I_{(0,1)}(x)\int_\mathbb{R} y^3I_{(x,1)}(y)dy=21x^2I_{(0,1)}(x)\int_x^1 y^3dy\\&amp;=21\left[\left.\frac{y^4}{4}\right|_{x}^1\right]I_{(0,1)}(x)\\&amp;=\frac{21}{4}x^2(1-x^4)I_{(0,1)}(x),\end{align}\]</span></p>
 <p>para <span class="math inline">\(x\in(0,1)\)</span>. Portanto,</p>
-<p><span class="math display">\[f(y|x)=\frac{f(x,y)}{f(x)}=\frac{21x^2y^3}{\frac{21}{4}x^2(1-x^4)}=\frac{4y^3}{(1-x^4)},\]</span> com <span class="math inline">\(0&lt;x&lt;y&lt;1\)</span>.</p>
+<p><span class="math display">\[f(y|x)=\frac{f(x,y)}{f_X(x)}=\frac{21x^2y^3}{\frac{21}{4}x^2(1-x^4)}=\frac{4y^3}{(1-x^4)}I_{(x,1)}(y),\]</span></p>
 </div>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 3.8</strong></span> Suponha que</p>
+<p><span class="theorem-title"><strong>Exercise 3.12</strong></span> Suponha que</p>
 <p><span class="math display">\[f(x,y)=\frac{1}{2\pi}\exp\left\{−\frac{1}{2}(x^2+2y^2−2xy)\right\},\]</span> com <span class="math inline">\((x,y)\in\mathbb{R}^2\)</span>. Encontre a densidade de <span class="math inline">\(X|Y=y\)</span>.</p>
 </div>
 </section>
@@ -336,7 +376,7 @@ window.Quarto = {
 <p><span class="math display">\[\{x:g(x)\leq y\}\equiv\{u\leq y\},\]</span> o que implica em</p>
 <p><span class="math display">\[F_Y(y)=\int_{-\infty}^y f_X(g^{−1}(u))\left|\frac{d}{du}g^{−1}(u)\right|du\]</span> logo, <span class="math display">\[f_Y(y)=f_X(g^{−1}(y))\left|\frac{d}{dy}g^{−1}(y)\right|.\]</span> O termo dentro do módulo é denominado <strong>Jacobiano da transformação</strong> e a obtenção da densidade por esse método é denominada <strong>método do Jacobiano</strong>.</p>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 3.7</strong></span> Suponha que <span class="math inline">\(X\sim\hbox{Normal}(0,1)\)</span>. Considere a transformação <span class="math inline">\(Y=e^{X}\)</span>. Como <span class="math inline">\(g^{-1}(y)=\log(y)\)</span>, teremos que</p>
+<p><span class="theorem-title"><strong>Example 3.8</strong></span> Suponha que <span class="math inline">\(X\sim\hbox{Normal}(0,1)\)</span>. Considere a transformação <span class="math inline">\(Y=e^{X}\)</span>. Como <span class="math inline">\(g^{-1}(y)=\log(y)\)</span>, teremos que</p>
 <p><span class="math display">\[f_Y(y)=f_X(\log y )\left|\frac{d}{dy}\log y\right|=\frac{1}{y\sqrt{2\pi}}e^{-\frac{1}{2}\log y^2}.\]</span> Essa distribuição é denominada Lognormal(0,1).</p>
 </div>
 <p>Assim como no caso discreto, a extensão para vetores também é natural. Seja <span class="math inline">\(\textbf{X}\)</span> um vetor aleatório de comprimento <span class="math inline">\(n\)</span> e considere a nova variável <span class="math inline">\(\textbf{Y}=g(X)\)</span>, onde <span class="math inline">\(g:\mathbb{R}^n\rightarrow \mathbb{R}^m\)</span> é uma função real. Então</p>
@@ -348,7 +388,7 @@ window.Quarto = {
 <p><span class="math display">\[F_{\textbf{Y}}(\textbf{y})=\int_{-\infty}^{y_1}\cdots \int_{-\infty}^{y_n}f_\textbf{X}(g^{-1}(\textbf{u}))|\mathcal{J}g^{-1}(\textbf{u})|d\textbf{u}.\]</span></p>
 <p>Portanto, concluímos que <span class="math display">\[f_\textbf{Y}(\textbf{y})=f_\textbf{X}(g^{−1}(\textbf{y}))|\mathcal{J}g^{-1}(\textbf{y})|.\]</span></p>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 3.8</strong></span> Sejam <span class="math inline">\(X_1\)</span> e <span class="math inline">\(X_2\)</span> variáveis aleatórias independentes com distribuição Normal(0,1). Vamos encontrar a função densidade conjunta de <span class="math inline">\(\textbf{Y}=(X_1+X_2,Y2=X_1−X_2)\)</span>.</p>
+<p><span class="theorem-title"><strong>Example 3.9</strong></span> Sejam <span class="math inline">\(X_1\)</span> e <span class="math inline">\(X_2\)</span> variáveis aleatórias independentes com distribuição Normal(0,1). Vamos encontrar a função densidade conjunta de <span class="math inline">\(\textbf{Y}=(X_1+X_2,Y2=X_1−X_2)\)</span>.</p>
 <p>Primeiro, temos que encontrar a função inversa:</p>
 <p><span class="math display">\[\begin{array}{c}
 Y_1=X_1+X_2\\
@@ -360,14 +400,14 @@ Y_2=X_1-X_2\\
 <p><span class="math display">\[\begin{align}f_\textbf{Y}(\textbf{y})&amp;=f_{X_1}(0,5(y_1+y_2)f_{X_2}(0,5(y_1−y2_2)\frac{1}{2}=\frac{1}{4\pi}e^{-\frac{1}{8}[(y_1-y_2)^2+(y_1+y_2)^2]}\\&amp;=\frac{1}{4\pi}e^{-\frac{1}{4}(y_1^2+y_2^2)}\end{align}\]</span> Podemos notar que a densidade conjunta fatora em duas normais, ou seja <span class="math inline">\(Y_1\)</span> e <span class="math inline">\(Y2_\)</span> são independentes com marginais Normal(0,2).</p>
 </div>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 3.9</strong></span> Sejam <span class="math inline">\(X_1\)</span> e <span class="math inline">\(X_2\)</span> variáveis aleatórias independentes com distribuição Normal(0,1).</p>
+<p><span class="theorem-title"><strong>Exercise 3.13</strong></span> Sejam <span class="math inline">\(X_1\)</span> e <span class="math inline">\(X_2\)</span> variáveis aleatórias independentes com distribuição Normal(0,1).</p>
 <ol type="a">
 <li><p>Encontre a função densidade conjunta de <span class="math inline">\(Y_1=aX_1+X_2\)</span> e <span class="math inline">\(Y_2=X_1−X_2\)</span>, onde <span class="math inline">\(a\)</span> é uma constante.</p></li>
 <li><p>Quais são os valores de <span class="math inline">\(a\)</span> tais que <span class="math inline">\(Y_1\)</span> é independente de <span class="math inline">\(Y_2\)</span>?</p></li>
 </ol>
 </div>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 3.9</strong></span> Sejam <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> variáveis aleatórias independentes com distribuição Exponencial(1). Vamos determinar a distribuição conjunta de <span class="math inline">\(U=X+Y\)</span> e <span class="math inline">\(V=Y/X\)</span> .</p>
+<p><span class="theorem-title"><strong>Example 3.10</strong></span> Sejam <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> variáveis aleatórias independentes com distribuição Exponencial(1). Vamos determinar a distribuição conjunta de <span class="math inline">\(U=X+Y\)</span> e <span class="math inline">\(V=Y/X\)</span> .</p>
 <p>Antes de prosseguirmos, é importante relembrar alguns resultados sobre funções indicadoras.</p>
 <p>Seja I(x∈A) a função indicadora, onde I(x∈A)={1,0, se x∈A em caso contrário. Em particular, se x∈(a,b) , podemos escrever I(a&lt;x&lt;b) . Então, é verdade que</p>
 <p>I(a1&lt;x&lt;b1)I(a2&lt;x&lt;b2)=I(max{a1,a2}&lt;x&lt;min{b1,b2}).</p>
