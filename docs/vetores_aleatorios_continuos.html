@@ -333,7 +333,7 @@ window.Quarto = {
 <p><strong>Solução</strong> A densidade marginal de <span class="math inline">\(Y\)</span> é</p>
 <p><span class="math display">\[\begin{align}f_Y(y)&amp;=\int_{\mathbb{R}}f(x,y)dx=8yI_{(0,1)}(y)\int_\mathbb{R} I_{(0,y)}(x)xdx\\&amp;=8yI_{(0,1)}(y)\int_0^y xdx=8yI_{(0,1)}(y)\left.\frac{x^2}{2}\right|_0^y=4y^3I_{(0,1)}(y).\end{align}\]</span></p>
 <p>Para determinar a marginal de <span class="math inline">\(X\)</span>, observe que</p>
-<p><span class="math display">\[I_{(0,y)}(x)I_{(0,1)}(y)=1\Rightarrow 0&lt;x&lt;y\hbox{ e } 0&lt;y&lt;1\]</span> note que é possívei inferir que: <span class="math inline">\(0&lt;x&lt;1\)</span> e <span class="math inline">\(x&lt;y&lt;1\)</span>. Portanto,</p>
+<p><span class="math display">\[I_{(0,y)}(x)I_{(0,1)}(y)=1\Rightarrow 0&lt;x&lt;y\hbox{ e } 0&lt;y&lt;1\]</span> note que é possível inferir que: <span class="math inline">\(0&lt;x&lt;1\)</span> e <span class="math inline">\(x&lt;y&lt;1\)</span>. Portanto,</p>
 <p><span class="math display">\[I_{(0,y)}(x)I_{(0,1)}(y)=I_{(x,1)}(y)I_{(0,1)}(x),\]</span> logo <span class="math display">\[f_X(x)=\int_x^1 f(x,y)dx=8xI_{(0,1)}(x)\left.\frac{y^2}{2}\right|_{x}^1=4x(1-x^2)I_{(0,1)}(x).\]</span></p>
 </div>
 <div id="exr-" class="theorem exercise">
@@ -377,16 +377,16 @@ window.Quarto = {
 <p><span class="math display">\[F_Y(y)=\int_{-\infty}^y f_X(g^{−1}(u))\left|\frac{d}{du}g^{−1}(u)\right|du\]</span> logo, <span class="math display">\[f_Y(y)=f_X(g^{−1}(y))\left|\frac{d}{dy}g^{−1}(y)\right|.\]</span> O termo dentro do módulo é denominado <strong>Jacobiano da transformação</strong> e a obtenção da densidade por esse método é denominada <strong>método do Jacobiano</strong>.</p>
 <div id="exm-" class="theorem example">
 <p><span class="theorem-title"><strong>Example 3.8</strong></span> Suponha que <span class="math inline">\(X\sim\hbox{Normal}(0,1)\)</span>. Considere a transformação <span class="math inline">\(Y=e^{X}\)</span>. Como <span class="math inline">\(g^{-1}(y)=\log(y)\)</span>, teremos que</p>
-<p><span class="math display">\[f_Y(y)=f_X(\log y )\left|\frac{d}{dy}\log y\right|=\frac{1}{y\sqrt{2\pi}}e^{-\frac{1}{2}\log y^2}.\]</span> Essa distribuição é denominada Lognormal(0,1).</p>
+<p><span class="math display">\[f_Y(y)=f_X(\log y )\left|\frac{d}{dy}\log y\right|=\frac{1}{y\sqrt{2\pi}}e^{-\frac{1}{2}(\log y)^2}.\]</span> Essa distribuição é denominada Lognormal(0,1).</p>
 </div>
 <p>Assim como no caso discreto, a extensão para vetores também é natural. Seja <span class="math inline">\(\textbf{X}\)</span> um vetor aleatório de comprimento <span class="math inline">\(n\)</span> e considere a nova variável <span class="math inline">\(\textbf{Y}=g(X)\)</span>, onde <span class="math inline">\(g:\mathbb{R}^n\rightarrow \mathbb{R}^m\)</span> é uma função real. Então</p>
 <p><span class="math display">\[P(\textbf{Y}\in A)=P(g(\textbf{X})\in A)=\int_{\{\textbf{x}:g(\textbf{x})\in A\}}f_\textbf{X}(\textbf{x})d\textbf{x}.\]</span></p>
 <p>Agora, suponha que <span class="math inline">\(g(.)\)</span> possui inversa (o que implica que <span class="math inline">\(g:\mathbb{R}^n\rightarrow \mathbb{R}^n\)</span>). Então, pelo método da integral por substituição, teremos que <span class="math inline">\(\textbf{u}=g^{-1}(\textbf{y})\)</span>, <span class="math inline">\(d\textbf{x}=|\mathcal{J}g^{-1}(\textbf{u})|d\textbf{u}\)</span> e <span class="math inline">\(\{\textbf{x}:g(\textbf{x})\in A\}=\{\textbf{u}\in A\}\)</span>, o que implica em</p>
-<p><span class="math display">\[P(\textbf{Y}\in A)=\int_{A}f_\textbf{X}(g^{-1}(\textbf{u})|\mathcal{J}g^{-1}(\textbf{u})|d\textbf{u}.\]</span></p>
-<p>onde <span class="math inline">\(\mathcal{J}g^{-1}(\textbf{u})\)</span> é denominada matriz Jacobiana, cujo o elemento <span class="math inline">\((i,j)\)</span> é dado por <span class="math display">\[\frac{\partial^2}{\partial u_i\partial u_j}g^{-1}(\textbf{u}).\]</span></p>
+<p><span class="math display">\[P(\textbf{Y}\in A)=\int_{A}f_\textbf{X}(g^{-1}(\textbf{u})|\det\mathcal{J}g^{-1}(\textbf{u})|d\textbf{u}.\]</span></p>
+<p>onde <span class="math inline">\(\mathcal{J}g^{-1}(\textbf{u})\)</span> é denominada matriz Jacobiana, cujo o elemento <span class="math inline">\((i,j)\)</span> é dado por <span class="math display">\[\mathcal{J}_{i,j}=\frac{\partial x_i}{\partial u_j}.\]</span></p>
 <p>Em particular, teremos que</p>
-<p><span class="math display">\[F_{\textbf{Y}}(\textbf{y})=\int_{-\infty}^{y_1}\cdots \int_{-\infty}^{y_n}f_\textbf{X}(g^{-1}(\textbf{u}))|\mathcal{J}g^{-1}(\textbf{u})|d\textbf{u}.\]</span></p>
-<p>Portanto, concluímos que <span class="math display">\[f_\textbf{Y}(\textbf{y})=f_\textbf{X}(g^{−1}(\textbf{y}))|\mathcal{J}g^{-1}(\textbf{y})|.\]</span></p>
+<p><span class="math display">\[F_{\textbf{Y}}(\textbf{y})=\int_{-\infty}^{y_1}\cdots \int_{-\infty}^{y_n}f_\textbf{X}(g^{-1}(\textbf{u}))|\det\mathcal{J}g^{-1}(\textbf{u})|d\textbf{u}.\]</span></p>
+<p>Portanto, concluímos que <span class="math display">\[f_\textbf{Y}(\textbf{y})=f_\textbf{X}(g^{−1}(\textbf{y}))|\det\mathcal{J}g^{-1}(\textbf{y})|.\]</span></p>
 <div id="exm-" class="theorem example">
 <p><span class="theorem-title"><strong>Example 3.9</strong></span> Sejam <span class="math inline">\(X_1\)</span> e <span class="math inline">\(X_2\)</span> variáveis aleatórias independentes com distribuição Normal(0,1). Vamos encontrar a função densidade conjunta de <span class="math inline">\(\textbf{Y}=(X_1+X_2,Y2=X_1−X_2)\)</span>.</p>
 <p>Primeiro, temos que encontrar a função inversa:</p>
@@ -397,7 +397,7 @@ Y_2=X_1-X_2\\
 <p>e o Jacobiano da transformação é dado por</p>
 <p><span class="math display">\[\mathcal{J}g^{-1}(\textbf{y})=\left[\begin{array}{cc} 0,5 &amp; 0,5 \\ 0,5 &amp; - 0,5 \end{array}\right],\]</span></p>
 <p>cujo determinante é igual a 1/2. Logo,</p>
-<p><span class="math display">\[\begin{align}f_\textbf{Y}(\textbf{y})&amp;=f_{X_1}(0,5(y_1+y_2)f_{X_2}(0,5(y_1−y2_2)\frac{1}{2}=\frac{1}{4\pi}e^{-\frac{1}{8}[(y_1-y_2)^2+(y_1+y_2)^2]}\\&amp;=\frac{1}{4\pi}e^{-\frac{1}{4}(y_1^2+y_2^2)}\end{align}\]</span> Podemos notar que a densidade conjunta fatora em duas normais, ou seja <span class="math inline">\(Y_1\)</span> e <span class="math inline">\(Y2_\)</span> são independentes com marginais Normal(0,2).</p>
+<p><span class="math display">\[\begin{align}f_\textbf{Y}(\textbf{y})&amp;=f_{X_1}(0,5(y_1+y_2)f_{X_2}(0,5(y_1−y_2)\frac{1}{2}\\&amp;=\frac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}[0,5(y_1+y_2)]^2}I_{\mathbb{R}}(0,5(y_1+y_2))\frac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}[0,5(y_1-y_2)]^2}I_{\mathbb{R}}(0,5(y_1-y_2))\frac{1}{2}\\&amp;=\frac{1}{4\pi}e^{-\frac{1}{8}[(y_1-y_2)^2+(y_1+y_2)^2]}I_{\mathbb{R}}(y_1)I_{\mathbb{R}}(y_2)\\&amp;=\frac{1}{4\pi}e^{-\frac{1}{4}(y_1^2+y_2^2)}I_{\mathbb{R}}(y_1)I_{\mathbb{R}}(y_2).\end{align}\]</span> Podemos notar que a densidade conjunta fatora em duas normais, ou seja <span class="math inline">\(Y_1\)</span> e <span class="math inline">\(Y_2\)</span> são independentes com marginais Normal(0,2).</p>
 </div>
 <div id="exr-" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 3.13</strong></span> Sejam <span class="math inline">\(X_1\)</span> e <span class="math inline">\(X_2\)</span> variáveis aleatórias independentes com distribuição Normal(0,1).</p>
@@ -407,12 +407,24 @@ Y_2=X_1-X_2\\
 </ol>
 </div>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 3.10</strong></span> Sejam <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> variáveis aleatórias independentes com distribuição Exponencial(1). Vamos determinar a distribuição conjunta de <span class="math inline">\(U=X+Y\)</span> e <span class="math inline">\(V=Y/X\)</span> .</p>
-<p>Antes de prosseguirmos, é importante relembrar alguns resultados sobre funções indicadoras.</p>
-<p>Seja I(x∈A) a função indicadora, onde I(x∈A)={1,0, se x∈A em caso contrário. Em particular, se x∈(a,b) , podemos escrever I(a&lt;x&lt;b) . Então, é verdade que</p>
-<p>I(a1&lt;x&lt;b1)I(a2&lt;x&lt;b2)=I(max{a1,a2}&lt;x&lt;min{b1,b2}).</p>
-<p>&lt;div class=“alert alert-success&gt; ∫RI(a&lt;x&lt;b)h(x)dx=∫bah(x)dx. Considere o agora que g:Rm→Rn , onde m&gt;n . Nesse caso, Y=g(X) ainda é um vetor aleatório, mas podemos aplicar o método discutido nesta seção porque g(.) não tem inversa. Neste caso, adicionamos um vetor W=h(X) de dimensão m−n tal que a função g∗(X)=(g(X),h(X)) tenha inversa. Então, obtemos a densidade conjunta de (Y,W) através do método discutido anteriormente, ou seja</p>
-<p>fY,W(y,w)=fX(g∗−1(y,w))|J(y,w)|. Em seguida, podemos encontrar a densidade conjunta de Y integrando a conjunta acima em W :</p>
+<p><span class="theorem-title"><strong>Example 3.10</strong></span> Sejam <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> variáveis aleatórias independentes com distribuição Exponencial(1). Vamos determinar a distribuição conjunta de <span class="math inline">\(U=X+Y\)</span> e <span class="math inline">\(V=Y/X\)</span>.</p>
+<p>Como <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> são independentes, sua densidade conjunta é <span class="math display">\[f(x,y)=f_X(x)f_Y(y)=e^{-x}e^{-y}I_{(0,\infty)}(x)I_{(0,\infty)}(y).\]</span></p>
+<p>Vamos escrever <span class="math inline">\((x,y)\)</span> como função de <span class="math inline">\((u,v)\)</span>. Primeiro, <span class="math display">\[u=x+y\Rightarrow x=u-y.\]</span> Substituindo <span class="math inline">\(x=u-y\)</span> em <span class="math inline">\(v=y/x\)</span>, teremos que</p>
+<p><span class="math display">\[y=vx=v(u-y)\Rightarrow y(1+v)=vu\Rightarrow y=\frac{uv}{1+v}\]</span> logo <span class="math display">\[\begin{cases}
+x=\frac{u}{1+v}\\
+y=\frac{uv}{1+v}
+\end{cases}\]</span> o que implica na matriz jacobiana</p>
+<p><span class="math display">\[\mathcal{J}=\left|\begin{array}{cc}\frac{\partial x}{\partial u} &amp; \frac{\partial x}{\partial v}\\ \frac{\partial y}{\partial u} &amp; \frac{\partial y}{\partial v} \end{array}\right|=\left|\begin{array}{cc}\frac{1}{1+v}&amp;-\frac{u}{(1+v)^2 } \\ \frac{v}{1+v} &amp; \frac{u}{(1+v)^2}\end{array}\right|\]</span></p>
+<p>cujo módulo do determinante é <span class="math display">\[|\det\mathcal{J}| = \left| \frac{u}{(1+v)^3} - \left( -\frac{uv}{(1+v)^3} \right) \right| = \left| \frac{u(1+v)}{(1+v)^3} \right| = \frac{u}{(1+v)^2}\]</span> Então,</p>
+<p><span class="math display">\[\begin{align}f_{U,V}(u,v)&amp;=f_X\left(\frac{u}{1+v}\right)f_Y\left(\frac{uv}{1+v}\right)|\det\mathcal{J}|\\&amp;=e^{-\left(\frac{u}{1+v}\right)}I_{(0,\infty)}\left(\frac{u}{1+v}\right)e^{-\left(\frac{uv}{1+v}\right)}I_{(0,\infty)}\left(\frac{uv}{1+v}\right)\frac{u}{(1+v)^2}\\&amp;=e^{-\left(\frac{u}{1+v}+\frac{uv}{1+v}\right)}I_{(0,\infty)}\left(\frac{u}{1+v}\right)I_{(0,\infty)}\left(\frac{uv}{1+v}\right)\frac{u}{(1+v)^2}\\&amp;=\frac{u}{(1+v)^2}e^{-u}I_{(0,\infty)}\left(\frac{u}{1+v}\right)I_{(0,\infty)}\left(\frac{uv}{1+v}\right)\end{align}\]</span> e, notando que as indicadoras são iguais a um quando <span class="math inline">\(u,v&gt;0\)</span>, teremos</p>
+<p><span class="math display">\[\begin{align}f_{U,V}(u,v)=\frac{u}{(1+v)^2}e^{-u}I_{(0,\infty)}\left(u\right)I_{(0,\infty)}\left(v\right)\end{align}\]</span></p>
+</div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.14</strong></span> Sejam <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> variáveis aleatórias independentes, ambas com distribuição Gama de parâmetros <span class="math inline">\(\alpha\)</span> e <span class="math inline">\(\beta\)</span>, especificamente <span class="math inline">\(X \sim \text{Gama}(a, 1)\)</span> e <span class="math inline">\(Y \sim \text{Gama}(b, 1)\)</span>. Considere as seguintes transformações:<span class="math display">\[U = X + Y \quad \text{e} \quad V = \frac{X}{X+Y}\]</span>Determine a densidade conjunta <span class="math inline">\(f_{U,V}(u, v)\)</span>.Verifique se <span class="math inline">\(U\)</span> e <span class="math inline">\(V\)</span> são independentes.Identifique as distribuições marginais de <span class="math inline">\(U\)</span> e <span class="math inline">\(V\)</span></p>
+<p><strong>Nota</strong> A função densidade da distribuição Gamma(<span class="math inline">\(a,b\)</span>) é <span class="math display">\[f(x)=\frac{b^a}{\Gamma(a)}x^{a-1}e^{-bx}I_{(0,\infty)}(x),\]</span> com <span class="math inline">\(a,b&gt;0\)</span>.</p>
+</div>
+<p>Considere o agora que <span class="math inline">\(g:\mathbb{R}^m\rightarrow\mathbb{R}^n\)</span>, onde <span class="math inline">\(m&gt;n\)</span>. Nesse caso, <span class="math inline">\(\textbf{Y}=g(\textbf{X})\)</span> ainda é um vetor aleatório, mas não podemos aplicar a integral por substitição <span class="math inline">\(g(.)\)</span> não tem inversa. Neste caso, adicionamos um vetor <span class="math inline">\(\textbf{W}=h(X)\)</span> de dimensão <span class="math inline">\(m−n\)</span> tal que a função <span class="math inline">\(g_*^(\textbf{X})=(g(\textbf{X}),h(\textbf{X}))\)</span> tenha inversa. Então, obtemos a densidade conjunta de <span class="math inline">\((\textbf{Y},\textbf{W})\)</span>$ através do método discutido anteriormente, ou seja</p>
+<p><span class="math display">\[f_{\textbf{Y},\textbf{W}}(\textbf{y},\textbf{w})=f_X(g_ *^{−1}(\textbf{y},\textbf{w}))|\det \mathcal{J}g_ *^{−1}|.\]</span> Em seguida, podemos encontrar a densidade conjunta de <span class="math inline">\(\textbf{Y}\)</span> integrando a conjunta acima em <span class="math inline">\(\textbf{W}\)</span>:</p>
 <p>fY(y)=∫fX(g∗−1(y,w))|J(y,w)|dw. Exemplo. Sejam X1 e X2 variáveis aleatórias independentes com distribuição Exponencial(1). Vamos encontrar a densidade de Y=X1+X2 .</p>
 <p>Note que não há inversa (ou seja, não é possível escrever X1 e X2 como função apenas de Y ). Vamos introduzir a variável auxilar W=X2 . Então,</p>
 <p>{Y=X1+X2W=X2⇒{X1=Y−WX2=W</p>
@@ -428,7 +440,6 @@ Y_2=X_1-X_2\\
 <p>se 0&lt;y&lt;2 e zero em caso contrário.</p>
 
 
-</div>
 </section>
 
 </main> <!-- /main -->

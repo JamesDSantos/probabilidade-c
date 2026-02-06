@@ -251,7 +251,7 @@ $$\begin{align}f_Y(y)&=\int_{\mathbb{R}}f(x,y)dx=8yI_{(0,1)}(y)\int_\mathbb{R} I
 Para determinar a marginal de $X$, observe que
 
 $$I_{(0,y)}(x)I_{(0,1)}(y)=1\Rightarrow 0<x<y\hbox{ e } 0<y<1$$
-note que é possívei inferir que: $0<x<1$ e $x<y<1$. Portanto,
+note que é possível inferir que: $0<x<1$ e $x<y<1$. Portanto,
 
 $$I_{(0,y)}(x)I_{(0,1)}(y)=I_{(x,1)}(y)I_{(0,1)}(x),$$
 logo
@@ -343,7 +343,7 @@ O termo dentro do módulo é denominado **Jacobiano da transformação** e a obt
 Suponha que $X\sim\hbox{Normal}(0,1)$. Considere a transformação $Y=e^{X}$. Como $g^{-1}(y)=\log(y)$, teremos que
 
 
-$$f_Y(y)=f_X(\log y )\left|\frac{d}{dy}\log y\right|=\frac{1}{y\sqrt{2\pi}}e^{-\frac{1}{2}\log y^2}.$$
+$$f_Y(y)=f_X(\log y )\left|\frac{d}{dy}\log y\right|=\frac{1}{y\sqrt{2\pi}}e^{-\frac{1}{2}(\log y)^2}.$$
 Essa distribuição é denominada Lognormal(0,1).
 :::
 
@@ -357,17 +357,17 @@ $$P(\textbf{Y}\in A)=P(g(\textbf{X})\in A)=\int_{\{\textbf{x}:g(\textbf{x})\in A
 
 Agora, suponha que $g(.)$ possui inversa (o que implica que $g:\mathbb{R}^n\rightarrow \mathbb{R}^n$). Então, pelo método da integral por substituição, teremos que $\textbf{u}=g^{-1}(\textbf{y})$, $d\textbf{x}=|\mathcal{J}g^{-1}(\textbf{u})|d\textbf{u}$ e $\{\textbf{x}:g(\textbf{x})\in A\}=\{\textbf{u}\in A\}$, o que implica em
 
-$$P(\textbf{Y}\in A)=\int_{A}f_\textbf{X}(g^{-1}(\textbf{u})|\mathcal{J}g^{-1}(\textbf{u})|d\textbf{u}.$$
+$$P(\textbf{Y}\in A)=\int_{A}f_\textbf{X}(g^{-1}(\textbf{u})|\det\mathcal{J}g^{-1}(\textbf{u})|d\textbf{u}.$$
 
 onde $\mathcal{J}g^{-1}(\textbf{u})$ é denominada matriz Jacobiana, cujo o elemento $(i,j)$ é dado por
-$$\frac{\partial^2}{\partial u_i\partial u_j}g^{-1}(\textbf{u}).$$
+$$\mathcal{J}_{i,j}=\frac{\partial x_i}{\partial u_j}.$$
 
 Em particular, teremos que
 
-$$F_{\textbf{Y}}(\textbf{y})=\int_{-\infty}^{y_1}\cdots \int_{-\infty}^{y_n}f_\textbf{X}(g^{-1}(\textbf{u}))|\mathcal{J}g^{-1}(\textbf{u})|d\textbf{u}.$$
+$$F_{\textbf{Y}}(\textbf{y})=\int_{-\infty}^{y_1}\cdots \int_{-\infty}^{y_n}f_\textbf{X}(g^{-1}(\textbf{u}))|\det\mathcal{J}g^{-1}(\textbf{u})|d\textbf{u}.$$
 
 Portanto, concluímos que
-$$f_\textbf{Y}(\textbf{y})=f_\textbf{X}(g^{−1}(\textbf{y}))|\mathcal{J}g^{-1}(\textbf{y})|.$$
+$$f_\textbf{Y}(\textbf{y})=f_\textbf{X}(g^{−1}(\textbf{y}))|\det\mathcal{J}g^{-1}(\textbf{y})|.$$
 
 ::: {#exm-}
 Sejam $X_1$ e $X_2$ variáveis aleatórias independentes com distribuição Normal(0,1). Vamos encontrar a função densidade conjunta de $\textbf{Y}=(X_1+X_2,Y2=X_1−X_2)$.
@@ -386,9 +386,9 @@ $$\mathcal{J}g^{-1}(\textbf{y})=\left[\begin{array}{cc} 0,5 & 0,5 \\ 0,5 & - 0,5
 
 cujo determinante é igual a 1/2. Logo,
 
-$$\begin{align}f_\textbf{Y}(\textbf{y})&=f_{X_1}(0,5(y_1+y_2)f_{X_2}(0,5(y_1−y_2)\frac{1}{2}=\frac{1}{4\pi}e^{-\frac{1}{8}[(y_1-y_2)^2+(y_1+y_2)^2]}\\&=\frac{1}{4\pi}e^{-\frac{1}{4}(y_1^2+y_2^2)}\end{align}$$
+$$\begin{align}f_\textbf{Y}(\textbf{y})&=f_{X_1}(0,5(y_1+y_2)f_{X_2}(0,5(y_1−y_2)\frac{1}{2}\\&=\frac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}[0,5(y_1+y_2)]^2}I_{\mathbb{R}}(0,5(y_1+y_2))\frac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}[0,5(y_1-y_2)]^2}I_{\mathbb{R}}(0,5(y_1-y_2))\frac{1}{2}\\&=\frac{1}{4\pi}e^{-\frac{1}{8}[(y_1-y_2)^2+(y_1+y_2)^2]}I_{\mathbb{R}}(y_1)I_{\mathbb{R}}(y_2)\\&=\frac{1}{4\pi}e^{-\frac{1}{4}(y_1^2+y_2^2)}I_{\mathbb{R}}(y_1)I_{\mathbb{R}}(y_2).\end{align}$$
 Podemos notar que a densidade conjunta fatora em duas normais, ou seja $Y_1$
- e $Y2_$ são independentes com marginais Normal(0,2).
+ e $Y_2$ são independentes com marginais Normal(0,2).
 :::
 
 
@@ -407,39 +407,52 @@ b) Quais são os valores de $a$
 
 
 ::: {#exm-}
-Sejam $X$
- e $Y$
+Sejam $X$ e $Y$
  variáveis aleatórias independentes com distribuição Exponencial(1). Vamos determinar a distribuição conjunta de $U=X+Y$
- e $V=Y/X$
-.
+ e $V=Y/X$.
 
-Antes de prosseguirmos, é importante relembrar alguns resultados sobre funções indicadoras.
+Como $X$ e $Y$ são independentes, sua densidade conjunta é 
+$$f(x,y)=f_X(x)f_Y(y)=e^{-x}e^{-y}I_{(0,\infty)}(x)I_{(0,\infty)}(y).$$
 
-Seja I(x∈A)
- a função indicadora, onde
-I(x∈A)={1,0, se x∈A em caso contrário.
-Em particular, se x∈(a,b)
-, podemos escrever I(a<x<b)
-. Então, é verdade que
+Vamos escrever $(x,y)$ como função de $(u,v)$. Primeiro,
+$$u=x+y\Rightarrow x=u-y.$$
+Substituindo $x=u-y$ em  $v=y/x$, teremos que
 
-I(a1<x<b1)I(a2<x<b2)=I(max{a1,a2}<x<min{b1,b2}).
+$$y=vx=v(u-y)\Rightarrow y(1+v)=vu\Rightarrow y=\frac{uv}{1+v}$$
+logo
+$$\begin{cases}
+x=\frac{u}{1+v}\\
+y=\frac{uv}{1+v}
+\end{cases}$$
+o que implica na matriz jacobiana
 
-<div class="alert alert-success>
-∫RI(a<x<b)h(x)dx=∫bah(x)dx.
-Considere o agora que g:Rm→Rn
-, onde m>n
-. Nesse caso, Y=g(X)
- ainda é um vetor aleatório, mas podemos aplicar o método discutido nesta seção porque g(.)
- não tem inversa. Neste caso, adicionamos um vetor W=h(X)
- de dimensão m−n
- tal que a função g∗(X)=(g(X),h(X))
- tenha inversa. Então, obtemos a densidade conjunta de (Y,W)
- através do método discutido anteriormente, ou seja
+$$\mathcal{J}=\left|\begin{array}{cc}\frac{\partial x}{\partial u} & \frac{\partial x}{\partial v}\\ \frac{\partial y}{\partial u} & \frac{\partial y}{\partial v} \end{array}\right|=\left|\begin{array}{cc}\frac{1}{1+v}&-\frac{u}{(1+v)^2 } \\ \frac{v}{1+v} & \frac{u}{(1+v)^2}\end{array}\right|$$
 
-fY,W(y,w)=fX(g∗−1(y,w))|J(y,w)|.
-Em seguida, podemos encontrar a densidade conjunta de Y
- integrando a conjunta acima em W
-:
+cujo módulo do determinante é
+$$|\det\mathcal{J}| = \left| \frac{u}{(1+v)^3} - \left( -\frac{uv}{(1+v)^3} \right) \right| = \left| \frac{u(1+v)}{(1+v)^3} \right| = \frac{u}{(1+v)^2}$$
+Então,
+
+$$\begin{align}f_{U,V}(u,v)&=f_X\left(\frac{u}{1+v}\right)f_Y\left(\frac{uv}{1+v}\right)|\det\mathcal{J}|\\&=e^{-\left(\frac{u}{1+v}\right)}I_{(0,\infty)}\left(\frac{u}{1+v}\right)e^{-\left(\frac{uv}{1+v}\right)}I_{(0,\infty)}\left(\frac{uv}{1+v}\right)\frac{u}{(1+v)^2}\\&=e^{-\left(\frac{u}{1+v}+\frac{uv}{1+v}\right)}I_{(0,\infty)}\left(\frac{u}{1+v}\right)I_{(0,\infty)}\left(\frac{uv}{1+v}\right)\frac{u}{(1+v)^2}\\&=\frac{u}{(1+v)^2}e^{-u}I_{(0,\infty)}\left(\frac{u}{1+v}\right)I_{(0,\infty)}\left(\frac{uv}{1+v}\right)\end{align}$$
+e, notando que as indicadoras são iguais a um quando $u,v>0$, teremos
+
+
+$$\begin{align}f_{U,V}(u,v)=\frac{u}{(1+v)^2}e^{-u}I_{(0,\infty)}\left(u\right)I_{(0,\infty)}\left(v\right)\end{align}$$
+:::
+
+::: {#exr-}
+Sejam $X$ e $Y$ variáveis aleatórias independentes, ambas com distribuição Gama de parâmetros $\alpha$ e $\beta$, especificamente $X \sim \text{Gama}(a, 1)$ e $Y \sim \text{Gama}(b, 1)$. Considere as seguintes transformações:$$U = X + Y \quad \text{e} \quad V = \frac{X}{X+Y}$$Determine a densidade conjunta $f_{U,V}(u, v)$.Verifique se $U$ e $V$ são independentes.Identifique as distribuições marginais de $U$ e $V$
+
+**Nota** A função densidade da distribuição Gamma($a,b$) é
+$$f(x)=\frac{b^a}{\Gamma(a)}x^{a-1}e^{-bx}I_{(0,\infty)}(x),$$
+com $a,b>0$.
+:::
+
+
+Considere o agora que $g:\mathbb{R}^m\rightarrow\mathbb{R}^n$, onde $m>n$. Nesse caso, $\textbf{Y}=g(\textbf{X})$ ainda é um vetor aleatório, mas não podemos aplicar a integral por substitição $g(.)$ não tem inversa. Neste caso, adicionamos um vetor $\textbf{W}=h(X)$ de dimensão $m−n$ tal que a função $g_*^(\textbf{X})=(g(\textbf{X}),h(\textbf{X}))$ tenha inversa. Então, obtemos a densidade conjunta de $(\textbf{Y},\textbf{W})$$ através do método discutido anteriormente, ou seja
+
+$$f_{\textbf{Y},\textbf{W}}(\textbf{y},\textbf{w})=f_X(g_ *^{−1}(\textbf{y},\textbf{w}))|\det \mathcal{J}g_ *^{−1}|.$$
+Em seguida, podemos encontrar a densidade conjunta de $\textbf{Y}$
+ integrando a conjunta acima em $\textbf{W}$:
 
 fY(y)=∫fX(g∗−1(y,w))|J(y,w)|dw.
 Exemplo. Sejam X1
