@@ -272,6 +272,20 @@ onde $x,y>0$. Encontre a função densidade marginal de $X$
  e $Y$.
 :::
 
+
+::: {#exr-}
+Considere a densidade conjunta
+$$f(x,y)=\frac{6}{7}\left(x^2+\frac{xy}{2}\right)$$
+para $0<x<1$  e $0<y<2$
+
+a) verifique que $f(x,y)$ é de fato uma função densidade conjunta .
+
+b) encontre a função densidade marginal de $X$.
+
+c) Calcule $P(X>Y)$.
+:::
+
+:::
 ## Distribuição condicional
 
 Sejam $\textbf{X}$ e $\textbf{Y}$ vetores aleatórios contínuos. Sabemos que
@@ -318,6 +332,19 @@ $$f(x,y)=\frac{1}{2\pi}\exp\left\{−\frac{1}{2}(x^2+2y^2−2xy)\right\},$$
 com $(x,y)\in\mathbb{R}^2$. Encontre a densidade de $X|Y=y$.
 :::
 
+::: {#exr-}
+Para $n>0$  inteiro, suponha que $X\sim\hbox{Gama}(n+1,x)$. Além disso, suponha que dado $x$, $Y_1,\ldots,Y_n$
+ são variáveis aleatórias independentes que possuem a seguinte densdidade condicional:
+
+$$f(y_i|x)=\frac{1}{x},$$
+para $0<y_i<x$.
+
+a) Determine a densidade marginal do vetor $(Y_1,\ldots,Y_n)$
+
+b) Determine a densidade condicional de $X$ dado os valores de $Y_1,\ldots,Y_n$
+:::
+
+:::
 ## Função de vetores aleatórios contínuos
 
 Suponha que $X$  é uma variável aleatória contínua e $g(.)$

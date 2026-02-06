@@ -180,8 +180,6 @@ window.Quarto = {
   <li><a href="#função-de-densidade-conjunta" id="toc-função-de-densidade-conjunta" class="nav-link active" data-scroll-target="#função-de-densidade-conjunta"><span class="header-section-number">3.1</span> Função de densidade conjunta</a></li>
   <li><a href="#função-de-distribuição-conjunta" id="toc-função-de-distribuição-conjunta" class="nav-link" data-scroll-target="#função-de-distribuição-conjunta"><span class="header-section-number">3.2</span> Função de distribuição conjunta</a></li>
   <li><a href="#distribuições-marginais" id="toc-distribuições-marginais" class="nav-link" data-scroll-target="#distribuições-marginais"><span class="header-section-number">3.3</span> Distribuições Marginais</a></li>
-  <li><a href="#distribuição-condicional" id="toc-distribuição-condicional" class="nav-link" data-scroll-target="#distribuição-condicional"><span class="header-section-number">3.4</span> Distribuição condicional</a></li>
-  <li><a href="#função-de-vetores-aleatórios-contínuos" id="toc-função-de-vetores-aleatórios-contínuos" class="nav-link" data-scroll-target="#função-de-vetores-aleatórios-contínuos"><span class="header-section-number">3.5</span> Função de vetores aleatórios contínuos</a></li>
   </ul>
 </nav>
     </div>
@@ -342,9 +340,15 @@ window.Quarto = {
 <div id="exr-" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 3.11</strong></span> Considere a seguinte função de densidade conjunta, <span class="math display">\[f(x,y)=xy^2e^{−y(x+1)}.\]</span> onde <span class="math inline">\(x,y&gt;0\)</span>. Encontre a função densidade marginal de <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>.</p>
 </div>
-</section>
-<section id="distribuição-condicional" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="distribuição-condicional"><span class="header-section-number">3.4</span> Distribuição condicional</h2>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.12</strong></span> Considere a densidade conjunta <span class="math display">\[f(x,y)=\frac{6}{7}\left(x^2+\frac{xy}{2}\right)\]</span> para <span class="math inline">\(0&lt;x&lt;1\)</span> e <span class="math inline">\(0&lt;y&lt;2\)</span></p>
+<ol type="a">
+<li><p>verifique que <span class="math inline">\(f(x,y)\)</span> é de fato uma função densidade conjunta .</p></li>
+<li><p>encontre a função densidade marginal de <span class="math inline">\(X\)</span>.</p></li>
+<li><p>Calcule <span class="math inline">\(P(X&gt;Y)\)</span>.</p></li>
+</ol>
+</div>
+<p>::: ## Distribuição condicional</p>
 <p>Sejam <span class="math inline">\(\textbf{X}\)</span> e <span class="math inline">\(\textbf{Y}\)</span> vetores aleatórios contínuos. Sabemos que</p>
 <p><span class="math display">\[P(\textbf{X}\leq \textbf{x}|\textbf{Y}\in B)=\frac{P(\textbf{X}\leq\textbf{x},\textbf{Y}\in B)}{P(\textbf{Y}\in B)}.\]</span></p>
 <p>Como <span class="math inline">\(\textbf{Y}\)</span> é um vetor de variáveis aleatórias contínuas, sabemos que <span class="math inline">\(P(\textbf{Y}=\textbf{y})=0\)</span>. Entretanto, a probabilidade <span class="math inline">\(P(\textbf{X}\leq \textbf{x}|\textbf{Y}=\textbf{y})\)</span> faz todo o sentido. Para mostrar este fato, seja <span class="math inline">\(B(\varepsilon)\)</span> uma bola fechada de raio <span class="math inline">\(\varepsilon\)</span> e centro <span class="math inline">\(\textbf{y}\)</span>. Pelo Teorema do Valor Médio, existe <span class="math inline">\(\tilde{y}\in B(\varepsilon)\)</span> tal que</p>
@@ -362,12 +366,18 @@ window.Quarto = {
 <p><span class="math display">\[f(y|x)=\frac{f(x,y)}{f_X(x)}=\frac{21x^2y^3}{\frac{21}{4}x^2(1-x^4)}=\frac{4y^3}{(1-x^4)}I_{(x,1)}(y),\]</span></p>
 </div>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 3.12</strong></span> Suponha que</p>
+<p><span class="theorem-title"><strong>Exercise 3.13</strong></span> Suponha que</p>
 <p><span class="math display">\[f(x,y)=\frac{1}{2\pi}\exp\left\{−\frac{1}{2}(x^2+2y^2−2xy)\right\},\]</span> com <span class="math inline">\((x,y)\in\mathbb{R}^2\)</span>. Encontre a densidade de <span class="math inline">\(X|Y=y\)</span>.</p>
 </div>
-</section>
-<section id="função-de-vetores-aleatórios-contínuos" class="level2" data-number="3.5">
-<h2 data-number="3.5" class="anchored" data-anchor-id="função-de-vetores-aleatórios-contínuos"><span class="header-section-number">3.5</span> Função de vetores aleatórios contínuos</h2>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.14</strong></span> Para <span class="math inline">\(n&gt;0\)</span> inteiro, suponha que <span class="math inline">\(X\sim\hbox{Gama}(n+1,x)\)</span>. Além disso, suponha que dado <span class="math inline">\(x\)</span>, <span class="math inline">\(Y_1,\ldots,Y_n\)</span> são variáveis aleatórias independentes que possuem a seguinte densdidade condicional:</p>
+<p><span class="math display">\[f(y_i|x)=\frac{1}{x},\]</span> para <span class="math inline">\(0&lt;y_i&lt;x\)</span>.</p>
+<ol type="a">
+<li><p>Determine a densidade marginal do vetor <span class="math inline">\((Y_1,\ldots,Y_n)\)</span></p></li>
+<li><p>Determine a densidade condicional de <span class="math inline">\(X\)</span> dado os valores de <span class="math inline">\(Y_1,\ldots,Y_n\)</span></p></li>
+</ol>
+</div>
+<p>::: ## Função de vetores aleatórios contínuos</p>
 <p>Suponha que <span class="math inline">\(X\)</span> é uma variável aleatória contínua e <span class="math inline">\(g(.)\)</span> uma função real e contínua. Considerando a variável aleatória <span class="math inline">\(Y=g(X)\)</span>, teremos que</p>
 <p><span class="math display">\[P(Y\in A)=P(g(X)\in A)=\int_{x:g(x)\in A}f_X(x)dx.\]</span></p>
 <p>Em particular,</p>
@@ -400,7 +410,7 @@ Y_2=X_1-X_2\\
 <p><span class="math display">\[\begin{align}f_\textbf{Y}(\textbf{y})&amp;=f_{X_1}(0,5(y_1+y_2)f_{X_2}(0,5(y_1−y_2)\frac{1}{2}\\&amp;=\frac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}[0,5(y_1+y_2)]^2}I_{\mathbb{R}}(0,5(y_1+y_2))\frac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}[0,5(y_1-y_2)]^2}I_{\mathbb{R}}(0,5(y_1-y_2))\frac{1}{2}\\&amp;=\frac{1}{4\pi}e^{-\frac{1}{8}[(y_1-y_2)^2+(y_1+y_2)^2]}I_{\mathbb{R}}(y_1)I_{\mathbb{R}}(y_2)\\&amp;=\frac{1}{4\pi}e^{-\frac{1}{4}(y_1^2+y_2^2)}I_{\mathbb{R}}(y_1)I_{\mathbb{R}}(y_2).\end{align}\]</span> Podemos notar que a densidade conjunta fatora em duas normais, ou seja <span class="math inline">\(Y_1\)</span> e <span class="math inline">\(Y_2\)</span> são independentes com marginais Normal(0,2).</p>
 </div>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 3.13</strong></span> Sejam <span class="math inline">\(X_1\)</span> e <span class="math inline">\(X_2\)</span> variáveis aleatórias independentes com distribuição Normal(0,1).</p>
+<p><span class="theorem-title"><strong>Exercise 3.15</strong></span> Sejam <span class="math inline">\(X_1\)</span> e <span class="math inline">\(X_2\)</span> variáveis aleatórias independentes com distribuição Normal(0,1).</p>
 <ol type="a">
 <li><p>Encontre a função densidade conjunta de <span class="math inline">\(Y_1=aX_1+X_2\)</span> e <span class="math inline">\(Y_2=X_1−X_2\)</span>, onde <span class="math inline">\(a\)</span> é uma constante.</p></li>
 <li><p>Quais são os valores de <span class="math inline">\(a\)</span> tais que <span class="math inline">\(Y_1\)</span> é independente de <span class="math inline">\(Y_2\)</span>?</p></li>
@@ -420,7 +430,7 @@ y=\frac{uv}{1+v}
 <p><span class="math display">\[\begin{align}f_{U,V}(u,v)=\frac{u}{(1+v)^2}e^{-u}I_{(0,\infty)}\left(u\right)I_{(0,\infty)}\left(v\right)\end{align}\]</span></p>
 </div>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 3.14</strong></span> Sejam <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> variáveis aleatórias independentes, ambas com distribuição Gama de parâmetros <span class="math inline">\(\alpha\)</span> e <span class="math inline">\(\beta\)</span>, especificamente <span class="math inline">\(X \sim \text{Gama}(a, 1)\)</span> e <span class="math inline">\(Y \sim \text{Gama}(b, 1)\)</span>. Considere as seguintes transformações:<span class="math display">\[U = X + Y \quad \text{e} \quad V = \frac{X}{X+Y}\]</span>Determine a densidade conjunta <span class="math inline">\(f_{U,V}(u, v)\)</span>.Verifique se <span class="math inline">\(U\)</span> e <span class="math inline">\(V\)</span> são independentes.Identifique as distribuições marginais de <span class="math inline">\(U\)</span> e <span class="math inline">\(V\)</span></p>
+<p><span class="theorem-title"><strong>Exercise 3.16</strong></span> Sejam <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> variáveis aleatórias independentes, ambas com distribuição Gama de parâmetros <span class="math inline">\(\alpha\)</span> e <span class="math inline">\(\beta\)</span>, especificamente <span class="math inline">\(X \sim \text{Gama}(a, 1)\)</span> e <span class="math inline">\(Y \sim \text{Gama}(b, 1)\)</span>. Considere as seguintes transformações:<span class="math display">\[U = X + Y \quad \text{e} \quad V = \frac{X}{X+Y}\]</span>Determine a densidade conjunta <span class="math inline">\(f_{U,V}(u, v)\)</span>.Verifique se <span class="math inline">\(U\)</span> e <span class="math inline">\(V\)</span> são independentes.Identifique as distribuições marginais de <span class="math inline">\(U\)</span> e <span class="math inline">\(V\)</span></p>
 <p><strong>Nota</strong> A função densidade da distribuição Gamma(<span class="math inline">\(a,b\)</span>) é <span class="math display">\[f(x)=\frac{b^a}{\Gamma(a)}x^{a-1}e^{-bx}I_{(0,\infty)}(x),\]</span> com <span class="math inline">\(a,b&gt;0\)</span>.</p>
 </div>
 <p>Considere o agora que <span class="math inline">\(g:\mathbb{R}^m\rightarrow\mathbb{R}^n\)</span>, onde <span class="math inline">\(m&gt;n\)</span>. Nesse caso, <span class="math inline">\(\textbf{Y}=g(\textbf{X})\)</span> ainda é um vetor aleatório, mas não podemos aplicar a integral por substitição <span class="math inline">\(g(.)\)</span> não tem inversa. Neste caso, adicionamos um vetor <span class="math inline">\(\textbf{W}=h(X)\)</span> de dimensão <span class="math inline">\(m−n\)</span> tal que a função <span class="math inline">\(g_*^(\textbf{X})=(g(\textbf{X}),h(\textbf{X}))\)</span> tenha inversa. Então, obtemos a densidade conjunta de <span class="math inline">\((\textbf{Y},\textbf{W})\)</span>$ através do método discutido anteriormente, ou seja</p>
