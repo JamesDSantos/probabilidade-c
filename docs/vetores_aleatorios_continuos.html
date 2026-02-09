@@ -180,6 +180,14 @@ window.Quarto = {
   <li><a href="#função-de-densidade-conjunta" id="toc-função-de-densidade-conjunta" class="nav-link active" data-scroll-target="#função-de-densidade-conjunta"><span class="header-section-number">3.1</span> Função de densidade conjunta</a></li>
   <li><a href="#função-de-distribuição-conjunta" id="toc-função-de-distribuição-conjunta" class="nav-link" data-scroll-target="#função-de-distribuição-conjunta"><span class="header-section-number">3.2</span> Função de distribuição conjunta</a></li>
   <li><a href="#distribuições-marginais" id="toc-distribuições-marginais" class="nav-link" data-scroll-target="#distribuições-marginais"><span class="header-section-number">3.3</span> Distribuições Marginais</a></li>
+  <li><a href="#distribuição-condicional" id="toc-distribuição-condicional" class="nav-link" data-scroll-target="#distribuição-condicional"><span class="header-section-number">3.4</span> Distribuição condicional</a></li>
+  <li><a href="#função-de-vetores-aleatórios-contínuos" id="toc-função-de-vetores-aleatórios-contínuos" class="nav-link" data-scroll-target="#função-de-vetores-aleatórios-contínuos"><span class="header-section-number">3.5</span> Função de vetores aleatórios contínuos</a>
+  <ul class="collapse">
+  <li><a href="#caso-para-uma-variável" id="toc-caso-para-uma-variável" class="nav-link" data-scroll-target="#caso-para-uma-variável"><span class="header-section-number">3.5.1</span> Caso para uma variável</a></li>
+  <li><a href="#caso-vetorial-com-g-invertível" id="toc-caso-vetorial-com-g-invertível" class="nav-link" data-scroll-target="#caso-vetorial-com-g-invertível"><span class="header-section-number">3.5.2</span> Caso vetorial com <span class="math inline">\(g\)</span> invertível</a></li>
+  <li><a href="#caso-vetorial-com-gmathbbrnrightarrowmathbbrn-com-nm" id="toc-caso-vetorial-com-gmathbbrnrightarrowmathbbrn-com-nm" class="nav-link" data-scroll-target="#caso-vetorial-com-gmathbbrnrightarrowmathbbrn-com-nm"><span class="header-section-number">3.5.3</span> Caso vetorial com <span class="math inline">\(g:\mathbb{R}^n\rightarrow\mathbb{R}^n\)</span>, com <span class="math inline">\(n&gt;m\)</span></a></li>
+  <li><a href="#casos-especiais" id="toc-casos-especiais" class="nav-link" data-scroll-target="#casos-especiais"><span class="header-section-number">3.5.4</span> Casos especiais</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -348,7 +356,9 @@ window.Quarto = {
 <li><p>Calcule <span class="math inline">\(P(X&gt;Y)\)</span>.</p></li>
 </ol>
 </div>
-<p>::: ## Distribuição condicional</p>
+</section>
+<section id="distribuição-condicional" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="distribuição-condicional"><span class="header-section-number">3.4</span> Distribuição condicional</h2>
 <p>Sejam <span class="math inline">\(\textbf{X}\)</span> e <span class="math inline">\(\textbf{Y}\)</span> vetores aleatórios contínuos. Sabemos que</p>
 <p><span class="math display">\[P(\textbf{X}\leq \textbf{x}|\textbf{Y}\in B)=\frac{P(\textbf{X}\leq\textbf{x},\textbf{Y}\in B)}{P(\textbf{Y}\in B)}.\]</span></p>
 <p>Como <span class="math inline">\(\textbf{Y}\)</span> é um vetor de variáveis aleatórias contínuas, sabemos que <span class="math inline">\(P(\textbf{Y}=\textbf{y})=0\)</span>. Entretanto, a probabilidade <span class="math inline">\(P(\textbf{X}\leq \textbf{x}|\textbf{Y}=\textbf{y})\)</span> faz todo o sentido. Para mostrar este fato, seja <span class="math inline">\(B(\varepsilon)\)</span> uma bola fechada de raio <span class="math inline">\(\varepsilon\)</span> e centro <span class="math inline">\(\textbf{y}\)</span>. Pelo Teorema do Valor Médio, existe <span class="math inline">\(\tilde{y}\in B(\varepsilon)\)</span> tal que</p>
@@ -377,11 +387,15 @@ window.Quarto = {
 <li><p>Determine a densidade condicional de <span class="math inline">\(X\)</span> dado os valores de <span class="math inline">\(Y_1,\ldots,Y_n\)</span></p></li>
 </ol>
 </div>
-<p>::: ## Função de vetores aleatórios contínuos</p>
+</section>
+<section id="função-de-vetores-aleatórios-contínuos" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="função-de-vetores-aleatórios-contínuos"><span class="header-section-number">3.5</span> Função de vetores aleatórios contínuos</h2>
+<section id="caso-para-uma-variável" class="level3" data-number="3.5.1">
+<h3 data-number="3.5.1" class="anchored" data-anchor-id="caso-para-uma-variável"><span class="header-section-number">3.5.1</span> Caso para uma variável</h3>
 <p>Suponha que <span class="math inline">\(X\)</span> é uma variável aleatória contínua e <span class="math inline">\(g(.)\)</span> uma função real e contínua. Considerando a variável aleatória <span class="math inline">\(Y=g(X)\)</span>, teremos que</p>
-<p><span class="math display">\[P(Y\in A)=P(g(X)\in A)=\int_{x:g(x)\in A}f_X(x)dx.\]</span></p>
+<p><span class="math display">\[P(Y\in A)=P(g(X)\in A)=\int_{\{x:g(x)\in A\}}f_X(x)dx.\]</span></p>
 <p>Em particular,</p>
-<p><span class="math display">\[F_Y(y)=P(Y\leq y)=P(g(X)\leq y)=\int_{x:g(x)\leq y}f_X(x)dx.\]</span></p>
+<p><span class="math display">\[F_Y(y)=P(Y\leq y)=P(g(X)\leq y)=\int_{\{x:g(x)\leq y\}}f_X(x)dx.\]</span></p>
 <p>Agora, suponha <span class="math inline">\(g(.)\)</span> possui inversa. Então, podemos utilizar o método integral por substituição. Fazendo <span class="math inline">\(u=g(x)\)</span>, teremos que <span class="math inline">\(x=g^{−1}(u)\)</span> e <span class="math inline">\(dx=\frac{d}{du}g^{−1}(u)du\)</span>. Além disso,</p>
 <p><span class="math display">\[\{x:g(x)\leq y\}\equiv\{u\leq y\},\]</span> o que implica em</p>
 <p><span class="math display">\[F_Y(y)=\int_{-\infty}^y f_X(g^{−1}(u))\left|\frac{d}{du}g^{−1}(u)\right|du\]</span> logo, <span class="math display">\[f_Y(y)=f_X(g^{−1}(y))\left|\frac{d}{dy}g^{−1}(y)\right|.\]</span> O termo dentro do módulo é denominado <strong>Jacobiano da transformação</strong> e a obtenção da densidade por esse método é denominada <strong>método do Jacobiano</strong>.</p>
@@ -389,11 +403,17 @@ window.Quarto = {
 <p><span class="theorem-title"><strong>Example 3.8</strong></span> Suponha que <span class="math inline">\(X\sim\hbox{Normal}(0,1)\)</span>. Considere a transformação <span class="math inline">\(Y=e^{X}\)</span>. Como <span class="math inline">\(g^{-1}(y)=\log(y)\)</span>, teremos que</p>
 <p><span class="math display">\[f_Y(y)=f_X(\log y )\left|\frac{d}{dy}\log y\right|=\frac{1}{y\sqrt{2\pi}}e^{-\frac{1}{2}(\log y)^2}.\]</span> Essa distribuição é denominada Lognormal(0,1).</p>
 </div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.15</strong></span> Seja <span class="math inline">\(X\)</span> uma variável aleatória com distribuição Uniforme no intervalo <span class="math inline">\((0, 1)\)</span>, ou seja, sua função de densidade de probabilidade é: <span class="math display">\[f_X(x) = I_{(0,1)}(x).\]</span> Encontre a função densidade de <span class="math inline">\(Y = -\ln(X)\)</span>.</p>
+</div>
+</section>
+<section id="caso-vetorial-com-g-invertível" class="level3" data-number="3.5.2">
+<h3 data-number="3.5.2" class="anchored" data-anchor-id="caso-vetorial-com-g-invertível"><span class="header-section-number">3.5.2</span> Caso vetorial com <span class="math inline">\(g\)</span> invertível</h3>
 <p>Assim como no caso discreto, a extensão para vetores também é natural. Seja <span class="math inline">\(\textbf{X}\)</span> um vetor aleatório de comprimento <span class="math inline">\(n\)</span> e considere a nova variável <span class="math inline">\(\textbf{Y}=g(X)\)</span>, onde <span class="math inline">\(g:\mathbb{R}^n\rightarrow \mathbb{R}^m\)</span> é uma função real. Então</p>
 <p><span class="math display">\[P(\textbf{Y}\in A)=P(g(\textbf{X})\in A)=\int_{\{\textbf{x}:g(\textbf{x})\in A\}}f_\textbf{X}(\textbf{x})d\textbf{x}.\]</span></p>
 <p>Agora, suponha que <span class="math inline">\(g(.)\)</span> possui inversa (o que implica que <span class="math inline">\(g:\mathbb{R}^n\rightarrow \mathbb{R}^n\)</span>). Então, pelo método da integral por substituição, teremos que <span class="math inline">\(\textbf{u}=g^{-1}(\textbf{y})\)</span>, <span class="math inline">\(d\textbf{x}=|\mathcal{J}g^{-1}(\textbf{u})|d\textbf{u}\)</span> e <span class="math inline">\(\{\textbf{x}:g(\textbf{x})\in A\}=\{\textbf{u}\in A\}\)</span>, o que implica em</p>
 <p><span class="math display">\[P(\textbf{Y}\in A)=\int_{A}f_\textbf{X}(g^{-1}(\textbf{u})|\det\mathcal{J}g^{-1}(\textbf{u})|d\textbf{u}.\]</span></p>
-<p>onde <span class="math inline">\(\mathcal{J}g^{-1}(\textbf{u})\)</span> é denominada matriz Jacobiana, cujo o elemento <span class="math inline">\((i,j)\)</span> é dado por <span class="math display">\[\mathcal{J}_{i,j}=\frac{\partial x_i}{\partial u_j}.\]</span></p>
+<p>onde <span class="math inline">\(\mathcal{J}g^{-1}(\textbf{u})\)</span> é denominada <strong>matriz Jacobiana</strong>, cujo o elemento <span class="math inline">\((i,j)\)</span> é dado por <span class="math display">\[\mathcal{J}_{i,j}=\frac{\partial x_i}{\partial u_j}.\]</span></p>
 <p>Em particular, teremos que</p>
 <p><span class="math display">\[F_{\textbf{Y}}(\textbf{y})=\int_{-\infty}^{y_1}\cdots \int_{-\infty}^{y_n}f_\textbf{X}(g^{-1}(\textbf{u}))|\det\mathcal{J}g^{-1}(\textbf{u})|d\textbf{u}.\]</span></p>
 <p>Portanto, concluímos que <span class="math display">\[f_\textbf{Y}(\textbf{y})=f_\textbf{X}(g^{−1}(\textbf{y}))|\det\mathcal{J}g^{-1}(\textbf{y})|.\]</span></p>
@@ -406,11 +426,11 @@ Y_2=X_1-X_2\\
 \end{array} \Leftrightarrow \begin{array}{c}X_1=0,5(Y_1+Y_2)\\ X_2=0,5(Y_1-Y_2)\end{array}\]</span></p>
 <p>e o Jacobiano da transformação é dado por</p>
 <p><span class="math display">\[\mathcal{J}g^{-1}(\textbf{y})=\left[\begin{array}{cc} 0,5 &amp; 0,5 \\ 0,5 &amp; - 0,5 \end{array}\right],\]</span></p>
-<p>cujo determinante é igual a 1/2. Logo,</p>
+<p>cujo determinante é igual a -1/2. Logo,</p>
 <p><span class="math display">\[\begin{align}f_\textbf{Y}(\textbf{y})&amp;=f_{X_1}(0,5(y_1+y_2)f_{X_2}(0,5(y_1−y_2)\frac{1}{2}\\&amp;=\frac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}[0,5(y_1+y_2)]^2}I_{\mathbb{R}}(0,5(y_1+y_2))\frac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}[0,5(y_1-y_2)]^2}I_{\mathbb{R}}(0,5(y_1-y_2))\frac{1}{2}\\&amp;=\frac{1}{4\pi}e^{-\frac{1}{8}[(y_1-y_2)^2+(y_1+y_2)^2]}I_{\mathbb{R}}(y_1)I_{\mathbb{R}}(y_2)\\&amp;=\frac{1}{4\pi}e^{-\frac{1}{4}(y_1^2+y_2^2)}I_{\mathbb{R}}(y_1)I_{\mathbb{R}}(y_2).\end{align}\]</span> Podemos notar que a densidade conjunta fatora em duas normais, ou seja <span class="math inline">\(Y_1\)</span> e <span class="math inline">\(Y_2\)</span> são independentes com marginais Normal(0,2).</p>
 </div>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 3.15</strong></span> Sejam <span class="math inline">\(X_1\)</span> e <span class="math inline">\(X_2\)</span> variáveis aleatórias independentes com distribuição Normal(0,1).</p>
+<p><span class="theorem-title"><strong>Exercise 3.16</strong></span> Sejam <span class="math inline">\(X_1\)</span> e <span class="math inline">\(X_2\)</span> variáveis aleatórias independentes com distribuição Normal(0,1).</p>
 <ol type="a">
 <li><p>Encontre a função densidade conjunta de <span class="math inline">\(Y_1=aX_1+X_2\)</span> e <span class="math inline">\(Y_2=X_1−X_2\)</span>, onde <span class="math inline">\(a\)</span> é uma constante.</p></li>
 <li><p>Quais são os valores de <span class="math inline">\(a\)</span> tais que <span class="math inline">\(Y_1\)</span> é independente de <span class="math inline">\(Y_2\)</span>?</p></li>
@@ -430,26 +450,68 @@ y=\frac{uv}{1+v}
 <p><span class="math display">\[\begin{align}f_{U,V}(u,v)=\frac{u}{(1+v)^2}e^{-u}I_{(0,\infty)}\left(u\right)I_{(0,\infty)}\left(v\right)\end{align}\]</span></p>
 </div>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 3.16</strong></span> Sejam <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> variáveis aleatórias independentes, ambas com distribuição Gama de parâmetros <span class="math inline">\(\alpha\)</span> e <span class="math inline">\(\beta\)</span>, especificamente <span class="math inline">\(X \sim \text{Gama}(a, 1)\)</span> e <span class="math inline">\(Y \sim \text{Gama}(b, 1)\)</span>. Considere as seguintes transformações:<span class="math display">\[U = X + Y \quad \text{e} \quad V = \frac{X}{X+Y}\]</span>Determine a densidade conjunta <span class="math inline">\(f_{U,V}(u, v)\)</span>.Verifique se <span class="math inline">\(U\)</span> e <span class="math inline">\(V\)</span> são independentes.Identifique as distribuições marginais de <span class="math inline">\(U\)</span> e <span class="math inline">\(V\)</span></p>
+<p><span class="theorem-title"><strong>Exercise 3.17</strong></span> Sejam <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> variáveis aleatórias independentes, ambas com distribuição Gama de parâmetros <span class="math inline">\(\a\)</span> e <span class="math inline">\(b\)</span>, especificamente <span class="math inline">\(X \sim \text{Gama}(a, 1)\)</span> e <span class="math inline">\(Y \sim \text{Gama}(b, 1)\)</span>. Considere as seguintes transformações:<span class="math display">\[U = X + Y \quad \text{e} \quad V = \frac{X}{X+Y}\]</span>Determine a densidade conjunta <span class="math inline">\(f_{U,V}(u, v)\)</span>.Verifique se <span class="math inline">\(U\)</span> e <span class="math inline">\(V\)</span> são independentes.Identifique as distribuições marginais de <span class="math inline">\(U\)</span> e <span class="math inline">\(V\)</span></p>
 <p><strong>Nota</strong> A função densidade da distribuição Gamma(<span class="math inline">\(a,b\)</span>) é <span class="math display">\[f(x)=\frac{b^a}{\Gamma(a)}x^{a-1}e^{-bx}I_{(0,\infty)}(x),\]</span> com <span class="math inline">\(a,b&gt;0\)</span>.</p>
 </div>
-<p>Considere o agora que <span class="math inline">\(g:\mathbb{R}^m\rightarrow\mathbb{R}^n\)</span>, onde <span class="math inline">\(m&gt;n\)</span>. Nesse caso, <span class="math inline">\(\textbf{Y}=g(\textbf{X})\)</span> ainda é um vetor aleatório, mas não podemos aplicar a integral por substitição <span class="math inline">\(g(.)\)</span> não tem inversa. Neste caso, adicionamos um vetor <span class="math inline">\(\textbf{W}=h(X)\)</span> de dimensão <span class="math inline">\(m−n\)</span> tal que a função <span class="math inline">\(g_*^(\textbf{X})=(g(\textbf{X}),h(\textbf{X}))\)</span> tenha inversa. Então, obtemos a densidade conjunta de <span class="math inline">\((\textbf{Y},\textbf{W})\)</span>$ através do método discutido anteriormente, ou seja</p>
-<p><span class="math display">\[f_{\textbf{Y},\textbf{W}}(\textbf{y},\textbf{w})=f_X(g_ *^{−1}(\textbf{y},\textbf{w}))|\det \mathcal{J}g_ *^{−1}|.\]</span> Em seguida, podemos encontrar a densidade conjunta de <span class="math inline">\(\textbf{Y}\)</span> integrando a conjunta acima em <span class="math inline">\(\textbf{W}\)</span>:</p>
-<p>fY(y)=∫fX(g∗−1(y,w))|J(y,w)|dw. Exemplo. Sejam X1 e X2 variáveis aleatórias independentes com distribuição Exponencial(1). Vamos encontrar a densidade de Y=X1+X2 .</p>
-<p>Note que não há inversa (ou seja, não é possível escrever X1 e X2 como função apenas de Y ). Vamos introduzir a variável auxilar W=X2 . Então,</p>
-<p>{Y=X1+X2W=X2⇒{X1=Y−WX2=W</p>
-<p>O jacobiano da transformação será J(y,w)=∣∣∣10−11∣∣∣=1 e</p>
-<p>fY,W(y,w)=fX1,X2(y−w,w)|J(y,w)|=fX1(y−w)fX2(w) Lembremos que a densidade da Exponencial(1) é dada por fX(x)=e−x, para x&gt;0 . Isso é o mesmo que escrever fX(x)=e−xI(x&gt;0). Agora, podemos escrever a densidade conjunta de (Y,W): fY,W(y,w)=e−(y−w)I(y−w&gt;0)e−wI(w&gt;0)=e−yI(y−w&gt;0)I(w&gt;0). Vamos encontrar a marginal de Y integrando o resultado acima em w:</p>
-<p><span class="math display">\[fY(y)=∫e−yI(y−w&gt;0)I(w&gt;0)dw=∫e−yI(w&lt;y)I(0&lt;w)dw=∫e−yI(−∞&lt;w&lt;y)I(0&lt;w&lt;∞)dw=∫e−yI(max{−∞,0}&lt;w&lt;min{y,∞})dw=∫e−yI(0&lt;w&lt;y)dw=∫y0e−ydw=e−y∫y0dw=ye−y.\]</span></p>
-<p>Exercício Sejam X1 e X2 variáveis aleatórias independentes com distribuição Uniforme(0,1). Encontre a distribuição de Y=X1+X2 . Solução Considere a variável auxiliar W=X1 . Neste caso, X1X2=W,=Y−W. e o Jacobiano da transformação será ∣∣∣∣∂x1∂y∂x2∂y∂x1∂w∂x2∂w∣∣∣∣=∣∣∣011−1∣∣∣=1</p>
-<p>Como fX1,X2(x1,x2)=fX1(x1)fX2(x2)=1 se 0&lt;x&lt;1 e 0&lt;y&lt;1 e 0 em caso contrário, teremos que</p>
-<p>fY,W(y,w)=fX1,X2(w,y−w)J(y,w)=I(0&lt;w&lt;1)I(0&lt;y−w&lt;1),</p>
-<p>se 0&lt;w&lt;1 e 0&lt;y−w&lt;1 e 0 em caso contrário.</p>
-<p>Agora, vamos encontrar a densidade de Y :</p>
-<p>fY(y)=∫RI(0&lt;w&lt;1)I(0&lt;y−w&lt;1)dw=∫RI(0&lt;w&lt;1)I(y−1&lt;w&lt;y)dw=∫RI(max{0,y−1}&lt;w&lt;min{1,y})dw=∫min{1,y}max{0,y−1}1dw=min{1,y}−max{0,y−1},</p>
-<p>se 0&lt;y&lt;2 e zero em caso contrário.</p>
+</section>
+<section id="caso-vetorial-com-gmathbbrnrightarrowmathbbrn-com-nm" class="level3" data-number="3.5.3">
+<h3 data-number="3.5.3" class="anchored" data-anchor-id="caso-vetorial-com-gmathbbrnrightarrowmathbbrn-com-nm"><span class="header-section-number">3.5.3</span> Caso vetorial com <span class="math inline">\(g:\mathbb{R}^n\rightarrow\mathbb{R}^n\)</span>, com <span class="math inline">\(n&gt;m\)</span></h3>
+<p>Considere o agora que <span class="math inline">\(g:\mathbb{R}^n\rightarrow\mathbb{R}^m\)</span>, onde <span class="math inline">\(n&gt;m\)</span>. Nesse caso, <span class="math inline">\(\textbf{Y}=g(\textbf{X})\)</span> ainda é um vetor aleatório, mas não podemos aplicar a integral por substitição <span class="math inline">\(g(.)\)</span> não tem inversa. Neste caso, adicionamos um vetor <span class="math inline">\(\textbf{W}=h(X)\)</span> de dimensão <span class="math inline">\(n−m\)</span> tal que a função <span class="math display">\[g_*(\textbf{X})=(g(\textbf{X}),h(\textbf{X}))=(\textbf{y},\textbf{w})\]</span> tenha inversa. Então, obtemos a densidade conjunta de <span class="math inline">\((\textbf{Y},\textbf{W})\)</span> através do método discutido anteriormente, ou seja</p>
+<p><span class="math display">\[f_{\textbf{Y},\textbf{W}}(\textbf{y},\textbf{w})=f_X(g_ *^{−1}(\textbf{y},\textbf{w}))|\det \mathcal{J}g_ *^{−1}|.\]</span> Em seguida, podemos encontrar a densidade marginal de <span class="math inline">\(\textbf{Y}\)</span> integrando a conjunta acima em <span class="math inline">\(\textbf{W}\)</span>:</p>
+<p><span class="math display">\[f_\textbf{Y}(\textbf{y})=\int f_\textbf{X}(g_*^{−1}(\textbf{y},\textbf{w}))|\det\mathcal{J}g_*^{-1}(\textbf{y},\textbf{w})|d\textbf{w}.\]</span> ::: {#exm-} <strong>Soma de duas variáveis aletórias contínuas independentes.</strong> Sejam <span class="math inline">\(X_1,X_2\)</span> variáveis aleatórias independentes e considere o problema de encontrar a função densidade de <span class="math inline">\(Y=X_1+X_2\)</span>.</p>
+<p>Como <span class="math inline">\(y=g(x_1,x_2)=x_1+x_2\)</span> não tem inversa, vamos utilizar a função <span class="math inline">\(g_*(x_1,x_2)=(x_1+x_2,x_2)=(y,w)\)</span> ( como a escolha de <span class="math inline">\(w=x_2\)</span> é arbitrária, aqui o fizemos de modo conveniente). Teremos que</p>
+<p><span class="math display">\[\begin{cases}
+y&amp;= x_1+x_2\\ w &amp;= x_1 \end{cases}\Rightarrow\begin{cases}x_1&amp;=y-w\\ x_2&amp;=w\end{cases}\]</span></p>
+<p>O determinante da matriz Jacobiana é</p>
+<p><span class="math display">\[\det\mathcal{J}g_*^{-1}=\left|\begin{array}{cc}\frac{\partial{x_1}}{\partial{y}} &amp; \frac{\partial{x_1}}{\partial{w}} \\ \frac{\partial{x_2}}{\partial{y}} &amp; \frac{\partial{x_2}}{\partial{w}} \end{array}\right|=\det\left|\begin{array}{cc}1 &amp; -1 \\ 0 &amp; 1\end{array}\right|=1\]</span></p>
+<p>(aqui, fica claro que <span class="math inline">\(w=x_2\)</span> foi escolhido de modo a simplificar o derteminante), logo</p>
+<p><span class="math display">\[f_{Y,W}(y,w)=f_{X_1}(y-w)f_{X_2}(w)\]</span> e a função densidade desejada é</p>
+<p><span class="math display">\[f_{Y}(y)=\int_{\mathbb{R}}f_{X_1}(y-w)f_{X_2}(w)dw.\]</span></p>
+<p>:::</p>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.18</strong></span> Sejam <span class="math inline">\(X_1\)</span> e <span class="math inline">\(X_2\)</span> variáveis aleatórias independentes com distribuição Exponencial(1), cuja função densidade é <span class="math display">\[f(x)=e^{-x}I_{(0,\infty)}(x).\]</span></p>
+<p>Encontre a função densidade de <span class="math inline">\(Y=X_1+X_2\)</span>.</p>
+</div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.19</strong></span> Sejam <span class="math inline">\(X_1\)</span> e <span class="math inline">\(X_2\)</span> variáveis aleatórias independentes com distribuição Uniforme(0,1), cuja função densidade é</p>
+<p><span class="math display">\[f(x)=I_{(0,1)}(x)\]</span> Encontre a função densidade de <span class="math inline">\(Y=X_1+X_2\)</span>.</p>
+</div>
+</section>
+<section id="casos-especiais" class="level3" data-number="3.5.4">
+<h3 data-number="3.5.4" class="anchored" data-anchor-id="casos-especiais"><span class="header-section-number">3.5.4</span> Casos especiais</h3>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.20</strong></span> <strong>Soma de normais independentes.</strong></p>
+<ol type="a">
+<li><p>Sejam <span class="math inline">\(X_1,X_2\)</span> variáveis aleatórias independentes com <span class="math inline">\(X_i\sim\hbox{Normal}(\mu_i,\sigma^2_i)\)</span>. Mostre que <span class="math inline">\(Y=X_1+X_2\sim\hbox{Normal}(\mu_1+\mu_2,\sigma_1^2+\sigma_2^2)\)</span>.</p></li>
+<li><p>Sejam <span class="math inline">\(X_1,\ldots,X_n\)</span> variáveis aleatórias independentes com <span class="math inline">\(X_i\sim\hbox{Normal}(\mu_i,\sigma^2_i)\)</span>. Mostre por indução que <span class="math inline">\(Y=X_1+\cdots+X_n\sim\hbox{Normal}(\sum_{i=1}^n \mu_i,\sum_{i=1}^n \sigma^2_i)\)</span></p></li>
+</ol>
+</div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.21</strong></span> <strong>Distribuição Chi Quadrado.</strong> A função densidade da distribuição <span class="math inline">\(\chi^2_\nu\)</span> é</p>
+<p><span class="math display">\[f(x) = \frac{1}{2^{\nu/2} \Gamma(\nu/2)} x^{\nu/2 - 1} e^{-x/2}I_{(0,\infty)}(x),\]</span> onde <span class="math inline">\(\nu&gt;0\)</span>.</p>
+<ol type="a">
+<li><p>Sejam <span class="math inline">\(X_1,X_2\)</span> variáveis aleatórias independentes com <span class="math inline">\(X_i\sim\chi^2_{\nu_i}\)</span>. Mostre que <span class="math inline">\(Y=X_1+X_2\sim\chi^2_{\nu_1+\nu_2}\)</span>.</p></li>
+<li><p>Sejam <span class="math inline">\(X_1,\ldots,X_n\)</span> variáveis aleatórias independentes com <span class="math inline">\(X_i\sim\chi^2_{\nu_i}\)</span>. Mostre, por indução, que <span class="math inline">\(Y=\sum_{i=1}^{n}X_i\sim\chi^2_{\sum_{i=1}^n \nu_i}\)</span>.</p></li>
+<li><p>Sejam <span class="math inline">\(Z_i\sim\hbox{Normal}(0,1)\)</span> variáveis independentes. Sabendo que <span class="math inline">\(Z_i^2\sim\chi^2_1\)</span>, qual é a distribuição de <span class="math inline">\(Z_1^2+\cdots+Z_n^2?\)</span></p></li>
+</ol>
+</div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.22</strong></span> <strong>Distribuição t-Student.</strong> Sejam <span class="math inline">\(X\sim\hbox{Normal}(0,1)\)</span> e <span class="math inline">\(Y\sim\chi^2_{\nu}\)</span> variáveis independentes. Mostre que a função densidade de</p>
+<p><span class="math display">\[T=\frac{X}{\sqrt{Y/\nu}}\]</span> é</p>
+<p><span class="math display">\[f(t)= \frac{\Gamma\left(\frac{\nu+1}{2}\right)}{\sqrt{\nu\pi} \, \Gamma\left(\frac{\nu}{2}\right)} \left(1 + \frac{t^2}{\nu}\right)^{-\frac{\nu+1}{2}}I_\mathbb{R}(t).\]</span></p>
+<p><strong>Sugestão.</strong> Considere a função <span class="math inline">\(g_*(x,y)=(x/\sqrt{y/\nu}, y)=(t,w)\)</span>.</p>
+</div>
+<div id="exr-f-snedecor" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.23</strong></span> <strong>Distribuição F de Snedecor.</strong> Sejam <span class="math inline">\(U\)</span> e <span class="math inline">\(V\)</span> variáveis aleatórias independentes tais que <span class="math inline">\(U \sim \chi^2_{\nu_1}\)</span> e <span class="math inline">\(V \sim \chi^2_{\nu_2}\)</span>. A distribuição F de Snedecor com <span class="math inline">\(\nu_1\)</span> e <span class="math inline">\(\nu_2\)</span> graus de liberdade é definida pela transformação:<span class="math display">\[W = \frac{U/\nu_1}{V/\nu_2}\]</span></p>
+<ol type="a">
+<li><p>Para encontrar a densidade de <span class="math inline">\(W\)</span>, defina uma variável auxiliar <span class="math inline">\(Z = V\)</span>. Encontre a densidade conjunta <span class="math inline">\(f_{W,Z}(w, z)\)</span> utilizando o método do Jacobiano.</p></li>
+<li><p>Mostre que a densidade marginal de <span class="math inline">\(W\)</span> é dada por:<span class="math display">\[f_W(w) = \frac{\Gamma\left(\frac{\nu_1+\nu_2}{2}\right)}{\Gamma\left(\frac{\nu_1}{2}\right)\Gamma\left(\frac{\nu_2}{2}\right)} \left(\frac{\nu_1}{\nu_2}\right)^{\frac{\nu_1}{2}} \frac{w^{\frac{\nu_1}{2}-1}}{\left(1 + \frac{\nu_1}{\nu_2}w\right)^{\frac{\nu_1+\nu_2}{2}}} I_{(0, \infty)}(w)\]</span></p></li>
+<li><p>Como a distribuição <span class="math inline">\(F\)</span> se relaciona com a distribuição <span class="math inline">\(t\)</span> de Student? (Dica: Observe a definição de <span class="math inline">\(T\)</span> no exercício anterior e considere o que ocorre com <span class="math inline">\(T^2\)</span>).:::</p></li>
+</ol>
 
 
+</div>
+</section>
 </section>
 
 </main> <!-- /main -->

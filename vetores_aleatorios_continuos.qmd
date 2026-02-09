@@ -285,7 +285,7 @@ b) encontre a função densidade marginal de $X$.
 c) Calcule $P(X>Y)$.
 :::
 
-:::
+
 ## Distribuição condicional
 
 Sejam $\textbf{X}$ e $\textbf{Y}$ vetores aleatórios contínuos. Sabemos que
@@ -344,17 +344,19 @@ a) Determine a densidade marginal do vetor $(Y_1,\ldots,Y_n)$
 b) Determine a densidade condicional de $X$ dado os valores de $Y_1,\ldots,Y_n$
 :::
 
-:::
+
 ## Função de vetores aleatórios contínuos
+
+### Caso para uma variável
 
 Suponha que $X$  é uma variável aleatória contínua e $g(.)$
  uma função real e contínua. Considerando a variável aleatória $Y=g(X)$, teremos que
 
-$$P(Y\in A)=P(g(X)\in A)=\int_{x:g(x)\in A}f_X(x)dx.$$
+$$P(Y\in A)=P(g(X)\in A)=\int_{\{x:g(x)\in A\}}f_X(x)dx.$$
 
 Em particular,
 
-$$F_Y(y)=P(Y\leq y)=P(g(X)\leq y)=\int_{x:g(x)\leq y}f_X(x)dx.$$
+$$F_Y(y)=P(Y\leq y)=P(g(X)\leq y)=\int_{\{x:g(x)\leq y\}}f_X(x)dx.$$
 
 Agora, suponha $g(.)$ possui inversa. Então, podemos utilizar o método integral por substituição. Fazendo $u=g(x)$, teremos que $x=g^{−1}(u)$ e $dx=\frac{d}{du}g^{−1}(u)du$. Além disso,
 
@@ -374,6 +376,13 @@ $$f_Y(y)=f_X(\log y )\left|\frac{d}{dy}\log y\right|=\frac{1}{y\sqrt{2\pi}}e^{-\
 Essa distribuição é denominada Lognormal(0,1).
 :::
 
+::: {#exr-}
+Seja $X$ uma variável aleatória com distribuição Uniforme no intervalo $(0, 1)$, ou seja, sua função de densidade de probabilidade é:
+$$f_X(x) = I_{(0,1)}(x).$$
+Encontre a função densidade de $Y = -\ln(X)$.
+:::
+
+### Caso vetorial com $g$ invertível
 
 Assim como no caso discreto, a extensão para vetores também é natural. Seja $\textbf{X}$
  um vetor aleatório de comprimento $n$
@@ -386,7 +395,7 @@ Agora, suponha que $g(.)$ possui inversa (o que implica que $g:\mathbb{R}^n\righ
 
 $$P(\textbf{Y}\in A)=\int_{A}f_\textbf{X}(g^{-1}(\textbf{u})|\det\mathcal{J}g^{-1}(\textbf{u})|d\textbf{u}.$$
 
-onde $\mathcal{J}g^{-1}(\textbf{u})$ é denominada matriz Jacobiana, cujo o elemento $(i,j)$ é dado por
+onde $\mathcal{J}g^{-1}(\textbf{u})$ é denominada **matriz Jacobiana**, cujo o elemento $(i,j)$ é dado por
 $$\mathcal{J}_{i,j}=\frac{\partial x_i}{\partial u_j}.$$
 
 Em particular, teremos que
@@ -411,7 +420,7 @@ e o Jacobiano da transformação é dado por
 
 $$\mathcal{J}g^{-1}(\textbf{y})=\left[\begin{array}{cc} 0,5 & 0,5 \\ 0,5 & - 0,5 \end{array}\right],$$
 
-cujo determinante é igual a 1/2. Logo,
+cujo determinante é igual a -1/2. Logo,
 
 $$\begin{align}f_\textbf{Y}(\textbf{y})&=f_{X_1}(0,5(y_1+y_2)f_{X_2}(0,5(y_1−y_2)\frac{1}{2}\\&=\frac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}[0,5(y_1+y_2)]^2}I_{\mathbb{R}}(0,5(y_1+y_2))\frac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}[0,5(y_1-y_2)]^2}I_{\mathbb{R}}(0,5(y_1-y_2))\frac{1}{2}\\&=\frac{1}{4\pi}e^{-\frac{1}{8}[(y_1-y_2)^2+(y_1+y_2)^2]}I_{\mathbb{R}}(y_1)I_{\mathbb{R}}(y_2)\\&=\frac{1}{4\pi}e^{-\frac{1}{4}(y_1^2+y_2^2)}I_{\mathbb{R}}(y_1)I_{\mathbb{R}}(y_2).\end{align}$$
 Podemos notar que a densidade conjunta fatora em duas normais, ou seja $Y_1$
@@ -467,7 +476,7 @@ $$\begin{align}f_{U,V}(u,v)=\frac{u}{(1+v)^2}e^{-u}I_{(0,\infty)}\left(u\right)I
 :::
 
 ::: {#exr-}
-Sejam $X$ e $Y$ variáveis aleatórias independentes, ambas com distribuição Gama de parâmetros $\alpha$ e $\beta$, especificamente $X \sim \text{Gama}(a, 1)$ e $Y \sim \text{Gama}(b, 1)$. Considere as seguintes transformações:$$U = X + Y \quad \text{e} \quad V = \frac{X}{X+Y}$$Determine a densidade conjunta $f_{U,V}(u, v)$.Verifique se $U$ e $V$ são independentes.Identifique as distribuições marginais de $U$ e $V$
+Sejam $X$ e $Y$ variáveis aleatórias independentes, ambas com distribuição Gama de parâmetros $\a$ e $b$, especificamente $X \sim \text{Gama}(a, 1)$ e $Y \sim \text{Gama}(b, 1)$. Considere as seguintes transformações:$$U = X + Y \quad \text{e} \quad V = \frac{X}{X+Y}$$Determine a densidade conjunta $f_{U,V}(u, v)$.Verifique se $U$ e $V$ são independentes.Identifique as distribuições marginais de $U$ e $V$
 
 **Nota** A função densidade da distribuição Gamma($a,b$) é
 $$f(x)=\frac{b^a}{\Gamma(a)}x^{a-1}e^{-bx}I_{(0,\infty)}(x),$$
@@ -475,71 +484,89 @@ com $a,b>0$.
 :::
 
 
-Considere o agora que $g:\mathbb{R}^m\rightarrow\mathbb{R}^n$, onde $m>n$. Nesse caso, $\textbf{Y}=g(\textbf{X})$ ainda é um vetor aleatório, mas não podemos aplicar a integral por substitição $g(.)$ não tem inversa. Neste caso, adicionamos um vetor $\textbf{W}=h(X)$ de dimensão $m−n$ tal que a função $g_*^(\textbf{X})=(g(\textbf{X}),h(\textbf{X}))$ tenha inversa. Então, obtemos a densidade conjunta de $(\textbf{Y},\textbf{W})$$ através do método discutido anteriormente, ou seja
+### Caso vetorial com $g:\mathbb{R}^n\rightarrow\mathbb{R}^n$, com $n>m$
+Considere o agora que $g:\mathbb{R}^n\rightarrow\mathbb{R}^m$, onde $n>m$. Nesse caso, $\textbf{Y}=g(\textbf{X})$ ainda é um vetor aleatório, mas não podemos aplicar a integral por substitição $g(.)$ não tem inversa. Neste caso, adicionamos um vetor $\textbf{W}=h(X)$ de dimensão $n−m$ tal que a função $$g_*(\textbf{X})=(g(\textbf{X}),h(\textbf{X}))=(\textbf{y},\textbf{w})$$ tenha inversa. Então, obtemos a densidade conjunta de $(\textbf{Y},\textbf{W})$ através do método discutido anteriormente, ou seja
 
 $$f_{\textbf{Y},\textbf{W}}(\textbf{y},\textbf{w})=f_X(g_ *^{−1}(\textbf{y},\textbf{w}))|\det \mathcal{J}g_ *^{−1}|.$$
-Em seguida, podemos encontrar a densidade conjunta de $\textbf{Y}$
+Em seguida, podemos encontrar a densidade marginal de $\textbf{Y}$
  integrando a conjunta acima em $\textbf{W}$:
 
-fY(y)=∫fX(g∗−1(y,w))|J(y,w)|dw.
-Exemplo. Sejam X1
- e X2
- variáveis aleatórias independentes com distribuição Exponencial(1). Vamos encontrar a densidade de Y=X1+X2
-.
+$$f_\textbf{Y}(\textbf{y})=\int f_\textbf{X}(g_*^{−1}(\textbf{y},\textbf{w}))|\det\mathcal{J}g_*^{-1}(\textbf{y},\textbf{w})|d\textbf{w}.$$
+::: {#exm-}
+**Soma de duas variáveis aletórias contínuas independentes.** Sejam $X_1,X_2$ variáveis aleatórias independentes e considere o problema de encontrar a função densidade de $Y=X_1+X_2$.
 
-Note que não há inversa (ou seja, não é possível escrever X1
- e X2
- como função apenas de Y
-). Vamos introduzir a variável auxilar W=X2
-. Então,
+Como $y=g(x_1,x_2)=x_1+x_2$ não tem inversa, vamos utilizar a função $g_*(x_1,x_2)=(x_1+x_2,x_2)=(y,w)$ ( como a escolha de $w=x_2$ é arbitrária, aqui o fizemos de modo conveniente). Teremos que
 
-{Y=X1+X2W=X2⇒{X1=Y−WX2=W
+$$\begin{cases}
+y&= x_1+x_2\\ w &= x_1 \end{cases}\Rightarrow\begin{cases}x_1&=y-w\\ x_2&=w\end{cases}$$
 
-O jacobiano da transformação será
-J(y,w)=∣∣∣10−11∣∣∣=1
-e
+O determinante da matriz Jacobiana é
 
-fY,W(y,w)=fX1,X2(y−w,w)|J(y,w)|=fX1(y−w)fX2(w)
-Lembremos que a densidade da Exponencial(1) é dada por
-fX(x)=e−x,
-para x>0
-. Isso é o mesmo que escrever
-fX(x)=e−xI(x>0).
-Agora, podemos escrever a densidade conjunta de (Y,W):
-fY,W(y,w)=e−(y−w)I(y−w>0)e−wI(w>0)=e−yI(y−w>0)I(w>0).
-Vamos encontrar a marginal de Y
- integrando o resultado acima em w:
- 
- $$fY(y)=∫e−yI(y−w>0)I(w>0)dw=∫e−yI(w<y)I(0<w)dw=∫e−yI(−∞<w<y)I(0<w<∞)dw=∫e−yI(max{−∞,0}<w<min{y,∞})dw=∫e−yI(0<w<y)dw=∫y0e−ydw=e−y∫y0dw=ye−y.$$
+$$\det\mathcal{J}g_*^{-1}=\left|\begin{array}{cc}\frac{\partial{x_1}}{\partial{y}} & \frac{\partial{x_1}}{\partial{w}} \\ \frac{\partial{x_2}}{\partial{y}} & \frac{\partial{x_2}}{\partial{w}} \end{array}\right|=\det\left|\begin{array}{cc}1 & -1 \\ 0 & 1\end{array}\right|=1$$
 
-Exercício
-Sejam X1
- e X2
- variáveis aleatórias independentes com distribuição Uniforme(0,1). Encontre a distribuição de Y=X1+X2
-.
-Solução
-Considere a variável auxiliar W=X1
-. Neste caso,
-X1X2=W,=Y−W.
-e o Jacobiano da transformação será
-∣∣∣∣∂x1∂y∂x2∂y∂x1∂w∂x2∂w∣∣∣∣=∣∣∣011−1∣∣∣=1
+(aqui, fica claro que $w=x_2$ foi escolhido de modo a simplificar o derteminante), logo
 
-Como
-fX1,X2(x1,x2)=fX1(x1)fX2(x2)=1
-se 0<x<1
- e 0<y<1
- e 0 em caso contrário, teremos que
+$$f_{Y,W}(y,w)=f_{X_1}(y-w)f_{X_2}(w)$$
+e a função densidade desejada é
 
-fY,W(y,w)=fX1,X2(w,y−w)J(y,w)=I(0<w<1)I(0<y−w<1),
+$$f_{Y}(y)=\int_{\mathbb{R}}f_{X_1}(y-w)f_{X_2}(w)dw.$$
 
-se 0<w<1
- e 0<y−w<1
- e 0 em caso contrário.
+:::
 
-Agora, vamos encontrar a densidade de Y
-:
+::: {#exr-}
+Sejam $X_1$ e $X_2$ variáveis aleatórias independentes com distribuição Exponencial(1), cuja função densidade é 
+$$f(x)=e^{-x}I_{(0,\infty)}(x).$$
 
-fY(y)=∫RI(0<w<1)I(0<y−w<1)dw=∫RI(0<w<1)I(y−1<w<y)dw=∫RI(max{0,y−1}<w<min{1,y})dw=∫min{1,y}max{0,y−1}1dw=min{1,y}−max{0,y−1},
+Encontre a função densidade de $Y=X_1+X_2$.
+:::
 
-se 0<y<2
- e zero em caso contrário.
+
+::: {#exr-}
+Sejam $X_1$ e $X_2$ variáveis aleatórias independentes com distribuição Uniforme(0,1), cuja função densidade é
+
+$$f(x)=I_{(0,1)}(x)$$
+Encontre a função densidade de $Y=X_1+X_2$.
+:::
+
+### Casos especiais
+
+::: {#exr-}
+**Soma de normais independentes.** 
+
+a) Sejam $X_1,X_2$ variáveis aleatórias independentes com $X_i\sim\hbox{Normal}(\mu_i,\sigma^2_i)$. Mostre que $Y=X_1+X_2\sim\hbox{Normal}(\mu_1+\mu_2,\sigma_1^2+\sigma_2^2)$.
+
+b) Sejam $X_1,\ldots,X_n$ variáveis aleatórias independentes com $X_i\sim\hbox{Normal}(\mu_i,\sigma^2_i)$. Mostre por indução que $Y=X_1+\cdots+X_n\sim\hbox{Normal}(\sum_{i=1}^n \mu_i,\sum_{i=1}^n \sigma^2_i)$
+:::
+
+::: {#exr-}
+**Distribuição Chi Quadrado.** A função densidade da distribuição $\chi^2_\nu$ é 
+
+$$f(x) = \frac{1}{2^{\nu/2} \Gamma(\nu/2)} x^{\nu/2 - 1} e^{-x/2}I_{(0,\infty)}(x),$$
+onde $\nu>0$.
+
+a) Sejam $X_1,X_2$ variáveis aleatórias independentes com $X_i\sim\chi^2_{\nu_i}$. Mostre que $Y=X_1+X_2\sim\chi^2_{\nu_1+\nu_2}$.
+
+b) Sejam $X_1,\ldots,X_n$ variáveis aleatórias independentes com $X_i\sim\chi^2_{\nu_i}$. Mostre, por indução, que $Y=\sum_{i=1}^{n}X_i\sim\chi^2_{\sum_{i=1}^n \nu_i}$.
+
+c) Sejam $Z_i\sim\hbox{Normal}(0,1)$ variáveis independentes. Sabendo que $Z_i^2\sim\chi^2_1$, qual é a distribuição de $Z_1^2+\cdots+Z_n^2?$
+:::
+
+::: {#exr-}
+**Distribuição t-Student.** Sejam $X\sim\hbox{Normal}(0,1)$ e $Y\sim\chi^2_{\nu}$ variáveis independentes. Mostre que a função densidade de 
+
+$$T=\frac{X}{\sqrt{Y/\nu}}$$
+é
+
+$$f(t)= \frac{\Gamma\left(\frac{\nu+1}{2}\right)}{\sqrt{\nu\pi} \, \Gamma\left(\frac{\nu}{2}\right)} \left(1 + \frac{t^2}{\nu}\right)^{-\frac{\nu+1}{2}}I_\mathbb{R}(t).$$
+
+**Sugestão.** Considere a função $g_*(x,y)=(x/\sqrt{y/\nu}, y)=(t,w)$. 
+:::
+
+::: {#exr-f-snedecor}
+**Distribuição F de Snedecor.** Sejam $U$ e $V$ variáveis aleatórias independentes tais que $U \sim \chi^2_{\nu_1}$ e $V \sim \chi^2_{\nu_2}$. A distribuição F de Snedecor com $\nu_1$ e $\nu_2$ graus de liberdade é definida pela transformação:$$W = \frac{U/\nu_1}{V/\nu_2}$$
+
+a) Para encontrar a densidade de $W$, defina uma variável auxiliar $Z = V$. Encontre a densidade conjunta $f_{W,Z}(w, z)$ utilizando o método do Jacobiano.
+
+b) Mostre que a densidade marginal de $W$ é dada por:$$f_W(w) = \frac{\Gamma\left(\frac{\nu_1+\nu_2}{2}\right)}{\Gamma\left(\frac{\nu_1}{2}\right)\Gamma\left(\frac{\nu_2}{2}\right)} \left(\frac{\nu_1}{\nu_2}\right)^{\frac{\nu_1}{2}} \frac{w^{\frac{\nu_1}{2}-1}}{\left(1 + \frac{\nu_1}{\nu_2}w\right)^{\frac{\nu_1+\nu_2}{2}}} I_{(0, \infty)}(w)$$
+
+c) Como a distribuição $F$ se relaciona com a distribuição $t$ de Student? (Dica: Observe a definição de $T$ no exercício anterior e considere o que ocorre com $T^2$).:::
