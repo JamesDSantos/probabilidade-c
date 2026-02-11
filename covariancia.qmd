@@ -1,0 +1,289 @@
+# Covariância, correlação e esperança condicional
+
+
+
+Neste capítulo, estamos interessados na definição de covariância e correlação para um par $(X,Y)$ de variáveis aleatórias, assim como as propriedade de $E(Y|X=x)$. É possível estender esses resultados de modo natural para o par $(\textbf{X},\textbf{Y})$ de vetores aleatórios, mas isso será feito no curso de Estatística Multivariada I
+
+## Covariância
+
+Seja $\textbf{x}$ um vetor de comprimento $n$. A distância de $\textbf{x}$ até a origem é denominada **norma** e é calculada por
+
+$$||\textbf{x}||=\sqrt{\sum_{i=1}^n x_i^2}.$$
+ 
+Agora, considerando outro vetor $\textbf{y}$, também de comprimento $n$, definimos o produto interno de $\text{x}$ e $\textbf{x}$ por
+
+$$\langle\textbf{x},\textbf{y}\rangle=\sum_{i=1}^n x_iy_i.$$
+Pode-se mostrar que
+
+$$\langle\textbf{x},\textbf{y}\rangle=||\textbf{x}||||\textbf{y}||\cos\theta,$$
+onde $\theta$ é o ângulo formado entre os vetores $\textbf{x}$ e $\textbf{y}$. Portanto, o produto interno possui interpretação direta com a relação entre as direções de $\textbf{x}$ e $\textbf{y}$: a) se $\langle\textbf{x},\textbf{y}\rangle$ é positivo, então os vetores apontam para o mesmo sentido (b) se negativo, eles apontam para o sentidos contrários e (c) se nulo, eles são ortogonais. É imediato que
+
+$$||\textbf{x}||=\sqrt{\langle \textbf{x},\textbf{x}\rangle}.$$
+
+
+Agora, sem perda de generalidade, assuma que $X$ e $Y$ são variáveis aleatórias discretas com **média zero**. 
+
+Defina o produto interno ponderado
+
+$$\langle \textbf{x},\textbf{y}\rangle_P=\sum_{(x,y)\in\mathbb{Z}^2}xyP(X=x,Y=y)=E(XY),$$
+onde pode-se notar que cada combinação possível de $(x,y)$ é ponderada com sua respectiva probabilidade. Observe que
+
+$$||\textbf{x}||_P=\sqrt{\langle \textbf{x},\textbf{x}\rangle_P}=\sqrt{E(X^2)}=\sqrt{Var(X)},$$
+onde a última igualdade é válida porque $E(X)=0$. Essa quantidade, conhecida como desvio padrão, é interpretada como a norma do vetor $\textbf{x}$, o que explica porque o desvio padrão é considerado uma medida de distância. Se considerarmos que $E(X)=\mu$, o centro de massa não é mais zero. Podemos definir o vetor centrado em $\mu$, $\tilde{\textbf{x}}=\textbf{x}-\mu$. A norma deste vetor considerando o produto interno ponderado é  
+
+$$||\tilde{\textbf{x}}||_P=\sqrt{\langle \textbf{x}-\mu,\textbf{x}-\mu\rangle_P}=\sqrt{E((X-\mu)^2)}=\sqrt{Var(X)},$$
+que é o desvio padrão tradicional.
+
+Se consideramos que $E(X)=\mu_X$ e $E(Y)=\mu_Y$ são diferentes de zero, o produto interno ponderado dos vetores centrados $\tilde{\textbf{x}}=\textbf{x}-\mu_X$ e $\tilde{\textbf{y}}=\textbf{y}-\mu_Y$, teremos
+
+$$\langle \tilde{\textbf{x}},\tilde{\textbf{y}}\rangle_P=\sum_{(x,y)\in\mathbb{Z}^2} (x-\mu_X)(y-\mu_Y)P(X=x_i,Y=y_j)=E\left((X-\mu_X)(Y-\mu_Y)\right).$$
+Observe que a definição do produto interno ponderado pode ser modificada para um par $(X,Y)$ de variáveis aleatórias contínuas:
+
+$$\langle \textbf{x},\textbf{y}\rangle_P=\int_{\mathbb{R}^2}xyf(x,y)dxdy=E(XY),$$
+o que gera as mesmas interpretações dadas para o caso discreto. Podemos então definir formalmente a covariância entre $X$ e $Y$.
+
+::: {#def-}
+Sejam $X$ e $Y$ duas variáveis aleatórias quaisquer. Então, a covariância entre $X$ e $Y$ é dada por
+
+$$Cov(X,Y)=E((X−E(X))(Y−E(Y))),$$
+:::
+
+Pode-se mostrar que 
+
+$$Cov(X,Y)=E(XY)-E(X)E(Y),$$
+o que é, em geral, mais simples de se obter. Na prática, a covariância dá a relação entre as variáveis $X$ e $Y$ centradas em seus respectivos centros de massa: (a) Se $Cov(X,Y)<0$, então espera-se que o aumento(decrescimento) de $X$ implique em um decrescimento(aumento) de $Y$, (b) se $Cov(X,Y)>0$, então espera-se que o aumento(decrescimento) de $X$ implique em um aumento(decrescimento) de $Y$ e (c) $Cov(X,Y)=0$ implica na ausência de relação linear entre $X$ e $Y$.
+
+
+::: {#exm-}
+A tabela abaixo mostra a função de probabilidade conjunta 
+$$\begin{array}{|c|ccc|c|}
+\hline
+X \setminus Y & 1 & 2 & 3 & P(X=x) \\ \hline
+0 & 0,1 & 0,2 & 0,3 & \mathbf{0,6} \\
+1 & 0,2 & 0,1 & 0,1 & \mathbf{0,4} \\ \hline
+P(Y=y) & \mathbf{0,3} & \mathbf{0,3} & \mathbf{0,4} & \mathbf{1,0} \\ \hline
+\end{array}$$
+
+Vamos encontrar a covariância de $(X,Y)$:
+
+* Esperanças marginais:
+
+$$\begin{align}E(X)&=0\cdot 0,6+1\cdot0,4=0,4\\
+E(Y)&=1\cdot0,3+2\cdot0,3+3\cdot0,4=2,1\end{align}$$
+
+* Esperança do produto
+
+$$\begin{align}E(XY)&=\sum_{x=0}^1\sum_{y=1}^2P(X=x,Y=y)\\&=\sum_{y=1}^2 0\cdot yP(X=0,Y=y)+\sum_{y=1}^2 1\cdot yP(X=0,Y=y)\\&=1\cdot0,2+2\cdot0,1+3\cdot0,1=0,7\end{align}$$
+* Resultado da Covariância
+
+$$Cov(X, Y) = 0,7 - 0,4\cdot 2,1=0,7-0,84 = -0,14$$
+
+* Interpretação: A covariância negativa indica que as variáveis tendem a se mover em direções opostas. 
+
+:::
+
+::: {#exr-}
+A tabela abaixo apresenta a função de probabilidade conjunta para $(X,Y)$.$$\begin{array}{|c|ccc|c|}
+\hline
+X \setminus Y & 1 & 2 & 3 & P(X=x) \\ \hline
+0 & 0,05 & 0,15 & 0,30 & \mathbf{0,50} \\
+1 & 0,25 & 0,15 & 0,10 & \mathbf{0,50} \\ \hline
+P(Y=y) & \mathbf{0,30} & \mathbf{0,30} & \mathbf{0,40} & \mathbf{1,00} \\ \hline
+\end{array}$$
+
+Determine a covariância $Cov(X, Y)$ e interprete o resultado.
+:::
+
+::: {#exr-}
+Seja
+
+$$f(x,y)=2xy+\frac{1}{2},$$
+para $(x,y)\in(0,1)$. Encontre a covariância de $(X,Y)$ e interprete o resultado.
+:::
+
+<div class='alert alert-success'>
+**Propriedades**
+
+1. $Cov(X,X)=Var(X)$
+
+2. Para $a$e $b$ constantes e reais, $Cov(aX,bY)=abCov(X,Y)$
+
+3. Para $a$ constante real, $Cov(X,a)=0$
+
+4. $Cov(X+Y,Z)=Cov(X,Z)+Cov(Y,Z)$ e $Cov(X,Z+Y)=Cov(X,Z)+Cov(X,Y)$ 
+</div>
+
+<div class='alert alert-success'>
+**Proposição** Se $X$ e $Y$ são independentes, então $Cov(X,Y)=0$.
+
+
+**Importante**: $Cov(X,Y)=0$ não implica em $X$
+ e $Y$ serem independentes!
+</div>
+
+::: {#exm-}
+Suponha que
+
+$$P(X=x,Y=y)=\frac{1}{4}$$,
+com $(x,y)\in\{−1,1\}^2$. Então
+
+$$P(X=x)P(Y=y)=P(X=x,Y=−1)+P(X=x,Y=1)=\frac{1}{2}=P(X=−1,Y=y)+P(X=1,Y=y)=\frac{1}{2}.$$
+Como
+
+$$\frac{1}{4}=P(X=x,Y=y)=\frac{1}{2}\frac{1}{2}=P(X=x)P(Y=y),$$
+temos que $X$ e $Y$ são independentes e, portanto $Cov(X,Y)=0$.
+:::
+
+
+::: {#exr-} Suponha que $X$ e $Y$ assumem valores em $\{−1,0,1\}$
+ com a seguinte função de probabilidade conjunta:
+ 
+$$P(X=x,Y=y)=\frac{1}{5}$$
+se, $(x,y)\in\{(1,1),(−1,1),(1,−1),(−1,−1),(0,0)\}$ e $P(X=x,Y=y)=0$ em  caso contrário. Mostre que $X$ e $Y$ não são independentes e que $Cov(X,Y)=0$.
+:::
+
+
+
+::: {#exr-}
+Considere a densidade conjunta
+
+$$f(x,y)=\frac{1}{y}e^{−(y+xy)}$$,
+para $x,y>0$. Encontre Cov(X,Y)
+:::
+
+::: {#exr-}
+Verifique
+
+a. $Cov(X,Y)=Cov(Y,X)$
+
+b. $Cov(X,X)=Var(X)$
+
+c. $Cov(aX,Y)=Cov(X,aY)=aCov(X,Y)$, $a$ constante.
+
+Conclua que $Cov(aX,bY)=abCov(X,Y)$, com $a,b$ constantes.
+:::
+
+::: {#exr-}
+Sejam $X_1,\ldots,X_n$ e $Y_1,\ldots,Y_m$ variáveis aleatórias. Mostre que
+
+$$Cov(\sum_{i=1}^nX_i,Y_j)=\sum_{i=1}^nCov(X_i,Y_j), \forall\;\; j=1,\ldots,m$$
+
+$$Cov(X_i,\sum_{j=1}^m Y_j)=\sum_{j=1}^mCov(X_i,Y_j), \forall\;\; i=1,\ldots,n$$
+
+Conclua que
+
+$$Cov(\sum_{i=1}^n X_i,\sum_{j=1}^m Y_j)=\sum_{i=1}^n\sum_{j=1}^mCov(X_i,Y_j).$$
+
+:::
+
+::: {#exr-}
+Sejam $X,Y$ duas variáveis aleatórias. Mostre que
+
+$$Var(X+Y)=Var(X)+Var(Y)+2Cov(X,Y).$$
+
+Agora, sejam $X_1,\ldots,X_n$ variáveis aleatórias. Mostre que
+
+$$Var(\sum_{i=1}^n X_i)=\sum_{i=1}^nVar(X_i)+\sum_{i=1}^n\sum_{j=1}^nCov(X_i,X_j).$$
+:::
+
+## Correlação 
+Recorde que, para o produto interno entre vetores, é verdadeiro que
+
+$$\langle \textbf{x},\textbf{y}\rangle=||\textbf{x}||||\textbf{y}||\cos\theta,$$
+onde $\theta$ é o ângulo formado entre os dois vetores. Logo, tem-se que
+
+$$\cos\theta=\frac{\langle \textbf{x},\textbf{y}\rangle}{||\textbf{x}||||\textbf{y}||},$$
+
+Em particular, se $|\cos\theta|=1$, então $\textbf{x}$ e $\textbf{y}$ são paralelos, o que implica que exsite $b$ tal que $\textbf{y}=v\textbf{x}$ e $b$ possui o mesmo sinal do cosseno.
+
+Podemos estender essa noção para o par de variáveis aleatórias $(X,Y)$, definindo o **coeficiente de correlação de Pearson**:
+
+$$\rho_{XY}=\frac{Cov(X,Y)}{\sqrt{Var(X)Var(Y)}},$$
+que é o cosseno do ângulo entre as variáveis centralizadas $X-E(X)$ e $Y-E(Y)$. Esse coeficiente mede o quanto $Y$ e $X$ podem ser escritas como função linear uma da outra. De fato, se $|\rho_{XY}|=1$, então existem $a$ e $b$ tais que
+
+$$P(Y=a+bX)=1,$$
+onde o sinal de $b$ é o mesmo de $\rho_{XY}$.
+
+::: {#exm-}
+Sejam $X$ e $Y variáveis aleatórias com densidade conjunta
+
+$$f(x,y)=\frac{1}{2\pi}\exp\left\{−\frac{1}{2}(x^2+2y^2−2xy)\right\},$$
+com $x,y\in\mathbb{R}$. Vamos encontrar a correlação entre $X$
+ e $Y$. 
+ 
+...
+:::
+
+
+
+
+
+
+## Esperança condicional
+
+
+A esperança $X$ condicionada à $Y=y$ é denotada por $E(X|Y=y)$ e se refere à esperança obtida a partir da distribuição de $(X|Y=y)$. Se $X$ é uma variável aleatória contínua, a esperança condicional é dada por
+
+$$E(X|Y=y)=\int_{\mathbb{R}}x f(x|y)dx, $$
+e se $X$ for discreta,
+$$E(X|Y=y)=\sum_{x\in\mathbb{Z}} xP(X=x|Y=y).$$
+
+De modo análogo, para qualquer função real $g(.)$
+ podemos definir $E(g(X)|Y=y)$.
+ 
+ 
+
+
+A variância condicional de $X$ dado $Y=y$ é definida por:
+
+$$Var(X|Y=y)=E((X−E(X|Y=y))^2)=E(X^2|Y=y)−E(X|Y=y)^2.$$
+
+Exercício
+Solução
+Seja (X,Y)
+ um vetor aleatório com a seguinte função de densidade conjunta
+f(x,y)=11−x,
+para 0<x<y<1
+. Encontre E(Y|x)
+ e Var(Y|x)
+.
+
+Proposição
+Demonstração
+Sejam X
+ e Y
+ variáveis aleatórias com esperança finita. Então,
+
+E(X)=E(E(X|Y)).
+Além disso, se a variância for finita, então,
+Var(X)=E(Var(X|Y))+Var(E(X|Y)).
+
+Exercício
+Solução
+Suponha que X|y∼Poisson(y)
+ e Y∼Gama(a,b)
+. Encontre a média e a variância de X
+.
+
+Exercícios de fixação
+
+Suponha que o vetor aleatório (X,Y)
+ tem a seguinte densidade conjunta
+f(x,y)=ya+12−12a2Γ(a/2)2π−−√exp{−y2(1+x2)},
+onde y>0
+, x∈R
+ e a>1
+.
+
+Mostre Y∼Gama(a/2,1/2)
+
+Mostre que X|y∼Normal(0,1/y)
+
+Encontre E(X)
+ e Var(X)
+.
+
+Considere a seguinte definição:
+Var(X|Y)=E[(X−E(X|Y))2|Y].
+Prove que
+Var(X)=E(Var(X|Y))+Var(E(X|Y))

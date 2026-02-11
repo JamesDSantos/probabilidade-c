@@ -11,6 +11,8 @@ book:
     - intro.qmd
     - vetores_aleatorios_discretos.qmd
     - vetores_aleatorios_continuos.qmd
+    - vetores_mistos.qmd
+    - covariancia.qmd
     - references.qmd
 
 bibliography: references.bib

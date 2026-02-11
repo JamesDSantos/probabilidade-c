@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>References – Probabilidade C</title>
+<title>4&nbsp; Vetores aleatórios mistos – Probabilidade C</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,26 +20,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -49,7 +30,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./covariancia.html" rel="prev">
+<link href="./covariancia.html" rel="next">
+<link href="./vetores_aleatorios_continuos.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -88,6 +70,35 @@ div.csl-indent {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -101,7 +112,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./references.html">References</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./vetores_mistos.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Vetores aleatórios mistos</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -152,7 +163,7 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./vetores_mistos.html" class="sidebar-item-text sidebar-link">
+  <a href="./vetores_mistos.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Vetores aleatórios mistos</span></span></a>
   </div>
 </li>
@@ -164,7 +175,7 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link active">
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
 </li>
@@ -181,7 +192,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">References</h1>
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Vetores aleatórios mistos</span></h1>
 </div>
 
 
@@ -198,9 +209,55 @@ div.csl-indent {
 </header>
 
 
-<div id="refs" role="list" style="display: none">
-
+<p>É possível que o vetor <span class="math inline">\(\textbf{X}=(\textbf{X}_d,\textbf{X}_c)\)</span> possua um subvetor <span class="math inline">\(\textbf{X}_d\)</span> composto de variáveis aleatórias discretas e um subvetor <span class="math inline">\(\textbf{X}_c\)</span> composto de variáveis aleatórias contínuas. Suponha inicialmente que <span class="math inline">\(\textbf{X}_d\)</span> é independente de <span class="math inline">\(\textbf{X}_c\)</span>. Considere a seguinte probabilidade:</p>
+<p><span class="math display">\[P(\textbf{X}_d=\textbf{x}_d,\textbf{X}_c\leq\textbf{x}_c)=P(\textbf{X}_d=\textbf{x}_d)F_{\textbf{X}_c}(\textbf{x}_c).\]</span></p>
+<p>Assumindo que a função acima é diferenciável em <span class="math inline">\(\textbf{x}_c\)</span>, teremos a existência da função:</p>
+<p><span class="math display">\[g(\textbf{x}_d,\textbf{x}_c)=P(\textbf{X}_d=\textbf{x}_d)f_{\textbf{X}_c}(\textbf{x}_c).\]</span></p>
+<p>A função acima é denominada <strong>função de densidade conjunta mista</strong> ou função de massa-densidade conjunta. É possível definir essa função mesmo quando <span class="math inline">\(\textbf{X}_c\)</span> é dependente de <span class="math inline">\(\textbf{X}_d\)</span>. Para tanto, seja <span class="math inline">\(B(\varepsilon)=\{\textbf{y}: ||\textbf{y}-\textbf{x}_c||&lt;\varepsilon\}\)</span>. Então, define-se</p>
+<p><span class="math display">\[g(\textbf{x}_d,\textbf{x}_c)=\lim_{\varepsilon\rightarrow 0} \frac{P(\textbf{X}_d=\textbf{x}_d,\textbf{X}_c\in B(\varepsilon))}{Vol(B(\varepsilon))}.\]</span></p>
+<p>Observe que</p>
+<p><span class="math display">\[P(\textbf{X}_d=\textbf{x}_d,\textbf{X}_c\in B(\varepsilon))=P(\textbf{X}_d=\textbf{x}_d|\textbf{X}_c\in B(\varepsilon))P(\textbf{X}_c\in B(\varepsilon)),\]</span> e, alternativamente: <span class="math display">\[P(\textbf{X}_d=\textbf{x}_d,\textbf{X}_c\in B(\varepsilon))=P(\textbf{X}_c\in B(\varepsilon)|\textbf{X}_d=\textbf{x}_d)P(\textbf{X}_d=\textbf{x}_d).\]</span></p>
+<p>Pelo Teorema do Valor Médio para integrais, existem <span class="math inline">\(\textbf{a}_1, \textbf{a}_2 \in B(\varepsilon)\)</span> tais que</p>
+<p><span class="math display">\[Vol(B(\varepsilon))f_{\textbf{X}_c|\textbf{x}_d}(\textbf{a}_1|\textbf{x}_d)P(\textbf{X}_d=\textbf{x}_d) = P(\textbf{X}_d=\textbf{x}_d|\textbf{X}_c\in B(\varepsilon))Vol(B(\varepsilon))f_{\textbf{X}_c}(\textbf{a}_2).\]</span></p>
+<p>Dividindo ambos os lados por <span class="math inline">\(Vol(B(\varepsilon))\)</span> e fazendo <span class="math inline">\(\varepsilon \rightarrow 0\)</span>, os pontos <span class="math inline">\(\textbf{a}_1\)</span> e <span class="math inline">\(\textbf{a}_2\)</span> convergem para <span class="math inline">\(\textbf{x}_c\)</span>, resultando em</p>
+<p><span class="math display">\[g(\textbf{x}_d,\textbf{x}_c)=f_{\textbf{X}_c|\textbf{x}_d}(\textbf{x}_c|\textbf{x}_d)P(\textbf{X}_d=\textbf{x}_d)=P(\textbf{X}_d=\textbf{x}_d|\textbf{X}_c= \textbf{x}_c)f_{\textbf{X}_c}(\textbf{x}_c)\]</span></p>
+<div class="alert alert-success">
+<p><strong>Propriedades</strong></p>
+<ol type="1">
+<li>Probabilidades:</li>
+</ol>
+<p><span class="math display">\[P(\textbf{X}_d\in A,\textbf{X}_c\in B)=\sum_{\textbf{x}_d\in A}\int_{B}g(\textbf{x}_d,\textbf{x}_c)d\textbf{x}_c.\]</span> 2. Distribuição marginal de <span class="math inline">\(\textbf{X}_d:\)</span></p>
+<p><span class="math display">\[P(\textbf{X}_d=\textbf{x}_d)=\int g(\textbf{x}_d,\textbf{x}_c)d\textbf{x}_c.\]</span></p>
+<ol start="3" type="1">
+<li>Distribuição marginal de <span class="math inline">\(\textbf{X}_c:\)</span></li>
+</ol>
+<p><span class="math display">\[f(\textbf{x}_c)=\sum_{\textbf{x}_d} g(\textbf{x}_d,\textbf{x}_c).\]</span></p>
+<ol start="4" type="1">
+<li>Condicional de <span class="math inline">\(\textbf{X}_d|\textbf{X}_c=\textbf{x}_c\)</span>:</li>
+</ol>
+<p><span class="math display">\[P(\textbf{X}_d=\textbf{x}_d|\textbf{X}_c=\textbf{x}_c)=\frac{g(\textbf{x}_d,\textbf{x}_c)}{f(\textbf{x}_c)}.\]</span></p>
+<ol start="5" type="1">
+<li>Condicional de <span class="math inline">\(\textbf{X}_c|\textbf{X}_d=\textbf{x}_d\)</span>:</li>
+</ol>
+<p><span class="math display">\[f(\textbf{x}_c|\textbf{x}_d)=\frac{g(\textbf{x}_d,\textbf{x}_c)}{P(\textbf{X}_d=\textbf{x}_d)}.\]</span></p>
 </div>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 4.1</strong></span> Seja <span class="math inline">\(X|y\sim\hbox{Bernoulli}(y)\)</span> e <span class="math inline">\(y\sim\hbox{Uniforme}(0,1)\)</span>. Então</p>
+<p><span class="math display">\[g(x,y)=y^x(1-y)^{1-x}I_{\{0,1\}}(x)I_{(0,1)}(y).\]</span> Em particular, a marginal de <span class="math inline">\(X\)</span> é <span class="math display">\[P(X=x)=\int_0^1 y^{x}(1-y)^{1-x}dy=\frac{\Gamma(x+1)\Gamma(2-x)}{\Gamma(3)}I_{\{0,1\}}(x)\]</span> e 4</p>
+<p><span class="math display">\[f(y|x)=\frac{y^x(1-y)^{1-x}}{\Gamma(x+1)\Gamma(2-x)/\Gamma(3)}=\frac{\Gamma(3)}{\Gamma(x+1)\Gamma(2-x)}y^{x}(1-y)^{1-x}I_{(0,1)}(y)\]</span></p>
+</div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 4.1</strong></span> Sejam <span class="math inline">\(X|y\sim\hbox{Binomial}(n,y)\)</span> e <span class="math inline">\(y\in\hbox{Uniforme}(0,1)\)</span>. Encontre a distribuição marginal de <span class="math inline">\(X\)</span> e a condicional <span class="math inline">\(Y|X=x\)</span>.</p>
+</div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 4.2</strong></span> Sejam <span class="math inline">\(X|y\sim\hbox{Poisson}(y)\)</span> e <span class="math inline">\(y\in\hbox{Exponencial}(1)\)</span>. Encontre a distribuição marginal de <span class="math inline">\(X\)</span> e a condicional <span class="math inline">\(Y|X=x\)</span>.</p>
+</div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 4.3</strong></span> Sejam <span class="math inline">\(X|y\sim\hbox{Geométrica}(y)\)</span> e <span class="math inline">\(y\in\hbox{Uniforme}(0,1)\)</span>. Encontre a distribuição marginal de <span class="math inline">\(X\)</span> e a condicional <span class="math inline">\(Y|X=x\)</span>.</p>
+</div>
+<p>Exercício Solução Exercício 2.4Suponha que P(X=x)=12, com x=0,1 . Suponha ainda que Y|X=x∼Normal(x,1) . Mostre que</p>
+<p>P(X=0|Y=y)=(1+exp{y−12})−1</p>
+<p>Exercício Solução Exercício 2.5Suponha que X∼Gama(2,1) e Y|X=x∼Poisson(x) . Encontre a densidade de X|Y=y .</p>
 
 
 
@@ -606,11 +663,14 @@ div.csl-indent {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./covariancia.html" class="pagination-link" aria-label="Covariância, correlação e esperança condicional">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Covariância, correlação e esperança condicional</span></span>
+      <a href="./vetores_aleatorios_continuos.html" class="pagination-link" aria-label="Distribuição de vetores aleatórios contínuos">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Distribuição de vetores aleatórios contínuos</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./covariancia.html" class="pagination-link" aria-label="Covariância, correlação e esperança condicional">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Covariância, correlação e esperança condicional</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

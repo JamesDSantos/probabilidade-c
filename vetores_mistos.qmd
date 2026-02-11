@@ -1,0 +1,98 @@
+# Vetores aleatórios mistos
+
+É possível que o vetor $\textbf{X}=(\textbf{X}_d,\textbf{X}_c)$ possua um subvetor $\textbf{X}_d$ composto de variáveis aleatórias discretas e um subvetor $\textbf{X}_c$ composto de variáveis aleatórias contínuas. Suponha inicialmente que $\textbf{X}_d$ é independente de $\textbf{X}_c$. Considere a seguinte probabilidade:
+
+$$P(\textbf{X}_d=\textbf{x}_d,\textbf{X}_c\leq\textbf{x}_c)=P(\textbf{X}_d=\textbf{x}_d)F_{\textbf{X}_c}(\textbf{x}_c).$$
+
+Assumindo que a função acima é diferenciável em $\textbf{x}_c$, teremos a existência da função:
+
+$$g(\textbf{x}_d,\textbf{x}_c)=P(\textbf{X}_d=\textbf{x}_d)f_{\textbf{X}_c}(\textbf{x}_c).$$
+
+A função acima é denominada **função de densidade conjunta mista** ou função de massa-densidade conjunta. É possível definir essa função mesmo quando $\textbf{X}_c$ é dependente de $\textbf{X}_d$. Para tanto, seja $B(\varepsilon)=\{\textbf{y}: ||\textbf{y}-\textbf{x}_c||<\varepsilon\}$. Então, define-se
+
+$$g(\textbf{x}_d,\textbf{x}_c)=\lim_{\varepsilon\rightarrow 0} \frac{P(\textbf{X}_d=\textbf{x}_d,\textbf{X}_c\in B(\varepsilon))}{Vol(B(\varepsilon))}.$$
+
+Observe que
+
+$$P(\textbf{X}_d=\textbf{x}_d,\textbf{X}_c\in B(\varepsilon))=P(\textbf{X}_d=\textbf{x}_d|\textbf{X}_c\in B(\varepsilon))P(\textbf{X}_c\in B(\varepsilon)),$$
+e, alternativamente:
+$$P(\textbf{X}_d=\textbf{x}_d,\textbf{X}_c\in B(\varepsilon))=P(\textbf{X}_c\in B(\varepsilon)|\textbf{X}_d=\textbf{x}_d)P(\textbf{X}_d=\textbf{x}_d).$$
+
+Pelo Teorema do Valor Médio para integrais, existem $\textbf{a}_1, \textbf{a}_2 \in B(\varepsilon)$ tais que
+
+$$Vol(B(\varepsilon))f_{\textbf{X}_c|\textbf{x}_d}(\textbf{a}_1|\textbf{x}_d)P(\textbf{X}_d=\textbf{x}_d) = P(\textbf{X}_d=\textbf{x}_d|\textbf{X}_c\in B(\varepsilon))Vol(B(\varepsilon))f_{\textbf{X}_c}(\textbf{a}_2).$$
+
+Dividindo ambos os lados por $Vol(B(\varepsilon))$ e fazendo $\varepsilon \rightarrow 0$, os pontos $\textbf{a}_1$ e $\textbf{a}_2$ convergem para $\textbf{x}_c$, resultando em
+
+$$g(\textbf{x}_d,\textbf{x}_c)=f_{\textbf{X}_c|\textbf{x}_d}(\textbf{x}_c|\textbf{x}_d)P(\textbf{X}_d=\textbf{x}_d)=P(\textbf{X}_d=\textbf{x}_d|\textbf{X}_c= \textbf{x}_c)f_{\textbf{X}_c}(\textbf{x}_c)$$
+
+<div class='alert alert-success'>
+**Propriedades**
+
+1. Probabilidades:
+
+$$P(\textbf{X}_d\in A,\textbf{X}_c\in B)=\sum_{\textbf{x}_d\in A}\int_{B}g(\textbf{x}_d,\textbf{x}_c)d\textbf{x}_c.$$
+2. Distribuição marginal de $\textbf{X}_d:$
+
+$$P(\textbf{X}_d=\textbf{x}_d)=\int g(\textbf{x}_d,\textbf{x}_c)d\textbf{x}_c.$$
+
+3. Distribuição marginal de $\textbf{X}_c:$
+
+$$f(\textbf{x}_c)=\sum_{\textbf{x}_d} g(\textbf{x}_d,\textbf{x}_c).$$
+
+4. Condicional de $\textbf{X}_d|\textbf{X}_c=\textbf{x}_c$:
+
+$$P(\textbf{X}_d=\textbf{x}_d|\textbf{X}_c=\textbf{x}_c)=\frac{g(\textbf{x}_d,\textbf{x}_c)}{f(\textbf{x}_c)}.$$
+
+5. Condicional de $\textbf{X}_c|\textbf{X}_d=\textbf{x}_d$:
+
+$$f(\textbf{x}_c|\textbf{x}_d)=\frac{g(\textbf{x}_d,\textbf{x}_c)}{P(\textbf{X}_d=\textbf{x}_d)}.$$
+
+</div>
+
+::: {#exm-}
+Seja $X|y\sim\hbox{Bernoulli}(y)$ e $y\sim\hbox{Uniforme}(0,1)$. Então
+
+$$g(x,y)=y^x(1-y)^{1-x}I_{\{0,1\}}(x)I_{(0,1)}(y).$$
+Em particular, a marginal de $X$ é
+$$P(X=x)=\int_0^1 y^{x}(1-y)^{1-x}dy=\frac{\Gamma(x+1)\Gamma(2-x)}{\Gamma(3)}I_{\{0,1\}}(x)$$
+e
+4
+
+$$f(y|x)=\frac{y^x(1-y)^{1-x}}{\Gamma(x+1)\Gamma(2-x)/\Gamma(3)}=\frac{\Gamma(3)}{\Gamma(x+1)\Gamma(2-x)}y^{x}(1-y)^{1-x}I_{(0,1)}(y)$$
+
+:::
+
+::: {#exr-}
+Sejam $X|y\sim\hbox{Binomial}(n,y)$ e $y\in\hbox{Uniforme}(0,1)$. Encontre a distribuição marginal de $X$ e a condicional $Y|X=x$. 
+:::
+
+::: {#exr-}
+Sejam $X|y\sim\hbox{Poisson}(y)$ e $y\in\hbox{Exponencial}(1)$. Encontre a distribuição marginal de $X$ e a condicional $Y|X=x$. 
+:::
+
+::: {#exr-}
+Sejam $X|y\sim\hbox{Geométrica}(y)$ e $y\in\hbox{Uniforme}(0,1)$. Encontre a distribuição marginal de $X$ e a condicional $Y|X=x$. 
+:::
+
+
+
+
+
+Exercício
+Solução
+Exercício 2.4Suponha que
+P(X=x)=12,
+com x=0,1
+. Suponha ainda que Y|X=x∼Normal(x,1)
+. Mostre que
+
+P(X=0|Y=y)=(1+exp{y−12})−1
+
+Exercício
+Solução
+Exercício 2.5Suponha que X∼Gama(2,1)
+ e Y|X=x∼Poisson(x)
+. Encontre a densidade de X|Y=y
+.
+
