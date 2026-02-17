@@ -1,0 +1,399 @@
+# Convergência de variáveis aleatórias
+
+Seja $X_1,\ldots,X_n$ uma amostra de variáveis aleatórias (dizemos que esta amostra tem tamanho $n$). Qualquer função desta amostra é denominada estatística. Exemplos de estatística são a média amostral, variância amostral, mediana amostral etc. Por serem funções de variáveis aleatórias, qualquer estatística também será uma variável aleatória. Seja $T_n$ uma estatística baseada em $X_1,\ldots,X_n$. A intuição nos diz que o aumento de $n$ deve trazer alguma vantagem. Estamos então interessados em entender o comportamento de $P(T_n<t)$ quando $n\rightarrow \infty$. 
+
+A discussão aciam é apenas um exemplo da importância do estudo de convergência de variáveis aleatórias, que é o tópico desse capítulo.
+
+Neste tópico iremos discutir:
+
+* a noção de limite tradicional
+
+* a noção de limite em probabilidade
+
+* a noção de limite em distribuição
+
+* a Lei Fraca de Tchebychev
+
+* o Teorema Central do Limite para o caso de variáveis independentes e identicamente distribúidas.
+
+## A noção de limite tradicional
+
+Dizemos que $L$ é o limite de $f(x)$ quando $x$ se aproxima de $x_0$ se, para todo $\varepsilon>0$, existe $\delta>0$ tal que
+
+se $0<|x-x_0|<\delta\Rightarrow |f(x)−L|<\varepsilon$
+
+A notação 
+$$\lim_{x\rightarrow x_0}f(x)=L$$
+é a  mais usual em livros de cálculo mas nos será mais conveniente escrever $f(x)\rightarrow L$ quando $x\rightarrow x_0$ (lê-se $f(x)$ tende a $L$ quando $x$ tende a $x_0$).
+
+Estamos interessados no caso em que $x \rightarrow \infty$. Dizemos que $f(x) \rightarrow L$ quando $x \rightarrow \infty$ se, para todo $\epsilon > 0$, existe $x_0$ tal que:$$\text{se } x > x_0 \Rightarrow |f(x) - L| < \epsilon$$
+
+::: {#exm-}
+Vamos mostrar que $f(x)=1/x$ tende a zero quando $x\rightarrow\infty$. 
+
+
+Isto implica em mostrar que, para qualquer $\varepsilon>0$ 
+ deve existir $x_0$ tal que, para qualquer $x>x_0$
+ 
+$$\left|\frac{1}{x}\right|<\varepsilon$$.
+
+Note que, para qualquer $x_0>0$ arbitrário, é verdade que
+
+$$x>x_0\Rightarrow \frac{1}{x}<\frac{1}{x_0},$$
+Logo, para qualquer $\varepsilon>0$, podemos fazer $x_0=\varepsilon^{-1}$ de modo que
+
+$$x>x_0\Rightarrow \left|\frac{1}{x}-0\right|<\frac{1}{x_0}=\varepsilon,$$
+o que implica que o limite de $1/x$ quando $x\rightarrow\infty$  é igual a 0.
+:::
+
+::: {#thm-}
+Teorema do Confronto (ou do Sanduíche)Suponha que, para todo $x$ suficientemente grande, tenhamos:$$0 \leq |f(x)| \leq g(x)$$Se $\lim_{x\rightarrow\infty} g(x) = 0$, então:$$\lim_{x\rightarrow\infty} f(x) = 0$$
+:::
+::: {#exr-limite-x2}
+**Limite de $1/x^2$**
+
+a) Se $x > 1$, mostre que $x^2 > x$.  
+b) Utilizando o resultado do item (a) e o **Teorema do Confronto**, prove que:
+$$\lim_{x \to \infty} \frac{1}{x^2} = 0$$
+*(Dica: Lembre-se que $0 < \frac{1}{x^2} < \frac{1}{x}$ para $x > 1$)*.
+:::
+
+::: {#exr-limite-racional}
+**Limite de função racional**
+
+a) Se $x > 1$, mostre que $x^2 + 1 > x$.  
+b) Utilizando o resultado do item (a) e o **Teorema do Confronto**, mostre que:
+$$\frac{x}{x^2 + 1} \to 0 \text{ quando } x \to \infty$$
+:::
+
+::: {#exr-limite-exponencial}
+**Limite da função exponencial**
+
+Seja $0 < a < 1$. Mostre que:
+$$a^x \to 0 \text{ quando } x \to \infty$$
+*(Dica: Escreva $a = \frac{1}{1+b}$ onde $b > 0$ e utilize a desigualdade de Bernoulli $(1+b)^x > 1 + xb$ para aplicar o Teorema do Confronto)*.
+:::
+
+## Convergência em probabilidade
+
+Sejam $X_1,X_2,\ldots$ uma sequência de variáveis aleatórias definidas no mesmo espaço de probabilidade da variável aleatória $X$. Dizemos que $X_n$ converge em probabilidade para a variável aleatória $X$ quando $n\rightarrow\infty$ se para todo $\varepsilon>0$
+
+$$P(|X_n−X|\geq \varepsilon)\rightarrow 0,$$
+quando $n\rightarrow\infty$. Neste caso, utilizamos a notação $X_n\stackrel{P}{\rightarrow}X$ quando $n\rightarrow \infty$(lê-se $X_n$ converge em probabilidade para $X$ quando $n$ tende ao infinito).
+
+Note que se $X_n$ converge em probabilidade para $X$, então a probabilidade do evento $X_n\in(X−\varepsilon,X+\varepsilon)$ ocorrer tende a 1. De modo equivalente, podemos dizer que $X_n\stackrel{P}{\rightarrow}X$ se
+
+$$P(|X_n−X|<\varepsilon)\rightarrow1,$$
+quando $n\rightarrow\infty$.
+
+
+::: {#exm-}
+Sejam $X_1,X_2,\ldots$  uma sequência de variáveis aleatórias com
+$X_n\sim\hbox{Bernoulli}(1/n)$. Intuitivamente, a probabilidade de sucesso será cada vez menor, até chegar ao ponto no qual apenas o fracesso será possível. Isto nos leva a considerar que $X_n\stackrel{P}{\rightarrow}0$ quando $n\rightarrow\infty$. Vamos mostrar que isso é verdade.
+
+Primeiro, fixe um valor qualquer para $\varepsilon>0$. Note que
+
+$$|X_n−0|\geq \varepsilon\equiv|X_n|\geq \varepsilon>0.$$
+Ora, $|Xn|=Xn$, pois a variávei é sempre não negativa. Além disso, $X_n\geq \varepsilon>0$
+ implica que $X_n>0$, e por sua vez, apenas é $X_n=1$ é possível. Assim
+
+
+$$P(|X_n−0|\geq \varepsilon)=P(X_n>0)=P(X_n=1)=\frac{1}{n}\rightarrow 0,$$
+quando $n\rightarrow\infty$. Portanto, $X_n\stackrel{P}{\rightarrow}0$.
+:::
+
+::: {#exm-}
+Sejam $X_1,X_2,\ldots$ uma sequência de variáveis aleatórias com distribuição Uniforme(0,$\theta$). No problema de inferência estatística, $\theta$ é desconhecido. Considere a estatística
+
+$$T_n=\hbox{max}\{X_1,\ldots,X_n\}.$$
+Vamos mostrar que $T_n\stackrel{P}{\rightarrow}\theta$. Primeiro, lembremos que
+
+$$|X−a|>b\Rightarrow −b>X−a \hbox{   ou   } b<X−a,$$
+e que
+$$Tn<\theta\Rightarrow X_1<\theta,\ldots ,X_n<\theta.$$
+
+Então, para qualquer $\varepsilon>0$,
+
+
+$$\begin{align}P(|T_n−\theta|>\varepsilon)&=P(T_n−\theta>\varepsilon)+P(T_n−\theta<−\varepsilon)\\&=P(T_n−\theta<−\varepsilon)=P(T_n<−\varepsilon+\theta)\\&
+=P(X_1<−\varepsilon+\theta,\ldots,X_n<−\varepsilon+\theta)\\
+&=\prod_{i=1}^n P(X_i<−\varepsilon+\theta)=F(-\varepsilon+θ)^n=\left(\frac{−\varepsilon+\theta}{\theta}\right)^n\\&=\left(1-\frac{\varepsilon}{\theta}\right)^n\rightarrow 0\end{align}$$
+quando $n\rightarrow\infty$. Portanto, $T_n\stackrel{P}{\rightarrow}\theta$.
+:::
+
+::: {#exr-}
+Seja $X_1,X_2,\ldots,$ uma sequência de variáveis aleatórias independentes e identicamente distribuídas, com $X_n\leq θ$ para todo $n\geq 1$. Seja
+$T_n=\max\{X_1,…,X_n\}.$ Mostre que $T_n\stackrel{P}{\rightarrow}\theta$ quando $n\rightarrow\infty$. Esse resultado mostra que o máximo amostral é uma estatística consistente para estimar $\theta$.
+:::
+
+::: {#thm-}
+Se $X_n\stackrel{P}{\rightarrow}b$, onde $b$ é constante e se $g$ é uma função real contínua em $b$, então então $g(X_n)\stackrel{P}{\rightarrow}g(b)$.
+:::
+
+
+Exercícios de fixação
+
+Sejam X1,X2,…
+ variáveis aleatórias independentes e identicamente distribuídas com distribuição Uniforme(0,1). Sejam Yn=max{X1,…,Xn}
+ e Zn=min{X1,…,Xn}
+, para n=1,2,….
+ Prove que Yn→P1
+ e Zn→P0
+.
+
+Seja Z1,Z2,…
+ uma sequência de variávies aleatórias com
+P(Zn=n2)=1n e P(Zn=0)=1−1n.
+Mostre que
+limn→∞E(Zn)=∞
+mas Z→P0
+.
+
+Seja Z1,Z2,…
+ uma sequência de variávies aleatórias com
+P(Zn=n2)=1n e P(Zn=0)=1−1n.
+Encontre o limite em probabilidade de Zn
+.
+
+
+
+## Lei Fraca dos Grandes Números
+
+Foi John Graunt, um mercador de tecidos, que em 1662 publicou o primeiro trabalho utilizando a proporção amostral como uma probabilidade. A ideia funcionou perfeitamente, mas não se sabia o motivo até a publicação do *Ars Conjectandi*, de Jacob Bernoulli, em 1713. Ao terminar sua demonstração, ele diz: “Considero que não fiz muita coisa, somente demonstrei o que é conhecimento de todos”. Hoje, seu resultado é um dentro de uma coleção de teoremas denominada Leis dos Grandes Números.
+
+::: {#thm-}
+**Lei (Fraca) dos Grandes Números de Jacob Bernoulli.** Sejam $X_1,X_2,\ldots$ uma sequência de variáveis aleatórias independentes com $X_i\sim\hbox{Bernoulli}(p)$. Então
+
+$$\bar{X}_n=\sum_{i=1}^n \frac{X_i}{n}\stackrel{P}{\rightarrow}{p}$$
+quando $n\rightarrow\infty$.
+:::
+
+Em resumo, uma Lei dos Grandes Números é um teorema sobre a convergência de $\bar{X}_n$ quando $n\rightarrow\infty$. Se o limite for em probabilidade, a lei é denominada fraca (existem as leis fortes, mas não serão tratadas nesse curso). 
+Foi Simeón Poisson (1837) que cunhou o termo Lei dos Grandes Números e foi o primeiro a generalizar a lei para o caso no qual a sequência as variáveis não era identicamente distribuída. Contudo, esse resultado é mais conhecido como Lei Fraca de Chebyshev, devido à sua demonstração mais simples em 1867. Antes de introduzir essa lei, vamos mostrar o resultado-chave desenvolvido por Chebyshev.
+
+::: {#thm-}
+**Desigualdade de Chebyshev** Seja $X$  uma variável aleatória com média $\mu$ e variância $\sigma^2$. Então, para qualquer $\varepsilon>0$, 
+$$P(|X-\mu|\geq \varepsilon)\leq \frac{\sigma^2}{\varepsilon^2}.$$
+:::
+
+Vamos fazer a prova da desigualdade. Sem perda de generalidade, assuma que ela é contínua. Então, para qualquer $\varepsilon>0$,
+
+$$\sigma^2=\int_{\mathbb{R}}(x-\mu)^2f(x)dx\geq \int_{\{x:|x-\mu|\geq \varepsilon\}}(x-\mu)^2f(x)dx\geq \varepsilon^2P(|X−\mu|\geq \varepsilon)$$
+logo,
+$$P(|X-\mu|\geq \varepsilon)\leq \frac{\sigma^2}{\varepsilon^2}.$$
+
+Agora vamos enunciar formalmente a Lei Fraca de Chebyshev.
+
+::: {#thm-}
+**Lei Fraca de Chebyshev.**
+Sejam $X_1,X_2,\ldots$ uma sequência de variáveis aleatórias não correlacionadas com $E(X_n)=\mu$ e $Var(X_n)<c<\infty$. Então
+
+$$\bar{X}_n=\sum_{i=1}^n\frac{X_i}{n}\stackrel{P}{\rightarrow}\mu,$$
+quando $n\rightarrow\infty$.
+:::
+
+Vamos demonstrar a Lei Fraca de Chebyshev. Observe que, pela desigualdade de Chebyshev,
+
+$$P(|\bar{X}_n-\mu|\geq\varepsilon)\leq \frac{Var(\bar{X}_n)}{\varepsilon^2}=\frac{\sum_{i=1}^nVar(X_i)}{n^2\varepsilon^2}<\frac{c}{n\varepsilon^2}\rightarrow 0$$
+quando $n\rightarrow\infty$, o que prova que $\bar{X}_n\stackrel{P}{\rightarrow}\mu$.
+
+## Convergência em distribuição
+
+Definilção. Dizemos que a sequência X1,X2,…
+ de variáveis aleatórias converge para X
+ em distribuição se
+limn→∞FXn(x)=FX(x)
+para todo x
+ tal que FX(.)
+ é contínua. Notação: Xn→DX
+. Neste caso, X
+ é denominada limite em distirbuição de Xn
+.
+
+Exemplo. Seja X1,X2,…
+ uma sequência de variáveis aleatórias independentes e identicamente distribuídas, com X1∼Uniforme(0,1)
+. Seja ainda
+X(1)=min{X1,…,Xn}.
+Vamos encontrar o limite em distribuição de Yn=nX(1)
+ Como
+1−FYn(y)=P(X(1)>y/n)=P(X1>y/n,…,Xn>y/n)=∏i=1nP(X>y/n)=(1−yn)n,
+teremos que
+FYn(y)=1−(1−yn)n→1−e−y,
+quando n→∞
+. Portanto, Yn=nX(1)
+ converge em distribuição para a Exponencial(1).
+
+Teorema. Seja X1,X2…,
+ uma sequência de variáveis aleatórias e sejam ϕX1(.),ϕX2(.),…
+ suas respectivas funções geratrizes de momentos (supondo que elas existem). Então Xn→DX
+ se e somente se
+limn→∞ϕXn(t)=ϕX(t)
+para todo t
+, onde ϕX(.)
+ é a função geratriz de momentos de X
+.
+
+Teorema. Se Xn→PX
+, então Se Xn→DX
+.
+
+## Teorema Central do Limite
+
+Os astrônomos perceberam cedo que as medições feitas sobre o mesmo corpo celeste geralmente apresentavam erros. Em uma linguagem moderna, eles acreditavam que a verdadeira medida era $\theta$, enquanto que a medida observada $x_i$ era contaminada por um erro $\xi_i$, em uma relação aditiva, ou seja
+
+$$x_i=\theta+\xi_i.$$
+Thomas Simpson escreveu em 1755 "A vantagem de calcular a média na astronomia prática". Nesse trabalho, ele assumiu que os erros $\xi_i$ deviam (a) ter natureza aleatória, (b) ser simétricos em torno de zero e (c) ter uma moda em 0, com as probabilidades decaindo à medida que nos afastamos da moda. Sua distribuição de erro era
+
+$$\begin{array}{c|ccccccccccc}\hline
+\xi & -5 & -4 & -3 & -2 & -1 & 0 & 1 & 2 & 3 & 4 & 5 \\ \hline
+P(\xi)& \frac{1}{36} & \frac{2}{36} & \frac{3}{36} &\frac{4}{36} & \frac{5}{36} & \frac{6}{36}&\frac{5}{36}&\frac{4}{36}&\frac{3}{36}&\frac{2}{36}&\frac{1}{36}\\ \hline
+\end{array}$$
+
+Assumindo essa lei, ele mostrou que calcular a média de triplicatas da medição diminuiria o erro. Atualmente, seria algo como
+
+$$\bar{x}_3=\theta+\bar{\xi_3}$$
+
+Abaixo, apresentamos o gráfico da função de probabilidade de $\bar{\xi}_3$. Note, por exemplo, que a probabilidade de ocorrer um erro igual a -5 ou 5 é significativamente menor se considerarmos $\bar{x}_3$.
+
+```{r echo = FALSE, warning=FALSE}
+# Definição da PMF de um único erro de Simpson xi (de -5 a 5)
+xi_val <- -5:5
+pmf_xi <- c(1, 2, 3, 4, 5, 6, 5, 4, 3, 2, 1) / 36
+
+# Função para realizar a convolução de duas PMFs
+convolucao <- function(val1, prob1, val2, prob2) {
+  res_val <- outer(val1, val2, "+")
+  res_prob <- outer(prob1, prob2, "*")
+  df <- aggregate(as.vector(res_prob) ~ as.vector(res_val), FUN = sum)
+  colnames(df) <- c("val", "prob")
+  return(df)
+}
+
+# 1. Calcular a soma S2 = xi1 + xi2
+s2 <- convolucao(xi_val, pmf_xi, xi_val, pmf_xi)
+
+# 2. Calcular a soma S3 = S2 + xi3
+s3 <- convolucao(s2$val, s2$prob, xi_val, pmf_xi)
+
+# 3. Transformar para a média (xi_barra = S3 / 3)
+s3$media <- s3$val / 3
+
+# Criar o Gráfico
+library(ggplot2)
+
+ggplot(s3, aes(x = media, y = prob)) +
+  geom_segment(aes(xend = media, yend = 0), color = "steelblue", size = 1) +
+  geom_point(color = "darkblue", size = 2) +
+  scale_x_continuous(breaks = seq(-5, 5, 1)) +
+  labs(
+    title = expression(paste("Função de Probabilidade do Erro Médio ", bar(xi)[3])),
+    subtitle = "Baseado na distribuição original de Thomas Simpson (1755)",
+    x = expression(bar(xi)[3]),
+    y = "P(X = x)"
+  ) +
+  theme_minimal()
+```
+
+
+Note que, embora fundamentada, a escolha de Simpson para a distribuição dos erros foi arbitrária. De modo não relacionado, De Moivre, na tentativa de calcular $P(X=x)$ quando $X\sim\hbox{Binomial}(n,1/2)$ e $n$ é grande, publica em 1733 a expressão 
+
+$$P(X=x)\approx\frac{2}{\sqrt{2\pi n}}e^{-\frac{2}{n}\left(x-\frac{n}{2}\right)^2},$$
+algo que identificaríamos hoje em dia com a densidade da Normal$(n/2, n/4)$. Voltando ao problema dos erros, em 1805 é publicado o  método dos mínimos quadrados, com o qual prova-se que o valor de $\theta$ que minimiza $\sum_{i=1}^n \xi_i^2$ é, de fato
+$\bar{x}_n$, o que corrobora o trabalho de Simpson. Em 1805, com a introdução do Método dos Mínimos Quadrados, provou-se que o valor de $\theta$ que minimiza a soma dos quadrados dos erros é a média aritmética $\bar{x}_n$. Gauss, ao unir essas pontas, demonstrou que se os erros seguem a distribuição normal, a média não é apenas uma escolha intuitiva, mas o estimador que maximiza a probabilidade dos dados observados.
+
+Contudo, a escolha da distribuição dos erros ainda parecia depender de suposições específicas até o trabalho de Laplace em 1812 (Théorie Analytique des Probabilités). Nele, Laplace demonstrou que a distribuição da média de um grande número de erros independentes tende à distribuição normal, independentemente da forma da distribuição original dos erros. Esse resultado, que hoje conhecemos como Teorema Central do Limite, forneceu a base teórica definitiva para o uso da média aritmética e da curva normal na ciência.
+
+::: {#thm-}
+**Teorema Central do Limite.** Sejam $X_1,X_2\ldots,$ uma sequência de variáveis aleatórias independentes e identicamente distribuídas com $E(X_1)=\mu$ e $Var(X_1)=\sigma^2$. Então
+
+$$\sqrt{n}\frac{\bar{X}_n-\mu}{\sigma}\stackrel{D}{\rightarrow}\hbox{Normal}(0,1),$$
+quando $n\rightarrow\infty$.
+:::
+
+É importante ressaltar que, assim como ocorre com as Leis dos Grandes Números, existe uma coleção de resultados intitulados Teorema Central do Limite. O que difere esses teoremas são as condições impostas sobre a sequência $X_1, X_2, \ldots$, permitindo, em versões mais generalizadas, que as variáveis tenham distribuições distintas ou até mesmo algum grau de dependência. Abaixo, demonstramos o teorema enunciado.
+
+
+Demonstração (rascunho)
+Sejam X1,X2,…
+ variáveis aleatórias independentes e identicamente distribuídas, com E(X)=μ
+ e Var(X)=σ2<∞
+. Seja Sn=∑ni=1Xi
+. Então,
+Zn=Sn−nμσn−−√→DN(0,1).
+
+Com um pouco de álgebra, é fácil ver que
+
+Zn=Sn−nμσn−−√=n−−√X¯n−μσ→DN(0,1).
+o que implica que, para n
+ suficientemente grande,
+X¯n≈N(μ,σ2n).
+
+Exemplo. Um dado é lançado 2500 vezes. Calcule a probabilidade de que a soma dos resultados seja menor que 8850 usando a aproximação normal.
+
+(Solução) Seja Xn
+ o resultado do n
+-ésimo lançamento do dado. E(X)=7/2
+ e Var(X)=35/12
+. Então, fazendo Sn=∑ni=1Xi
+, teremos que
+Sn−7n235n/12−−−−−−√→DN(0,1)
+então,
+P(Sn<8850)=P⎛⎝⎜Sn−25007225003512−−−−−−√<8850−25007225003512−−−−−−√⎞⎠⎟≈P⎛⎝⎜Z<8850−25007225003512−−−−−−√⎞⎠⎟=P(Z<1,17108)=0,879.
+onde Z∼N(0,1)
+.
+
+Exercícios de Fixação
+
+1. Suponha que X∼Poisson(λ)
+. Mostre que
+
+P(X≤0,5λ)≤4λ
+
+P(X≥2λ)≤1λ
+
+2. Suponha que X
+ tem função geratriz de momentos. Prove que P(X>x0)=ϕ(t)e−tx0
+ (neste caso, dizemos que X
+ tem cauda leve, pois o decaimento desta probabilidade é exponencial).
+
+3. Sejam X1,X2,…
+ variáveis aleatórias independentes e identicamente distribuídas com distribuição Uniforme(0,1). Seja Zn=min{X1,…,Xn}
+, para n=1,2,….
+ Prove que nZn→DZ
+, onde Z∼Exponencial(1)
+.
+
+4. Sejam X1,X2,…
+ variáveis aleatórias independentes e identicamente distribuídas com distribuição Poisson(λ
+). Encontre o limite em probabilidade de
+Yn=X21+⋯+X2nn.
+.
+
+5. Sejam X1,X2,…
+ variáveis aleatórias com distribuição Geométrica(λ/n
+), com 0<λ<n
+.
+
+Mostre que Yn=Xnn→DZ
+, onde Z∼Exponencial(λ)
+.
+
+Mostre que Yn↛DZ
+ (isto é, Yn
+ não converge em probabilidade para Z
+).
+
+6. Sejam X1,X2,…
+ variáveis aleatórias independentes e identicamente distirbuídas, com densidade
+f(x)=e−x+θI(x≥θ).
+Mostre que ∑ni=1Xi/n→P1+θ
+.
+
+7. Suponha que uma amostra de variáveis aleatórias independentes e identicamente distribuídas foi selecionada de um modelo com média μ
+ e variância 9
+.
+
+Utilize a Desiguladade de Tchebychev para determinar o tamanho da amostra necessário para garantir que
+P(|X¯n−μ|<0,3)≥0,95.
+
+Refaça a letra a) utilizando o Teorema Central do Limite no lugar da Desigualdade de Tchebychev.
