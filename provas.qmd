@@ -1,0 +1,170 @@
+# Provas anteriores resolvidas
+
+## Parcial I - 2025/2--Férias
+
+
+::: {.panel-tabset}
+
+### Questão 1
+
+Considere duas variáveis aleatórias discretas $X$ e $Y$. A distribuição de probabilidade conjunta dessas variáveis é apresentada na tabela abaixo, onde $k$ é uma constante real.
+
+| $X \setminus Y$ | **1** | **2** | **3** |
+|:---:|:---:|:---:|:---:|
+| **0** | $k$ | $2k$ | $k$ |
+| **1** | $2k$ | $k$ | $3k$ |
+
+a) Determine o valor da constante $k$ para que a função acima seja uma função de probabilidade conjunta válida.
+
+b) Determine as funções de probabilidade marginais de $X$ e $Y$.
+
+c) Calcule a probabilidade condicional $P(Y=3 \mid X=1)$.
+
+### Solução
+
+a) A constante $k$ é o valor tal que a soma de todas as probabilidades é igual a 1. Portanto
+
+$$1=k+2k+k+2k+k+3k=10k\Rightarrow k=\frac{1}{10}$$
+
+b) A função de probabilidade marginal de $X$ é
+
+$$P(X=x)=\sum_{y=1}^3P(X=x,Y=y)=\begin{cases}0,4&x=0\\
+0,6&x=1\end{cases}$$
+
+e a função de probabilidade marginal de $Y$ é
+
+$$P(Y=y)=\sum_{x=0}^1P(X=x,Y=y)=\begin{cases}0,3&y=1\\
+0,3&y=2\\0,4&y=3\end{cases}$$
+
+c) Temos que
+
+$$P(Y=3 \mid X=1)=\frac{P(X=1,Y=3)}{P(X=1)}=\frac{3}{6}=0,5.$$
+:::
+
+
+::: {.panel-tabset}
+
+### Questão 2
+
+Sejam $X$ e $Y$ duas variáveis aleatórias contínuas com função de densidade conjunta dada por:
+
+$$
+f(x, y) = 
+\begin{cases} 
+    k(x + y) & \text{se } 0 \leq x \leq 1, \, 0 \leq y \leq 2 \\
+    0 & \text{caso contrário}
+\end{cases}
+$$
+
+onde $k$ é uma constante real. Pede-se:
+
+a) Determine o valor da constante $k$ para que $f(x, y)$ seja uma função de densidade de probabilidade válida.
+
+b) Encontre as funções de densidade marginais $f_X(x)$ e $f_Y(y)$.
+
+c) Calcule a probabilidade condicional $P(X < 0,5 \mid Y = 1)$.
+
+
+### Solução
+
+a) A constante $k$ é o valor que satisfaz
+
+$$1=\int_{\mathbb{R}^2}f(x,y)dxdy$$
+e como,
+
+$$\int_0^2\int_0^1k(x+y)dxdy=k\int_0^2\frac{1}{2}+ydy=3k,$$
+teremos que $k=1/3$.
+
+b) A marginal de $X$ é
+
+$$f_X(x)=\frac{1}{3}\int_0^2(x+y)dyI_{(0,1)}(x)=\frac{2}{3}(1+x)I_{(0,1)}(x).$$
+e a marginal de $Y$ é
+
+$$f_Y(y)=\frac{1}{3}\int_0^1(x+y)dxI_{(0,2)}(y)=\frac{1}{3}\left(\frac{1}{2}+y\right)I_{(0,2)}(y).$$
+
+c) A densidade condicional de $X|Y=y$ é
+
+$$f(x|y)=\frac{f(x,y)}{f_Y(y)}=\frac{\frac{1}{3}(x+y)I_{(0,1)}(x)I_{(0,2)}(y)}{\frac{1}{3}\left(\frac{1}{2}+y\right)I_{(0,2)}(y)}=2\frac{(x+y)}{(1+2y)}I_{(0,1)}(x),$$
+
+logo
+$$P(X<0,5|Y=1)=\frac{2}{3}\int_0^{0,5}(x+1)dx=\frac{2}{3}\left[\left(\frac{1}{2}\right)^3+\frac{1}{2}\right]=\frac{5}{12}$$
+
+
+:::
+
+::: {.panel-tabset}
+
+### Questão 3
+
+Sejam $X_1$ e $X_2$ duas variáveis aleatórias independentes com função de probabilidade dada por:
+
+$$P(X=x)=\frac{1}{2^{x+1}}I_{\mathbb{N}}(x)$$
+
+Determine a função de probabilidade de $Y = X_1 + X_2$.
+
+### Solução
+
+$$\begin{align}P(Y=y)&=\sum_{x_2=-\infty}^\infty P(X_1=y-x_2,X_2=x_2)\\&=\sum_{x_2=-\infty}^\infty P(X_1=y-x_{2})P(X_2=x_2)\\&=\sum_{x_2=-\infty}^\infty \frac{1}{2^{y-x_2+1}}I_{\mathbb{N}}(y-x_2)\frac{1}{2^{x_2+1}}I_{\mathbb{N}}(x_2)\\&=\frac{1}{2^{y+2}}\sum_{x_2=0}^y1=\frac{1+y}{2^{y+2}},\;\;y=0,1,\ldots.\end{align}$$
+:::
+
+::: {.panel-tabset}
+
+### Questão 4
+
+Sejam $X_1, X_2$ variáveis aleatórias independentes com distribuição $\text{Uniforme}(0,1)$. Sejam $Y=-\log(X_1X_2)$ e $W=X_2$.
+
+a) Encontre a densidade conjunta de $(Y,W)$.
+
+b) Encontre a densidade marginal de $Y$.
+
+> **Lembrete:** > 
+> 1. $e^{-x} < 1$ para todo $x > 0$
+> 2. $\int x^{-1}dx = \log x$
+
+### Solução
+
+a) Vamos utilizar o método do jacobiano.
+
+**Encontrando a inversa**: Teremos que
+$$\begin{align}x_2&=w \\ x_1&=\frac{e^{-y}}{w}\end{align}$$
+
+**Encontrando a matriz jacobiana:**
+
+$$\left(\begin{array}{cc}\frac{\partial x_1}{\partial y} & \frac{\partial x_1}{\partial w } \\ \frac{\partial x_2}{\partial y} & \frac{\partial x_2}{\partial w}\end{array}\right)=\left(\begin{array}{cc}-\frac{e^{-y}}{w} & -\frac{e^{-y}}{w^2} \\ 0 & 1\end{array}\right)$$
+
+**Módulo do determinante da matriz jacobiana:**
+
+$$\frac{e^{-y}}{w}$$
+
+**Distribuição conjunta de $Y$ e $W$:**
+
+
+$$f_{Y,W}(y,w)=f_{X_1}\left(\frac{e^{-y}}{w}\right)f_{X_2}(w)\frac{e^{-y}}{w}=I_{(0,1)}\left(\frac{e^{-y}}{w}\right)I_{(0,1)}(w)\frac{e^{-y}}{w}$$
+
+b) Observe que $0<e^{-y}<w<1$, logo
+
+$$f_Y(y)=e^{-y}\int_{e^{-y}}^1 \frac{1}{w}dw=e^{-y}[\log 1 - \log e^{-y}]=ye^{-y},\;\;y>0.$$
+
+:::
+
+::: {.panel-tabset}
+
+### Questão 5
+
+Sejam $X_1$ e $X_2$ duas variáveis aleatórias independentes com distribuição $\text{Normal}(0, 1/2)$. Considere a nova variável aleatória definida pela soma $S = X_1 + X_2$. Prove que $S \sim \text{Normal}(0,1)$.
+
+### Solução
+
+$$\begin{align}f_Y(y)&=\int_\mathbb{R}f_{X_1}(y-x_2)f_{X_2}(x_2)dx_2
+\\&=\int_\mathbb{R}\frac{1}{\sqrt{\pi}}e^{-(y-x_2)^2}\frac{1}{\sqrt{\pi}}e^{-x_2^2}dx_2\\&=\frac{1}{\pi}\int_\mathbb{R}e^{-(y^2+x_2^2-2x_2y)-x^2_2}dx_2\\&=\frac{e^{-y^2}}{\pi}\int_\mathbb{R}e^{-[2x_2^2-2x_2y]}dx_2\end{align}$$
+
+note que
+
+$$2x_2^2-2x_2y=2\left(x_2^2 -2x_2\frac{y}{2}\right)=2\left(x_2^2 -2x_2\frac{y}{2}\pm\frac{y^2}{4}\right)=2\left(x_2-\frac{y}{2}\right)^2-\frac{y^2}{2}$$
+logo
+
+
+
+$$\begin{align}f_Y(y)&=\frac{e^{-y^2}}{\pi}\int_\mathbb{R}e^{-2\left(x_2-\frac{y}{2}\right)^2+\frac{y^2}{2}}dx_2\\&=\frac{e^{-\frac{y^2}{2}}}{\pi}\int_\mathbb{R}e^{-2\left(x_2-\frac{y}{2}\right)^2}dx_2\\&=\frac{e^{-\frac{y^2}{2}}}{\pi}\sqrt{2\pi/4}=\frac{1}{\sqrt{2\pi}}e^{-\frac{y^2}{2}},\;\;y\in\mathbb{R}\end{align}$$
+
+:::

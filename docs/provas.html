@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>4&nbsp; Vetores aleatórios mistos – Probabilidade C</title>
+<title>6&nbsp; Provas anteriores resolvidas – Probabilidade C</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./covariancia.html" rel="next">
-<link href="./vetores_aleatorios_continuos.html" rel="prev">
+<link href="./references.html" rel="next">
+<link href="./covariancia.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -112,7 +112,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./vetores_mistos.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Vetores aleatórios mistos</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./provas.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Provas anteriores resolvidas</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -163,7 +163,7 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./vetores_mistos.html" class="sidebar-item-text sidebar-link active">
+  <a href="./vetores_mistos.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Vetores aleatórios mistos</span></span></a>
   </div>
 </li>
@@ -175,7 +175,7 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./provas.html" class="sidebar-item-text sidebar-link">
+  <a href="./provas.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Provas anteriores resolvidas</span></span></a>
   </div>
 </li>
@@ -190,15 +190,21 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#parcial-i---20252férias" id="toc-parcial-i---20252férias" class="nav-link active" data-scroll-target="#parcial-i---20252férias"><span class="header-section-number">6.1</span> Parcial I - 2025/2–Férias</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Vetores aleatórios mistos</span></h1>
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Provas anteriores resolvidas</span></h1>
 </div>
 
 
@@ -215,57 +221,163 @@ window.Quarto = {
 </header>
 
 
-<p>É possível que o vetor <span class="math inline">\(\textbf{X}=(\textbf{X}_d,\textbf{X}_c)\)</span> possua um subvetor <span class="math inline">\(\textbf{X}_d\)</span> composto de variáveis aleatórias discretas e um subvetor <span class="math inline">\(\textbf{X}_c\)</span> composto de variáveis aleatórias contínuas. Suponha inicialmente que <span class="math inline">\(\textbf{X}_d\)</span> é independente de <span class="math inline">\(\textbf{X}_c\)</span>. Considere a seguinte probabilidade:</p>
-<p><span class="math display">\[P(\textbf{X}_d=\textbf{x}_d,\textbf{X}_c\leq\textbf{x}_c)=P(\textbf{X}_d=\textbf{x}_d)F_{\textbf{X}_c}(\textbf{x}_c).\]</span></p>
-<p>Assumindo que a função acima é diferenciável em <span class="math inline">\(\textbf{x}_c\)</span>, teremos a existência da função:</p>
-<p><span class="math display">\[g(\textbf{x}_d,\textbf{x}_c)=P(\textbf{X}_d=\textbf{x}_d)f_{\textbf{X}_c}(\textbf{x}_c).\]</span></p>
-<p>A função acima é denominada <strong>função de densidade conjunta mista</strong> ou função de massa-densidade conjunta. É possível definir essa função mesmo quando <span class="math inline">\(\textbf{X}_c\)</span> é dependente de <span class="math inline">\(\textbf{X}_d\)</span>. Para tanto, seja <span class="math inline">\(B(\varepsilon)=\{\textbf{y}: ||\textbf{y}-\textbf{x}_c||&lt;\varepsilon\}\)</span>. Então, define-se</p>
-<p><span class="math display">\[g(\textbf{x}_d,\textbf{x}_c)=\lim_{\varepsilon\rightarrow 0} \frac{P(\textbf{X}_d=\textbf{x}_d,\textbf{X}_c\in B(\varepsilon))}{Vol(B(\varepsilon))}.\]</span></p>
-<p>Observe que</p>
-<p><span class="math display">\[P(\textbf{X}_d=\textbf{x}_d,\textbf{X}_c\in B(\varepsilon))=P(\textbf{X}_d=\textbf{x}_d|\textbf{X}_c\in B(\varepsilon))P(\textbf{X}_c\in B(\varepsilon)),\]</span> e, alternativamente: <span class="math display">\[P(\textbf{X}_d=\textbf{x}_d,\textbf{X}_c\in B(\varepsilon))=P(\textbf{X}_c\in B(\varepsilon)|\textbf{X}_d=\textbf{x}_d)P(\textbf{X}_d=\textbf{x}_d).\]</span></p>
-<p>Pelo Teorema do Valor Médio para integrais, existem <span class="math inline">\(\textbf{a}_1, \textbf{a}_2 \in B(\varepsilon)\)</span> tais que</p>
-<p><span class="math display">\[Vol(B(\varepsilon))f_{\textbf{X}_c|\textbf{x}_d}(\textbf{a}_1|\textbf{x}_d)P(\textbf{X}_d=\textbf{x}_d) = P(\textbf{X}_d=\textbf{x}_d|\textbf{X}_c\in B(\varepsilon))Vol(B(\varepsilon))f_{\textbf{X}_c}(\textbf{a}_2).\]</span></p>
-<p>Dividindo ambos os lados por <span class="math inline">\(Vol(B(\varepsilon))\)</span> e fazendo <span class="math inline">\(\varepsilon \rightarrow 0\)</span>, os pontos <span class="math inline">\(\textbf{a}_1\)</span> e <span class="math inline">\(\textbf{a}_2\)</span> convergem para <span class="math inline">\(\textbf{x}_c\)</span>, resultando em</p>
-<p><span class="math display">\[g(\textbf{x}_d,\textbf{x}_c)=f_{\textbf{X}_c|\textbf{x}_d}(\textbf{x}_c|\textbf{x}_d)P(\textbf{X}_d=\textbf{x}_d)=P(\textbf{X}_d=\textbf{x}_d|\textbf{X}_c= \textbf{x}_c)f_{\textbf{X}_c}(\textbf{x}_c)\]</span></p>
-<div class="alert alert-success">
-<p><strong>Propriedades</strong></p>
-<ol type="1">
-<li>Probabilidades:</li>
+<section id="parcial-i---20252férias" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="parcial-i---20252férias"><span class="header-section-number">6.1</span> Parcial I - 2025/2–Férias</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Questão 1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Solução</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<p>Considere duas variáveis aleatórias discretas <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>. A distribuição de probabilidade conjunta dessas variáveis é apresentada na tabela abaixo, onde <span class="math inline">\(k\)</span> é uma constante real.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(X \setminus Y\)</span></th>
+<th style="text-align: center;"><strong>1</strong></th>
+<th style="text-align: center;"><strong>2</strong></th>
+<th style="text-align: center;"><strong>3</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>0</strong></td>
+<td style="text-align: center;"><span class="math inline">\(k\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(2k\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(k\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>1</strong></td>
+<td style="text-align: center;"><span class="math inline">\(2k\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(k\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(3k\)</span></td>
+</tr>
+</tbody>
+</table>
+<ol type="a">
+<li><p>Determine o valor da constante <span class="math inline">\(k\)</span> para que a função acima seja uma função de probabilidade conjunta válida.</p></li>
+<li><p>Determine as funções de probabilidade marginais de <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>.</p></li>
+<li><p>Calcule a probabilidade condicional <span class="math inline">\(P(Y=3 \mid X=1)\)</span>.</p></li>
 </ol>
-<p><span class="math display">\[P(\textbf{X}_d\in A,\textbf{X}_c\in B)=\sum_{\textbf{x}_d\in A}\int_{B}g(\textbf{x}_d,\textbf{x}_c)d\textbf{x}_c.\]</span> 2. Distribuição marginal de <span class="math inline">\(\textbf{X}_d:\)</span></p>
-<p><span class="math display">\[P(\textbf{X}_d=\textbf{x}_d)=\int g(\textbf{x}_d,\textbf{x}_c)d\textbf{x}_c.\]</span></p>
-<ol start="3" type="1">
-<li>Distribuição marginal de <span class="math inline">\(\textbf{X}_c:\)</span></li>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<ol type="a">
+<li>A constante <span class="math inline">\(k\)</span> é o valor tal que a soma de todas as probabilidades é igual a 1. Portanto</li>
 </ol>
-<p><span class="math display">\[f(\textbf{x}_c)=\sum_{\textbf{x}_d} g(\textbf{x}_d,\textbf{x}_c).\]</span></p>
-<ol start="4" type="1">
-<li>Condicional de <span class="math inline">\(\textbf{X}_d|\textbf{X}_c=\textbf{x}_c\)</span>:</li>
+<p><span class="math display">\[1=k+2k+k+2k+k+3k=10k\Rightarrow k=\frac{1}{10}\]</span></p>
+<ol start="2" type="a">
+<li>A função de probabilidade marginal de <span class="math inline">\(X\)</span> é</li>
 </ol>
-<p><span class="math display">\[P(\textbf{X}_d=\textbf{x}_d|\textbf{X}_c=\textbf{x}_c)=\frac{g(\textbf{x}_d,\textbf{x}_c)}{f(\textbf{x}_c)}.\]</span></p>
-<ol start="5" type="1">
-<li>Condicional de <span class="math inline">\(\textbf{X}_c|\textbf{X}_d=\textbf{x}_d\)</span>:</li>
+<p><span class="math display">\[P(X=x)=\sum_{y=1}^3P(X=x,Y=y)=\begin{cases}0,4&amp;x=0\\
+0,6&amp;x=1\end{cases}\]</span></p>
+<p>e a função de probabilidade marginal de <span class="math inline">\(Y\)</span> é</p>
+<p><span class="math display">\[P(Y=y)=\sum_{x=0}^1P(X=x,Y=y)=\begin{cases}0,3&amp;y=1\\
+0,3&amp;y=2\\0,4&amp;y=3\end{cases}\]</span></p>
+<ol start="3" type="a">
+<li>Temos que</li>
 </ol>
-<p><span class="math display">\[f(\textbf{x}_c|\textbf{x}_d)=\frac{g(\textbf{x}_d,\textbf{x}_c)}{P(\textbf{X}_d=\textbf{x}_d)}.\]</span></p>
+<p><span class="math display">\[P(Y=3 \mid X=1)=\frac{P(X=1,Y=3)}{P(X=1)}=\frac{3}{6}=0,5.\]</span></p>
 </div>
-<div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 4.1</strong></span> Seja <span class="math inline">\(X|y\sim\hbox{Bernoulli}(y)\)</span> e <span class="math inline">\(y\sim\hbox{Uniforme}(0,1)\)</span>. Então</p>
-<p><span class="math display">\[g(x,y)=y^x(1-y)^{1-x}I_{\{0,1\}}(x)I_{(0,1)}(y).\]</span> Em particular, a marginal de <span class="math inline">\(X\)</span> é <span class="math display">\[P(X=x)=\int_0^1 y^{x}(1-y)^{1-x}dy=\frac{\Gamma(x+1)\Gamma(2-x)}{\Gamma(3)}I_{\{0,1\}}(x)\]</span> e 4</p>
-<p><span class="math display">\[f(y|x)=\frac{y^x(1-y)^{1-x}}{\Gamma(x+1)\Gamma(2-x)/\Gamma(3)}=\frac{\Gamma(3)}{\Gamma(x+1)\Gamma(2-x)}y^{x}(1-y)^{1-x}I_{(0,1)}(y)\]</span></p>
 </div>
-<div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 4.1</strong></span> Sejam <span class="math inline">\(X|y\sim\hbox{Binomial}(n,y)\)</span> e <span class="math inline">\(y\in\hbox{Uniforme}(0,1)\)</span>. Encontre a distribuição marginal de <span class="math inline">\(X\)</span> e a condicional <span class="math inline">\(Y|X=x\)</span>.</p>
 </div>
-<div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 4.2</strong></span> Sejam <span class="math inline">\(X|y\sim\hbox{Poisson}(y)\)</span> e <span class="math inline">\(y\in\hbox{Exponencial}(1)\)</span>. Encontre a distribuição marginal de <span class="math inline">\(X\)</span> e a condicional <span class="math inline">\(Y|X=x\)</span>.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Questão 2</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Solução</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<p>Sejam <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> duas variáveis aleatórias contínuas com função de densidade conjunta dada por:</p>
+<p><span class="math display">\[
+f(x, y) =
+\begin{cases}
+    k(x + y) &amp; \text{se } 0 \leq x \leq 1, \, 0 \leq y \leq 2 \\
+    0 &amp; \text{caso contrário}
+\end{cases}
+\]</span></p>
+<p>onde <span class="math inline">\(k\)</span> é uma constante real. Pede-se:</p>
+<ol type="a">
+<li><p>Determine o valor da constante <span class="math inline">\(k\)</span> para que <span class="math inline">\(f(x, y)\)</span> seja uma função de densidade de probabilidade válida.</p></li>
+<li><p>Encontre as funções de densidade marginais <span class="math inline">\(f_X(x)\)</span> e <span class="math inline">\(f_Y(y)\)</span>.</p></li>
+<li><p>Calcule a probabilidade condicional <span class="math inline">\(P(X &lt; 0,5 \mid Y = 1)\)</span>.</p></li>
+</ol>
 </div>
-<div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 4.3</strong></span> Sejam <span class="math inline">\(X|y\sim\hbox{Geométrica}(y)\)</span> e <span class="math inline">\(y\in\hbox{Uniforme}(0,1)\)</span>. Encontre a distribuição marginal de <span class="math inline">\(X\)</span> e a condicional <span class="math inline">\(Y|X=x\)</span>.</p>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<ol type="a">
+<li>A constante <span class="math inline">\(k\)</span> é o valor que satisfaz</li>
+</ol>
+<p><span class="math display">\[1=\int_{\mathbb{R}^2}f(x,y)dxdy\]</span> e como,</p>
+<p><span class="math display">\[\int_0^2\int_0^1k(x+y)dxdy=k\int_0^2\frac{1}{2}+ydy=3k,\]</span> teremos que <span class="math inline">\(k=1/3\)</span>.</p>
+<ol start="2" type="a">
+<li>A marginal de <span class="math inline">\(X\)</span> é</li>
+</ol>
+<p><span class="math display">\[f_X(x)=\frac{1}{3}\int_0^2(x+y)dyI_{(0,1)}(x)=\frac{2}{3}(1+x)I_{(0,1)}(x).\]</span> e a marginal de <span class="math inline">\(Y\)</span> é</p>
+<p><span class="math display">\[f_Y(y)=\frac{1}{3}\int_0^1(x+y)dxI_{(0,2)}(y)=\frac{1}{3}\left(\frac{1}{2}+y\right)I_{(0,2)}(y).\]</span></p>
+<ol start="3" type="a">
+<li>A densidade condicional de <span class="math inline">\(X|Y=y\)</span> é</li>
+</ol>
+<p><span class="math display">\[f(x|y)=\frac{f(x,y)}{f_Y(y)}=\frac{\frac{1}{3}(x+y)I_{(0,1)}(x)I_{(0,2)}(y)}{\frac{1}{3}\left(\frac{1}{2}+y\right)I_{(0,2)}(y)}=2\frac{(x+y)}{(1+2y)}I_{(0,1)}(x),\]</span></p>
+<p>logo <span class="math display">\[P(X&lt;0,5|Y=1)=\frac{2}{3}\int_0^{0,5}(x+1)dx=\frac{2}{3}\left[\left(\frac{1}{2}\right)^3+\frac{1}{2}\right]=\frac{5}{12}\]</span></p>
 </div>
-<p>Exercício Solução Exercício 2.4Suponha que P(X=x)=12, com x=0,1 . Suponha ainda que Y|X=x∼Normal(x,1) . Mostre que</p>
-<p>P(X=0|Y=y)=(1+exp{y−12})−1</p>
-<p>Exercício Solução Exercício 2.5Suponha que X∼Gama(2,1) e Y|X=x∼Poisson(x) . Encontre a densidade de X|Y=y .</p>
+</div>
+</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">Questão 3</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">Solução</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<p>Sejam <span class="math inline">\(X_1\)</span> e <span class="math inline">\(X_2\)</span> duas variáveis aleatórias independentes com função de probabilidade dada por:</p>
+<p><span class="math display">\[P(X=x)=\frac{1}{2^{x+1}}I_{\mathbb{N}}(x)\]</span></p>
+<p>Determine a função de probabilidade de <span class="math inline">\(Y = X_1 + X_2\)</span>.</p>
+</div>
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<p><span class="math display">\[\begin{align}P(Y=y)&amp;=\sum_{x_2=-\infty}^\infty P(X_1=y-x_2,X_2=x_2)\\&amp;=\sum_{x_2=-\infty}^\infty P(X_1=y-x_{2})P(X_2=x_2)\\&amp;=\sum_{x_2=-\infty}^\infty \frac{1}{2^{y-x_2+1}}I_{\mathbb{N}}(y-x_2)\frac{1}{2^{x_2+1}}I_{\mathbb{N}}(x_2)\\&amp;=\frac{1}{2^{y+2}}\sum_{x_2=0}^y1=\frac{1+y}{2^{y+2}},\;\;y=0,1,\ldots.\end{align}\]</span></p>
+</div>
+</div>
+</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">Questão 4</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">Solução</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
+<p>Sejam <span class="math inline">\(X_1, X_2\)</span> variáveis aleatórias independentes com distribuição <span class="math inline">\(\text{Uniforme}(0,1)\)</span>. Sejam <span class="math inline">\(Y=-\log(X_1X_2)\)</span> e <span class="math inline">\(W=X_2\)</span>.</p>
+<ol type="a">
+<li><p>Encontre a densidade conjunta de <span class="math inline">\((Y,W)\)</span>.</p></li>
+<li><p>Encontre a densidade marginal de <span class="math inline">\(Y\)</span>.</p></li>
+</ol>
+<blockquote class="blockquote">
+<p><strong>Lembrete:</strong> &gt; 1. <span class="math inline">\(e^{-x} &lt; 1\)</span> para todo <span class="math inline">\(x &gt; 0\)</span> 2. <span class="math inline">\(\int x^{-1}dx = \log x\)</span></p>
+</blockquote>
+</div>
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+<ol type="a">
+<li>Vamos utilizar o método do jacobiano.</li>
+</ol>
+<p><strong>Encontrando a inversa</strong>: Teremos que <span class="math display">\[\begin{align}x_2&amp;=w \\ x_1&amp;=\frac{e^{-y}}{w}\end{align}\]</span></p>
+<p><strong>Encontrando a matriz jacobiana:</strong></p>
+<p><span class="math display">\[\left(\begin{array}{cc}\frac{\partial x_1}{\partial y} &amp; \frac{\partial x_1}{\partial w } \\ \frac{\partial x_2}{\partial y} &amp; \frac{\partial x_2}{\partial w}\end{array}\right)=\left(\begin{array}{cc}-\frac{e^{-y}}{w} &amp; -\frac{e^{-y}}{w^2} \\ 0 &amp; 1\end{array}\right)\]</span></p>
+<p><strong>Módulo do determinante da matriz jacobiana:</strong></p>
+<p><span class="math display">\[\frac{e^{-y}}{w}\]</span></p>
+<p><strong>Distribuição conjunta de <span class="math inline">\(Y\)</span> e <span class="math inline">\(W\)</span>:</strong></p>
+<p><span class="math display">\[f_{Y,W}(y,w)=f_{X_1}\left(\frac{e^{-y}}{w}\right)f_{X_2}(w)\frac{e^{-y}}{w}=I_{(0,1)}\left(\frac{e^{-y}}{w}\right)I_{(0,1)}(w)\frac{e^{-y}}{w}\]</span></p>
+<ol start="2" type="a">
+<li>Observe que <span class="math inline">\(0&lt;e^{-y}&lt;w&lt;1\)</span>, logo</li>
+</ol>
+<p><span class="math display">\[f_Y(y)=e^{-y}\int_{e^{-y}}^1 \frac{1}{w}dw=e^{-y}[\log 1 - \log e^{-y}]=ye^{-y},\;\;y&gt;0.\]</span></p>
+</div>
+</div>
+</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true">Questão 5</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false">Solução</a></li></ul>
+<div class="tab-content">
+<div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
+<p>Sejam <span class="math inline">\(X_1\)</span> e <span class="math inline">\(X_2\)</span> duas variáveis aleatórias independentes com distribuição <span class="math inline">\(\text{Normal}(0, 1/2)\)</span>. Considere a nova variável aleatória definida pela soma <span class="math inline">\(S = X_1 + X_2\)</span>. Prove que <span class="math inline">\(S \sim \text{Normal}(0,1)\)</span>.</p>
+</div>
+<div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
+<p><span class="math display">\[\begin{align}f_Y(y)&amp;=\int_\mathbb{R}f_{X_1}(y-x_2)f_{X_2}(x_2)dx_2
+\\&amp;=\int_\mathbb{R}\frac{1}{\sqrt{\pi}}e^{-(y-x_2)^2}\frac{1}{\sqrt{\pi}}e^{-x_2^2}dx_2\\&amp;=\frac{1}{\pi}\int_\mathbb{R}e^{-(y^2+x_2^2-2x_2y)-x^2_2}dx_2\\&amp;=\frac{e^{-y^2}}{\pi}\int_\mathbb{R}e^{-[2x_2^2-2x_2y]}dx_2\end{align}\]</span></p>
+<p>note que</p>
+<p><span class="math display">\[2x_2^2-2x_2y=2\left(x_2^2 -2x_2\frac{y}{2}\right)=2\left(x_2^2 -2x_2\frac{y}{2}\pm\frac{y^2}{4}\right)=2\left(x_2-\frac{y}{2}\right)^2-\frac{y^2}{2}\]</span> logo</p>
+<p><span class="math display">\[\begin{align}f_Y(y)&amp;=\frac{e^{-y^2}}{\pi}\int_\mathbb{R}e^{-2\left(x_2-\frac{y}{2}\right)^2+\frac{y^2}{2}}dx_2\\&amp;=\frac{e^{-\frac{y^2}{2}}}{\pi}\int_\mathbb{R}e^{-2\left(x_2-\frac{y}{2}\right)^2}dx_2\\&amp;=\frac{e^{-\frac{y^2}{2}}}{\pi}\sqrt{2\pi/4}=\frac{1}{\sqrt{2\pi}}e^{-\frac{y^2}{2}},\;\;y\in\mathbb{R}\end{align}\]</span></p>
+</div>
+</div>
+</div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -669,13 +781,13 @@ window.Quarto = {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./vetores_aleatorios_continuos.html" class="pagination-link" aria-label="Distribuição de vetores aleatórios contínuos">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Distribuição de vetores aleatórios contínuos</span></span>
+      <a href="./covariancia.html" class="pagination-link" aria-label="Covariância, correlação e esperança condicional">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Covariância, correlação e esperança condicional</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./covariancia.html" class="pagination-link" aria-label="Covariância, correlação e esperança condicional">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Covariância, correlação e esperança condicional</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./references.html" class="pagination-link" aria-label="References">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
