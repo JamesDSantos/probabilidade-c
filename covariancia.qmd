@@ -10,7 +10,7 @@ Seja $\textbf{x}$ um vetor de comprimento $n$. A distância de $\textbf{x}$ até
 
 $$||\textbf{x}||=\sqrt{\sum_{i=1}^n x_i^2}.$$
  
-Agora, considerando outro vetor $\textbf{y}$, também de comprimento $n$, definimos o produto interno de $\text{x}$ e $\textbf{x}$ por
+Agora, considerando outro vetor $\textbf{y}$, também de comprimento $n$, definimos o produto interno de $\text{x}$ e $\textbf{y}$ por
 
 $$\langle\textbf{x},\textbf{y}\rangle=\sum_{i=1}^n x_iy_i.$$
 Pode-se mostrar que
@@ -36,7 +36,7 @@ que é o desvio padrão tradicional.
 
 Se consideramos que $E(X)=\mu_X$ e $E(Y)=\mu_Y$ são diferentes de zero, o produto interno ponderado dos vetores centrados $\tilde{\textbf{x}}=\textbf{x}-\mu_X$ e $\tilde{\textbf{y}}=\textbf{y}-\mu_Y$, teremos
 
-$$\langle \tilde{\textbf{x}},\tilde{\textbf{y}}\rangle_P=\sum_{(x,y)\in\mathbb{Z}^2} (x-\mu_X)(y-\mu_Y)P(X=x_i,Y=y_j)=E\left((X-\mu_X)(Y-\mu_Y)\right).$$
+$$\langle \tilde{\textbf{x}},\tilde{\textbf{y}}\rangle_P=\sum_{(x,y)\in\mathbb{Z}^2} (x-\mu_X)(y-\mu_Y)P(X=x,Y=y)=E\left((X-\mu_X)(Y-\mu_Y)\right).$$
 Observe que a definição do produto interno ponderado pode ser modificada para um par $(X,Y)$ de variáveis aleatórias contínuas:
 
 $$\langle \textbf{x},\textbf{y}\rangle_P=\int_{\mathbb{R}^2}xyf(x,y)dxdy=E(XY),$$
@@ -94,6 +94,31 @@ P(Y=y) & \mathbf{0,30} & \mathbf{0,30} & \mathbf{0,40} & \mathbf{1,00} \\ \hline
 Determine a covariância $Cov(X, Y)$ e interprete o resultado.
 :::
 
+::: {#exm-}
+Seja a função de densidade de probabilidade conjunta de $(X, Y)$ dada por:
+
+$$f(x,y) = \frac{3}{2}(x^2 + y^2)I_{(0,1)}(x)I_{(0,1)}(y).$$
+
+Vamos encontrar a covariância de $(X, Y)$ e interpretar o resultado. Para evitar realizar muitas integrais, vamos encontrar 
+
+$$E(X^a Y^b)=\int_{\mathbb{R}^2} f(x,y)dxdy,$$
+para $a,b\geq 0$. Observe que escolhendo $a=1$ e $b=0$ teremos $E(X^aY^b)=E(X)$ e, de modo semelhante, podemos obter a esperança de $E(Y)$ e $E(XY)$. 
+
+$$\begin{align}E(X^a Y^b) &= \frac{3}{2}\int_{0}^{1}\int_0^1 x^a y^b(x^2 + y^2) dxdy \\&= \frac{3}{2}\int_0^1 \left[ \frac{x^{a+3}}{a+3}y^{b} + \frac{x^{a+1}}{a+1}y^{2+b} \right]_0^1dy \\&= \frac{3}{2}\int_0^1  \frac{1}{a+3}y^{b} + \frac{1}{a+1}y^{2+b} dy\\ &=\frac{3}{2}\left[ \frac{1}{a+3}\frac{y^{b+1}}{b+1} + \frac{1}{a+1}\frac{y^{3+b}}{3+b} \right]_0^1\\&=\frac{3}{2}\left( \frac{1}{(a+3)(b+1)} + \frac{1}{(a+1)(3+b)} \right).\end{align}$$
+
+Disto, teremos que
+$$E(X)=\frac{3}{2}\left( \frac{1}{4\cdot 1} + \frac{1}{2\cdot3} \right)=\frac{5}{8}$$
+e, $E(Y)=5/8$. Já 
+
+$$E(XY) = \frac{3}{2}\left( \frac{1}{4\cdot 2} + \frac{1}{2\cdot 4} \right)=\frac{3}{8}$$
+
+e a covariância de $(X,Y)$ é
+
+$$Cov(X,Y)=E(XY)-E(X)E(Y)=\frac{3}{8}-\frac{5}{8}\cdot\frac{5}{8}=-\frac{1}{64}$$
+Como o valor é negativo, existe uma tendência de que, quando $X$ aumenta, $Y$ diminua (e vice-versa), embora a magnitude seja muito pequena.
+
+:::
+
 ::: {#exr-}
 Seja
 
@@ -101,17 +126,7 @@ $$f(x,y)=2xy+\frac{1}{2},$$
 para $(x,y)\in(0,1)$. Encontre a covariância de $(X,Y)$ e interprete o resultado.
 :::
 
-<div class='alert alert-success'>
-**Propriedades**
 
-1. $Cov(X,X)=Var(X)$
-
-2. Para $a$e $b$ constantes e reais, $Cov(aX,bY)=abCov(X,Y)$
-
-3. Para $a$ constante real, $Cov(X,a)=0$
-
-4. $Cov(X+Y,Z)=Cov(X,Z)+Cov(Y,Z)$ e $Cov(X,Z+Y)=Cov(X,Z)+Cov(X,Y)$ 
-</div>
 
 <div class='alert alert-success'>
 **Proposição** Se $X$ e $Y$ são independentes, então $Cov(X,Y)=0$.
@@ -135,21 +150,106 @@ temos que $X$ e $Y$ são independentes e, portanto $Cov(X,Y)=0$.
 :::
 
 
-::: {#exr-} Suponha que $X$ e $Y$ assumem valores em $\{−1,0,1\}$
+::: {#exr-} 
+Suponha que $X$ e $Y$ assumem valores em $\{−1,0,1\}$
  com a seguinte função de probabilidade conjunta:
  
 $$P(X=x,Y=y)=\frac{1}{5}$$
 se, $(x,y)\in\{(1,1),(−1,1),(1,−1),(−1,−1),(0,0)\}$ e $P(X=x,Y=y)=0$ em  caso contrário. Mostre que $X$ e $Y$ não são independentes e que $Cov(X,Y)=0$.
 :::
 
-
-
 ::: {#exr-}
 Considere a densidade conjunta
 
 $$f(x,y)=\frac{1}{y}e^{−(y+xy)}$$,
-para $x,y>0$. Encontre Cov(X,Y)
+para $x,y>0$. Encontre Cov(X,Y). É possível mostrar que $X$ não é independente de $Y$ através deste resultado?
 :::
+
+
+<div class='alert alert-success'>
+**Propriedades**
+
+1. $Cov(X,X)=Var(X)$ (Identidade)
+
+2. Para $a$e $b$ constantes e reais, $Cov(aX,bY)=abCov(X,Y)$ (Escalonamento)
+
+3. Para $a$ constante real, $Cov(X,a)=0$ (Constante)
+
+4. $Cov(X+Y,Z)=Cov(X,Z)+Cov(Y,Z)$ e $Cov(X,Z+Y)=Cov(X,Z)+Cov(X,Y)$ (Aditividade bilinear)
+</div>
+
+::: {#exm-}
+
+Suponha que as variáveis aleatórias $X$, $Y$ e $Z$ possuam as seguintes características:
+
+1. $\text{Cov}(X, Y) = 5$
+
+2. $\text{Cov}(X, Z) = -2$
+
+3. $\text{Var}(X) = 4$
+
+Calcule os valores solicitados abaixo:
+
+a) $\text{Cov}(3X, Y)$
+
+b) $\text{Cov}(X, X)$
+
+c) $\text{Cov}(X, Y + Z)$
+
+d) $\text{Cov}(2X, 4)$
+
+e) $\text{Cov}(4X, 2Y - 3Z)$
+
+**Solução**
+
+a) Pela Propriedade 2 (Escalonamento):
+
+$$\text{Cov}(3X, Y) = 3 \cdot \text{Cov}(X, Y)= 3 \cdot 5 = 15$$
+
+b) Pela Propriedade 1 (Identidade):
+
+$$\text{Cov}(X, X) = \text{Var}(X)=4$$
+
+c) Pela Propriedade 4 (Aditividade bilinear):
+
+$$\text{Cov}(X, Y + Z) = \text{Cov}(X, Y) + \text{Cov}(X, Z)= 5 + (-2) = 3$$
+
+d) Pela Propriedade 3 (Constante): como 4 é uma constante,
+
+$$\text{Cov}(2X, 4) = 0$$
+
+e) Pelas Propriedades 2 e 4:
+
+$$\begin{align}\text{Cov}(4X, 2Y - 3Z) &= \text{Cov}(4X, 2Y) + \text{Cov}(4X, -3Z)\\&= 4 \cdot 2 \cdot \text{Cov}(X, Y) + 4 \cdot (-3) \cdot \text{Cov}(X, Z)\\&= 8 \cdot (5) + (-12) \cdot (-2)= 40 + 24 = 64\end{align}$$
+
+:::
+
+::: {#exr-}
+Sabe-se que: 
+
+1. $\text{Cov}(X, Y) = -3$
+
+2. $\text{Cov}(X, Z) = 4$
+
+3. $\text{Cov}(Y, Z) = 1$
+
+4. $\text{Var}(X) = 9$
+
+5. $\text{Var}(Y) = 16$
+
+Utilizando as propriedades de covariância, determine o valor das seguintes expressões:
+
+a) $\text{Cov}(X, 5Y)$
+
+b) $\text{Cov}(X, X + Y)$
+
+c) $\text{Cov}(2X, 3Z)$
+
+d) $\text{Cov}(Y, -2)$
+
+e) $\text{Cov}(X - Z, Y)$
+:::
+
 
 ::: {#exr-}
 Verifique
@@ -164,29 +264,17 @@ Conclua que $Cov(aX,bY)=abCov(X,Y)$, com $a,b$ constantes.
 :::
 
 ::: {#exr-}
-Sejam $X_1,\ldots,X_n$ e $Y_1,\ldots,Y_m$ variáveis aleatórias. Mostre que
+Sejam $X_1,\ldots,X_n$ variáveis aleatórias. 
+Mostre que
 
-$$Cov(\sum_{i=1}^nX_i,Y_j)=\sum_{i=1}^nCov(X_i,Y_j), \forall\;\; j=1,\ldots,m$$
+a) $Var(X_1+X_2)=Var(X_1)+Var(X_2)+2Cov(X_1,X_2).$$
 
-$$Cov(X_i,\sum_{j=1}^m Y_j)=\sum_{j=1}^mCov(X_i,Y_j), \forall\;\; i=1,\ldots,n$$
-
-Conclua que
-
-$$Cov(\sum_{i=1}^n X_i,\sum_{j=1}^m Y_j)=\sum_{i=1}^n\sum_{j=1}^mCov(X_i,Y_j).$$
-
+b) Mostre por indução que $Var(\sum_{i=1}^n X_i)=\sum_{i=1}^nVar(X_i)+\sum_{i=1}^n\sum_{j=1}^nCov(X_i,X_j).$
 :::
 
-::: {#exr-}
-Sejam $X,Y$ duas variáveis aleatórias. Mostre que
-
-$$Var(X+Y)=Var(X)+Var(Y)+2Cov(X,Y).$$
-
-Agora, sejam $X_1,\ldots,X_n$ variáveis aleatórias. Mostre que
-
-$$Var(\sum_{i=1}^n X_i)=\sum_{i=1}^nVar(X_i)+\sum_{i=1}^n\sum_{j=1}^nCov(X_i,X_j).$$
-:::
 
 ## Correlação 
+
 Recorde que, para o produto interno entre vetores, é verdadeiro que
 
 $$\langle \textbf{x},\textbf{y}\rangle=||\textbf{x}||||\textbf{y}||\cos\theta,$$
@@ -194,7 +282,7 @@ onde $\theta$ é o ângulo formado entre os dois vetores. Logo, tem-se que
 
 $$\cos\theta=\frac{\langle \textbf{x},\textbf{y}\rangle}{||\textbf{x}||||\textbf{y}||},$$
 
-Em particular, se $|\cos\theta|=1$, então $\textbf{x}$ e $\textbf{y}$ são paralelos, o que implica que exsite $b$ tal que $\textbf{y}=v\textbf{x}$ e $b$ possui o mesmo sinal do cosseno.
+Em particular, se $|\cos\theta|=1$, então $\textbf{x}$ e $\textbf{y}$ são paralelos, o que implica que existe $b$ tal que $\textbf{y}=v\textbf{x}$ e $b$ possui o mesmo sinal do cosseno.
 
 Podemos estender essa noção para o par de variáveis aleatórias $(X,Y)$, definindo o **coeficiente de correlação de Pearson**:
 
@@ -202,25 +290,71 @@ $$\rho_{XY}=\frac{Cov(X,Y)}{\sqrt{Var(X)Var(Y)}},$$
 que é o cosseno do ângulo entre as variáveis centralizadas $X-E(X)$ e $Y-E(Y)$. Esse coeficiente mede o quanto $Y$ e $X$ podem ser escritas como função linear uma da outra. De fato, se $|\rho_{XY}|=1$, então existem $a$ e $b$ tais que
 
 $$P(Y=a+bX)=1,$$
-onde o sinal de $b$ é o mesmo de $\rho_{XY}$.
+onde o sinal de $b$ é o mesmo de $\rho_{XY}$. Além disso, $\rho = 0$ implica em ausência de relação linear
+
+
+<div class='alert alert-success'>
+**Propriedades.** Sejam $X$ e $Y$ variáveis aleatórias e sejam $a,b,c$ e $d$ constantes conhecidas. Então, o coeficiente de correlação possui as seguintes propriedades:
+
+1. Limitação do Intervalo:
+
+$$-1 \leq \rho(X,Y) \leq 1$$
+
+2. Invariância por mudança de locação e escala: Sejam $U = aX + b$ e $V = cY + d$. Então 
+$$\rho(aX + b, cY + d) = \text{sinal}(a \cdot c) \cdot \rho(X,Y).$$
+A função $\text{sinal}(x)$ retorna 1 se $x>0$, $-1$ se $x<0$ e 0 em caso contrário. Se $a$ e $c$ tiverem o mesmo sinal ($ac > 0$), a correlação não muda. Se $a$ e $c$ tiverem sinais opostos ($ac < 0$), a correlação inverte o sinal. As constantes somadas ($b$ e $d$) não afetam o resultado.
+
+3. Simetria: 
+
+$$\rho(X,Y) = \rho(Y,X)$$
+
+4. Correlação com a própria variável: 
+
+$$\rho(X,X) = 1$$
+</div>
 
 ::: {#exm-}
-Sejam $X$ e $Y variáveis aleatórias com densidade conjunta
+Suponha que a correlação entre a variável $X$ e $Y$ seja $\rho(X,Y) = 0,6$. Determine:
 
-$$f(x,y)=\frac{1}{2\pi}\exp\left\{−\frac{1}{2}(x^2+2y^2−2xy)\right\},$$
-com $x,y\in\mathbb{R}$. Vamos encontrar a correlação entre $X$
- e $Y$. 
- 
-...
+a) $\rho(2X, Y)$
+
+b) $\rho(X + 10, Y - 5)$
+
+c) $\rho(-3X, Y)$
+
+d) $\rho(-2X, -4Y)$
+
+
+**Solução.**
+
+a) Como o coeficiente de $X$ é positivo ($2$), a correlação permanece idêntica.
+
+b) Somar ou subtrair constantes não altera a correlação.
+
+c) Como multiplicamos uma das variáveis por um número negativo (sinais opostos), o sinal da correlação inverte. Resultado: $-0,6$
+
+d) Ambos os coeficientes são negativos. Como o produto de dois negativos é positivo ($ac > 0$), o sinal original se mantém. Resultado: $0,6$
 :::
 
 
+::: {#exr-}
+Sejam $X$ e $Y$ variáveis aleatórias com 
+$\text{Var}(X) = 25$, $\text{Var}(Y) = 16$, $\text{Cov}(X, Y) = 12$ e$\rho(X, Y) = 0,6$. Utilizando as propriedades, determine os novos valores para as situações abaixo:
 
+a) $\text{Cov}(2X, 3Y)$ 
 
+b) $\text{Cov}(X + 5, Y - 10)$
 
+c) $\text{Cov}(X, X + Y)$
+
+d) $\rho(4X, Y)$
+
+e) $\rho(-X, Y)$
+
+f) $\rho(X - 100, 2Y + 30)$
+:::
 
 ## Esperança condicional
-
 
 A esperança $X$ condicionada à $Y=y$ é denotada por $E(X|Y=y)$ e se refere à esperança obtida a partir da distribuição de $(X|Y=y)$. Se $X$ é uma variável aleatória contínua, a esperança condicional é dada por
 
@@ -231,59 +365,66 @@ $$E(X|Y=y)=\sum_{x\in\mathbb{Z}} xP(X=x|Y=y).$$
 De modo análogo, para qualquer função real $g(.)$
  podemos definir $E(g(X)|Y=y)$.
  
+::: {#exm-}
+Seja $(X,Y)$ um vetor aleatório com função de probabilidade conjunta dada por
+
+$$P(X=x,Y=y)=\frac{1}{2^yy}I_{\{1,\ldots,y\}}(x)I_{\{1,2,\ldots\}}(y).$$
+
+Vamos encontrar $E(X|Y=y)$. A função de probabilidade marginal de $Y$ é 
+
+$$\begin{align}P(Y=y)&=\sum_{x=-\infty}^\infty\frac{1}{2^yy}I_{\{1,\ldots,y\}}(x)I_{\{1,2,\ldots\}}(y)\\&=\frac{1}{2^y}I_{\{1,2,\ldots,\}}(y)\sum_{x=1}^y\frac{1}{y}\\&=\frac{1}{2^y}I_{\{1,2,\ldots,\}}(y)\end{align}$$
+logo,
+
+$$P(X=x|Y=y)=\frac{\frac{1}{2^yy}I_{\{1,\ldots,y\}}(x)I_{\{1,2,\ldots\}}(y)}{\frac{1}{2^y}I_{\{1,2,\ldots,\}}(y)}=\frac{1}{y}I_{\{1,\ldots,y\}}(x),$$
+e
+
+$$E(X|Y=y)=\sum_{x=-\infty}^\infty x\frac{1}{y}I_{\{1,\ldots,y\}}(x)=\frac{1}{y}\sum_{x=1}^y x=\frac{1+y}{2}.$$
+:::
  
+::: {#exr-}
+Seja $(X,Y)$ um vetor aleatório com função de probabilidade conjunta dada por
+
+$$P(X=x,Y=y)=\frac{e^{-2}2^y}{y!y}I_{\{1,\ldots,y\}}(x)I_{\mathbb{N}}(y).$$
+
+Encontre $E(X|Y=y)$.
+:::
+
+::: {#exm-}
+Seja $(X,Y)$ um vetor aleatório com função densidade conjunta dada por
+
+$$f(x,y)=e^{-x}I_{(y,\infty)}(x)I_{(0,\infty)}(y)$$
+Vamos encontrar $E(X|Y=y)$. Primeiro, a função densidade marginal de $Y$ é dada por
+
+$$f_Y(y)=I_{(0,\infty)}(y)\int_\mathbb{R}e^{-x}I_{(y,\infty)}(x)dx=I_{(0,\infty)}(y)\int_y^\infty e^{-x}dx=e^{-y}I_{(0,\infty)}(y),$$
+logo, a função densidade condicional de $X|Y=y$ é
+
+$$f(x|y)=\frac{e^{-x}I_{(y,\infty)}(x)I_{(0,\infty)}(y)}{e^{-y}I_{(0,\infty)}(y)}=e^{-(x-y)}I_{(y,\infty)}(x)$$
+e
+
+$$\begin{align}E(X|Y=y)&=\int_y^\infty xe^{-(x-y)}dx=\int_0^\infty (u+y)e^{-u}du\\&=1+y\end{align}$$
+:::
+
+::: {#exr-}
+Seja $(X,Y)$ um vetor aleatório com função densidade conjunta dada por
+
+$$f(x,y)=\frac{1}{y^3}I_{(0,y)}(x)I_{(1,\infty)}(y)$$
+Vamos encontrar $E(X|Y=y)$.
+
+:::
+
+Obviamente, outros momentos além do primeiro podem ser calculados. Disto, por exemplo, temos que
+
+$$Var(X|Y=y)=E(X^2|Y=y)−E(X|Y=y)^2.$$
 
 
-A variância condicional de $X$ dado $Y=y$ é definida por:
+::: {#prp-}
+Sejam $X$ e $Y$ variáveis aleatórias com esperança finita. Então,
 
-$$Var(X|Y=y)=E((X−E(X|Y=y))^2)=E(X^2|Y=y)−E(X|Y=y)^2.$$
+$$E(X)=E(E(X|Y)).$$
 
-Exercício
-Solução
-Seja (X,Y)
- um vetor aleatório com a seguinte função de densidade conjunta
-f(x,y)=11−x,
-para 0<x<y<1
-. Encontre E(Y|x)
- e Var(Y|x)
-.
-
-Proposição
-Demonstração
-Sejam X
- e Y
- variáveis aleatórias com esperança finita. Então,
-
-E(X)=E(E(X|Y)).
 Além disso, se a variância for finita, então,
-Var(X)=E(Var(X|Y))+Var(E(X|Y)).
 
-Exercício
-Solução
-Suponha que X|y∼Poisson(y)
- e Y∼Gama(a,b)
-. Encontre a média e a variância de X
-.
+$$Var(X)=E(Var(X|Y))+Var(E(X|Y)).$$
 
-Exercícios de fixação
+:::
 
-Suponha que o vetor aleatório (X,Y)
- tem a seguinte densidade conjunta
-f(x,y)=ya+12−12a2Γ(a/2)2π−−√exp{−y2(1+x2)},
-onde y>0
-, x∈R
- e a>1
-.
-
-Mostre Y∼Gama(a/2,1/2)
-
-Mostre que X|y∼Normal(0,1/y)
-
-Encontre E(X)
- e Var(X)
-.
-
-Considere a seguinte definição:
-Var(X|Y)=E[(X−E(X|Y))2|Y].
-Prove que
-Var(X)=E(Var(X|Y))+Var(E(X|Y))

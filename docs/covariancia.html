@@ -228,7 +228,7 @@ window.Quarto = {
 <h2 data-number="5.1" class="anchored" data-anchor-id="covariância"><span class="header-section-number">5.1</span> Covariância</h2>
 <p>Seja <span class="math inline">\(\textbf{x}\)</span> um vetor de comprimento <span class="math inline">\(n\)</span>. A distância de <span class="math inline">\(\textbf{x}\)</span> até a origem é denominada <strong>norma</strong> e é calculada por</p>
 <p><span class="math display">\[||\textbf{x}||=\sqrt{\sum_{i=1}^n x_i^2}.\]</span></p>
-<p>Agora, considerando outro vetor <span class="math inline">\(\textbf{y}\)</span>, também de comprimento <span class="math inline">\(n\)</span>, definimos o produto interno de <span class="math inline">\(\text{x}\)</span> e <span class="math inline">\(\textbf{x}\)</span> por</p>
+<p>Agora, considerando outro vetor <span class="math inline">\(\textbf{y}\)</span>, também de comprimento <span class="math inline">\(n\)</span>, definimos o produto interno de <span class="math inline">\(\text{x}\)</span> e <span class="math inline">\(\textbf{y}\)</span> por</p>
 <p><span class="math display">\[\langle\textbf{x},\textbf{y}\rangle=\sum_{i=1}^n x_iy_i.\]</span> Pode-se mostrar que</p>
 <p><span class="math display">\[\langle\textbf{x},\textbf{y}\rangle=||\textbf{x}||||\textbf{y}||\cos\theta,\]</span> onde <span class="math inline">\(\theta\)</span> é o ângulo formado entre os vetores <span class="math inline">\(\textbf{x}\)</span> e <span class="math inline">\(\textbf{y}\)</span>. Portanto, o produto interno possui interpretação direta com a relação entre as direções de <span class="math inline">\(\textbf{x}\)</span> e <span class="math inline">\(\textbf{y}\)</span>: a) se <span class="math inline">\(\langle\textbf{x},\textbf{y}\rangle\)</span> é positivo, então os vetores apontam para o mesmo sentido (b) se negativo, eles apontam para o sentidos contrários e (c) se nulo, eles são ortogonais. É imediato que</p>
 <p><span class="math display">\[||\textbf{x}||=\sqrt{\langle \textbf{x},\textbf{x}\rangle}.\]</span></p>
@@ -238,7 +238,7 @@ window.Quarto = {
 <p><span class="math display">\[||\textbf{x}||_P=\sqrt{\langle \textbf{x},\textbf{x}\rangle_P}=\sqrt{E(X^2)}=\sqrt{Var(X)},\]</span> onde a última igualdade é válida porque <span class="math inline">\(E(X)=0\)</span>. Essa quantidade, conhecida como desvio padrão, é interpretada como a norma do vetor <span class="math inline">\(\textbf{x}\)</span>, o que explica porque o desvio padrão é considerado uma medida de distância. Se considerarmos que <span class="math inline">\(E(X)=\mu\)</span>, o centro de massa não é mais zero. Podemos definir o vetor centrado em <span class="math inline">\(\mu\)</span>, <span class="math inline">\(\tilde{\textbf{x}}=\textbf{x}-\mu\)</span>. A norma deste vetor considerando o produto interno ponderado é</p>
 <p><span class="math display">\[||\tilde{\textbf{x}}||_P=\sqrt{\langle \textbf{x}-\mu,\textbf{x}-\mu\rangle_P}=\sqrt{E((X-\mu)^2)}=\sqrt{Var(X)},\]</span> que é o desvio padrão tradicional.</p>
 <p>Se consideramos que <span class="math inline">\(E(X)=\mu_X\)</span> e <span class="math inline">\(E(Y)=\mu_Y\)</span> são diferentes de zero, o produto interno ponderado dos vetores centrados <span class="math inline">\(\tilde{\textbf{x}}=\textbf{x}-\mu_X\)</span> e <span class="math inline">\(\tilde{\textbf{y}}=\textbf{y}-\mu_Y\)</span>, teremos</p>
-<p><span class="math display">\[\langle \tilde{\textbf{x}},\tilde{\textbf{y}}\rangle_P=\sum_{(x,y)\in\mathbb{Z}^2} (x-\mu_X)(y-\mu_Y)P(X=x_i,Y=y_j)=E\left((X-\mu_X)(Y-\mu_Y)\right).\]</span> Observe que a definição do produto interno ponderado pode ser modificada para um par <span class="math inline">\((X,Y)\)</span> de variáveis aleatórias contínuas:</p>
+<p><span class="math display">\[\langle \tilde{\textbf{x}},\tilde{\textbf{y}}\rangle_P=\sum_{(x,y)\in\mathbb{Z}^2} (x-\mu_X)(y-\mu_Y)P(X=x,Y=y)=E\left((X-\mu_X)(Y-\mu_Y)\right).\]</span> Observe que a definição do produto interno ponderado pode ser modificada para um par <span class="math inline">\((X,Y)\)</span> de variáveis aleatórias contínuas:</p>
 <p><span class="math display">\[\langle \textbf{x},\textbf{y}\rangle_P=\int_{\mathbb{R}^2}xyf(x,y)dxdy=E(XY),\]</span> o que gera as mesmas interpretações dadas para o caso discreto. Podemos então definir formalmente a covariância entre <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>.</p>
 <div id="def-" class="theorem definition">
 <p><span class="theorem-title"><strong>Definition 5.1</strong></span> Sejam <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> duas variáveis aleatórias quaisquer. Então, a covariância entre <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> é dada por</p>
@@ -279,37 +279,105 @@ P(Y=y) &amp; \mathbf{0,30} &amp; \mathbf{0,30} &amp; \mathbf{0,40} &amp; \mathbf
 \end{array}\]</span></p>
 <p>Determine a covariância <span class="math inline">\(Cov(X, Y)\)</span> e interprete o resultado.</p>
 </div>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 5.2</strong></span> Seja a função de densidade de probabilidade conjunta de <span class="math inline">\((X, Y)\)</span> dada por:</p>
+<p><span class="math display">\[f(x,y) = \frac{3}{2}(x^2 + y^2)I_{(0,1)}(x)I_{(0,1)}(y).\]</span></p>
+<p>Vamos encontrar a covariância de <span class="math inline">\((X, Y)\)</span> e interpretar o resultado. Para evitar realizar muitas integrais, vamos encontrar</p>
+<p><span class="math display">\[E(X^a Y^b)=\int_{\mathbb{R}^2} f(x,y)dxdy,\]</span> para <span class="math inline">\(a,b\geq 0\)</span>. Observe que escolhendo <span class="math inline">\(a=1\)</span> e <span class="math inline">\(b=0\)</span> teremos <span class="math inline">\(E(X^aY^b)=E(X)\)</span> e, de modo semelhante, podemos obter a esperança de <span class="math inline">\(E(Y)\)</span> e <span class="math inline">\(E(XY)\)</span>.</p>
+<p><span class="math display">\[\begin{align}E(X^a Y^b) &amp;= \frac{3}{2}\int_{0}^{1}\int_0^1 x^a y^b(x^2 + y^2) dxdy \\&amp;= \frac{3}{2}\int_0^1 \left[ \frac{x^{a+3}}{a+3}y^{b} + \frac{x^{a+1}}{a+1}y^{2+b} \right]_0^1dy \\&amp;= \frac{3}{2}\int_0^1  \frac{1}{a+3}y^{b} + \frac{1}{a+1}y^{2+b} dy\\ &amp;=\frac{3}{2}\left[ \frac{1}{a+3}\frac{y^{b+1}}{b+1} + \frac{1}{a+1}\frac{y^{3+b}}{3+b} \right]_0^1\\&amp;=\frac{3}{2}\left( \frac{1}{(a+3)(b+1)} + \frac{1}{(a+1)(3+b)} \right).\end{align}\]</span></p>
+<p>Disto, teremos que <span class="math display">\[E(X)=\frac{3}{2}\left( \frac{1}{4\cdot 1} + \frac{1}{2\cdot3} \right)=\frac{5}{8}\]</span> e, <span class="math inline">\(E(Y)=5/8\)</span>. Já</p>
+<p><span class="math display">\[E(XY) = \frac{3}{2}\left( \frac{1}{4\cdot 2} + \frac{1}{2\cdot 4} \right)=\frac{3}{8}\]</span></p>
+<p>e a covariância de <span class="math inline">\((X,Y)\)</span> é</p>
+<p><span class="math display">\[Cov(X,Y)=E(XY)-E(X)E(Y)=\frac{3}{8}-\frac{5}{8}\cdot\frac{5}{8}=-\frac{1}{64}\]</span> Como o valor é negativo, existe uma tendência de que, quando <span class="math inline">\(X\)</span> aumenta, <span class="math inline">\(Y\)</span> diminua (e vice-versa), embora a magnitude seja muito pequena.</p>
+</div>
 <div id="exr-" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 5.2</strong></span> Seja</p>
 <p><span class="math display">\[f(x,y)=2xy+\frac{1}{2},\]</span> para <span class="math inline">\((x,y)\in(0,1)\)</span>. Encontre a covariância de <span class="math inline">\((X,Y)\)</span> e interprete o resultado.</p>
-</div>
-<div class="alert alert-success">
-<p><strong>Propriedades</strong></p>
-<ol type="1">
-<li><p><span class="math inline">\(Cov(X,X)=Var(X)\)</span></p></li>
-<li><p>Para <span class="math inline">\(a\)</span>e <span class="math inline">\(b\)</span> constantes e reais, <span class="math inline">\(Cov(aX,bY)=abCov(X,Y)\)</span></p></li>
-<li><p>Para <span class="math inline">\(a\)</span> constante real, <span class="math inline">\(Cov(X,a)=0\)</span></p></li>
-<li><p><span class="math inline">\(Cov(X+Y,Z)=Cov(X,Z)+Cov(Y,Z)\)</span> e <span class="math inline">\(Cov(X,Z+Y)=Cov(X,Z)+Cov(X,Y)\)</span></p></li>
-</ol>
 </div>
 <div class="alert alert-success">
 <p><strong>Proposição</strong> Se <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> são independentes, então <span class="math inline">\(Cov(X,Y)=0\)</span>.</p>
 <p><strong>Importante</strong>: <span class="math inline">\(Cov(X,Y)=0\)</span> não implica em <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> serem independentes!</p>
 </div>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 5.2</strong></span> Suponha que</p>
+<p><span class="theorem-title"><strong>Example 5.3</strong></span> Suponha que</p>
 <p><span class="math display">\[P(X=x,Y=y)=\frac{1}{4}\]</span>, com <span class="math inline">\((x,y)\in\{−1,1\}^2\)</span>. Então</p>
 <p><span class="math display">\[P(X=x)P(Y=y)=P(X=x,Y=−1)+P(X=x,Y=1)=\frac{1}{2}=P(X=−1,Y=y)+P(X=1,Y=y)=\frac{1}{2}.\]</span> Como</p>
 <p><span class="math display">\[\frac{1}{4}=P(X=x,Y=y)=\frac{1}{2}\frac{1}{2}=P(X=x)P(Y=y),\]</span> temos que <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> são independentes e, portanto <span class="math inline">\(Cov(X,Y)=0\)</span>.</p>
 </div>
-<p>::: {#exr-} Suponha que <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> assumem valores em <span class="math inline">\(\{−1,0,1\}\)</span> com a seguinte função de probabilidade conjunta:</p>
-<p><span class="math display">\[P(X=x,Y=y)=\frac{1}{5}\]</span> se, <span class="math inline">\((x,y)\in\{(1,1),(−1,1),(1,−1),(−1,−1),(0,0)\}\)</span> e <span class="math inline">\(P(X=x,Y=y)=0\)</span> em caso contrário. Mostre que <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> não são independentes e que <span class="math inline">\(Cov(X,Y)=0\)</span>. :::</p>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 5.3</strong></span> Considere a densidade conjunta</p>
-<p><span class="math display">\[f(x,y)=\frac{1}{y}e^{−(y+xy)}\]</span>, para <span class="math inline">\(x,y&gt;0\)</span>. Encontre Cov(X,Y)</p>
+<p><span class="theorem-title"><strong>Exercise 5.3</strong></span> Suponha que <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> assumem valores em <span class="math inline">\(\{−1,0,1\}\)</span> com a seguinte função de probabilidade conjunta:</p>
+<p><span class="math display">\[P(X=x,Y=y)=\frac{1}{5}\]</span> se, <span class="math inline">\((x,y)\in\{(1,1),(−1,1),(1,−1),(−1,−1),(0,0)\}\)</span> e <span class="math inline">\(P(X=x,Y=y)=0\)</span> em caso contrário. Mostre que <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> não são independentes e que <span class="math inline">\(Cov(X,Y)=0\)</span>.</p>
 </div>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 5.4</strong></span> Verifique</p>
+<p><span class="theorem-title"><strong>Exercise 5.4</strong></span> Considere a densidade conjunta</p>
+<p><span class="math display">\[f(x,y)=\frac{1}{y}e^{−(y+xy)}\]</span>, para <span class="math inline">\(x,y&gt;0\)</span>. Encontre Cov(X,Y). É possível mostrar que <span class="math inline">\(X\)</span> não é independente de <span class="math inline">\(Y\)</span> através deste resultado?</p>
+</div>
+<div class="alert alert-success">
+<p><strong>Propriedades</strong></p>
+<ol type="1">
+<li><p><span class="math inline">\(Cov(X,X)=Var(X)\)</span> (Identidade)</p></li>
+<li><p>Para <span class="math inline">\(a\)</span>e <span class="math inline">\(b\)</span> constantes e reais, <span class="math inline">\(Cov(aX,bY)=abCov(X,Y)\)</span> (Escalonamento)</p></li>
+<li><p>Para <span class="math inline">\(a\)</span> constante real, <span class="math inline">\(Cov(X,a)=0\)</span> (Constante)</p></li>
+<li><p><span class="math inline">\(Cov(X+Y,Z)=Cov(X,Z)+Cov(Y,Z)\)</span> e <span class="math inline">\(Cov(X,Z+Y)=Cov(X,Z)+Cov(X,Y)\)</span> (Aditividade bilinear)</p></li>
+</ol>
+</div>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 5.4</strong></span> Suponha que as variáveis aleatórias <span class="math inline">\(X\)</span>, <span class="math inline">\(Y\)</span> e <span class="math inline">\(Z\)</span> possuam as seguintes características:</p>
+<ol type="1">
+<li><p><span class="math inline">\(\text{Cov}(X, Y) = 5\)</span></p></li>
+<li><p><span class="math inline">\(\text{Cov}(X, Z) = -2\)</span></p></li>
+<li><p><span class="math inline">\(\text{Var}(X) = 4\)</span></p></li>
+</ol>
+<p>Calcule os valores solicitados abaixo:</p>
+<ol type="a">
+<li><p><span class="math inline">\(\text{Cov}(3X, Y)\)</span></p></li>
+<li><p><span class="math inline">\(\text{Cov}(X, X)\)</span></p></li>
+<li><p><span class="math inline">\(\text{Cov}(X, Y + Z)\)</span></p></li>
+<li><p><span class="math inline">\(\text{Cov}(2X, 4)\)</span></p></li>
+<li><p><span class="math inline">\(\text{Cov}(4X, 2Y - 3Z)\)</span></p></li>
+</ol>
+<p><strong>Solução</strong></p>
+<ol type="a">
+<li>Pela Propriedade 2 (Escalonamento):</li>
+</ol>
+<p><span class="math display">\[\text{Cov}(3X, Y) = 3 \cdot \text{Cov}(X, Y)= 3 \cdot 5 = 15\]</span></p>
+<ol start="2" type="a">
+<li>Pela Propriedade 1 (Identidade):</li>
+</ol>
+<p><span class="math display">\[\text{Cov}(X, X) = \text{Var}(X)=4\]</span></p>
+<ol start="3" type="a">
+<li>Pela Propriedade 4 (Aditividade bilinear):</li>
+</ol>
+<p><span class="math display">\[\text{Cov}(X, Y + Z) = \text{Cov}(X, Y) + \text{Cov}(X, Z)= 5 + (-2) = 3\]</span></p>
+<ol start="4" type="a">
+<li>Pela Propriedade 3 (Constante): como 4 é uma constante,</li>
+</ol>
+<p><span class="math display">\[\text{Cov}(2X, 4) = 0\]</span></p>
+<ol start="5" type="a">
+<li>Pelas Propriedades 2 e 4:</li>
+</ol>
+<p><span class="math display">\[\begin{align}\text{Cov}(4X, 2Y - 3Z) &amp;= \text{Cov}(4X, 2Y) + \text{Cov}(4X, -3Z)\\&amp;= 4 \cdot 2 \cdot \text{Cov}(X, Y) + 4 \cdot (-3) \cdot \text{Cov}(X, Z)\\&amp;= 8 \cdot (5) + (-12) \cdot (-2)= 40 + 24 = 64\end{align}\]</span></p>
+</div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 5.5</strong></span> Sabe-se que:</p>
+<ol type="1">
+<li><p><span class="math inline">\(\text{Cov}(X, Y) = -3\)</span></p></li>
+<li><p><span class="math inline">\(\text{Cov}(X, Z) = 4\)</span></p></li>
+<li><p><span class="math inline">\(\text{Cov}(Y, Z) = 1\)</span></p></li>
+<li><p><span class="math inline">\(\text{Var}(X) = 9\)</span></p></li>
+<li><p><span class="math inline">\(\text{Var}(Y) = 16\)</span></p></li>
+</ol>
+<p>Utilizando as propriedades de covariância, determine o valor das seguintes expressões:</p>
+<ol type="a">
+<li><p><span class="math inline">\(\text{Cov}(X, 5Y)\)</span></p></li>
+<li><p><span class="math inline">\(\text{Cov}(X, X + Y)\)</span></p></li>
+<li><p><span class="math inline">\(\text{Cov}(2X, 3Z)\)</span></p></li>
+<li><p><span class="math inline">\(\text{Cov}(Y, -2)\)</span></p></li>
+<li><p><span class="math inline">\(\text{Cov}(X - Z, Y)\)</span></p></li>
+</ol>
+</div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 5.6</strong></span> Verifique</p>
 <ol type="a">
 <li><p><span class="math inline">\(Cov(X,Y)=Cov(Y,X)\)</span></p></li>
 <li><p><span class="math inline">\(Cov(X,X)=Var(X)\)</span></p></li>
@@ -318,17 +386,11 @@ P(Y=y) &amp; \mathbf{0,30} &amp; \mathbf{0,30} &amp; \mathbf{0,40} &amp; \mathbf
 <p>Conclua que <span class="math inline">\(Cov(aX,bY)=abCov(X,Y)\)</span>, com <span class="math inline">\(a,b\)</span> constantes.</p>
 </div>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 5.5</strong></span> Sejam <span class="math inline">\(X_1,\ldots,X_n\)</span> e <span class="math inline">\(Y_1,\ldots,Y_m\)</span> variáveis aleatórias. Mostre que</p>
-<p><span class="math display">\[Cov(\sum_{i=1}^nX_i,Y_j)=\sum_{i=1}^nCov(X_i,Y_j), \forall\;\; j=1,\ldots,m\]</span></p>
-<p><span class="math display">\[Cov(X_i,\sum_{j=1}^m Y_j)=\sum_{j=1}^mCov(X_i,Y_j), \forall\;\; i=1,\ldots,n\]</span></p>
-<p>Conclua que</p>
-<p><span class="math display">\[Cov(\sum_{i=1}^n X_i,\sum_{j=1}^m Y_j)=\sum_{i=1}^n\sum_{j=1}^mCov(X_i,Y_j).\]</span></p>
-</div>
-<div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 5.6</strong></span> Sejam <span class="math inline">\(X,Y\)</span> duas variáveis aleatórias. Mostre que</p>
-<p><span class="math display">\[Var(X+Y)=Var(X)+Var(Y)+2Cov(X,Y).\]</span></p>
-<p>Agora, sejam <span class="math inline">\(X_1,\ldots,X_n\)</span> variáveis aleatórias. Mostre que</p>
-<p><span class="math display">\[Var(\sum_{i=1}^n X_i)=\sum_{i=1}^nVar(X_i)+\sum_{i=1}^n\sum_{j=1}^nCov(X_i,X_j).\]</span></p>
+<p><span class="theorem-title"><strong>Exercise 5.7</strong></span> Sejam <span class="math inline">\(X_1,\ldots,X_n\)</span> variáveis aleatórias. Mostre que</p>
+<ol type="a">
+<li><p><span class="math inline">\(Var(X_1+X_2)=Var(X_1)+Var(X_2)+2Cov(X_1,X_2).\)</span>$</p></li>
+<li><p>Mostre por indução que <span class="math inline">\(Var(\sum_{i=1}^n X_i)=\sum_{i=1}^nVar(X_i)+\sum_{i=1}^n\sum_{j=1}^nCov(X_i,X_j).\)</span></p></li>
+</ol>
 </div>
 </section>
 <section id="correlação" class="level2" data-number="5.2">
@@ -336,14 +398,52 @@ P(Y=y) &amp; \mathbf{0,30} &amp; \mathbf{0,30} &amp; \mathbf{0,40} &amp; \mathbf
 <p>Recorde que, para o produto interno entre vetores, é verdadeiro que</p>
 <p><span class="math display">\[\langle \textbf{x},\textbf{y}\rangle=||\textbf{x}||||\textbf{y}||\cos\theta,\]</span> onde <span class="math inline">\(\theta\)</span> é o ângulo formado entre os dois vetores. Logo, tem-se que</p>
 <p><span class="math display">\[\cos\theta=\frac{\langle \textbf{x},\textbf{y}\rangle}{||\textbf{x}||||\textbf{y}||},\]</span></p>
-<p>Em particular, se <span class="math inline">\(|\cos\theta|=1\)</span>, então <span class="math inline">\(\textbf{x}\)</span> e <span class="math inline">\(\textbf{y}\)</span> são paralelos, o que implica que exsite <span class="math inline">\(b\)</span> tal que <span class="math inline">\(\textbf{y}=v\textbf{x}\)</span> e <span class="math inline">\(b\)</span> possui o mesmo sinal do cosseno.</p>
+<p>Em particular, se <span class="math inline">\(|\cos\theta|=1\)</span>, então <span class="math inline">\(\textbf{x}\)</span> e <span class="math inline">\(\textbf{y}\)</span> são paralelos, o que implica que existe <span class="math inline">\(b\)</span> tal que <span class="math inline">\(\textbf{y}=v\textbf{x}\)</span> e <span class="math inline">\(b\)</span> possui o mesmo sinal do cosseno.</p>
 <p>Podemos estender essa noção para o par de variáveis aleatórias <span class="math inline">\((X,Y)\)</span>, definindo o <strong>coeficiente de correlação de Pearson</strong>:</p>
 <p><span class="math display">\[\rho_{XY}=\frac{Cov(X,Y)}{\sqrt{Var(X)Var(Y)}},\]</span> que é o cosseno do ângulo entre as variáveis centralizadas <span class="math inline">\(X-E(X)\)</span> e <span class="math inline">\(Y-E(Y)\)</span>. Esse coeficiente mede o quanto <span class="math inline">\(Y\)</span> e <span class="math inline">\(X\)</span> podem ser escritas como função linear uma da outra. De fato, se <span class="math inline">\(|\rho_{XY}|=1\)</span>, então existem <span class="math inline">\(a\)</span> e <span class="math inline">\(b\)</span> tais que</p>
-<p><span class="math display">\[P(Y=a+bX)=1,\]</span> onde o sinal de <span class="math inline">\(b\)</span> é o mesmo de <span class="math inline">\(\rho_{XY}\)</span>.</p>
+<p><span class="math display">\[P(Y=a+bX)=1,\]</span> onde o sinal de <span class="math inline">\(b\)</span> é o mesmo de <span class="math inline">\(\rho_{XY}\)</span>. Além disso, <span class="math inline">\(\rho = 0\)</span> implica em ausência de relação linear</p>
+<div class="alert alert-success">
+<p><strong>Propriedades.</strong> Sejam <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> variáveis aleatórias e sejam <span class="math inline">\(a,b,c\)</span> e <span class="math inline">\(d\)</span> constantes conhecidas. Então, o coeficiente de correlação possui as seguintes propriedades:</p>
+<ol type="1">
+<li>Limitação do Intervalo:</li>
+</ol>
+<p><span class="math display">\[-1 \leq \rho(X,Y) \leq 1\]</span></p>
+<ol start="2" type="1">
+<li><p>Invariância por mudança de locação e escala: Sejam <span class="math inline">\(U = aX + b\)</span> e <span class="math inline">\(V = cY + d\)</span>. Então <span class="math display">\[\rho(aX + b, cY + d) = \text{sinal}(a \cdot c) \cdot \rho(X,Y).\]</span> A função <span class="math inline">\(\text{sinal}(x)\)</span> retorna 1 se <span class="math inline">\(x&gt;0\)</span>, <span class="math inline">\(-1\)</span> se <span class="math inline">\(x&lt;0\)</span> e 0 em caso contrário. Se <span class="math inline">\(a\)</span> e <span class="math inline">\(c\)</span> tiverem o mesmo sinal (<span class="math inline">\(ac &gt; 0\)</span>), a correlação não muda. Se <span class="math inline">\(a\)</span> e <span class="math inline">\(c\)</span> tiverem sinais opostos (<span class="math inline">\(ac &lt; 0\)</span>), a correlação inverte o sinal. As constantes somadas (<span class="math inline">\(b\)</span> e <span class="math inline">\(d\)</span>) não afetam o resultado.</p></li>
+<li><p>Simetria:</p></li>
+</ol>
+<p><span class="math display">\[\rho(X,Y) = \rho(Y,X)\]</span></p>
+<ol start="4" type="1">
+<li>Correlação com a própria variável:</li>
+</ol>
+<p><span class="math display">\[\rho(X,X) = 1\]</span></p>
+</div>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 5.3</strong></span> Sejam <span class="math inline">\(X\)</span> e $Y variáveis aleatórias com densidade conjunta</p>
-<p><span class="math display">\[f(x,y)=\frac{1}{2\pi}\exp\left\{−\frac{1}{2}(x^2+2y^2−2xy)\right\},\]</span> com <span class="math inline">\(x,y\in\mathbb{R}\)</span>. Vamos encontrar a correlação entre <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>.</p>
-<p>…</p>
+<p><span class="theorem-title"><strong>Example 5.5</strong></span> Suponha que a correlação entre a variável <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> seja <span class="math inline">\(\rho(X,Y) = 0,6\)</span>. Determine:</p>
+<ol type="a">
+<li><p><span class="math inline">\(\rho(2X, Y)\)</span></p></li>
+<li><p><span class="math inline">\(\rho(X + 10, Y - 5)\)</span></p></li>
+<li><p><span class="math inline">\(\rho(-3X, Y)\)</span></p></li>
+<li><p><span class="math inline">\(\rho(-2X, -4Y)\)</span></p></li>
+</ol>
+<p><strong>Solução.</strong></p>
+<ol type="a">
+<li><p>Como o coeficiente de <span class="math inline">\(X\)</span> é positivo (<span class="math inline">\(2\)</span>), a correlação permanece idêntica.</p></li>
+<li><p>Somar ou subtrair constantes não altera a correlação.</p></li>
+<li><p>Como multiplicamos uma das variáveis por um número negativo (sinais opostos), o sinal da correlação inverte. Resultado: <span class="math inline">\(-0,6\)</span></p></li>
+<li><p>Ambos os coeficientes são negativos. Como o produto de dois negativos é positivo (<span class="math inline">\(ac &gt; 0\)</span>), o sinal original se mantém. Resultado: <span class="math inline">\(0,6\)</span></p></li>
+</ol>
+</div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 5.8</strong></span> Sejam <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> variáveis aleatórias com <span class="math inline">\(\text{Var}(X) = 25\)</span>, <span class="math inline">\(\text{Var}(Y) = 16\)</span>, <span class="math inline">\(\text{Cov}(X, Y) = 12\)</span> e<span class="math inline">\(\rho(X, Y) = 0,6\)</span>. Utilizando as propriedades, determine os novos valores para as situações abaixo:</p>
+<ol type="a">
+<li><p><span class="math inline">\(\text{Cov}(2X, 3Y)\)</span></p></li>
+<li><p><span class="math inline">\(\text{Cov}(X + 5, Y - 10)\)</span></p></li>
+<li><p><span class="math inline">\(\text{Cov}(X, X + Y)\)</span></p></li>
+<li><p><span class="math inline">\(\rho(4X, Y)\)</span></p></li>
+<li><p><span class="math inline">\(\rho(-X, Y)\)</span></p></li>
+<li><p><span class="math inline">\(\rho(X - 100, 2Y + 30)\)</span></p></li>
+</ol>
 </div>
 </section>
 <section id="esperança-condicional" class="level2" data-number="5.3">
@@ -351,18 +451,38 @@ P(Y=y) &amp; \mathbf{0,30} &amp; \mathbf{0,30} &amp; \mathbf{0,40} &amp; \mathbf
 <p>A esperança <span class="math inline">\(X\)</span> condicionada à <span class="math inline">\(Y=y\)</span> é denotada por <span class="math inline">\(E(X|Y=y)\)</span> e se refere à esperança obtida a partir da distribuição de <span class="math inline">\((X|Y=y)\)</span>. Se <span class="math inline">\(X\)</span> é uma variável aleatória contínua, a esperança condicional é dada por</p>
 <p><span class="math display">\[E(X|Y=y)=\int_{\mathbb{R}}x f(x|y)dx, \]</span> e se <span class="math inline">\(X\)</span> for discreta, <span class="math display">\[E(X|Y=y)=\sum_{x\in\mathbb{Z}} xP(X=x|Y=y).\]</span></p>
 <p>De modo análogo, para qualquer função real <span class="math inline">\(g(.)\)</span> podemos definir <span class="math inline">\(E(g(X)|Y=y)\)</span>.</p>
-<p>A variância condicional de <span class="math inline">\(X\)</span> dado <span class="math inline">\(Y=y\)</span> é definida por:</p>
-<p><span class="math display">\[Var(X|Y=y)=E((X−E(X|Y=y))^2)=E(X^2|Y=y)−E(X|Y=y)^2.\]</span></p>
-<p>Exercício Solução Seja (X,Y) um vetor aleatório com a seguinte função de densidade conjunta f(x,y)=11−x, para 0&lt;x&lt;y&lt;1 . Encontre E(Y|x) e Var(Y|x) .</p>
-<p>Proposição Demonstração Sejam X e Y variáveis aleatórias com esperança finita. Então,</p>
-<p>E(X)=E(E(X|Y)). Além disso, se a variância for finita, então, Var(X)=E(Var(X|Y))+Var(E(X|Y)).</p>
-<p>Exercício Solução Suponha que X|y∼Poisson(y) e Y∼Gama(a,b) . Encontre a média e a variância de X .</p>
-<p>Exercícios de fixação</p>
-<p>Suponha que o vetor aleatório (X,Y) tem a seguinte densidade conjunta f(x,y)=ya+12−12a2Γ(a/2)2π−−√exp{−y2(1+x2)}, onde y&gt;0 , x∈R e a&gt;1 .</p>
-<p>Mostre Y∼Gama(a/2,1/2)</p>
-<p>Mostre que X|y∼Normal(0,1/y)</p>
-<p>Encontre E(X) e Var(X) .</p>
-<p>Considere a seguinte definição: Var(X|Y)=E[(X−E(X|Y))2|Y]. Prove que Var(X)=E(Var(X|Y))+Var(E(X|Y))</p>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 5.6</strong></span> Seja <span class="math inline">\((X,Y)\)</span> um vetor aleatório com função de probabilidade conjunta dada por</p>
+<p><span class="math display">\[P(X=x,Y=y)=\frac{1}{2^yy}I_{\{1,\ldots,y\}}(x)I_{\{1,2,\ldots\}}(y).\]</span></p>
+<p>Vamos encontrar <span class="math inline">\(E(X|Y=y)\)</span>. A função de probabilidade marginal de <span class="math inline">\(Y\)</span> é</p>
+<p><span class="math display">\[\begin{align}P(Y=y)&amp;=\sum_{x=-\infty}^\infty\frac{1}{2^yy}I_{\{1,\ldots,y\}}(x)I_{\{1,2,\ldots\}}(y)\\&amp;=\frac{1}{2^y}I_{\{1,2,\ldots,\}}(y)\sum_{x=1}^y\frac{1}{y}\\&amp;=\frac{1}{2^y}I_{\{1,2,\ldots,\}}(y)\end{align}\]</span> logo,</p>
+<p><span class="math display">\[P(X=x|Y=y)=\frac{\frac{1}{2^yy}I_{\{1,\ldots,y\}}(x)I_{\{1,2,\ldots\}}(y)}{\frac{1}{2^y}I_{\{1,2,\ldots,\}}(y)}=\frac{1}{y}I_{\{1,\ldots,y\}}(x),\]</span> e</p>
+<p><span class="math display">\[E(X|Y=y)=\sum_{x=-\infty}^\infty x\frac{1}{y}I_{\{1,\ldots,y\}}(x)=\frac{1}{y}\sum_{x=1}^y x=\frac{1+y}{2}.\]</span></p>
+</div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 5.9</strong></span> Seja <span class="math inline">\((X,Y)\)</span> um vetor aleatório com função de probabilidade conjunta dada por</p>
+<p><span class="math display">\[P(X=x,Y=y)=\frac{e^{-2}2^y}{y!y}I_{\{1,\ldots,y\}}(x)I_{\mathbb{N}}(y).\]</span></p>
+<p>Encontre <span class="math inline">\(E(X|Y=y)\)</span>.</p>
+</div>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 5.7</strong></span> Seja <span class="math inline">\((X,Y)\)</span> um vetor aleatório com função densidade conjunta dada por</p>
+<p><span class="math display">\[f(x,y)=e^{-x}I_{(y,\infty)}(x)I_{(0,\infty)}(y)\]</span> Vamos encontrar <span class="math inline">\(E(X|Y=y)\)</span>. Primeiro, a função densidade marginal de <span class="math inline">\(Y\)</span> é dada por</p>
+<p><span class="math display">\[f_Y(y)=I_{(0,\infty)}(y)\int_\mathbb{R}e^{-x}I_{(y,\infty)}(x)dx=I_{(0,\infty)}(y)\int_y^\infty e^{-x}dx=e^{-y}I_{(0,\infty)}(y),\]</span> logo, a função densidade condicional de <span class="math inline">\(X|Y=y\)</span> é</p>
+<p><span class="math display">\[f(x|y)=\frac{e^{-x}I_{(y,\infty)}(x)I_{(0,\infty)}(y)}{e^{-y}I_{(0,\infty)}(y)}=e^{-(x-y)}I_{(y,\infty)}(x)\]</span> e</p>
+<p><span class="math display">\[\begin{align}E(X|Y=y)&amp;=\int_y^\infty xe^{-(x-y)}dx=\int_0^\infty (u+y)e^{-u}du\\&amp;=1+y\end{align}\]</span></p>
+</div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 5.10</strong></span> Seja <span class="math inline">\((X,Y)\)</span> um vetor aleatório com função densidade conjunta dada por</p>
+<p><span class="math display">\[f(x,y)=\frac{1}{y^3}I_{(0,y)}(x)I_{(1,\infty)}(y)\]</span> Vamos encontrar <span class="math inline">\(E(X|Y=y)\)</span>.</p>
+</div>
+<p>Obviamente, outros momentos além do primeiro podem ser calculados. Disto, por exemplo, temos que</p>
+<p><span class="math display">\[Var(X|Y=y)=E(X^2|Y=y)−E(X|Y=y)^2.\]</span></p>
+<div id="prp-" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 5.1</strong></span> Sejam <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> variáveis aleatórias com esperança finita. Então,</p>
+<p><span class="math display">\[E(X)=E(E(X|Y)).\]</span></p>
+<p>Além disso, se a variância for finita, então,</p>
+<p><span class="math display">\[Var(X)=E(Var(X|Y))+Var(E(X|Y)).\]</span></p>
+</div>
 
 
 </section>
