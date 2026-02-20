@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>6&nbsp; Convergência de variáveis aleatórias – Probabilidade C</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./provas.html" rel="next">
+<link href="./covariancia.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-d9ea66fcd6c317012447f26e9c021348.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./convergencia.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Convergência de variáveis aleatórias</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Probabilidade C</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefácio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./vetores_aleatorios_discretos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Distribuição de vetores aleatórios discretos</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./vetores_aleatorios_continuos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Distribuição de vetores aleatórios contínuos</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./vetores_mistos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Vetores aleatórios mistos</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./covariancia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Covariância, correlação e esperança condicional</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./convergencia.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Convergência de variáveis aleatórias</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./provas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Provas anteriores resolvidas</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#a-noção-de-limite-tradicional" id="toc-a-noção-de-limite-tradicional" class="nav-link active" data-scroll-target="#a-noção-de-limite-tradicional"><span class="header-section-number">6.1</span> A noção de limite tradicional</a></li>
+  <li><a href="#convergência-em-probabilidade" id="toc-convergência-em-probabilidade" class="nav-link" data-scroll-target="#convergência-em-probabilidade"><span class="header-section-number">6.2</span> Convergência em probabilidade</a></li>
+  <li><a href="#lei-fraca-dos-grandes-números" id="toc-lei-fraca-dos-grandes-números" class="nav-link" data-scroll-target="#lei-fraca-dos-grandes-números"><span class="header-section-number">6.3</span> Lei Fraca dos Grandes Números</a></li>
+  <li><a href="#convergência-em-distribuição" id="toc-convergência-em-distribuição" class="nav-link" data-scroll-target="#convergência-em-distribuição"><span class="header-section-number">6.4</span> Convergência em distribuição</a></li>
+  <li><a href="#teorema-central-do-limite" id="toc-teorema-central-do-limite" class="nav-link" data-scroll-target="#teorema-central-do-limite"><span class="header-section-number">6.5</span> Teorema Central do Limite</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Convergência de variáveis aleatórias</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Seja <span class="math inline">\(X_1,\ldots,X_n\)</span> uma amostra de variáveis aleatórias (dizemos que esta amostra tem tamanho <span class="math inline">\(n\)</span>). Qualquer função desta amostra é denominada estatística. Exemplos de estatística são a média amostral, variância amostral, mediana amostral etc. Por serem funções de variáveis aleatórias, qualquer estatística também será uma variável aleatória. Seja <span class="math inline">\(T_n\)</span> uma estatística baseada em <span class="math inline">\(X_1,\ldots,X_n\)</span>. A intuição nos diz que o aumento de <span class="math inline">\(n\)</span> deve trazer alguma vantagem. Estamos então interessados em entender o comportamento de <span class="math inline">\(P(T_n&lt;t)\)</span> quando <span class="math inline">\(n\rightarrow \infty\)</span>.</p>
+<p>A discussão acima é apenas um exemplo da importância do estudo de convergência de variáveis aleatórias, que é o tópico desse capítulo.</p>
+<p>Neste tópico iremos discutir:</p>
+<ul>
+<li><p>a noção de limite tradicional</p></li>
+<li><p>a noção de limite em probabilidade</p></li>
+<li><p>a noção de limite em distribuição</p></li>
+<li><p>a Lei Fraca de Tchebychev</p></li>
+<li><p>o Teorema Central do Limite para o caso de variáveis independentes e identicamente distribúidas.</p></li>
+</ul>
+<section id="a-noção-de-limite-tradicional" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="a-noção-de-limite-tradicional"><span class="header-section-number">6.1</span> A noção de limite tradicional</h2>
+<p>Dizemos que <span class="math inline">\(L\)</span> é o limite de <span class="math inline">\(f(x)\)</span> quando <span class="math inline">\(x\)</span> se aproxima de <span class="math inline">\(x_0\)</span> se, para todo <span class="math inline">\(\varepsilon&gt;0\)</span>, existe <span class="math inline">\(\delta&gt;0\)</span> tal que</p>
+<p>se <span class="math inline">\(0&lt;|x-x_0|&lt;\delta\Rightarrow |f(x)−L|&lt;\varepsilon\)</span></p>
+<p>A notação <span class="math display">\[\lim_{x\rightarrow x_0}f(x)=L\]</span> é a mais usual em livros de cálculo mas nos será mais conveniente escrever <span class="math inline">\(f(x)\rightarrow L\)</span> quando <span class="math inline">\(x\rightarrow x_0\)</span> (lê-se <span class="math inline">\(f(x)\)</span> tende a <span class="math inline">\(L\)</span> quando <span class="math inline">\(x\)</span> tende a <span class="math inline">\(x_0\)</span>).</p>
+<p>Estamos interessados no caso em que <span class="math inline">\(x \rightarrow \infty\)</span>. Dizemos que <span class="math inline">\(f(x) \rightarrow L\)</span> quando <span class="math inline">\(x \rightarrow \infty\)</span> se, para todo <span class="math inline">\(\epsilon &gt; 0\)</span>, existe <span class="math inline">\(x_0\)</span> tal que:<span class="math display">\[\text{se } x &gt; x_0 \Rightarrow |f(x) - L| &lt; \epsilon\]</span></p>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 6.1</strong></span> Vamos mostrar que <span class="math inline">\(f(x)=1/x\)</span> tende a zero quando <span class="math inline">\(x\rightarrow\infty\)</span>.</p>
+<p>Isto implica em mostrar que, para qualquer <span class="math inline">\(\varepsilon&gt;0\)</span> deve existir <span class="math inline">\(x_0\)</span> tal que, para qualquer <span class="math inline">\(x&gt;x_0\)</span></p>
+<p><span class="math display">\[\left|\frac{1}{x}\right|&lt;\varepsilon\]</span>.</p>
+<p>Note que, para qualquer <span class="math inline">\(x_0&gt;0\)</span> arbitrário, é verdade que</p>
+<p><span class="math display">\[x&gt;x_0\Rightarrow \frac{1}{x}&lt;\frac{1}{x_0},\]</span> Logo, para qualquer <span class="math inline">\(\varepsilon&gt;0\)</span>, podemos fazer <span class="math inline">\(x_0=\varepsilon^{-1}\)</span> de modo que</p>
+<p><span class="math display">\[x&gt;x_0\Rightarrow \left|\frac{1}{x}-0\right|&lt;\frac{1}{x_0}=\varepsilon,\]</span> o que implica que o limite de <span class="math inline">\(1/x\)</span> quando <span class="math inline">\(x\rightarrow\infty\)</span> é igual a 0.</p>
+</div>
+<div id="thm-" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 6.1</strong></span> Teorema do Confronto (ou do Sanduíche)Suponha que, para todo <span class="math inline">\(x\)</span> suficientemente grande, tenhamos:<span class="math display">\[0 \leq |f(x)| \leq g(x)\]</span>Se <span class="math inline">\(\lim_{x\rightarrow\infty} g(x) = 0\)</span>, então:<span class="math display">\[\lim_{x\rightarrow\infty} f(x) = 0\]</span></p>
+</div>
+<div id="exr-limite-x2" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 6.1</strong></span> <strong>Limite de <span class="math inline">\(1/x^2\)</span></strong></p>
+<ol type="a">
+<li>Se <span class="math inline">\(x &gt; 1\)</span>, mostre que <span class="math inline">\(x^2 &gt; x\)</span>.<br>
+</li>
+<li>Utilizando o resultado do item (a) e o <strong>Teorema do Confronto</strong>, prove que: <span class="math display">\[\lim_{x \to \infty} \frac{1}{x^2} = 0\]</span> <em>(Dica: Lembre-se que <span class="math inline">\(0 &lt; \frac{1}{x^2} &lt; \frac{1}{x}\)</span> para <span class="math inline">\(x &gt; 1\)</span>)</em>.</li>
+</ol>
+</div>
+<div id="exr-limite-racional" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 6.2</strong></span> <strong>Limite de função racional</strong></p>
+<ol type="a">
+<li>Se <span class="math inline">\(x &gt; 1\)</span>, mostre que <span class="math inline">\(x^2 + 1 &gt; x\)</span>.<br>
+</li>
+<li>Utilizando o resultado do item (a) e o <strong>Teorema do Confronto</strong>, mostre que: <span class="math display">\[\frac{x}{x^2 + 1} \to 0 \text{ quando } x \to \infty\]</span></li>
+</ol>
+</div>
+<div id="exr-limite-exponencial" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 6.3</strong></span> <strong>Limite da função exponencial</strong></p>
+<p>Seja <span class="math inline">\(0 &lt; a &lt; 1\)</span>. Mostre que: <span class="math display">\[a^x \to 0 \text{ quando } x \to \infty\]</span> <em>(Dica: Escreva <span class="math inline">\(a = \frac{1}{1+b}\)</span> onde <span class="math inline">\(b &gt; 0\)</span> e utilize a desigualdade de Bernoulli <span class="math inline">\((1+b)^x &gt; 1 + xb\)</span> para aplicar o Teorema do Confronto)</em>.</p>
+</div>
+</section>
+<section id="convergência-em-probabilidade" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="convergência-em-probabilidade"><span class="header-section-number">6.2</span> Convergência em probabilidade</h2>
+<p>Sejam <span class="math inline">\(X_1,X_2,\ldots\)</span> uma sequência de variáveis aleatórias definidas no mesmo espaço de probabilidade da variável aleatória <span class="math inline">\(X\)</span>. Dizemos que <span class="math inline">\(X_n\)</span> converge em probabilidade para a variável aleatória <span class="math inline">\(X\)</span> quando <span class="math inline">\(n\rightarrow\infty\)</span> se para todo <span class="math inline">\(\varepsilon&gt;0\)</span></p>
+<p><span class="math display">\[P(|X_n−X|\geq \varepsilon)\rightarrow 0,\]</span> quando <span class="math inline">\(n\rightarrow\infty\)</span>. Neste caso, utilizamos a notação <span class="math inline">\(X_n\stackrel{P}{\rightarrow}X\)</span> quando <span class="math inline">\(n\rightarrow \infty\)</span>(lê-se <span class="math inline">\(X_n\)</span> converge em probabilidade para <span class="math inline">\(X\)</span> quando <span class="math inline">\(n\)</span> tende ao infinito).</p>
+<p>Note que se <span class="math inline">\(X_n\)</span> converge em probabilidade para <span class="math inline">\(X\)</span>, então a probabilidade do evento <span class="math inline">\(X_n\in(X−\varepsilon,X+\varepsilon)\)</span> ocorrer tende a 1. De modo equivalente, podemos dizer que <span class="math inline">\(X_n\stackrel{P}{\rightarrow}X\)</span> se</p>
+<p><span class="math display">\[P(|X_n−X|&lt;\varepsilon)\rightarrow1,\]</span> quando <span class="math inline">\(n\rightarrow\infty\)</span>.</p>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 6.2</strong></span> Sejam <span class="math inline">\(X_1,X_2,\ldots\)</span> uma sequência de variáveis aleatórias com <span class="math inline">\(X_n\sim\hbox{Bernoulli}(1/n)\)</span>. Intuitivamente, a probabilidade de sucesso será cada vez menor, até chegar ao ponto no qual apenas o fracesso será possível. Isto nos leva a considerar que <span class="math inline">\(X_n\stackrel{P}{\rightarrow}0\)</span> quando <span class="math inline">\(n\rightarrow\infty\)</span>. Vamos mostrar que isso é verdade.</p>
+<p>Primeiro, fixe um valor qualquer para <span class="math inline">\(\varepsilon&gt;0\)</span>. Note que</p>
+<p><span class="math display">\[|X_n−0|\geq \varepsilon\equiv|X_n|\geq \varepsilon&gt;0.\]</span> Ora, <span class="math inline">\(|Xn|=Xn\)</span>, pois a variávei é sempre não negativa. Além disso, <span class="math inline">\(X_n\geq \varepsilon&gt;0\)</span> implica que <span class="math inline">\(X_n&gt;0\)</span>, e por sua vez, apenas <span class="math inline">\(X_n=1\)</span> é possível. Assim</p>
+<p><span class="math display">\[P(|X_n−0|\geq \varepsilon)=P(X_n&gt;0)=P(X_n=1)=\frac{1}{n}\rightarrow 0,\]</span> quando <span class="math inline">\(n\rightarrow\infty\)</span>. Portanto, <span class="math inline">\(X_n\stackrel{P}{\rightarrow}0\)</span>.</p>
+</div>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 6.3</strong></span> Sejam <span class="math inline">\(X_1,X_2,\ldots\)</span> uma sequência de variáveis aleatórias com distribuição Uniforme(0,<span class="math inline">\(\theta\)</span>). No problema de inferência estatística, <span class="math inline">\(\theta\)</span> é desconhecido. Considere a estatística</p>
+<p><span class="math display">\[T_n=\hbox{max}\{X_1,\ldots,X_n\}.\]</span> Vamos mostrar que <span class="math inline">\(T_n\stackrel{P}{\rightarrow}\theta\)</span>. Primeiro, lembremos que</p>
+<p><span class="math display">\[|X−a|&gt;b\Rightarrow −b&gt;X−a \hbox{   ou   } b&lt;X−a,\]</span> e que <span class="math display">\[Tn&lt;\theta\Rightarrow X_1&lt;\theta,\ldots ,X_n&lt;\theta.\]</span></p>
+<p>Então, para qualquer <span class="math inline">\(\varepsilon&gt;0\)</span>,</p>
+<p><span class="math display">\[\begin{align}P(|T_n−\theta|&gt;\varepsilon)&amp;=P(T_n−\theta&gt;\varepsilon)+P(T_n−\theta&lt;−\varepsilon)\\&amp;=P(T_n−\theta&lt;−\varepsilon)=P(T_n&lt;−\varepsilon+\theta)\\&amp;
+=P(X_1&lt;−\varepsilon+\theta,\ldots,X_n&lt;−\varepsilon+\theta)\\
+&amp;=\prod_{i=1}^n P(X_i&lt;−\varepsilon+\theta)=F(-\varepsilon+θ)^n=\left(\frac{−\varepsilon+\theta}{\theta}\right)^n\\&amp;=\left(1-\frac{\varepsilon}{\theta}\right)^n\rightarrow 0\end{align}\]</span> quando <span class="math inline">\(n\rightarrow\infty\)</span>. Portanto, <span class="math inline">\(T_n\stackrel{P}{\rightarrow}\theta\)</span>.</p>
+</div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 6.4</strong></span> Seja <span class="math inline">\(X_1,X_2,\ldots,\)</span> uma sequência de variáveis aleatórias independentes e identicamente distribuídas, com <span class="math inline">\(X_n\leq θ\)</span> para todo <span class="math inline">\(n\geq 1\)</span>. Seja <span class="math inline">\(T_n=\max\{X_1,…,X_n\}.\)</span> Mostre que <span class="math inline">\(T_n\stackrel{P}{\rightarrow}\theta\)</span> quando <span class="math inline">\(n\rightarrow\infty\)</span>. Esse resultado mostra que o máximo amostral é uma estatística consistente para estimar <span class="math inline">\(\theta\)</span>.</p>
+</div>
+<div id="thm-" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 6.2</strong></span> Se <span class="math inline">\(X_n\stackrel{P}{\rightarrow}b\)</span>, onde <span class="math inline">\(b\)</span> é constante e se <span class="math inline">\(g\)</span> é uma função real contínua em <span class="math inline">\(b\)</span>, então então <span class="math inline">\(g(X_n)\stackrel{P}{\rightarrow}g(b)\)</span>.</p>
+</div>
+</section>
+<section id="lei-fraca-dos-grandes-números" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="lei-fraca-dos-grandes-números"><span class="header-section-number">6.3</span> Lei Fraca dos Grandes Números</h2>
+<p>Foi John Graunt, um mercador de tecidos, que em 1662 publicou o primeiro trabalho utilizando a proporção amostral como uma probabilidade. A ideia funcionou perfeitamente, mas não se sabia o motivo até a publicação do <em>Ars Conjectandi</em>, de Jacob Bernoulli, em 1713. Ao terminar sua demonstração, ele diz: “Considero que não fiz muita coisa, somente demonstrei o que é conhecimento de todos”. Hoje, seu resultado é um dentro de uma coleção de teoremas denominada Leis dos Grandes Números.</p>
+<div id="thm-" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 6.3</strong></span> <strong>Lei (Fraca) dos Grandes Números de Jacob Bernoulli.</strong> Sejam <span class="math inline">\(X_1,X_2,\ldots\)</span> uma sequência de variáveis aleatórias independentes com <span class="math inline">\(X_i\sim\hbox{Bernoulli}(p)\)</span>. Então</p>
+<p><span class="math display">\[\bar{X}_n=\sum_{i=1}^n \frac{X_i}{n}\stackrel{P}{\rightarrow}{p}\]</span> quando <span class="math inline">\(n\rightarrow\infty\)</span>.</p>
+</div>
+<p>Em resumo, uma Lei dos Grandes Números é um teorema sobre a convergência de <span class="math inline">\(\bar{X}_n\)</span> quando <span class="math inline">\(n\rightarrow\infty\)</span>. Se o limite for em probabilidade, a lei é denominada fraca (existem as leis fortes, mas não serão tratadas nesse curso). Foi Simeón Poisson (1837) que cunhou o termo Lei dos Grandes Números e foi o primeiro a generalizar a lei para o caso no qual a sequência as variáveis não era identicamente distribuída. Contudo, esse resultado é mais conhecido como Lei Fraca de Chebyshev, devido à sua demonstração mais simples em 1867. Antes de introduzir essa lei, vamos mostrar o resultado-chave desenvolvido por Chebyshev.</p>
+<div id="thm-" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 6.4</strong></span> <strong>Desigualdade de Chebyshev</strong> Seja <span class="math inline">\(X\)</span> uma variável aleatória com média <span class="math inline">\(\mu\)</span> e variância <span class="math inline">\(\sigma^2\)</span>. Então, para qualquer <span class="math inline">\(\varepsilon&gt;0\)</span>, <span class="math display">\[P(|X-\mu|\geq \varepsilon)\leq \frac{\sigma^2}{\varepsilon^2}.\]</span></p>
+</div>
+<p>Vamos fazer a prova da desigualdade. Sem perda de generalidade, assuma que ela é contínua. Então, para qualquer <span class="math inline">\(\varepsilon&gt;0\)</span>,</p>
+<p><span class="math display">\[\sigma^2=\int_{\mathbb{R}}(x-\mu)^2f(x)dx\geq \int_{\{x:|x-\mu|\geq \varepsilon\}}(x-\mu)^2f(x)dx\geq \varepsilon^2P(|X−\mu|\geq \varepsilon)\]</span> logo, <span class="math display">\[P(|X-\mu|\geq \varepsilon)\leq \frac{\sigma^2}{\varepsilon^2}.\]</span></p>
+<p>Agora vamos enunciar formalmente a Lei Fraca de Chebyshev.</p>
+<div id="thm-" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 6.5</strong></span> <strong>Lei Fraca de Chebyshev.</strong> Sejam <span class="math inline">\(X_1,X_2,\ldots\)</span> uma sequência de variáveis aleatórias não correlacionadas com <span class="math inline">\(E(X_n)=\mu\)</span> e <span class="math inline">\(Var(X_n)&lt;c&lt;\infty\)</span>. Então</p>
+<p><span class="math display">\[\bar{X}_n=\sum_{i=1}^n\frac{X_i}{n}\stackrel{P}{\rightarrow}\mu,\]</span> quando <span class="math inline">\(n\rightarrow\infty\)</span>.</p>
+</div>
+<p>Vamos demonstrar a Lei Fraca de Chebyshev. Observe que, pela desigualdade de Chebyshev,</p>
+<p><span class="math display">\[P(|\bar{X}_n-\mu|\geq\varepsilon)\leq \frac{Var(\bar{X}_n)}{\varepsilon^2}=\frac{\sum_{i=1}^nVar(X_i)}{n^2\varepsilon^2}&lt;\frac{c}{n\varepsilon^2}\rightarrow 0\]</span> quando <span class="math inline">\(n\rightarrow\infty\)</span>, o que prova que <span class="math inline">\(\bar{X}_n\stackrel{P}{\rightarrow}\mu\)</span>.</p>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 6.4</strong></span> Seja <span class="math inline">\(X_1, X_2, \dots,\)</span> uma sequência de variáveis aleatórias independentes que seguem uma distribuição Poisson<span class="math inline">\((2)\)</span>. Considere a sequência <span class="math inline">\(\bar{X}_n\)</span> definida por</p>
+<p><span class="math display">\[\bar{X}_n=\frac{X_1+\cdots+X_n}{n}\]</span> Como <span class="math inline">\(E(X_i)=2\)</span>, pela Lei Fraca de Chebyshev teremos que <span class="math inline">\(\bar{X}\stackrel{P}{\to}2\)</span> quando <span class="math inline">\(n\to\infty\)</span>.</p>
+</div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 6.5</strong></span> Seja <span class="math inline">\(X_1, X_2, \dots,\)</span> uma sequência de variáveis aleatórias independentes que seguem uma distribuição Uniforme<span class="math inline">\((0, 2)\)</span>. Considere a sequência <span class="math inline">\(Y_n\)</span> definida por</p>
+<p><span class="math display">\[Y_n = \frac{X_1^2 + X_2^2 + \dots + X_n^2}{n}\]</span></p>
+<p>Determine para qual valor constante <span class="math inline">\(c\)</span> a sequência <span class="math inline">\(Y_n\)</span> converge em probabilidade quando <span class="math inline">\(n \to \infty\)</span>.</p>
+</div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 6.6</strong></span> Seja <span class="math inline">\(X_1,X_2,\ldots\)</span> uma sequencia de variáveis aleatórias com distribuição Bernoulli(<span class="math inline">\(p\)</span>). Definimos a sequência:<span class="math display">\[W_n = \frac{1}{n} \sum_{i=1}^n X_i^2\]</span></p>
+<p>Encontre o limite em probabilidade de <span class="math inline">\(W_n\)</span> quando <span class="math inline">\(n \to \infty\)</span>.</p>
+</div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 6.7</strong></span> Seja <span class="math inline">\(X_1, X_2, \dots,\)</span> uma sequência de variáveis independentes e estritamente positivas, onde <span class="math inline">\(E(\log(X_i)) = L\)</span>. Considere a média geométrica</p>
+<p><span class="math display">\[G_n = \sqrt[n]{X_1 \cdot X_2 \cdot \dots \cdot X_n}\]</span></p>
+<p>Mostre que <span class="math inline">\(G_n\)</span> converge em probabilidade para <span class="math inline">\(e^L\)</span>.</p>
+</div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 6.8</strong></span> Seja <span class="math inline">\(X_1, X_2, \dots,\)</span> uma sequência de variáveis aleatórias independentes e identicamente distribuídas com uma função de distribuição <span class="math inline">\(F(x) = P(X \leq x)\)</span>. A Função de Distribuição Empírica é definida por</p>
+<p><span class="math display">\[\hat{F}_n(x) = \frac{1}{n} \sum_{i=1}^n I_{(-\infty,x]}(X_i),\]</span></p>
+<ol type="a">
+<li><p>Fixe um valor real qualquer <span class="math inline">\(x\)</span>. Defina uma nova variável aleatória <span class="math inline">\(Y_i = I_{(-\infty,x)}(X_i)\)</span>. Determine a distribuição de <span class="math inline">\(Y_i\)</span> e calcule sua esperança <span class="math inline">\(E(Y_i)\)</span>.</p></li>
+<li><p>Utilize a Lei Fraca dos Grandes Números para mostrar que, para qualquer valor fixo de <span class="math inline">\(x\)</span>:</p></li>
+</ol>
+<p><span class="math display">\[\hat{F}_n(x) \xrightarrow{P} F(x) \quad \text{quando } n \to \infty\]</span></p>
+</div>
+</section>
+<section id="convergência-em-distribuição" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="convergência-em-distribuição"><span class="header-section-number">6.4</span> Convergência em distribuição</h2>
+<div id="def-" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 6.1</strong></span> Dizemos que a sequência de variáveis aleatórias <span class="math inline">\(X_1,X_2,\ldots\)</span> converge para <span class="math inline">\(X\)</span> em distribuição se</p>
+<p><span class="math display">\[\lim_{n\to\infty}F_{X_n}(x)=F_X(x)\]</span> para todo <span class="math inline">\(x\)</span>. Neste caso, <span class="math inline">\(X\)</span> é denominada limite em distribuição de <span class="math inline">\(X_n\)</span>.</p>
+<p><strong>Notação:</strong> <span class="math inline">\(X_n\stackrel{D}{\to}X\)</span> quando <span class="math inline">\(n\to\infty\)</span>.</p>
+</div>
+<p>É importante ressaltar que o limite pode ser calculado em outras funções que caracterizam a distribuição. Por exemplo, também diremos que <span class="math inline">\(X_n\stackrel{D}{\to}X\)</span> se</p>
+<ul>
+<li><p><span class="math inline">\(\lim_{n\to\infty}P(X_n=x)=P(X=x)\)</span> (caso discreto)</p></li>
+<li><p><span class="math inline">\(\lim_{n\to\infty}f_{X_n}(x)=f_X(x)\)</span> (caso contínuo)</p></li>
+<li><p><span class="math inline">\(\lim_{n\to\infty}M_{X_n}(t)=M_X(t)\)</span> (quando existe a função geratriz de momentos).</p></li>
+</ul>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 6.5</strong></span> Seja <span class="math inline">\(X_1,X_2,\ldots\)</span> uma sequência de variáveis aleatórias independentes e identicamente distribuídas, com <span class="math inline">\(X_1\sim\hbox{Uniforme}(0,1)\)</span>. Seja</p>
+<p><span class="math display">\[Y_n=\min\{X_1,\ldots,X_n\}.\]</span></p>
+<p>Vamos encontrar o limite em distribuição de <span class="math inline">\(Z_n=nY_n\)</span>. Primeiro, lembre que</p>
+<p><span class="math display">\[I_{(-\infty,x_1)}(w)I_{(-\infty,x_2)}(w)=I_{(-\infty,\min\{x_1,x_2\})}(w)=I_{(-\infty,y_2)}(w)\]</span> e, de maneira geral <span class="math display">\[\prod_{i=1^n}I_{(-\infty,x_i)}(w)=I_{(-\infty,y_n)}(w)\]</span> Isso implica que</p>
+<p><span class="math display">\[w&lt; x_1,\ldots,w&lt; x_n\Leftrightarrow w&lt; y_n\]</span> Como</p>
+<p><span class="math display">\[\begin{align}P(Z_n\leq z)&amp;=P(nY_n\leq z)=P\left(Y_n\leq\frac{z}{n}\right)\\&amp;=1-P\left(Y_n&gt;\frac{z}{n}\right)\\&amp;=1-P\left(X_1&gt;\frac{z}{n},\ldots,X_n&gt;\frac{z}{n}\right)\\&amp;=1-\prod_{i=1}^nP\left(X_i&gt;\frac{z}{n}\right)\\&amp;=1-\left[1-\frac{z}{n}\right]^n\end{align}\]</span> e, como</p>
+<p><span class="math display">\[\lim_{n\rightarrow\infty} P(Z_n\leq z)=1-\lim_{n\rightarrow\infty}\left(1-\frac{z}{n}\right)^n=1-e^{-z},\]</span> temos que <span class="math inline">\(Z_n\stackrel{D}{\to}Z\)</span> quando <span class="math inline">\(n\to\infty\)</span>, onde <span class="math inline">\(Z\sim\hbox{Exponencial}(1)\)</span>.</p>
+</div>
+<div id="thm-" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 6.6</strong></span> <strong>(Slutsky)</strong> Sejam <span class="math inline">\(\{X_n\}\)</span> e <span class="math inline">\(\{Y_n\}\)</span> duas sequências de variáveis aleatórias. Suponha que, quando <span class="math inline">\(X_n \xrightarrow{D} X\)</span> e <span class="math inline">\(Y_n \xrightarrow{P} c\)</span> <span class="math inline">\(n \to \infty\)</span>. Então, as seguintes convergências em distribuição são verdadeiras:</p>
+<ol type="1">
+<li><p>Soma: <span class="math inline">\(X_n + Y_n \xrightarrow{d} X + c\)</span></p></li>
+<li><p>Produto: <span class="math inline">\(X_n \cdot Y_n \xrightarrow{d} cX\)</span></p></li>
+<li><p>Divisão: <span class="math inline">\(\frac{X_n}{Y_n} \xrightarrow{d} \frac{X}{c}\)</span>, desde que <span class="math inline">\(c \neq 0\)</span>.</p></li>
+</ol>
+</div>
+</section>
+<section id="teorema-central-do-limite" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="teorema-central-do-limite"><span class="header-section-number">6.5</span> Teorema Central do Limite</h2>
+<p>Os astrônomos perceberam cedo que as medições feitas sobre o mesmo corpo celeste geralmente apresentavam erros. Em uma linguagem moderna, eles acreditavam que a verdadeira medida era <span class="math inline">\(\theta\)</span>, enquanto que a medida observada <span class="math inline">\(x_i\)</span> era contaminada por um erro <span class="math inline">\(\xi_i\)</span>, em uma relação aditiva, ou seja</p>
+<p><span class="math display">\[x_i=\theta+\xi_i.\]</span> Thomas Simpson escreveu em 1755 “A vantagem de calcular a média na astronomia prática”. Nesse trabalho, ele assumiu que os erros <span class="math inline">\(\xi_i\)</span> deviam (a) ter natureza aleatória, (b) ser simétricos em torno de zero e (c) ter uma moda em 0, com as probabilidades decaindo à medida que nos afastamos da moda. Sua distribuição de erro era</p>
+<p><span class="math display">\[\begin{array}{c|ccccccccccc}\hline
+\xi &amp; -5 &amp; -4 &amp; -3 &amp; -2 &amp; -1 &amp; 0 &amp; 1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 \\ \hline
+P(\xi)&amp; \frac{1}{36} &amp; \frac{2}{36} &amp; \frac{3}{36} &amp;\frac{4}{36} &amp; \frac{5}{36} &amp; \frac{6}{36}&amp;\frac{5}{36}&amp;\frac{4}{36}&amp;\frac{3}{36}&amp;\frac{2}{36}&amp;\frac{1}{36}\\ \hline
+\end{array}\]</span></p>
+<p>Assumindo essa lei, ele mostrou que calcular a média de triplicatas da medição diminuiria o erro. Atualmente, seria algo como</p>
+<p><span class="math display">\[\bar{x}_3=\theta+\bar{\xi_3}\]</span></p>
+<p>Abaixo, apresentamos o gráfico da função de probabilidade de <span class="math inline">\(\bar{\xi}_3\)</span>. Note, por exemplo, que a probabilidade de ocorrer um erro igual a -5 ou 5 é significativamente menor se considerarmos <span class="math inline">\(\bar{x}_3\)</span>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="convergencia_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Note que, embora fundamentada, a escolha de Simpson para a distribuição dos erros foi arbitrária. De modo não relacionado, De Moivre, na tentativa de calcular <span class="math inline">\(P(X=x)\)</span> quando <span class="math inline">\(X\sim\hbox{Binomial}(n,1/2)\)</span> e <span class="math inline">\(n\)</span> é grande, publica em 1733 a expressão</p>
+<p><span class="math display">\[P(X=x)\approx\frac{2}{\sqrt{2\pi n}}e^{-\frac{2}{n}\left(x-\frac{n}{2}\right)^2},\]</span> algo que identificaríamos hoje em dia com a densidade da Normal<span class="math inline">\((n/2, n/4)\)</span>. Voltando ao problema dos erros, em 1805 é publicado o método dos mínimos quadrados, com o qual prova-se que o valor de <span class="math inline">\(\theta\)</span> que minimiza <span class="math inline">\(\sum_{i=1}^n \xi_i^2\)</span> é, de fato <span class="math inline">\(\bar{x}_n\)</span>, o que corrobora o trabalho de Simpson. Com a introdução do Método dos Mínimos Quadrados, provou-se que o valor de <span class="math inline">\(\theta\)</span> que minimiza a soma dos quadrados dos erros é a média aritmética <span class="math inline">\(\bar{x}_n\)</span>. Gauss, ao unir essas pontas, demonstrou que se os erros seguem a distribuição normal, a média não é apenas uma escolha intuitiva, mas o estimador que maximiza a probabilidade dos dados observados.</p>
+<p>Contudo, a escolha da distribuição dos erros ainda parecia depender de suposições específicas até o trabalho de Laplace em 1812 (Théorie Analytique des Probabilités). Nele, Laplace demonstrou que a distribuição da média de um grande número de erros independentes tende à distribuição normal, independentemente da forma da distribuição original dos erros. Esse resultado, que hoje conhecemos como Teorema Central do Limite, forneceu a base teórica definitiva para o uso da média aritmética e da curva normal na ciência.</p>
+<div id="thm-" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 6.7</strong></span> <strong>Teorema Central do Limite.</strong> Sejam <span class="math inline">\(X_1,X_2\ldots,\)</span> uma sequência de variáveis aleatórias independentes e identicamente distribuídas com <span class="math inline">\(E(X_1)=\mu\)</span> e <span class="math inline">\(Var(X_1)=\sigma^2\)</span>. Então</p>
+<p><span class="math display">\[Z_n=\sqrt{n}\frac{\bar{X}_n-\mu}{\sigma}\stackrel{D}{\rightarrow}\hbox{Normal}(0,1),\]</span> quando <span class="math inline">\(n\rightarrow\infty\)</span>.</p>
+</div>
+<p>É importante ressaltar que, assim como ocorre com as Leis dos Grandes Números, existe uma coleção de resultados intitulados “Teorema Central do Limite”. O que difere esses teoremas são as condições impostas sobre a sequência <span class="math inline">\(X_1, X_2, \ldots\)</span>, permitindo, em versões mais generalizadas, que as variáveis tenham distribuições distintas ou até mesmo algum grau de dependência. Abaixo, demonstramos o teorema enunciado.</p>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 6.6</strong></span> <strong>Demonstração do Teorema Central do Limite.</strong> Vamos fazer a demonstração para o caso particular, quando existe a função geratriz de momentos (o caso geral possui uma demonstração similar, substituindo a função geratriz pela função característica, mas sua definição está além do escopo desse curso).</p>
+<p>Antes de prosseguir, lembremos que uma função <span class="math inline">\(g(x)\)</span> contínua com pelo menos duas derivadas definidas em <span class="math inline">\(x_0\)</span> pode escrita como</p>
+<p><span class="math display">\[g(x)= g(x_0)+(x-x_0)g'(x_0)+\frac{(x-x_0)^2}{2}g''(x_0)+o((x-x_0)^2).\]</span> <span class="math inline">\(o(z)\)</span> representa um termo que converge para zero mais rápido do que <span class="math inline">\(z\)</span>. Para uma variável aleatória <span class="math inline">\(Y\)</span> qualquer que possui função geratriz de momentos, é verdade que:</p>
+<ol type="1">
+<li><span class="math inline">\(M_Y(0)=1\)</span></li>
+</ol>
+<p>2 <span class="math inline">\(M_Y'(0)=E(Y)\)</span></p>
+<ol start="3" type="1">
+<li><span class="math inline">\(M_Y''(0)=E(Y^2)\)</span>.</li>
+</ol>
+<p>Portanto, a aproximação de <span class="math inline">\(M_Y(t)\)</span> em torno de zero é <span class="math display">\[M_Y(t)= 1+tE(Y)+\frac{t^2}{2}E(Y^2)+ o(t^2).\]</span></p>
+<p>Agora, considere a sequência <span class="math inline">\(X_1,X_2\ldots,\)</span> enunciada no Teorema Central do Limite. Sem perda de generalidade, assuma que <span class="math inline">\(E(X_i)=0\)</span>. A função geratriz de momentos de <span class="math inline">\(Z_n\)</span> é</p>
+<p><span class="math display">\[\begin{align}M_{Z_n}(t)&amp;=E\left(e^{\frac{\sqrt{n}\bar{X}_n}{\sigma}t}\right)=E\left(e^{\frac{\sqrt{n}}{n\sigma}t\sum_{i=1}^n X_i}\right)=E\left(\prod_{i=1}^ne^{\frac{\sqrt{n}}{n\sigma}t X_i}\right)\\&amp;=\prod_{i=1}^nE\left(e^{\frac{t}{\sigma\sqrt{n}} X_i}\right)=\prod_{i=1}^nM_{X_i}\left(\frac{t}{\sigma\sqrt{n}}\right)\\&amp;=\left[M_{X}\left(\frac{t}{\sigma\sqrt{n}}\right)\right]^n\end{align}\]</span> Para <span class="math inline">\(M_X(s)\)</span> em torno de 0, teremos a expansão</p>
+<p><span class="math display">\[\begin{align}M_X(s)= 1+\frac{s^2}{2}\sigma^2+ o(s^2),\end{align}\]</span> e substituindo <span class="math inline">\(s\)</span> por <span class="math inline">\(t/(\sigma/\sqrt{n})\)</span>, teremos</p>
+<p><span class="math display">\[\begin{align}M_X\left(\frac{t}{\sigma\sqrt{n}}\right)= 1+\frac{t^2}{2n}+ o\left(\frac{t^2}{n\sigma^2}\right),\end{align}\]</span> onde o termo <span class="math inline">\(o(t^2/n\sigma^2)\)</span> pode ser negligenciado. Teremos então</p>
+<p><span class="math display">\[M_{Z_n}(t)=\left[1+ \frac{t^2}{2n}\right]^n\]</span></p>
+<p>Note que <span class="math display">\[\lim_{n\to\infty}\log M_{Z_n}(t)=\lim_{n\to\infty}n\log\left(1+\frac{t^2}{2n}\right)\]</span> como o logaritmo acima tende a 0, podemos reescrever limite como</p>
+<p><span class="math display">\[\lim_{n\to\infty}\log M_{Z_n}(t)=\lim_{n\to\infty}\frac{\log\left(1+\frac{t^2}{2n}\right)}{1/n}\]</span> e aplicar a regra de l’Hôpital:</p>
+<p><span class="math display">\[\begin{align}\lim_{n\to\infty}\log M_{Z_n}(t)&amp;=\lim_{n\to\infty}\frac{\log\left(1+\frac{t^2}{2n}\right)}{1/n}\\&amp;=\lim_{n\to\infty}\frac{\frac{d}{dn}\log\left(1+\frac{t^2}{2n}\right)}{\frac{d}{dn}1/n}\\&amp;=\lim_{n\to\infty}\frac{\left(1+\frac{t^2}{2n}\right)^{-1}(-\frac{t^2}{2n^2})}{-1/n^2}\\&amp;=\frac{t^2}{2}\lim_{n\to\infty}\left(1+\frac{t^2}{2n}\right)^{-1}=\frac{t^2}{2}.\end{align}\]</span> Portanto,</p>
+<p><span class="math display">\[\lim_{n\to\infty }M_{Z_n}=e^{t^2/2},\]</span> o que implica que o limite em distribuição de <span class="math inline">\(Z_n\)</span> é a distribuição normal padrão.</p>
+</div>
+<div class="alert alert-success">
+<p><strong>Importante.</strong> O Teorema Central do Limite é muito útil para apresentar uma distribuição aproximada pois</p>
+<p><span class="math display">\[Z_n=\sqrt{n}\frac{\bar{X}_n-\mu}{\sigma}\stackrel{D}{\rightarrow}\hbox{Normal}(0,1),\]</span></p>
+<p>intuitivamente implica que, para <span class="math inline">\(n\)</span> grande o suficiente,</p>
+<p><span class="math display">\[\bar{X}\approx \hbox{Normal}\left(\mu,\frac{\sigma^2}{n}\right).\]</span></p>
+</div>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 6.7</strong></span> Sejam <span class="math inline">\(X_1,X_2,\ldots,\)</span> variáveis aleatórias independentes com distribuição Bernoulli(<span class="math inline">\(p\)</span>). Como <span class="math inline">\(E(X_1)=p\)</span> e <span class="math inline">\(Var(X_1)=p(1-p)\)</span>, teremos que</p>
+<p><span class="math display">\[Z_n=\sqrt{n}\frac{\bar{X}_n-p}{\sqrt{p(1-p)}}\stackrel{D}{\to}N(0,1)\]</span> quando <span class="math inline">\(n\to\infty\)</span>. Isto implica que <span class="math display">\[\bar{X}_n\approx \hbox{Normal}\left(p,\frac{p(1-p)}{n}\right).\]</span></p>
+</div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 6.9</strong></span> Considere a distribuição do erro de Simpson, dada abaixo:</p>
+<p><span class="math display">\[\begin{array}{c|ccccccccccc}\hline
+\xi &amp; -5 &amp; -4 &amp; -3 &amp; -2 &amp; -1 &amp; 0 &amp; 1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 \\ \hline
+P(\xi)&amp; \frac{1}{36} &amp; \frac{2}{36} &amp; \frac{3}{36} &amp;\frac{4}{36} &amp; \frac{5}{36} &amp; \frac{6}{36}&amp;\frac{5}{36}&amp;\frac{4}{36}&amp;\frac{3}{36}&amp;\frac{2}{36}&amp;\frac{1}{36}\\ \hline
+\end{array}\]</span></p>
+<p>Nesse trabalho ele mostrou que utilizar <span class="math inline">\(\bar{x}_3\)</span> era vantajoso porque a distribuição do erro <span class="math inline">\(\bar{\xi}_3\)</span> era mais concentrada em torno de zero e se espalhava menos.</p>
+<p>Qual seria a distribuição aproximada de <span class="math inline">\(\bar{\xi}_n\)</span>, para <span class="math inline">\(n\)</span> suficientemente grande?</p>
+</div>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 6.8</strong></span> Considere novamente a sequÊncia <span class="math inline">\(X_1,X_2\ldots,\)</span> de variáveis aleatórias independentes com distribuição Bernoulli(<span class="math inline">\(p\)</span>), onde foi mostrado que, para <span class="math inline">\(n\)</span> suficientemente grande,</p>
+<p><span class="math display">\[\bar{X}_n\approx \hbox{Normal}\left(p,\frac{p(1-p)}{n}\right).\]</span></p>
+<p>Embora não exista nada de errado com esse resultado, sob o ponto de vista da inferência estatística seria mais conveniente que a variância não tivesse <span class="math inline">\(p\)</span>. Nos textos básicos inferência, isso é feito simplesmente trocando <span class="math inline">\(p\)</span> por <span class="math inline">\(\hat{p}=\bar{X}_n\)</span> na variância, obtendo</p>
+<p><span class="math display">\[\bar{X}_n\approx \hbox{Normal}\left(p,\frac{\hat{p}(1-\hat{p})}{n}\right).\]</span></p>
+<p>Essa conta não fazer sentido, pois a própria variável se torna um parâmetro. Vamos explicar porque esse passo faz sentido para grandes amostras utilizando o Teorema Central do Limite e o Teorema de Slutsky. Primeiro, sabemos que</p>
+<p><span class="math display">\[Z_n=\sqrt{n}\frac{\bar{X}_n-p}{\sqrt{p(1-p)}}\stackrel{D}{\to}N(0,1)\]</span></p>
+<p>Também, já mostramos que <span class="math inline">\(\bar{X}_n\stackrel{P}{\to}p\)</span>, o que implica que</p>
+<p><span class="math display">\[\bar{X}_n(1-\bar{X}_n)\stackrel{P}{\to}p(1-p).\]</span> Considere a variável</p>
+<p><span class="math display">\[\begin{align}W_n&amp;=\sqrt{n}\frac{\bar{X}_n-p}{\sqrt{\bar{X}_n(1-\bar{X}_n)}}=\frac{\bar{X}_n-p}{\sqrt{p(1-p)}}\sqrt{\frac{p(1-p)}{\bar{X}_n(1-\bar{X}_n)}}\\&amp;=Z_n\sqrt{\frac{p(1-p)}{\bar{X}_n(1-\bar{X}_n)}}.\end{align}\]</span> Como <span class="math inline">\(Z_n\stackrel{D}{\to}N(0,1)\)</span> e</p>
+<p><span class="math display">\[\sqrt{\frac{p(1-p)}{\bar{X}_n(1-\bar{X}_n)}}\stackrel{P}{\to}1,\]</span> pelo Teorema de Slutsky,</p>
+<p><span class="math display">\[W_n\stackrel{D}{\to}Z_n\cdot 1=Z_n\sim N(0,1).\]</span></p>
+<p>Deste modo, para <span class="math inline">\(n\)</span> suficientemente grande, <span class="math inline">\(W_n\)</span> e <span class="math inline">\(Z_n\)</span> tem a mesma distribuição, o que justifica a troca de <span class="math inline">\(p\)</span> por <span class="math inline">\(\bar{X}_n\)</span> na variância.</p>
+</div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 6.10</strong></span> Sejam <span class="math inline">\(X_1,X_2,\ldots\)</span> variáveis aleatórias independentes mesma distribuição e <span class="math inline">\(E(X_i)=\mu\)</span>, <span class="math inline">\(Var(X_i)=\sigma^2\)</span>.</p>
+<ol type="1">
+<li>Utilize o Teorema Central do Limite para encontrar o limite em distribuição de</li>
+</ol>
+<p><span class="math display">\[Z_n=\sqrt{n}\frac{\bar{X}_n-\mu}{\sigma}.\]</span></p>
+<ol start="2" type="1">
+<li><p>Seja <span class="math display">\[S^2_n=\frac{1}{n}\sum_{i=1}^n(X_i-\bar{X}_n)^2=\frac{1}{n}\sum_{i=1}^nX_i^2-\bar{X}_n^2.\]</span> Utilizando a Lei Fraca dos Grandes Números, encontre o limite em probabilidade de <span class="math inline">\(S_n^2\)</span>.</p></li>
+<li><p>Utilizando o Teorema de Slutsky, encontre a distribuição limite de</p></li>
+</ol>
+<p><span class="math display">\[W_n=\sqrt{n}\frac{\bar{X}_n-\mu}{S_n},\]</span> onde <span class="math inline">\(S_n=\sqrt{S^2_n}\)</span>. (<strong>Note.</strong> Esse resultado é utilizado para fazer inferências sobre <span class="math inline">\(\mu\)</span> sem ter que lidar com <span class="math inline">\(\sigma^2\)</span>).</p>
+</div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 6.11</strong></span> Sejam <span class="math inline">\(X_1,X_2,\ldots\)</span> variáveis aleatórias independentes com distribuição Poisson(<span class="math inline">\(\lambda\)</span>)</p>
+<ol type="1">
+<li>Utilizando o Teorema Central do Limite, encontre a distribuição limite de</li>
+</ol>
+<p><span class="math display">\[Z_n=\sqrt{\frac{n}{\lambda}}\left(\bar{X}_n-\lambda\right).\]</span></p>
+<ol start="2" type="1">
+<li>Utilizando o Teorema de Slutsky, encontre a distribuição limite de</li>
+</ol>
+<p><span class="math display">\[Z_n=\sqrt{\frac{n}{\bar{X}_n}}\left(\bar{X}_n-\lambda\right).\]</span> (<strong>Nota.</strong> Esse resultado é utilizado para fazer inferências sobre <span class="math inline">\(\lambda\)</span> sem que o mesmo apareça na variância).</p>
+</div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 6.12</strong></span> Sejam <span class="math inline">\(X_1, X_2, \ldots\)</span> variáveis aleatórias independentes com distribuição Exponencial<span class="math inline">\((\lambda)\)</span>, com função densidade dada por</p>
+<p><span class="math display">\[f(x)=\lambda e^{-\lambda x}I_{(0,\infty)}(x).\]</span></p>
+<ol type="1">
+<li><p>Utilize o Teorema Central do Limite para encontrar a distribuição limite de <span class="math display">\[Z_n = \sqrt{n} \lambda \left( \bar{X}_n - \frac{1}{\lambda} \right)\]</span></p></li>
+<li><p>Utilizando a Lei Fraca dos Grandes Números, determine o limite em probabilidade de</p></li>
+</ol>
+<p><span class="math display">\[Y_n = \frac{1}{\bar{X}_n}\]</span></p>
+<ol start="3" type="1">
+<li>Combine os resultados anteriores para encontrar a distribuição limite de:</li>
+</ol>
+<p><span class="math display">\[W_n = \frac{\sqrt{n} \left( \bar{X}_n - \frac{1}{\lambda} \right)}{\bar{X}_n}\]</span></p>
+<p>(<strong>Nota</strong>: Observe que, assim como nos exercícios anteriores, o parâmetro <span class="math inline">\(\lambda\)</span> “sumiu” do denominador, permitindo que utilizemos apenas a média amostral <span class="math inline">\(\bar{X}_n\)</span> para estimar a variabilidade da estimativa).</p>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./covariancia.html" class="pagination-link" aria-label="Covariância, correlação e esperança condicional">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Covariância, correlação e esperança condicional</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./provas.html" class="pagination-link" aria-label="Provas anteriores resolvidas">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Provas anteriores resolvidas</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

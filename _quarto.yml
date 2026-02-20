@@ -13,6 +13,7 @@ book:
     - vetores_aleatorios_continuos.qmd
     - vetores_mistos.qmd
     - covariancia.qmd
+    - convergencia.qmd
     - provas.qmd
     - references.qmd
 
