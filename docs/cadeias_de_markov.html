@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>8&nbsp; Introdução às cadeias de Markov – Probabilidade C</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./references.html" rel="next">
+<link href="./provas.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-d9ea66fcd6c317012447f26e9c021348.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link href="site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+
+<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+
+<script src="site_libs/viz-1.8.2/viz.js"></script>
+
+<link href="site_libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet">
+
+<script src="site_libs/grViz-binding-1.0.11/grViz.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./cadeias_de_markov.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Introdução às cadeias de Markov</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Probabilidade C</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefácio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./vetores_aleatorios_discretos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Distribuição de vetores aleatórios discretos</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./vetores_aleatorios_continuos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Distribuição de vetores aleatórios contínuos</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./vetores_mistos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Vetores aleatórios mistos</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./covariancia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Covariância, correlação e esperança condicional</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./convergencia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Convergência de variáveis aleatórias</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./provas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Provas anteriores resolvidas</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cadeias_de_markov.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Introdução às cadeias de Markov</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#processos-estocásticos-propriedade-de-markov-e-objetivos-do-capítulo" id="toc-processos-estocásticos-propriedade-de-markov-e-objetivos-do-capítulo" class="nav-link active" data-scroll-target="#processos-estocásticos-propriedade-de-markov-e-objetivos-do-capítulo"><span class="header-section-number">8.1</span> Processos estocásticos, propriedade de Markov e objetivos do capítulo</a></li>
+  <li><a href="#definição-e-exemplos-de-cadeias-de-markov-à-tempo-discreto" id="toc-definição-e-exemplos-de-cadeias-de-markov-à-tempo-discreto" class="nav-link" data-scroll-target="#definição-e-exemplos-de-cadeias-de-markov-à-tempo-discreto"><span class="header-section-number">8.2</span> Definição e exemplos de cadeias de Markov à tempo discreto</a></li>
+  <li><a href="#classificação-de-estados" id="toc-classificação-de-estados" class="nav-link" data-scroll-target="#classificação-de-estados"><span class="header-section-number">8.3</span> Classificação de estados</a></li>
+  <li><a href="#distribuição-estacionária" id="toc-distribuição-estacionária" class="nav-link" data-scroll-target="#distribuição-estacionária"><span class="header-section-number">8.4</span> Distribuição estacionária</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Introdução às cadeias de Markov</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="processos-estocásticos-propriedade-de-markov-e-objetivos-do-capítulo" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="processos-estocásticos-propriedade-de-markov-e-objetivos-do-capítulo"><span class="header-section-number">8.1</span> Processos estocásticos, propriedade de Markov e objetivos do capítulo</h2>
+<p>Considere um conjunto <span class="math inline">\(\mathcal{T}\subseteq \mathbb{R}\)</span>, doravante denominado <strong>conjunto de índices</strong>. Para cada <span class="math inline">\(t\in\mathcal{T}\)</span>, seja <span class="math inline">\(X(t)\)</span> uma variável aleatória. Então, o conjunto <span class="math inline">\(\{X(t),t\in\mathcal{T}\}\)</span> é denominado <strong>processo estocástico.</strong></p>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 8.1</strong></span> <strong>Amostra aleatória.</strong> Seja <span class="math inline">\(X_1,\ldots,X_n\)</span> uma amostra aleatória, ou seja, uma coleção de variáveis aleatórias independentes e identicamente distribuídas. Fazendo <span class="math inline">\(\mathcal{T}=\{1,\ldots,n\}\)</span> e <span class="math inline">\(_t=X(t)\)</span>, temos que a amostra aleatória é um processo estocástico.</p>
+</div>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 8.2</strong></span> Um dos objetivos principais dos processos estocásticos é relacionar um comportamento aleatório com um índice de interesse. Por exemplo, suponha que <span class="math inline">\(X(t)\)</span>, com <span class="math inline">\(t&gt;0\)</span>, é o número de vendas realizadas até o tempo <span class="math inline">\(t\)</span>. Obviamente, são esperadas mais vendas com o aumento de <span class="math inline">\(t\)</span> e um modo simples de expressar isso é supor que</p>
+<p><span class="math display">\[E(X(t))=\mu t,\]</span> onde <span class="math inline">\(\mu\)</span> representa a média de vendas por unidade de tempo. Diferente das amostras aleatórias, para <span class="math inline">\(t\neq s\)</span>, <span class="math inline">\(X(t)\)</span> <strong>não tem a mesma distribuição</strong> que <span class="math inline">\(X(s)\)</span>. Além disso, se <span class="math inline">\(s&lt;t\)</span> <span class="math display">\[E(X(s))=\mu s\leq\mu t =E(X(t))\]</span> e, como o conhecimento de <span class="math inline">\(X(s)\)</span> altera nosso conhecimento sobre <span class="math inline">\(X(t)\)</span>, temos que as variáveis <span class="math inline">\(X(s)\)</span> e <span class="math inline">\(X(t)\)</span> são <strong>dependentes</strong>.</p>
+</div>
+<p>Seja <span class="math inline">\(\{X(t),t\in\mathcal{T}\}\)</span> um processo estocástico. Considere que observamos o processo até o índice <span class="math inline">\(s\)</span>. Considere a probabilidade do processo no índice <span class="math inline">\(t+s\)</span> estar no conjunto <span class="math inline">\(A\)</span>:</p>
+<p><span class="math display">\[P( X(t+s)\in A|X(u)=x(u),0\leq u\leq s).\]</span> O problema acima é complexo, uma vez que devemos entender a distribuição de <span class="math inline">\(X(t+s)\)</span> para cada reazaliação do processo até o índice <span class="math inline">\(s\)</span>. Suponha então que apenas o último índice observado é relevante para o processo, ou seja</p>
+<p><span class="math display">\[P( X(t+s)\in A|X(u)=x(u),0\leq u\leq s)=P( X(t+s)\in A|X(s)=x(s)).\]</span> Nesse caso, o processo mantém na memória apenas o índice mais recente. Isso é denominado <strong>propriedade de Markov.</strong></p>
+<p>Processos estocásticos com a propriedade de Markov são denominados <strong>cadeias de Markov</strong>. Existem inúmeras particularidades sobre esses processos que poderiam cobrir um curso regular de 60h. Portanto, nesse curso, nossos objetivos são</p>
+<ul>
+<li><p>apresentar as cadeias de Markov considerando apenas variáveis aleatórias discretas com conjunto de índice discreto</p></li>
+<li><p>definir probabilidade e matriz de transição</p></li>
+<li><p>apresentar as classificações de estados</p></li>
+<li><p>apresentar as ditribuições estacionárias</p></li>
+</ul>
+</section>
+<section id="definição-e-exemplos-de-cadeias-de-markov-à-tempo-discreto" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="definição-e-exemplos-de-cadeias-de-markov-à-tempo-discreto"><span class="header-section-number">8.2</span> Definição e exemplos de cadeias de Markov à tempo discreto</h2>
+<p>Doravante, vamos considerar que <span class="math inline">\(\mathcal{T}=\{0,1,\ldots\}\)</span>. Deste modo, a notação <span class="math inline">\(X(t)\)</span> será substituída por <span class="math inline">\(X_t\)</span>. Além disso, <span class="math inline">\(t\)</span> será interpretado como tempo de ocorrência. Por exemplo, <span class="math inline">\(\{X_{10}=3\}\)</span> é evento da ocorrência de 3 no tempo <span class="math inline">\(10\)</span>.</p>
+<p>Para um tempo <span class="math inline">\(t&gt;0\)</span> qualquer, o incremento de tempo <span class="math inline">\(s\)</span> será denominado passo, como o passo do ponteiro de um relógio. Por exemplo <span class="math inline">\(t+1\)</span> é um passo após o tempo <span class="math inline">\(t\)</span>.</p>
+<p>Vamos também considerar que todas as variáveis aleatórias do processo são discretas. O conjunto de todos os valores possíveis para as variáveis do processo é denominado <strong>conjunto dos estados</strong> e cada valor em particular é denominado <strong>estado.</strong></p>
+<p>Vamos definir formalmente o nosso processo de interesse</p>
+<div id="def-" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 8.1</strong></span> Dizemos que o processo estocástico <span class="math inline">\(\{X_t, t=0,1,\ldots\}\)</span> é uma cadeia de Markov se, para quaisquer estados <span class="math inline">\(i\)</span> e <span class="math inline">\(j\)</span>, <span class="math display">\[P(X_{n+1}=j|X_n=i,X_{n-1}=x_{n-1}\ldots,X_0=x_0)=P(X_{n+1}=j|X_n=i)\]</span></p>
+</div>
+<p>Note que, para uma cadeia de Markov, é possível que, para <span class="math inline">\(m\neq n\)</span>|</p>
+<p><span class="math display">\[P(X_{n+1}=j|X_n=i)\neq P(X_{m+1}=j|X_m=i).\]</span> Estamos interessados apenas em cadeinas nas quais isso não ocorre.</p>
+<div id="def-" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 8.2</strong></span> Dizemos uma cadeia de Markov <span class="math inline">\(\{X_t, t=0,1,\ldots\}\)</span> é *<strong>homogênea</strong> se, para quaisquer estados <span class="math inline">\(i\)</span> e <span class="math inline">\(j\)</span> e para quaisquer tempos <span class="math inline">\(n,m\)</span>, <span class="math display">\[P(X_{n+1}=j|X_n=i)=P(X_{m+1}=j|X_m=i).\]</span></p>
+</div>
+<p>Doravante, todas as cadeias apresentadas serão consideradas homogêneas. Então, para <span class="math inline">\(n\)</span> arbitrário, a probabilidade <span class="math display">\[p_{ij}=P(X_{n+1}=j|X_n=i)\]</span> será denominada probabilidade de transição (em um passo).</p>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 8.3</strong></span> <strong>O passeio do sapo.</strong> Um sapo vive em uma lagoa, movimentando-se por nove vitória régias, conforme a ilustração abaixo.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="cadeias_de_markov_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Estando na vitória régia <span class="math inline">\(i\)</span>, seu próximo movimento será dado ao acaso para uma vitória régia vizinha ((Norte, Sul, Leste ou Oeste).</p>
+<p>Seja <span class="math inline">\(X_n\)</span> a vitória régia (estado) no qual o sapo se encontra no tempo <span class="math inline">\(n\)</span>. Calcule:</p>
+<ol type="a">
+<li><p>As probabilidades de transição partindo do estado 1.</p></li>
+<li><p>A probabilidades de transição partindo do estado 5.</p></li>
+</ol>
+<p><strong>Solução.</strong></p>
+<ol type="a">
+<li>Estando no estado 1, o sapo pode apenas se deslocar para os estados 2 ou 4. Portanto</li>
+</ol>
+<p><span class="math display">\[p_{1j}=\begin{cases}\frac{1}{2},&amp;j=2,4\\0,&amp;\hbox{caso contrário}\end{cases}\]</span></p>
+<ol start="2" type="a">
+<li>Estando no estado 5, o sapo pode se deslocar para os estados 2, 4, 6 ou 8. Portanto</li>
+</ol>
+<p><span class="math display">\[p_{5j}=\begin{cases}\frac{1}{4},&amp;j=2,4,6,8\\0,&amp;\hbox{caso contrário}\end{cases}\]</span></p>
+</div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 8.1</strong></span> Um rato é colocado no Estado 1 de um labirinto composto por 6 salas. Ele se move entre as salas adjacentes escolhendo uma ao acaso, conforme a ilustração abaixo. Se o rato chegar à sala 6, ele encontra o queijo e para de se mover. Se o rato entrar na sala 5, ele fica preso na ratoeira. Seja <span class="math inline">\(X_n\)</span> a sala (estado) no qual o rato se encontra no tempo <span class="math inline">\(n\)</span>. Determine todas as probabilidades de transição.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="cadeias_de_markov_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="def-" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 8.3</strong></span> <strong>Grafo de uma cadeia</strong></p>
+<p>Um grafo orientado é formado por um conjunto de vértices e um conjunto de arcos. O grafo de uma cadeia de Markov é construído da seguinte forma:</p>
+<ol type="1">
+<li><p>O conjunto de vértices é composto pelos estados do processo</p></li>
+<li><p>Existe um arco saindo do estado <span class="math inline">\(i\)</span> e chegando ao estado <span class="math inline">\(j\)</span> se <span class="math inline">\(p_{ij}&gt;0\)</span>.</p></li>
+<li><p>O arco <span class="math inline">\((i,j)\)</span> recebe o rótulo <span class="math inline">\(p_{ij}\)</span></p></li>
+</ol>
+</div>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 8.4</strong></span> Considere uma cadeia de Markov onde <span class="math inline">\(X_n=1\)</span> se chove no dia <span class="math inline">\(n\)</span> e <span class="math inline">\(X_{n}=0\)</span> em caso contrário. Suponha que:</p>
+<ul>
+<li><p>Dado que hoje choveu, a probabilidade de chover amanhã é <span class="math inline">\(\alpha\)</span></p></li>
+<li><p>Dado que não choveu hoje, a probabilidade de não chover amanhã é <span class="math inline">\(\beta\)</span></p></li>
+</ul>
+<p>Construa o grafo desta cadeia e sua matriz de transição.</p>
+<p><strong>Solução</strong></p>
+<p>Temos que</p>
+<p><span class="math display">\[p_{1j}=\begin{cases}\alpha,&amp;j=1 \\1-\alpha,&amp;j=0\end{cases}\]</span> e que</p>
+<p><span class="math display">\[p_{0j}=\begin{cases}1-\beta,&amp;j=1 \\\beta,&amp;j=0\end{cases}\]</span> logo, podemos gerar o grafo abaixo.</p>
+<div class="cell" data-warnings="false">
+<div id="fig-markov-chuva" class="cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-markov-chuva-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="grViz html-widget html-fill-item" id="htmlwidget-e8a81ab2b3c9284f51a7" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-e8a81ab2b3c9284f51a7">{"x":{"diagram":"\ndigraph markov_chain {\n  # Configurações globais\n  graph [overlap = true, fontsize = 4, rankdir = LR]\n  \n  # Estilo dos Estados (Nós)\n  node [shape = circle, fixedsize = true, width = 0.4, color = black, fontname = Helvetica]\n  \n  # Estilo dos arcos\n  edge [arrowsize = 0.4, fontsize = 12]\n  \n  0; 1;\n\n  # Transições (Arcos)\n  # O Graphviz usa códigos HTML para letras gregas: &alpha; e &beta;\n  0 -> 0 [label = <&beta;>]\n  0 -> 1 [label = <1-&beta;>]\n  1 -> 0 [label = <1-&alpha;>]\n  1 -> 1 [label = <&alpha;>]\n  \n  # Ajuste de curvas para os arcos não colidirem\n  edge [fontname = Helvetica, fontsize = 4]\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-markov-chuva-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8.1: Grafo da cadeia de Markov para o modelo de chuva/sol.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 8.2</strong></span> Todos os dias, João se desloca entre dois pontos: sua casa e seu trabalho. João tem apenas um guarda-chuva. Se no momento de seu deslocamento estiver chovendo, João utilizará seu guarda-chuva se o mesmo estiver no local. Caso contrário, João fará seu deslocamento na chuva. Além disso, João só leva consigo o guarda-chuva se estiver chovendo. Considere os seguintes estados:</p>
+<ul>
+<li><p>0 - João está em casa com o guarda-chuva</p></li>
+<li><p>1- João está no trabalho com o guarda-chuva</p></li>
+<li><p>2 - João está em casa sem o guarda-chuva</p></li>
+<li><p>3 - João está no trabalho sem o guarda-chuva</p></li>
+</ul>
+<p>Sabendo que a probabilidade de estar chovendo quando João tem que sair de um local é de 0,25, construa o grafo dessa cadeia de Markov.</p>
+</div>
+</section>
+<section id="classificação-de-estados" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="classificação-de-estados"><span class="header-section-number">8.3</span> Classificação de estados</h2>
+<p>Um passeio é uma sequência de estados <span class="math inline">\(i_0,i_1, i_2, \dots, i_n\)</span> tal que, para cada par sucessivo, a probabilidade de transição é positiva (existe uma aresta conectando-os). Partindo de <span class="math inline">\(i_0\)</span>, a probabilidade do processo passar pelo caminho <span class="math inline">\(i_1,\ldots,i_n\)</span> é</p>
+<p><span class="math display">\[P(X_n=i_n,\ldots,X_1=i_1|X_0=i_0)=p_{i_{n-1}i_n}\cdots p_{0i_1}\]</span> Definimos por <span class="math inline">\(p_{ij}^{(n)}\)</span> como a probabilidade do processo sair do estado <span class="math inline">\(i\)</span> e chegar no estado <span class="math inline">\(j\)</span> em <span class="math inline">\(n\)</span> passos. Essa probabilidade é equivalente a soma das probabilidades de todos os passeios que saem de <span class="math inline">\(i\)</span> e chegam em <span class="math inline">\(j\)</span> em <span class="math inline">\(n\)</span> passos.</p>
+<p>. ::: {#exr-} Considere uma cadeia com três estados e as seguintes probabilidades de transição:</p>
+<p><span class="math display">\[\begin{align}p_{01}&amp;=1\\ p_{10}&amp;=0,1\\ p_{11}&amp;=0,2\\ p_{12}&amp;=0,7\\
+p_{22}&amp;=0,6 \\ p_{20}&amp;=0,4\end{align}\]</span></p>
+<ol type="a">
+<li><p>Construa o grafo da cadeia</p></li>
+<li><p>Calcule a probabilidade do passeio 0-1-2-0</p></li>
+<li><p>Calcule <span class="math inline">\(p_{00}^{(4)}\)</span>. :::</p></li>
+</ol>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 8.3</strong></span> Considere uma cadeia com quatro estados e as seguintes probabilidades de transição:</p>
+<p><span class="math display">\[\begin{align}p_{01}&amp;=1\\ p_{11}&amp;=0,3\\ p_{12}&amp;=0,7\\
+p_{22}&amp;=0,6 \\ p_{20}&amp;=0,2\\ p_{23}&amp;=0,2\\p_{33}&amp;=1\end{align}\]</span></p>
+<ol type="a">
+<li><p>Construa o grafo da cadeia</p></li>
+<li><p>Calcule a probabilidade do passeio 0-1-2-0</p></li>
+<li><p>Começando no estado 0, é possível que o processo não consiga retornar para 0?</p></li>
+<li><p>Existe algum estado tal que, partindo dele, o processo vai retornar para ele certamente?</p></li>
+</ol>
+</div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 8.4</strong></span> Considere uma cadeia com quatro estados e as seguintes probabilidades de transição:</p>
+<p><span class="math display">\[\begin{align}p_{00}&amp;=0,8\\p_{01}&amp;=0,2\\ p_{10}&amp;=0,3\\ p_{11}&amp;=0,4\\
+p_{12}&amp;=0,3 \\ p_{22}&amp;=0,2\\ p_{23}&amp;=0,8\\p_{32}&amp;=05\\p_{33}&amp;=0,5\end{align}\]</span></p>
+<ol type="a">
+<li><p>Construa o grafo da cadeia</p></li>
+<li><p>Começando no estado 0, é possível que esse estado nunca mais seja visitado pelo processo? Em qual sitação isso ocorre?</p></li>
+<li><p>Começando no estado 3, é possível que esse estado nunca mais seja visitado pelo processo? Porquê?</p></li>
+</ol>
+</div>
+<p>Os exercícios acima mostraram que alguns estados podem deixar de ser visitados pelo processo. Seja <span class="math inline">\(f_i^{(n)}\)</span> a probabilidade de, saindo de <span class="math inline">\(i\)</span>, o processo voltar pela primeira vez para <span class="math inline">\(i\)</span> em <span class="math inline">\(n\)</span> passos, ou seja</p>
+<p><span class="math display">\[f_i^{(n)}=P(X_n=i,X_{n-1}\neq i,\ldots,X_1\neq i|X_0=i).\]</span> Então, a probabilidade de que o processo saia de <span class="math inline">\(i\)</span> e volte para <span class="math inline">\(i\)</span> em algum momento é</p>
+<p><span class="math display">\[\begin{align} f_i &amp;=P(\cup_{n=1}^\infty \hbox{ {voltar em exatos $n$ passos}}) \\ &amp;=\sum_{n=1}^\infty P(\hbox{ {voltar em exatos $n$ passos}})\\&amp;=\sum_{n=1}^\infty f_i^{(n)} \end{align}\]</span></p>
+<div id="def-" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 8.4</strong></span> Dizemos que o estado <span class="math inline">\(i\)</span> é recorrente se <span class="math inline">\(f_i=1\)</span> e dizemos que ele é transiente se <span class="math inline">\(f_i&lt;1\)</span>.</p>
+</div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 8.5</strong></span> Considerando o grafo da cadeia abaixo, classifique os estados como transientes e recorrentes.</p>
+<div class="cell" data-warnings="false">
+<div id="fig-markov" class="cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-markov-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="grViz html-widget html-fill-item" id="htmlwidget-a44b6a00ff0eb253ff42" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-a44b6a00ff0eb253ff42">{"x":{"diagram":"\ndigraph markov_chain {\n  # Configurações globais\n  graph [overlap = true, fontsize = 4, rankdir = LR]\n  \n  # Estilo dos Estados (Nós)\n  node [shape = circle, fixedsize = true, width = 0.4, color = black, fontname = Helvetica]\n  \n  # Estilo dos arcos\n  edge [arrowsize = 0.4, fontsize = 12]\n  \n  0; 1; 2; 3; 4\n\n  # Transições (Arcos)\n  # O Graphviz usa códigos HTML para letras gregas: &alpha; e &beta;\n  0 -> 0 [label = \"0,2\"]\n  0 -> 1 [label = \"0,7\"]\n  0 -> 4 [label = \"0,1\"]\n  1 -> 0 [label = \"0,4\"]\n  1 -> 2 [label = \"0,6\"]\n  2 -> 2 [label = \"0,5\"]\n  2 -> 3 [label = \"0,5\"]\n  3 -> 2 [label = \"0,9\"]\n  3 -> 3 [label = \"0,1\"]\n  4 -> 4 [label = \"1\"]\n\n\n  # Ajuste de curvas para os arcos não colidirem\n  edge [fontname = Helvetica, fontsize = 4]\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-markov-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8.2: Grafo da cadeia de Markov
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div id="def-" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 8.5</strong></span> <strong>Acessibilidade</strong></p>
+<p>Dizemos que o estado <span class="math inline">\(j\)</span> é acessível a partir de <span class="math inline">\(i\)</span>, se existe pelo menos um passeio saindo de <span class="math inline">\(i\)</span> e chegando em <span class="math inline">\(j\)</span> Notação: <span class="math inline">\(i\to j\)</span>.</p>
+<p><strong>Comunicação</strong></p>
+<p>Dizemos que os estados <span class="math inline">\(i\)</span> e <span class="math inline">\(j\)</span> se comunicam se <span class="math inline">\(i\to j\)</span> e <span class="math inline">\(j\to i\)</span>. Notação: <span class="math inline">\(i\leftrightarrow j\)</span>.</p>
+<p><strong>Classe</strong></p>
+<p>Dizemos que <span class="math inline">\(i\)</span> e <span class="math inline">\(j\)</span> pertencem a mesma classe se <span class="math inline">\(i\leftrightarrow j\)</span>.</p>
+</div>
+<div id="prp-" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 8.1</strong></span> Se <span class="math inline">\(i\)</span> e <span class="math inline">\(j\)</span> estão na mesma classe e <span class="math inline">\(i\)</span> é recorrente(transiente), então <span class="math inline">\(j\)</span> também será recorrente(transiente).</p>
+</div>
+<p>Vamos demonstrar a proposição de forma intuitiva.</p>
+<ol type="1">
+<li><p>Se <span class="math inline">\(i\)</span> é recorrente, então certamente o processo sai do estado <span class="math inline">\(i\)</span> e volta para ele. Portanto, partindo de <span class="math inline">\(j\)</span> o processo vai acessar o estado <span class="math inline">\(i\)</span> em algum momento, certamente voltar para <span class="math inline">\(i\)</span> e então voltar para <span class="math inline">\(j\)</span> em algum momento. Portanto, partindo de <span class="math inline">\(j\)</span>, o processo certamente retorna para <span class="math inline">\(j\)</span>, o que implica que <span class="math inline">\(j\)</span> é recorrente.</p></li>
+<li><p>Se <span class="math inline">\(i\)</span> é transiente, então é possível que o processo saia do estado <span class="math inline">\(i\)</span> e nunca mais volte para ele. Mas como <span class="math inline">\(i\)</span> se comunica com <span class="math inline">\(j\)</span>, é possível que o processo saia de <span class="math inline">\(j\)</span>, chegue em <span class="math inline">\(i\)</span> e, a partir dali, nunca mais retorne para <span class="math inline">\(j\)</span>. Portanto, <span class="math inline">\(j\)</span> é transiente.</p></li>
+</ol>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 8.6</strong></span> Considere uma cadeia de Markov com as seguintes probabilidades de transição</p>
+<p><span class="math display">\[\begin{array}{c|ccccccccccc}\hline
+i\setminus j
+  &amp; 0   &amp; 1   &amp; 2   &amp; 3   &amp; 4   &amp; 5   &amp; 6   &amp; 7   &amp; 8 &amp; 9 &amp; 10\\ \hline
+0 &amp; 0,2 &amp; 0,8 &amp; 0   &amp; 0   &amp; 0   &amp; 0   &amp; 0   &amp; 0   &amp; 0 &amp; 0 &amp; 0 \\
+1 &amp; 0,3 &amp; 0   &amp; 0,5 &amp; 0,2 &amp; 0   &amp; 0   &amp; 0   &amp; 0   &amp; 0 &amp; 0 &amp; 0 \\
+2 &amp; 0   &amp; 0   &amp; 1   &amp; 0   &amp; 0   &amp; 0   &amp; 0   &amp; 0   &amp; 0 &amp; 0 &amp; 0 \\
+3 &amp; 0   &amp; 0   &amp; 0   &amp; 0   &amp; 0,5 &amp; 0,5 &amp; 0   &amp; 0   &amp; 0 &amp; 0 &amp; 0 \\
+4 &amp; 0   &amp; 0   &amp; 0   &amp; 1   &amp; 0   &amp; 0   &amp; 0   &amp; 0   &amp; 0 &amp; 0 &amp; 0 \\
+5 &amp; 0   &amp; 0   &amp; 0   &amp; 0   &amp; 0,2 &amp; 0   &amp; 0,8 &amp; 0   &amp; 0 &amp; 0 &amp; 0 \\
+6 &amp; 0   &amp; 0   &amp; 0   &amp; 0   &amp; 0   &amp; 0   &amp; 0,1 &amp; 0,9 &amp; 0 &amp; 0 &amp; 0 \\
+7 &amp; 0   &amp; 0   &amp; 0   &amp; 0   &amp; 0   &amp; 0   &amp; 0,7 &amp; 0,3 &amp; 0 &amp; 0 &amp; 0 \\
+8 &amp; 0   &amp; 0   &amp; 0   &amp; 0   &amp; 0   &amp; 0   &amp; 0   &amp; 0   &amp; 1 &amp; 0 &amp; 0 \\
+9 &amp; 0   &amp; 0   &amp; 0   &amp; 0   &amp; 0   &amp; 0   &amp; 0   &amp; 0   &amp; 0 &amp; 0,2 &amp; 0,8 \\
+10&amp; 0   &amp; 0   &amp; 0   &amp; 0   &amp; 0   &amp; 0   &amp; 0   &amp; 0   &amp; 0 &amp; 0,7 &amp; 0,3 \\ \hline
+\end{array}\]</span></p>
+<ol type="a">
+<li><p>Construa o grafo da cadeia</p></li>
+<li><p>Encontre as classes</p></li>
+<li><p>Classifique cada classe como recorrente ou transiente.</p></li>
+</ol>
+</div>
+<p>Considere a cadeia de Markov abaixo:</p>
+<div class="cell" data-warnings="false">
+<div class="cell-output-display">
+<div class="grViz html-widget html-fill-item" id="htmlwidget-4fb3b25c743803862ae7" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-4fb3b25c743803862ae7">{"x":{"diagram":"\ndigraph markov_chain {\n  # Configurações globais\n  graph [overlap = true, fontsize = 4, rankdir = LR]\n  \n  # Estilo dos Estados (Nós)\n  node [shape = circle, fixedsize = true, width = 0.4, color = black, fontname = Helvetica]\n  \n  # Estilo dos arcos\n  edge [arrowsize = 0.4, fontsize = 12]\n  \n  0; 1; 2; 3\n  # Transições (Arcos)\n  # O Graphviz usa códigos HTML para letras gregas: &alpha; e &beta;\n  0 -> 1 [label = \"\"]\n  1 -> 2 [label = \"\"]\n  2 -> 3 [label = \"\"]\n  3 -> 0 [label = \"\"]\n\n\n  # Ajuste de curvas para os arcos não colidirem\n  edge [fontname = Helvetica, fontsize = 4]\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<p>Grafo da cadeia de Markov</p>
+</div>
+</div>
+<p>Observe que para um estado <span class="math inline">\(i\)</span> qualquer desta cadeia, <span class="math inline">\(p_{ii}^{(n)}&gt;0\)</span> somente para <span class="math inline">\(n\)</span> múltiplo de 4. Estados com essa característica são denominados periódicos.</p>
+<div id="def-" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 8.6</strong></span> O estado <span class="math inline">\(i\)</span> de uma cadeia de Markov é dito ser periódico se todos os retornos ao estado ocorrem em um número de passos múltiplo de <span class="math inline">\(k\)</span> (neste caso, é dito que o período de <span class="math inline">\(i\)</span> é igual a <span class="math inline">\(k\)</span>). <strong>Notação</strong>: <span class="math inline">\(d_i=k\)</span>.</p>
+<p>Formalmente, seja <span class="math inline">\(D_i=\{n\geq 1: p_{ii}^{(n)}&gt;0\}\)</span>, ou seja, o conjunto com os números de passos necessários para o retorno ao estado e seja <span class="math inline">\(k\)</span> o máximo divisor comum (mdc) de <span class="math inline">\(D_i\)</span>. Então <span class="math inline">\(k\)</span> é denominado período do estado <span class="math inline">\(i\)</span>.</p>
+<p>Se <span class="math inline">\(D_i=\varnothing\)</span>, então <span class="math inline">\(d_i=0\)</span> e se <span class="math inline">\(d_i=1\)</span>, o estado <span class="math inline">\(i\)</span> é denominado <strong>aperiódico.</strong></p>
+</div>
+<p>Voltando ao grafo dado, pode-se notar, por exemplo, que <span class="math inline">\(D_0=\{4,8,\ldots\}\)</span>, logo, o período do estado é 4.</p>
+<p>É importante separar a noção de período com o número mínimo de passos necessários para retornar ao estado. Se um estado possui período <span class="math inline">\(d\)</span>, então o processo só retornará ao estado em passos que são múltiplos de, mas <strong>não em todos</strong> os passos múltiplos de <span class="math inline">\(d\)</span>. O exemplo abaixo ilustra esse fato.</p>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 8.5</strong></span> Considere o grafo da cadeia abaixo:</p>
+<div class="cell" data-warnings="false">
+<div class="cell-output-display">
+<div class="grViz html-widget html-fill-item" id="htmlwidget-c8361fe055d92622a5f4" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-c8361fe055d92622a5f4">{"x":{"diagram":"\ndigraph markov_chain {\n  # Configurações globais\n  graph [overlap = true, fontsize = 4, rankdir = LR]\n  \n  # Estilo dos Estados (Nós)\n  node [shape = circle, fixedsize = true, width = 0.4, color = black, fontname = Helvetica]\n  \n  # Estilo dos arcos\n  edge [arrowsize = 0.4, fontsize = 12]\n  \n  0; 1; 2; 3\n  # Transições (Arcos)\n  # O Graphviz usa códigos HTML para letras gregas: &alpha; e &beta;\n  0 -> 1 [label = \"\"]\n  1 -> 2 [label = \"\"]\n  2 -> 3 [label = \"\"]\n  3 -> 4 [label = \"\"]\n  4 -> 5 [label = \"\"]\n  5 -> 6 [label = \"\"]\n  6 -> 7 [label = \"\"]\n  7 -> 0 [label = \"\"]\n  5 -> 0 [label = \"\"]\n\n\n  # Ajuste de curvas para os arcos não colidirem\n  edge [fontname = Helvetica, fontsize = 4]\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<p>Grafo da cadeia de Markov</p>
+</div>
+</div>
+<p>Observe que, partindo do estado 0, a cadeia só pode retornar a 0 pelos seguintes passeios:</p>
+<p><span class="math display">\[0\to 1\to 2\to 3 \to 4 \to 5 \to 6\to 7 \to 0\]</span> e <span class="math display">\[0\to 1\to 2\to 3 \to 4 \to 5 \to 0.\]</span> O primeiro caminho é feito em 8 passos, logo <span class="math inline">\(p_{00}^{(n)}&gt;0\)</span> para múltiplos de 8. O segundo caminho é feito em 6 passos, logo <span class="math inline">\(p_{00}^{(n)}&gt;0\)</span> para múltiplos de 6. Como o máximo divisor comum entre 6 e 8 é 2, o período do estado 0 é 2.</p>
+<p>Contudo <span class="math inline">\(p_{00}^{(2)}=0\)</span>. O período igual a 2 implica que se <span class="math inline">\(p_{00}^{(n)}&gt;0\)</span>, então <span class="math inline">\(n\)</span> é par.</p>
+</div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 8.7</strong></span> Considerando as probabilidades de transição abaixo, faça o grafo das cadeias e encontre o período do estado 0.</p>
+<ol type="a">
+<li><span class="math display">\[\begin{array}{c|ccc} \hline i\setminus j
+  &amp; 0 &amp; 1 &amp; 2 \\ \hline
+0 &amp; 0 &amp; 1 &amp; 0 \\
+1 &amp; 0 &amp; 0 &amp; 1 \\
+2 &amp; 1 &amp; 0 &amp; 0 \\ \hline\end{array}\]</span></li>
+</ol>
+<p>b .</p>
+<p><span class="math display">\[\begin{array}{c|ccc} \hline i\setminus j
+  &amp; 0 &amp; 1 &amp; 2 \\ \hline
+0 &amp; 0 &amp; 1 &amp; 0 \\
+1 &amp; 0 &amp; 0,8 &amp; 0,2 \\
+2 &amp; 1 &amp; 0 &amp; 0 \\ \hline\end{array}\]</span></p>
+<ol start="3" type="a">
+<li></li>
+</ol>
+<p><span class="math display">\[\begin{array}{c|cccc} \hline i\setminus j
+  &amp; 0 &amp; 1 &amp; 2 &amp; 3\\ \hline
+0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 \\
+1 &amp; 0 &amp; 0 &amp; 0,2 &amp; 0,8 \\
+2 &amp; 1 &amp; 0 &amp; 0 &amp; 0\\
+3 &amp; 0 &amp; 1 &amp; 0 &amp; 0 \\ \hline\end{array}\]</span></p>
+<ol start="4" type="a">
+<li></li>
+</ol>
+<p><span class="math display">\[\begin{array}{c|cccc} \hline i\setminus j
+  &amp; 0 &amp; 1 &amp; 2 &amp; 3\\ \hline
+0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 \\
+1 &amp; 0 &amp; 0 &amp; 0,2 &amp; 0,8 \\
+2 &amp; 1 &amp; 0 &amp; 0 &amp; 0\\
+3 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \\ \hline\end{array}\]</span></p>
+<ol start="5" type="a">
+<li></li>
+</ol>
+<p><span class="math display">\[\begin{array}{c|ccccc} \hline i\setminus j
+  &amp; 0  &amp; 1 &amp; 2 &amp; 3  &amp;4\\ \hline
+0 &amp; 0  &amp; 1 &amp; 0 &amp; 0  &amp;0 \\
+1 &amp; 0  &amp; 0 &amp; 1 &amp; 0  &amp;0 \\
+2 &amp; 0,5&amp; 0 &amp; 0 &amp; 0,5&amp;0\\
+3 &amp; 0  &amp; 0 &amp; 0 &amp; 0 &amp; 1 \\
+4 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\\hline\end{array}\]</span></p>
+</div>
+<div id="prp-" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 8.2</strong></span> Todos os estados de uma mesma classe possuem o mesmo período.</p>
+</div>
+<p><strong>Demonstração intuitiva.</strong> Considere <span class="math inline">\(i\)</span> um estado dentro de uma classe <span class="math inline">\(C\)</span> e que <span class="math inline">\(d_i=k\)</span>. Para cada <span class="math inline">\(j\in C\)</span> só é possível sair de <span class="math inline">\(i\)</span> e chegar em <span class="math inline">\(j\)</span> em <span class="math inline">\(n_{ij}\)</span> passos e volta para <span class="math inline">\(i\)</span> em <span class="math inline">\(n_{ji}\)</span> passos se <span class="math inline">\(n_{ij}+n_{ji}=n_j\)</span> é um múltiplo de <span class="math inline">\(k\)</span>. Agora, seja <span class="math inline">\(m\)</span> um valor tal que <span class="math inline">\(p_{jj}^{(m)}&gt;0\)</span>. Considere então um passeio maior, saindo de <span class="math inline">\(i\)</span> echegando em <span class="math inline">\(j\)</span> em <span class="math inline">\(n_{ij}\)</span> passos, retornando para <span class="math inline">\(j\)</span> depois de <span class="math inline">\(m\)</span> passos e e finalmente chegando de <span class="math inline">\(i\)</span> em <span class="math inline">\(n_{ji}\)</span> passos. Então, esse passeio, com <span class="math inline">\(n_j+m\)</span> passos, também deve ser múltiplo de <span class="math inline">\(k\)</span>, o que implica que <span class="math inline">\(m\)</span> também é múltiplo de <span class="math inline">\(k\)</span> e, portanto <span class="math inline">\(d_j=k\)</span>.</p>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 8.8</strong></span> Considere a cadeia de Markov com as seguintes probabilidades de transição</p>
+<p><span class="math display">\[\begin{array}{c|cccccc}\hline
+i\setminus j &amp; 0 &amp; 1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 \\ \hline
+0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+1 &amp; 0,5 &amp; 0 &amp; 0,5 &amp; 0 &amp; 0 &amp; 0 \\
+2 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 \\
+3 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \\
+4 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 \\
+5 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1\\ \hline \end{array}\]</span></p>
+<ol type="a">
+<li><p>Identifique as classes e classifique-as como recorrenteou transiente</p></li>
+<li><p>Determine o período de cada classe.</p></li>
+</ol>
+</div>
+</section>
+<section id="distribuição-estacionária" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="distribuição-estacionária"><span class="header-section-number">8.4</span> Distribuição estacionária</h2>
+<p>Até o presente momento, as cadeias de Markov foram caracterizadas pela probabilidade de transição. De fato, a probabilidade do processo estar no estado <span class="math inline">\(j\)</span> no tempo <span class="math inline">\(n\)</span> é dada por</p>
+<p><span class="math display">\[P(X_n=j)=\sum_{i=-\infty}^\infty p_{ij}^{(n)}P(X_0=i),\]</span> de modo que, em princípio, essa probabilidade é calculável apenas quando a função de probabilidade de <span class="math inline">\(X_0\)</span> é conhecida.</p>
+<p>Considere o caso particular, no qual <span class="math inline">\(P(X_n=j)=\pi_j\)</span> não depende de <span class="math inline">\(n\)</span>. Isso implica que</p>
+<p><span class="math display">\[\pi_j=\sum_{i=-\infty}^\infty p_{ij}^{(n)}\pi_i.\]</span> Nessa caso, dizemos que <span class="math inline">\(\pi_i\)</span> é a distribuição estacionária da cadeia de Markov. Observe que</p>
+<p><span class="math display">\[\begin{align}\pi_j=\lim_{n\rightarrow\infty}\pi_j=\lim_{n\to\infty}\sum_{i=-\infty}^\infty p_{ij}^{(n)}\pi_i=\sum_{i=-\infty}^\infty\left[\lim_{n\to\infty}p_{ij}^{(n)}\right]\pi_i.\end{align}\]</span> Acontece que é natural supor que, para <span class="math inline">\(n\)</span> suficientemente grande, o estado inicial perca relevância em <span class="math inline">\(p_{ij}^{(n)}\)</span>, ou seja <span class="math inline">\(p_{ij}^{(n)}\approx a_j\)</span>, onde <span class="math inline">\(a_j\)</span> não depende de <span class="math inline">\(i\)</span>. Mas, nesse caso</p>
+<p><span class="math display">\[\begin{align}\pi_j=\sum_{i=-\infty}^\infty\left[\lim_{n\to\infty}p_{ij}^{(n)}\right]\pi_i=a_j\sum_{i=-\infty}^\infty \pi_i=a_j,\end{align}\]</span> e, portanto, <span class="math display">\[\pi_j=\lim_{n\rightarrow\infty}p_{ij}^{(n)}.\]</span></p>
+<p>Portanto, a existência da distribuição estacionária está intimamente relacionada com o comportamento de <span class="math inline">\(p_{ij}^{(n)}\)</span> quando <span class="math inline">\(n\to\infty\)</span>.</p>
+<div id="prp-" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 8.3</strong></span> Estados transientes não podem ter distribuição estacionária.</p>
+<p><strong>Demonstração intuitiva.</strong> Se <span class="math inline">\(j\)</span> é transiente, então <span class="math inline">\(f_j&lt;1\)</span>, o que implica que, em algum momento, esse estado nunca mais será visitado. Portanto <span class="math inline">\(p_{ij}^{(n)}\to 0\)</span> quando <span class="math inline">\(n\to \infty\)</span>.</p>
+</div>
+<div id="prp-" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 8.4</strong></span> Cadeias com mais de uma classe não tem distribuição estacionária.</p>
+<p><strong>Demonstração intuitiva.</strong> Suponha que a cadeia possui duas classes, <span class="math inline">\(C_1\)</span> e <span class="math inline">\(C_2\)</span>. Como os estados entre as classes não se comunicam, temos as seguintes situações:</p>
+<ul>
+<li><p>Uma classe é recorrente e a outra transiente: nesse caso, por causa dos estados transientes, não há distribuição estacionária.</p></li>
+<li><p>As duas são recorrentes. Nesse caso, uma classe não pode ser acessível a partir da outra e a cadeia está sujeita ao estado inicial em <span class="math inline">\(X_0\)</span>, logo não há distribuição estacionária.</p></li>
+</ul>
+</div>
+<div id="prp-" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 8.5</strong></span> Considere uma cadeia com apenas uma classe recorrente, com período maior que 1. Então, não há distribuição estacionária.</p>
+<p><strong>Demonstração intuitiva.</strong> Se o período de <span class="math inline">\(j\)</span> é <span class="math inline">\(k&gt;1\)</span>, então <span class="math inline">\(p_{ij}^{(n)}=0\)</span> para todo <span class="math inline">\(n\)</span> não múltiplo de <span class="math inline">\(k\)</span>. Logo para a sequência <span class="math inline">\(p_{ij}^{(1)},p_{ij}^{(2)},\ldots\)</span> existe uma subsequência que converge para zero e, portanto, não pode existir <span class="math inline">\(\lim_{n\rightarrow\infty}p_{ij}^{(n)}\)</span>.</p>
+</div>
+<div id="prp-" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 8.6</strong></span> Cadeias com uma única classe, recorrente e aperiódica, com um número finito de estados, tem distribuição estacionária.</p>
+</div>
+<p>Para uma cadeia com estados <span class="math inline">\(\{0,1,\ldots,m\}\)</span>, auando a distribuição estacionária existe, ela pode ser encontrada resolvendo</p>
+<p><span class="math display">\[\pi_{j}=\sum_{i=0}^m p_{ij}\pi_i\]</span> com a restrição <span class="math inline">\(\sum_{i=1}^m\pi_i=1\)</span>.</p>
+<div class="alert alert-success">
+<p><strong>Importante.</strong> A distribuição estacionária é interpretada como distribuição em longo prazo, pois as frequências relativas dos estados da cadeia tendem para a distribuição estacionária.</p>
+</div>
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Example 8.6</strong></span> Considere a cadeia de Markov com as seguintes probabilidades de transição <span class="math inline">\(p_{ij}\)</span>:</p>
+<p><span class="math display">\[\begin{array}{c|cc}\hline
+i\setminus j &amp; 0 &amp; 1 \\ \hline
+0 &amp; 0,2 &amp; 0,8 \\
+1 &amp; 0,7 &amp; 0,3\\\hline\end{array}\]</span></p>
+<p>É simples mostrar que a cadeia tem uma única classe recorrente e aperiódica. Temos então que a distribuição estacionária satisfaz</p>
+<p><span class="math display">\[\begin{align}\pi_0&amp;=p_{00}\pi_0+p_{10}\pi_1=0,2\pi_0+0,7\pi_1 \\ \pi_1&amp;=p_{01}\pi_0+p_{11}\pi_1=0,8\pi_0+0,3\pi_1\\
+1&amp;=\pi_0+\pi_1\end{align}\]</span></p>
+<p>Pela restrição de soma 1, temos que <span class="math inline">\(\pi_0=1-\pi_1\)</span> e substituindo essa informação na primeira equação teremos</p>
+<p><span class="math display">\[(1-\pi_1)=0,2(1-\pi_1)+0,7\pi_1\Rightarrow \pi_1=\frac{8}{15}\]</span> e, por consequência, <span class="math inline">\(\pi_0=7/15\)</span>.</p>
+</div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 8.9</strong></span> Uma empresa de streaming classifica seus clientes em três estados mensais:</p>
+<ul>
+<li><p>Estado 0 (Inativo): O cliente não assinou o serviço.</p></li>
+<li><p>Estado 1 (Básico): O cliente assinou o plano simples.</p></li>
+<li><p>Estado 2 (Premium): O cliente assinou o plano completo com 4K.</p></li>
+</ul>
+<p>A matriz de transição <span class="math inline">\(P\)</span> entre os meses é:</p>
+<p><span class="math display">\[\begin{array}{c|ccc}i\setminus j &amp; 0 &amp; 1 &amp; 2 \\ \hline0 &amp; 0,5 &amp; 0,5 &amp; 0 \\1 &amp; 0,2 &amp; 0,5 &amp; 0,3 \\2 &amp; 0 &amp; 0,4 &amp; 0,6\end{array}\]</span></p>
+<ol type="a">
+<li><p>Verifique se a cadeia possui uma única classe recorrente e é aperiódica.</p></li>
+<li><p>Encontre a distribuição estacionária</p></li>
+<li><p>Se o serviço tiver 1 milhão de clientes em potencial, quantos estarão no plano Premium no longo prazo?</p></li>
+</ol>
+</div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 8.10</strong></span> Uma fábrica monitora uma máquina essencial que pode estar em três estados:</p>
+<ul>
+<li><p>Estado 0: Operando perfeitamente.</p></li>
+<li><p>Estado 1: Operando com falhas menores (requer atenção).</p></li>
+<li><p>Estado 2: Quebrada (parada total).</p></li>
+</ul>
+<p>A matriz de transição semanal é:</p>
+<p><span class="math display">\[\begin{array}{c|ccc}i\setminus j &amp; 0 &amp; 1 &amp; 2 \\ \hline0 &amp; 0,7 &amp; 0,2 &amp; 0,1 \\1 &amp; 0 &amp; 0,6 &amp; 0,4 \\2 &amp; 1 &amp; 0 &amp; 0\end{array}\]</span></p>
+<ol type="a">
+<li><p>Desenhe o grafo.</p></li>
+<li><p>Verifique se a cadeia é irredutível e aperiódica.</p></li>
+<li><p>Calcule a distribuição estacionária</p></li>
+<li><p>Se o custo de manter a máquina parada (estado 2) é de R$ 10.000,00 por semana, qual é o gasto médio semanal esperado com quebras no longo prazo?</p></li>
+</ol>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./provas.html" class="pagination-link" aria-label="Provas anteriores resolvidas">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Provas anteriores resolvidas</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./references.html" class="pagination-link" aria-label="References">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
