@@ -507,4 +507,20 @@ $$Y_n = \frac{1}{\bar{X}_n}$$
 $$W_n = \frac{\sqrt{n} \left( \bar{X}_n - \frac{1}{\lambda} \right)}{\bar{X}_n}$$
 
 (**Nota**: Observe que, assim como nos exercícios anteriores, o parâmetro $\lambda$ "sumiu" do denominador, permitindo que utilizemos apenas a média amostral $\bar{X}_n$ para estimar a variabilidade da estimativa).
+
+## Exercícios de fixação
+
+::: {#exr-}
+Seja $X_1, X_2, \ldots$ uma sequência de variáveis aleatórias i.i.d. com distribuição Exponencial($\lambda$). Sabemos que $E(X_i) = 1/\lambda$ e $Var(X_i) = 1/\lambda^2$. Defina a estatística:$$K_n = \frac{1}{n} \sum_{i=1}^n \sqrt{X_i}$$
+Considerando que $E(\sqrt{X_i}) = \Gamma(3/2)/\sqrt{\lambda} = \frac{\sqrt{\pi}}{2\sqrt{\lambda}}$, determine para qual valor constante $c$ a sequência $K_n$ converge em probabilidade quando $n \to \infty$. Justifique citando a Lei Fraca utilizada.
+:::
+
+::: {#exr-}
+Considere uma sequência $X_1, X_2, \ldots$ de variáveis aleatórias independentes com distribuição Qui-quadrado com $k=1$ grau de liberdade ($X_i \sim \chi^2_1$). Sabe-se que $E(X_i) = 1$ e $Var(X_i) = 2$.
+
+a) Pelo TCL, qual a distribuição limite de $Z_n = \sqrt{n} \frac{(\bar{X}_n - 1)}{\sqrt{2}}$?
+
+b) Mostre que $\bar{X}_n^2 \xrightarrow{P} 1$.
+
+c) Utilizando o Teorema de Slutsky, encontre a distribuição limite de:$$W_n = \sqrt{n} \frac{(\bar{X}_n - 1)}{\sqrt{2}\bar{X}_n}$$
 ::: 

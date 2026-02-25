@@ -184,14 +184,14 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./provas.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Provas anteriores resolvidas</span></span></a>
+  <a href="./cadeias_de_markov.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Introdução às cadeias de Markov</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./cadeias_de_markov.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Introdução às cadeias de Markov</span></span></a>
+  <a href="./provas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Provas anteriores resolvidas</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -213,6 +213,7 @@ window.Quarto = {
   <li><a href="#covariância" id="toc-covariância" class="nav-link active" data-scroll-target="#covariância"><span class="header-section-number">5.1</span> Covariância</a></li>
   <li><a href="#correlação" id="toc-correlação" class="nav-link" data-scroll-target="#correlação"><span class="header-section-number">5.2</span> Correlação</a></li>
   <li><a href="#esperança-condicional" id="toc-esperança-condicional" class="nav-link" data-scroll-target="#esperança-condicional"><span class="header-section-number">5.3</span> Esperança condicional</a></li>
+  <li><a href="#exercícios-de-fixação" id="toc-exercícios-de-fixação" class="nav-link" data-scroll-target="#exercícios-de-fixação"><span class="header-section-number">5.4</span> Exercícios de fixação</a></li>
   </ul>
 </nav>
     </div>
@@ -497,6 +498,32 @@ P(Y=y) &amp; \mathbf{0,30} &amp; \mathbf{0,30} &amp; \mathbf{0,40} &amp; \mathbf
 <p><span class="math display">\[E(X)=E(E(X|Y)).\]</span></p>
 <p>Além disso, se a variância for finita, então,</p>
 <p><span class="math display">\[Var(X)=E(Var(X|Y))+Var(E(X|Y)).\]</span></p>
+</div>
+</section>
+<section id="exercícios-de-fixação" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="exercícios-de-fixação"><span class="header-section-number">5.4</span> Exercícios de fixação</h2>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 5.11</strong></span> Seja <span class="math inline">\(X\)</span> uma variável aleatória tal que <span class="math inline">\(E(X) = 0\)</span> e <span class="math inline">\(Var(X) = 9\)</span>. Considere <span class="math inline">\(Y = -2X\)</span>. Encontre <span class="math inline">\(Cov(X,Y)\)</span> e <span class="math inline">\(\rho(X,Y)\)</span></p>
+</div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 5.12</strong></span> Seja a função de densidade conjunta de <span class="math inline">\((X, Y)\)</span> dada por:<span class="math display">\[f(x,y) = (x + y) \cdot I_{(0,1)}(x) \cdot I_{(0,1)}(y).\]</span></p>
+<p>Calcule <span class="math inline">\(Cov(X, Y)\)</span> e determine se as variáveis tendem a variar no mesmo sentido ou em sentidos opostos.</p>
+</div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 5.13</strong></span> Suponha que <span class="math inline">\(X\)</span> tenha uma distribuição simétrica em relação a zero (ou seja, <span class="math inline">\(E(X) = E(X^3) = 0\)</span>) e defina <span class="math inline">\(Y = X^2\)</span>.</p>
+<ol type="a">
+<li><p>Mostre que <span class="math inline">\(Cov(X, Y) = 0\)</span>.</p></li>
+<li><p>Explique por que, apesar da covariância nula, <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> não são independentes.</p></li>
+</ol>
+</div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 5.14</strong></span> Considere três variáveis <span class="math inline">\(X, Y\)</span> e <span class="math inline">\(Z\)</span> tais que <span class="math inline">\(Var(X)=4, Var(Y)=9, Var(Z)=1\)</span> e todas são independentes entre si. Defina <span class="math inline">\(U = 2X - Y\)</span> e <span class="math inline">\(V = X + 3Z\)</span>.Calcule <span class="math inline">\(Cov(U, V)\)</span>.</p>
+</div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 5.15</strong></span> A correlação entre o consumo de combustível (<span class="math inline">\(X\)</span>) e a distância percorrida (<span class="math inline">\(Y\)</span>) é <span class="math inline">\(\rho(X, Y) = 0,85\)</span>. Se mudarmos a unidade de <span class="math inline">\(X\)</span> de litros para galões (multiplicando por <span class="math inline">\(0,26\)</span>) e subtrairmos uma taxa fixa de manutenção de <span class="math inline">\(Y\)</span>, qual será a nova correlação? Justifique com base nas propriedades de invariância.</p>
+</div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 5.16</strong></span> Seja <span class="math inline">\((X, Y)\)</span> tal que <span class="math inline">\(Y \sim \text{Exponencial}(1)\)</span> e, dado <span class="math inline">\(Y=y\)</span>, a variável <span class="math inline">\(X\)</span> tem distribuição Uniforme no intervalo <span class="math inline">\((0, y)\)</span>. Encontre <span class="math inline">\(E(X|Y=y)\)</span>.</p>
 </div>
 
 

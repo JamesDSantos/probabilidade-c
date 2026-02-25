@@ -608,6 +608,7 @@ Cadeias com mais de uma classe não tem distribuição estacionária.
 * Uma classe é recorrente e a outra transiente: nesse caso, por causa dos estados transientes, não há distribuição estacionária.
 
 * As duas são recorrentes. Nesse caso, uma classe não pode ser acessível a partir da outra e a cadeia está sujeita ao estado inicial em $X_0$, logo não há distribuição estacionária. 
+
 :::
 
 ::: {#prp-}
@@ -694,3 +695,69 @@ c. Calcule a distribuição estacionária
 d. Se o custo de manter a máquina parada (estado 2) é de R$ 10.000,00 por semana, qual é o gasto médio semanal esperado com quebras no longo prazo?
 
 :::
+
+
+## Exercícios de fixação
+
+
+::: {#exr-}
+Um prédio possui 3 andares (0, 1 e 2). Um elevador se movimenta da seguinte forma: se ele está no andar 0, no próximo passo ele vai para o andar 1 com probabilidade 1. Se ele está no andar 2, ele vai para o andar 1 com probabilidade 1. Se ele está no andar 1, ele escolhe o próximo andar (0 ou 2) com probabilidade 0,5 para cada. Defina o conjunto de estados $\mathcal{S}$ e encontre as probabilidaes de transição.
+:::
+
+::: {#exr-}
+Uma loja de eletrônicos tem capacidade para 2 consoles em estoque. No fim de cada dia, se o estoque estiver zerado (estado 0), a loja recebe 2 novos consoles para o dia seguinte. Se houver 1 ou 2 consoles, a loja não faz pedido. A probabilidade de um cliente comprar um console em um dia é 0,4 (supunha que no máximo 1 cliente tenta comprar por dia).
+
+a) Construa o grafo desta cadeia de Markov com os estados {0, 1, 2}.
+
+b) Determine as probabilidades de transição $p_{02}$ e $p_{10}$.
+:::
+
+::: {#exr-}
+Considere uma cadeia de Markov com as seguintes probabilidades de transição:
+
+$$\begin{array}{c|cccc}\hline
+i\setminus j & 0 & 1 & 2 & 3 \\ \hline
+0 & 1 & 0 & 0 & 0 \\ 
+1& 0,2 & 0,3 & 0,5 & 0 \\
+2&0 & 0 & 0,4 & 0,6 \\
+3& 0 & 0 & 0 & 1 \\ \hline \end{array}$$
+
+a) Desenhe o grafo da cadeia.
+
+b) Identifique as classes.
+
+c) Classifique cada classe como transiente ou recorrente e encontre seu período.
+:::
+
+::: {#exr-}
+Determine o período ($d_i$) do estado 0 para as seguintes situações:
+
+a) $p_{01}=1, p_{12}=1, p_{20}=1$.
+
+b) $p_{01}=1, p_{10}=0,5, p_{12}=0,5, p_{20}=1$.
+
+c) O estado 0 possui um arco para si mesmo ($p_{00} > 0$). Qual é o seu período?
+:::
+
+::: {#exr-}
+Em uma cidade, o clima pode ser Seco (0) ou Chuvoso (1). As probabilidades de transição são
+
+$$\begin{array}{c|cc}\hline i\setminus j & 0 & 1 \\\hline  0 &0,8 & 0,2 \\ 1&0,4 & 0,6 \\ \hline\end{array}$$
+
+a) Calcule a distribuição estacionária $(\pi_0, \pi_1)$.
+
+b) Um vendedor de sorvetes lucra R\$200,00 em dias secos e perde R\$ 50,00 em dias chuvosos. Qual o lucro médio diário esperado no longo prazo?
+:::
+
+
+::: {#exr-}
+Três operadoras de celular (A, B e C) disputam o mercado.  As probabilidades de transição mensal dos clientes são entre as operadoras são:
+ 
+ * De $A$: 70% ficam na $A$, 20% vão para $B$, 10% vão para $C$.
+ 
+ * De $B$: 10% vão para $A$, 80% ficam na $B$, 10% vão para $C$.
+ 
+ * De $C$: 10% vão para $A$, 10% vão para $B$, 80% ficam na $C$.
+ 
+ Pergunta: No longo prazo, qual operadora terá a maior fatia de mercado? 
+ :::

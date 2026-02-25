@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>8&nbsp; Introdução às cadeias de Markov – Probabilidade C</title>
+<title>7&nbsp; Introdução às cadeias de Markov – Probabilidade C</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./references.html" rel="next">
-<link href="./provas.html" rel="prev">
+<link href="./provas.html" rel="next">
+<link href="./convergencia.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -123,7 +123,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./cadeias_de_markov.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Introdução às cadeias de Markov</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./cadeias_de_markov.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Introdução às cadeias de Markov</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -194,14 +194,14 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./provas.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Provas anteriores resolvidas</span></span></a>
+  <a href="./cadeias_de_markov.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Introdução às cadeias de Markov</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./cadeias_de_markov.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Introdução às cadeias de Markov</span></span></a>
+  <a href="./provas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Provas anteriores resolvidas</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -220,10 +220,11 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#processos-estocásticos-propriedade-de-markov-e-objetivos-do-capítulo" id="toc-processos-estocásticos-propriedade-de-markov-e-objetivos-do-capítulo" class="nav-link active" data-scroll-target="#processos-estocásticos-propriedade-de-markov-e-objetivos-do-capítulo"><span class="header-section-number">8.1</span> Processos estocásticos, propriedade de Markov e objetivos do capítulo</a></li>
-  <li><a href="#definição-e-exemplos-de-cadeias-de-markov-à-tempo-discreto" id="toc-definição-e-exemplos-de-cadeias-de-markov-à-tempo-discreto" class="nav-link" data-scroll-target="#definição-e-exemplos-de-cadeias-de-markov-à-tempo-discreto"><span class="header-section-number">8.2</span> Definição e exemplos de cadeias de Markov à tempo discreto</a></li>
-  <li><a href="#classificação-de-estados" id="toc-classificação-de-estados" class="nav-link" data-scroll-target="#classificação-de-estados"><span class="header-section-number">8.3</span> Classificação de estados</a></li>
-  <li><a href="#distribuição-estacionária" id="toc-distribuição-estacionária" class="nav-link" data-scroll-target="#distribuição-estacionária"><span class="header-section-number">8.4</span> Distribuição estacionária</a></li>
+  <li><a href="#processos-estocásticos-propriedade-de-markov-e-objetivos-do-capítulo" id="toc-processos-estocásticos-propriedade-de-markov-e-objetivos-do-capítulo" class="nav-link active" data-scroll-target="#processos-estocásticos-propriedade-de-markov-e-objetivos-do-capítulo"><span class="header-section-number">7.1</span> Processos estocásticos, propriedade de Markov e objetivos do capítulo</a></li>
+  <li><a href="#definição-e-exemplos-de-cadeias-de-markov-à-tempo-discreto" id="toc-definição-e-exemplos-de-cadeias-de-markov-à-tempo-discreto" class="nav-link" data-scroll-target="#definição-e-exemplos-de-cadeias-de-markov-à-tempo-discreto"><span class="header-section-number">7.2</span> Definição e exemplos de cadeias de Markov à tempo discreto</a></li>
+  <li><a href="#classificação-de-estados" id="toc-classificação-de-estados" class="nav-link" data-scroll-target="#classificação-de-estados"><span class="header-section-number">7.3</span> Classificação de estados</a></li>
+  <li><a href="#distribuição-estacionária" id="toc-distribuição-estacionária" class="nav-link" data-scroll-target="#distribuição-estacionária"><span class="header-section-number">7.4</span> Distribuição estacionária</a></li>
+  <li><a href="#exercícios-de-fixação" id="toc-exercícios-de-fixação" class="nav-link" data-scroll-target="#exercícios-de-fixação"><span class="header-section-number">7.5</span> Exercícios de fixação</a></li>
   </ul>
 </nav>
     </div>
@@ -232,7 +233,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Introdução às cadeias de Markov</span></h1>
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Introdução às cadeias de Markov</span></h1>
 </div>
 
 
@@ -249,14 +250,14 @@ window.Quarto = {
 </header>
 
 
-<section id="processos-estocásticos-propriedade-de-markov-e-objetivos-do-capítulo" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="processos-estocásticos-propriedade-de-markov-e-objetivos-do-capítulo"><span class="header-section-number">8.1</span> Processos estocásticos, propriedade de Markov e objetivos do capítulo</h2>
+<section id="processos-estocásticos-propriedade-de-markov-e-objetivos-do-capítulo" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="processos-estocásticos-propriedade-de-markov-e-objetivos-do-capítulo"><span class="header-section-number">7.1</span> Processos estocásticos, propriedade de Markov e objetivos do capítulo</h2>
 <p>Considere um conjunto <span class="math inline">\(\mathcal{T}\subseteq \mathbb{R}\)</span>, doravante denominado <strong>conjunto de índices</strong>. Para cada <span class="math inline">\(t\in\mathcal{T}\)</span>, seja <span class="math inline">\(X(t)\)</span> uma variável aleatória. Então, o conjunto <span class="math inline">\(\{X(t),t\in\mathcal{T}\}\)</span> é denominado <strong>processo estocástico.</strong></p>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 8.1</strong></span> <strong>Amostra aleatória.</strong> Seja <span class="math inline">\(X_1,\ldots,X_n\)</span> uma amostra aleatória, ou seja, uma coleção de variáveis aleatórias independentes e identicamente distribuídas. Fazendo <span class="math inline">\(\mathcal{T}=\{1,\ldots,n\}\)</span> e <span class="math inline">\(_t=X(t)\)</span>, temos que a amostra aleatória é um processo estocástico.</p>
+<p><span class="theorem-title"><strong>Example 7.1</strong></span> <strong>Amostra aleatória.</strong> Seja <span class="math inline">\(X_1,\ldots,X_n\)</span> uma amostra aleatória, ou seja, uma coleção de variáveis aleatórias independentes e identicamente distribuídas. Fazendo <span class="math inline">\(\mathcal{T}=\{1,\ldots,n\}\)</span> e <span class="math inline">\(_t=X(t)\)</span>, temos que a amostra aleatória é um processo estocástico.</p>
 </div>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 8.2</strong></span> Um dos objetivos principais dos processos estocásticos é relacionar um comportamento aleatório com um índice de interesse. Por exemplo, suponha que <span class="math inline">\(X(t)\)</span>, com <span class="math inline">\(t&gt;0\)</span>, é o número de vendas realizadas até o tempo <span class="math inline">\(t\)</span>. Obviamente, são esperadas mais vendas com o aumento de <span class="math inline">\(t\)</span> e um modo simples de expressar isso é supor que</p>
+<p><span class="theorem-title"><strong>Example 7.2</strong></span> Um dos objetivos principais dos processos estocásticos é relacionar um comportamento aleatório com um índice de interesse. Por exemplo, suponha que <span class="math inline">\(X(t)\)</span>, com <span class="math inline">\(t&gt;0\)</span>, é o número de vendas realizadas até o tempo <span class="math inline">\(t\)</span>. Obviamente, são esperadas mais vendas com o aumento de <span class="math inline">\(t\)</span> e um modo simples de expressar isso é supor que</p>
 <p><span class="math display">\[E(X(t))=\mu t,\]</span> onde <span class="math inline">\(\mu\)</span> representa a média de vendas por unidade de tempo. Diferente das amostras aleatórias, para <span class="math inline">\(t\neq s\)</span>, <span class="math inline">\(X(t)\)</span> <strong>não tem a mesma distribuição</strong> que <span class="math inline">\(X(s)\)</span>. Além disso, se <span class="math inline">\(s&lt;t\)</span> <span class="math display">\[E(X(s))=\mu s\leq\mu t =E(X(t))\]</span> e, como o conhecimento de <span class="math inline">\(X(s)\)</span> altera nosso conhecimento sobre <span class="math inline">\(X(t)\)</span>, temos que as variáveis <span class="math inline">\(X(s)\)</span> e <span class="math inline">\(X(t)\)</span> são <strong>dependentes</strong>.</p>
 </div>
 <p>Seja <span class="math inline">\(\{X(t),t\in\mathcal{T}\}\)</span> um processo estocástico. Considere que observamos o processo até o índice <span class="math inline">\(s\)</span>. Considere a probabilidade do processo no índice <span class="math inline">\(t+s\)</span> estar no conjunto <span class="math inline">\(A\)</span>:</p>
@@ -270,23 +271,23 @@ window.Quarto = {
 <li><p>apresentar as ditribuições estacionárias</p></li>
 </ul>
 </section>
-<section id="definição-e-exemplos-de-cadeias-de-markov-à-tempo-discreto" class="level2" data-number="8.2">
-<h2 data-number="8.2" class="anchored" data-anchor-id="definição-e-exemplos-de-cadeias-de-markov-à-tempo-discreto"><span class="header-section-number">8.2</span> Definição e exemplos de cadeias de Markov à tempo discreto</h2>
+<section id="definição-e-exemplos-de-cadeias-de-markov-à-tempo-discreto" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="definição-e-exemplos-de-cadeias-de-markov-à-tempo-discreto"><span class="header-section-number">7.2</span> Definição e exemplos de cadeias de Markov à tempo discreto</h2>
 <p>Doravante, vamos considerar que <span class="math inline">\(\mathcal{T}=\{0,1,\ldots\}\)</span>. Deste modo, a notação <span class="math inline">\(X(t)\)</span> será substituída por <span class="math inline">\(X_t\)</span>. Além disso, <span class="math inline">\(t\)</span> será interpretado como tempo de ocorrência. Por exemplo, <span class="math inline">\(\{X_{10}=3\}\)</span> é evento da ocorrência de 3 no tempo <span class="math inline">\(10\)</span>.</p>
 <p>Para um tempo <span class="math inline">\(t&gt;0\)</span> qualquer, o incremento de tempo <span class="math inline">\(s\)</span> será denominado passo, como o passo do ponteiro de um relógio. Por exemplo <span class="math inline">\(t+1\)</span> é um passo após o tempo <span class="math inline">\(t\)</span>.</p>
 <p>Vamos também considerar que todas as variáveis aleatórias do processo são discretas. O conjunto de todos os valores possíveis para as variáveis do processo é denominado <strong>conjunto dos estados</strong> e cada valor em particular é denominado <strong>estado.</strong></p>
 <p>Vamos definir formalmente o nosso processo de interesse</p>
 <div id="def-" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 8.1</strong></span> Dizemos que o processo estocástico <span class="math inline">\(\{X_t, t=0,1,\ldots\}\)</span> é uma cadeia de Markov se, para quaisquer estados <span class="math inline">\(i\)</span> e <span class="math inline">\(j\)</span>, <span class="math display">\[P(X_{n+1}=j|X_n=i,X_{n-1}=x_{n-1}\ldots,X_0=x_0)=P(X_{n+1}=j|X_n=i)\]</span></p>
+<p><span class="theorem-title"><strong>Definition 7.1</strong></span> Dizemos que o processo estocástico <span class="math inline">\(\{X_t, t=0,1,\ldots\}\)</span> é uma cadeia de Markov se, para quaisquer estados <span class="math inline">\(i\)</span> e <span class="math inline">\(j\)</span>, <span class="math display">\[P(X_{n+1}=j|X_n=i,X_{n-1}=x_{n-1}\ldots,X_0=x_0)=P(X_{n+1}=j|X_n=i)\]</span></p>
 </div>
 <p>Note que, para uma cadeia de Markov, é possível que, para <span class="math inline">\(m\neq n\)</span>|</p>
 <p><span class="math display">\[P(X_{n+1}=j|X_n=i)\neq P(X_{m+1}=j|X_m=i).\]</span> Estamos interessados apenas em cadeinas nas quais isso não ocorre.</p>
 <div id="def-" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 8.2</strong></span> Dizemos uma cadeia de Markov <span class="math inline">\(\{X_t, t=0,1,\ldots\}\)</span> é *<strong>homogênea</strong> se, para quaisquer estados <span class="math inline">\(i\)</span> e <span class="math inline">\(j\)</span> e para quaisquer tempos <span class="math inline">\(n,m\)</span>, <span class="math display">\[P(X_{n+1}=j|X_n=i)=P(X_{m+1}=j|X_m=i).\]</span></p>
+<p><span class="theorem-title"><strong>Definition 7.2</strong></span> Dizemos uma cadeia de Markov <span class="math inline">\(\{X_t, t=0,1,\ldots\}\)</span> é *<strong>homogênea</strong> se, para quaisquer estados <span class="math inline">\(i\)</span> e <span class="math inline">\(j\)</span> e para quaisquer tempos <span class="math inline">\(n,m\)</span>, <span class="math display">\[P(X_{n+1}=j|X_n=i)=P(X_{m+1}=j|X_m=i).\]</span></p>
 </div>
 <p>Doravante, todas as cadeias apresentadas serão consideradas homogêneas. Então, para <span class="math inline">\(n\)</span> arbitrário, a probabilidade <span class="math display">\[p_{ij}=P(X_{n+1}=j|X_n=i)\]</span> será denominada probabilidade de transição (em um passo).</p>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 8.3</strong></span> <strong>O passeio do sapo.</strong> Um sapo vive em uma lagoa, movimentando-se por nove vitória régias, conforme a ilustração abaixo.</p>
+<p><span class="theorem-title"><strong>Example 7.3</strong></span> <strong>O passeio do sapo.</strong> Um sapo vive em uma lagoa, movimentando-se por nove vitória régias, conforme a ilustração abaixo.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -313,7 +314,7 @@ window.Quarto = {
 <p><span class="math display">\[p_{5j}=\begin{cases}\frac{1}{4},&amp;j=2,4,6,8\\0,&amp;\hbox{caso contrário}\end{cases}\]</span></p>
 </div>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 8.1</strong></span> Um rato é colocado no Estado 1 de um labirinto composto por 6 salas. Ele se move entre as salas adjacentes escolhendo uma ao acaso, conforme a ilustração abaixo. Se o rato chegar à sala 6, ele encontra o queijo e para de se mover. Se o rato entrar na sala 5, ele fica preso na ratoeira. Seja <span class="math inline">\(X_n\)</span> a sala (estado) no qual o rato se encontra no tempo <span class="math inline">\(n\)</span>. Determine todas as probabilidades de transição.</p>
+<p><span class="theorem-title"><strong>Exercise 7.1</strong></span> Um rato é colocado no Estado 1 de um labirinto composto por 6 salas. Ele se move entre as salas adjacentes escolhendo uma ao acaso, conforme a ilustração abaixo. Se o rato chegar à sala 6, ele encontra o queijo e para de se mover. Se o rato entrar na sala 5, ele fica preso na ratoeira. Seja <span class="math inline">\(X_n\)</span> a sala (estado) no qual o rato se encontra no tempo <span class="math inline">\(n\)</span>. Determine todas as probabilidades de transição.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -325,7 +326,7 @@ window.Quarto = {
 </div>
 </div>
 <div id="def-" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 8.3</strong></span> <strong>Grafo de uma cadeia</strong></p>
+<p><span class="theorem-title"><strong>Definition 7.3</strong></span> <strong>Grafo de uma cadeia</strong></p>
 <p>Um grafo orientado é formado por um conjunto de vértices e um conjunto de arcos. O grafo de uma cadeia de Markov é construído da seguinte forma:</p>
 <ol type="1">
 <li><p>O conjunto de vértices é composto pelos estados do processo</p></li>
@@ -334,7 +335,7 @@ window.Quarto = {
 </ol>
 </div>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 8.4</strong></span> Considere uma cadeia de Markov onde <span class="math inline">\(X_n=1\)</span> se chove no dia <span class="math inline">\(n\)</span> e <span class="math inline">\(X_{n}=0\)</span> em caso contrário. Suponha que:</p>
+<p><span class="theorem-title"><strong>Example 7.4</strong></span> Considere uma cadeia de Markov onde <span class="math inline">\(X_n=1\)</span> se chove no dia <span class="math inline">\(n\)</span> e <span class="math inline">\(X_{n}=0\)</span> em caso contrário. Suponha que:</p>
 <ul>
 <li><p>Dado que hoje choveu, a probabilidade de chover amanhã é <span class="math inline">\(\alpha\)</span></p></li>
 <li><p>Dado que não choveu hoje, a probabilidade de não chover amanhã é <span class="math inline">\(\beta\)</span></p></li>
@@ -348,18 +349,18 @@ window.Quarto = {
 <div id="fig-markov-chuva" class="cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-markov-chuva-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-e8a81ab2b3c9284f51a7" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-e8a81ab2b3c9284f51a7">{"x":{"diagram":"\ndigraph markov_chain {\n  # Configurações globais\n  graph [overlap = true, fontsize = 4, rankdir = LR]\n  \n  # Estilo dos Estados (Nós)\n  node [shape = circle, fixedsize = true, width = 0.4, color = black, fontname = Helvetica]\n  \n  # Estilo dos arcos\n  edge [arrowsize = 0.4, fontsize = 12]\n  \n  0; 1;\n\n  # Transições (Arcos)\n  # O Graphviz usa códigos HTML para letras gregas: &alpha; e &beta;\n  0 -> 0 [label = <&beta;>]\n  0 -> 1 [label = <1-&beta;>]\n  1 -> 0 [label = <1-&alpha;>]\n  1 -> 1 [label = <&alpha;>]\n  \n  # Ajuste de curvas para os arcos não colidirem\n  edge [fontname = Helvetica, fontsize = 4]\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-a8d1bf989a662a5e8f23" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-a8d1bf989a662a5e8f23">{"x":{"diagram":"\ndigraph markov_chain {\n  # Configurações globais\n  graph [overlap = true, fontsize = 4, rankdir = LR]\n  \n  # Estilo dos Estados (Nós)\n  node [shape = circle, fixedsize = true, width = 0.4, color = black, fontname = Helvetica]\n  \n  # Estilo dos arcos\n  edge [arrowsize = 0.4, fontsize = 12]\n  \n  0; 1;\n\n  # Transições (Arcos)\n  # O Graphviz usa códigos HTML para letras gregas: &alpha; e &beta;\n  0 -> 0 [label = <&beta;>]\n  0 -> 1 [label = <1-&beta;>]\n  1 -> 0 [label = <1-&alpha;>]\n  1 -> 1 [label = <&alpha;>]\n  \n  # Ajuste de curvas para os arcos não colidirem\n  edge [fontname = Helvetica, fontsize = 4]\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-markov-chuva-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;8.1: Grafo da cadeia de Markov para o modelo de chuva/sol.
+Figure&nbsp;7.1: Grafo da cadeia de Markov para o modelo de chuva/sol.
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 8.2</strong></span> Todos os dias, João se desloca entre dois pontos: sua casa e seu trabalho. João tem apenas um guarda-chuva. Se no momento de seu deslocamento estiver chovendo, João utilizará seu guarda-chuva se o mesmo estiver no local. Caso contrário, João fará seu deslocamento na chuva. Além disso, João só leva consigo o guarda-chuva se estiver chovendo. Considere os seguintes estados:</p>
+<p><span class="theorem-title"><strong>Exercise 7.2</strong></span> Todos os dias, João se desloca entre dois pontos: sua casa e seu trabalho. João tem apenas um guarda-chuva. Se no momento de seu deslocamento estiver chovendo, João utilizará seu guarda-chuva se o mesmo estiver no local. Caso contrário, João fará seu deslocamento na chuva. Além disso, João só leva consigo o guarda-chuva se estiver chovendo. Considere os seguintes estados:</p>
 <ul>
 <li><p>0 - João está em casa com o guarda-chuva</p></li>
 <li><p>1- João está no trabalho com o guarda-chuva</p></li>
@@ -369,8 +370,8 @@ Figure&nbsp;8.1: Grafo da cadeia de Markov para o modelo de chuva/sol.
 <p>Sabendo que a probabilidade de estar chovendo quando João tem que sair de um local é de 0,25, construa o grafo dessa cadeia de Markov.</p>
 </div>
 </section>
-<section id="classificação-de-estados" class="level2" data-number="8.3">
-<h2 data-number="8.3" class="anchored" data-anchor-id="classificação-de-estados"><span class="header-section-number">8.3</span> Classificação de estados</h2>
+<section id="classificação-de-estados" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="classificação-de-estados"><span class="header-section-number">7.3</span> Classificação de estados</h2>
 <p>Um passeio é uma sequência de estados <span class="math inline">\(i_0,i_1, i_2, \dots, i_n\)</span> tal que, para cada par sucessivo, a probabilidade de transição é positiva (existe uma aresta conectando-os). Partindo de <span class="math inline">\(i_0\)</span>, a probabilidade do processo passar pelo caminho <span class="math inline">\(i_1,\ldots,i_n\)</span> é</p>
 <p><span class="math display">\[P(X_n=i_n,\ldots,X_1=i_1|X_0=i_0)=p_{i_{n-1}i_n}\cdots p_{0i_1}\]</span> Definimos por <span class="math inline">\(p_{ij}^{(n)}\)</span> como a probabilidade do processo sair do estado <span class="math inline">\(i\)</span> e chegar no estado <span class="math inline">\(j\)</span> em <span class="math inline">\(n\)</span> passos. Essa probabilidade é equivalente a soma das probabilidades de todos os passeios que saem de <span class="math inline">\(i\)</span> e chegam em <span class="math inline">\(j\)</span> em <span class="math inline">\(n\)</span> passos.</p>
 <p>. ::: {#exr-} Considere uma cadeia com três estados e as seguintes probabilidades de transição:</p>
@@ -382,7 +383,7 @@ p_{22}&amp;=0,6 \\ p_{20}&amp;=0,4\end{align}\]</span></p>
 <li><p>Calcule <span class="math inline">\(p_{00}^{(4)}\)</span>. :::</p></li>
 </ol>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 8.3</strong></span> Considere uma cadeia com quatro estados e as seguintes probabilidades de transição:</p>
+<p><span class="theorem-title"><strong>Exercise 7.3</strong></span> Considere uma cadeia com quatro estados e as seguintes probabilidades de transição:</p>
 <p><span class="math display">\[\begin{align}p_{01}&amp;=1\\ p_{11}&amp;=0,3\\ p_{12}&amp;=0,7\\
 p_{22}&amp;=0,6 \\ p_{20}&amp;=0,2\\ p_{23}&amp;=0,2\\p_{33}&amp;=1\end{align}\]</span></p>
 <ol type="a">
@@ -393,7 +394,7 @@ p_{22}&amp;=0,6 \\ p_{20}&amp;=0,2\\ p_{23}&amp;=0,2\\p_{33}&amp;=1\end{align}\]
 </ol>
 </div>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 8.4</strong></span> Considere uma cadeia com quatro estados e as seguintes probabilidades de transição:</p>
+<p><span class="theorem-title"><strong>Exercise 7.4</strong></span> Considere uma cadeia com quatro estados e as seguintes probabilidades de transição:</p>
 <p><span class="math display">\[\begin{align}p_{00}&amp;=0,8\\p_{01}&amp;=0,2\\ p_{10}&amp;=0,3\\ p_{11}&amp;=0,4\\
 p_{12}&amp;=0,3 \\ p_{22}&amp;=0,2\\ p_{23}&amp;=0,8\\p_{32}&amp;=05\\p_{33}&amp;=0,5\end{align}\]</span></p>
 <ol type="a">
@@ -406,26 +407,26 @@ p_{12}&amp;=0,3 \\ p_{22}&amp;=0,2\\ p_{23}&amp;=0,8\\p_{32}&amp;=05\\p_{33}&amp
 <p><span class="math display">\[f_i^{(n)}=P(X_n=i,X_{n-1}\neq i,\ldots,X_1\neq i|X_0=i).\]</span> Então, a probabilidade de que o processo saia de <span class="math inline">\(i\)</span> e volte para <span class="math inline">\(i\)</span> em algum momento é</p>
 <p><span class="math display">\[\begin{align} f_i &amp;=P(\cup_{n=1}^\infty \hbox{ {voltar em exatos $n$ passos}}) \\ &amp;=\sum_{n=1}^\infty P(\hbox{ {voltar em exatos $n$ passos}})\\&amp;=\sum_{n=1}^\infty f_i^{(n)} \end{align}\]</span></p>
 <div id="def-" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 8.4</strong></span> Dizemos que o estado <span class="math inline">\(i\)</span> é recorrente se <span class="math inline">\(f_i=1\)</span> e dizemos que ele é transiente se <span class="math inline">\(f_i&lt;1\)</span>.</p>
+<p><span class="theorem-title"><strong>Definition 7.4</strong></span> Dizemos que o estado <span class="math inline">\(i\)</span> é recorrente se <span class="math inline">\(f_i=1\)</span> e dizemos que ele é transiente se <span class="math inline">\(f_i&lt;1\)</span>.</p>
 </div>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 8.5</strong></span> Considerando o grafo da cadeia abaixo, classifique os estados como transientes e recorrentes.</p>
+<p><span class="theorem-title"><strong>Exercise 7.5</strong></span> Considerando o grafo da cadeia abaixo, classifique os estados como transientes e recorrentes.</p>
 <div class="cell" data-warnings="false">
 <div id="fig-markov" class="cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-markov-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-a44b6a00ff0eb253ff42" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-a44b6a00ff0eb253ff42">{"x":{"diagram":"\ndigraph markov_chain {\n  # Configurações globais\n  graph [overlap = true, fontsize = 4, rankdir = LR]\n  \n  # Estilo dos Estados (Nós)\n  node [shape = circle, fixedsize = true, width = 0.4, color = black, fontname = Helvetica]\n  \n  # Estilo dos arcos\n  edge [arrowsize = 0.4, fontsize = 12]\n  \n  0; 1; 2; 3; 4\n\n  # Transições (Arcos)\n  # O Graphviz usa códigos HTML para letras gregas: &alpha; e &beta;\n  0 -> 0 [label = \"0,2\"]\n  0 -> 1 [label = \"0,7\"]\n  0 -> 4 [label = \"0,1\"]\n  1 -> 0 [label = \"0,4\"]\n  1 -> 2 [label = \"0,6\"]\n  2 -> 2 [label = \"0,5\"]\n  2 -> 3 [label = \"0,5\"]\n  3 -> 2 [label = \"0,9\"]\n  3 -> 3 [label = \"0,1\"]\n  4 -> 4 [label = \"1\"]\n\n\n  # Ajuste de curvas para os arcos não colidirem\n  edge [fontname = Helvetica, fontsize = 4]\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-ac1f77bda8c2f6fd1514" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-ac1f77bda8c2f6fd1514">{"x":{"diagram":"\ndigraph markov_chain {\n  # Configurações globais\n  graph [overlap = true, fontsize = 4, rankdir = LR]\n  \n  # Estilo dos Estados (Nós)\n  node [shape = circle, fixedsize = true, width = 0.4, color = black, fontname = Helvetica]\n  \n  # Estilo dos arcos\n  edge [arrowsize = 0.4, fontsize = 12]\n  \n  0; 1; 2; 3; 4\n\n  # Transições (Arcos)\n  # O Graphviz usa códigos HTML para letras gregas: &alpha; e &beta;\n  0 -> 0 [label = \"0,2\"]\n  0 -> 1 [label = \"0,7\"]\n  0 -> 4 [label = \"0,1\"]\n  1 -> 0 [label = \"0,4\"]\n  1 -> 2 [label = \"0,6\"]\n  2 -> 2 [label = \"0,5\"]\n  2 -> 3 [label = \"0,5\"]\n  3 -> 2 [label = \"0,9\"]\n  3 -> 3 [label = \"0,1\"]\n  4 -> 4 [label = \"1\"]\n\n\n  # Ajuste de curvas para os arcos não colidirem\n  edge [fontname = Helvetica, fontsize = 4]\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-markov-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;8.2: Grafo da cadeia de Markov
+Figure&nbsp;7.2: Grafo da cadeia de Markov
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
 <div id="def-" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 8.5</strong></span> <strong>Acessibilidade</strong></p>
+<p><span class="theorem-title"><strong>Definition 7.5</strong></span> <strong>Acessibilidade</strong></p>
 <p>Dizemos que o estado <span class="math inline">\(j\)</span> é acessível a partir de <span class="math inline">\(i\)</span>, se existe pelo menos um passeio saindo de <span class="math inline">\(i\)</span> e chegando em <span class="math inline">\(j\)</span> Notação: <span class="math inline">\(i\to j\)</span>.</p>
 <p><strong>Comunicação</strong></p>
 <p>Dizemos que os estados <span class="math inline">\(i\)</span> e <span class="math inline">\(j\)</span> se comunicam se <span class="math inline">\(i\to j\)</span> e <span class="math inline">\(j\to i\)</span>. Notação: <span class="math inline">\(i\leftrightarrow j\)</span>.</p>
@@ -433,7 +434,7 @@ Figure&nbsp;8.2: Grafo da cadeia de Markov
 <p>Dizemos que <span class="math inline">\(i\)</span> e <span class="math inline">\(j\)</span> pertencem a mesma classe se <span class="math inline">\(i\leftrightarrow j\)</span>.</p>
 </div>
 <div id="prp-" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 8.1</strong></span> Se <span class="math inline">\(i\)</span> e <span class="math inline">\(j\)</span> estão na mesma classe e <span class="math inline">\(i\)</span> é recorrente(transiente), então <span class="math inline">\(j\)</span> também será recorrente(transiente).</p>
+<p><span class="theorem-title"><strong>Proposition 7.1</strong></span> Se <span class="math inline">\(i\)</span> e <span class="math inline">\(j\)</span> estão na mesma classe e <span class="math inline">\(i\)</span> é recorrente(transiente), então <span class="math inline">\(j\)</span> também será recorrente(transiente).</p>
 </div>
 <p>Vamos demonstrar a proposição de forma intuitiva.</p>
 <ol type="1">
@@ -441,7 +442,7 @@ Figure&nbsp;8.2: Grafo da cadeia de Markov
 <li><p>Se <span class="math inline">\(i\)</span> é transiente, então é possível que o processo saia do estado <span class="math inline">\(i\)</span> e nunca mais volte para ele. Mas como <span class="math inline">\(i\)</span> se comunica com <span class="math inline">\(j\)</span>, é possível que o processo saia de <span class="math inline">\(j\)</span>, chegue em <span class="math inline">\(i\)</span> e, a partir dali, nunca mais retorne para <span class="math inline">\(j\)</span>. Portanto, <span class="math inline">\(j\)</span> é transiente.</p></li>
 </ol>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 8.6</strong></span> Considere uma cadeia de Markov com as seguintes probabilidades de transição</p>
+<p><span class="theorem-title"><strong>Exercise 7.6</strong></span> Considere uma cadeia de Markov com as seguintes probabilidades de transição</p>
 <p><span class="math display">\[\begin{array}{c|ccccccccccc}\hline
 i\setminus j
   &amp; 0   &amp; 1   &amp; 2   &amp; 3   &amp; 4   &amp; 5   &amp; 6   &amp; 7   &amp; 8 &amp; 9 &amp; 10\\ \hline
@@ -466,25 +467,25 @@ i\setminus j
 <p>Considere a cadeia de Markov abaixo:</p>
 <div class="cell" data-warnings="false">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-4fb3b25c743803862ae7" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-4fb3b25c743803862ae7">{"x":{"diagram":"\ndigraph markov_chain {\n  # Configurações globais\n  graph [overlap = true, fontsize = 4, rankdir = LR]\n  \n  # Estilo dos Estados (Nós)\n  node [shape = circle, fixedsize = true, width = 0.4, color = black, fontname = Helvetica]\n  \n  # Estilo dos arcos\n  edge [arrowsize = 0.4, fontsize = 12]\n  \n  0; 1; 2; 3\n  # Transições (Arcos)\n  # O Graphviz usa códigos HTML para letras gregas: &alpha; e &beta;\n  0 -> 1 [label = \"\"]\n  1 -> 2 [label = \"\"]\n  2 -> 3 [label = \"\"]\n  3 -> 0 [label = \"\"]\n\n\n  # Ajuste de curvas para os arcos não colidirem\n  edge [fontname = Helvetica, fontsize = 4]\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-3adf335cb14ccd59c859" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-3adf335cb14ccd59c859">{"x":{"diagram":"\ndigraph markov_chain {\n  # Configurações globais\n  graph [overlap = true, fontsize = 4, rankdir = LR]\n  \n  # Estilo dos Estados (Nós)\n  node [shape = circle, fixedsize = true, width = 0.4, color = black, fontname = Helvetica]\n  \n  # Estilo dos arcos\n  edge [arrowsize = 0.4, fontsize = 12]\n  \n  0; 1; 2; 3\n  # Transições (Arcos)\n  # O Graphviz usa códigos HTML para letras gregas: &alpha; e &beta;\n  0 -> 1 [label = \"\"]\n  1 -> 2 [label = \"\"]\n  2 -> 3 [label = \"\"]\n  3 -> 0 [label = \"\"]\n\n\n  # Ajuste de curvas para os arcos não colidirem\n  edge [fontname = Helvetica, fontsize = 4]\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p>Grafo da cadeia de Markov</p>
 </div>
 </div>
 <p>Observe que para um estado <span class="math inline">\(i\)</span> qualquer desta cadeia, <span class="math inline">\(p_{ii}^{(n)}&gt;0\)</span> somente para <span class="math inline">\(n\)</span> múltiplo de 4. Estados com essa característica são denominados periódicos.</p>
 <div id="def-" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 8.6</strong></span> O estado <span class="math inline">\(i\)</span> de uma cadeia de Markov é dito ser periódico se todos os retornos ao estado ocorrem em um número de passos múltiplo de <span class="math inline">\(k\)</span> (neste caso, é dito que o período de <span class="math inline">\(i\)</span> é igual a <span class="math inline">\(k\)</span>). <strong>Notação</strong>: <span class="math inline">\(d_i=k\)</span>.</p>
+<p><span class="theorem-title"><strong>Definition 7.6</strong></span> O estado <span class="math inline">\(i\)</span> de uma cadeia de Markov é dito ser periódico se todos os retornos ao estado ocorrem em um número de passos múltiplo de <span class="math inline">\(k\)</span> (neste caso, é dito que o período de <span class="math inline">\(i\)</span> é igual a <span class="math inline">\(k\)</span>). <strong>Notação</strong>: <span class="math inline">\(d_i=k\)</span>.</p>
 <p>Formalmente, seja <span class="math inline">\(D_i=\{n\geq 1: p_{ii}^{(n)}&gt;0\}\)</span>, ou seja, o conjunto com os números de passos necessários para o retorno ao estado e seja <span class="math inline">\(k\)</span> o máximo divisor comum (mdc) de <span class="math inline">\(D_i\)</span>. Então <span class="math inline">\(k\)</span> é denominado período do estado <span class="math inline">\(i\)</span>.</p>
 <p>Se <span class="math inline">\(D_i=\varnothing\)</span>, então <span class="math inline">\(d_i=0\)</span> e se <span class="math inline">\(d_i=1\)</span>, o estado <span class="math inline">\(i\)</span> é denominado <strong>aperiódico.</strong></p>
 </div>
 <p>Voltando ao grafo dado, pode-se notar, por exemplo, que <span class="math inline">\(D_0=\{4,8,\ldots\}\)</span>, logo, o período do estado é 4.</p>
 <p>É importante separar a noção de período com o número mínimo de passos necessários para retornar ao estado. Se um estado possui período <span class="math inline">\(d\)</span>, então o processo só retornará ao estado em passos que são múltiplos de, mas <strong>não em todos</strong> os passos múltiplos de <span class="math inline">\(d\)</span>. O exemplo abaixo ilustra esse fato.</p>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 8.5</strong></span> Considere o grafo da cadeia abaixo:</p>
+<p><span class="theorem-title"><strong>Example 7.5</strong></span> Considere o grafo da cadeia abaixo:</p>
 <div class="cell" data-warnings="false">
 <div class="cell-output-display">
-<div class="grViz html-widget html-fill-item" id="htmlwidget-c8361fe055d92622a5f4" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-c8361fe055d92622a5f4">{"x":{"diagram":"\ndigraph markov_chain {\n  # Configurações globais\n  graph [overlap = true, fontsize = 4, rankdir = LR]\n  \n  # Estilo dos Estados (Nós)\n  node [shape = circle, fixedsize = true, width = 0.4, color = black, fontname = Helvetica]\n  \n  # Estilo dos arcos\n  edge [arrowsize = 0.4, fontsize = 12]\n  \n  0; 1; 2; 3\n  # Transições (Arcos)\n  # O Graphviz usa códigos HTML para letras gregas: &alpha; e &beta;\n  0 -> 1 [label = \"\"]\n  1 -> 2 [label = \"\"]\n  2 -> 3 [label = \"\"]\n  3 -> 4 [label = \"\"]\n  4 -> 5 [label = \"\"]\n  5 -> 6 [label = \"\"]\n  6 -> 7 [label = \"\"]\n  7 -> 0 [label = \"\"]\n  5 -> 0 [label = \"\"]\n\n\n  # Ajuste de curvas para os arcos não colidirem\n  edge [fontname = Helvetica, fontsize = 4]\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-82bd4f74878bd41bf95b" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-82bd4f74878bd41bf95b">{"x":{"diagram":"\ndigraph markov_chain {\n  # Configurações globais\n  graph [overlap = true, fontsize = 4, rankdir = LR]\n  \n  # Estilo dos Estados (Nós)\n  node [shape = circle, fixedsize = true, width = 0.4, color = black, fontname = Helvetica]\n  \n  # Estilo dos arcos\n  edge [arrowsize = 0.4, fontsize = 12]\n  \n  0; 1; 2; 3\n  # Transições (Arcos)\n  # O Graphviz usa códigos HTML para letras gregas: &alpha; e &beta;\n  0 -> 1 [label = \"\"]\n  1 -> 2 [label = \"\"]\n  2 -> 3 [label = \"\"]\n  3 -> 4 [label = \"\"]\n  4 -> 5 [label = \"\"]\n  5 -> 6 [label = \"\"]\n  6 -> 7 [label = \"\"]\n  7 -> 0 [label = \"\"]\n  5 -> 0 [label = \"\"]\n\n\n  # Ajuste de curvas para os arcos não colidirem\n  edge [fontname = Helvetica, fontsize = 4]\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p>Grafo da cadeia de Markov</p>
 </div>
 </div>
@@ -493,7 +494,7 @@ i\setminus j
 <p>Contudo <span class="math inline">\(p_{00}^{(2)}=0\)</span>. O período igual a 2 implica que se <span class="math inline">\(p_{00}^{(n)}&gt;0\)</span>, então <span class="math inline">\(n\)</span> é par.</p>
 </div>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 8.7</strong></span> Considerando as probabilidades de transição abaixo, faça o grafo das cadeias e encontre o período do estado 0.</p>
+<p><span class="theorem-title"><strong>Exercise 7.7</strong></span> Considerando as probabilidades de transição abaixo, faça o grafo das cadeias e encontre o período do estado 0.</p>
 <ol type="a">
 <li><span class="math display">\[\begin{array}{c|ccc} \hline i\setminus j
   &amp; 0 &amp; 1 &amp; 2 \\ \hline
@@ -537,11 +538,11 @@ i\setminus j
 4 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\\hline\end{array}\]</span></p>
 </div>
 <div id="prp-" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 8.2</strong></span> Todos os estados de uma mesma classe possuem o mesmo período.</p>
+<p><span class="theorem-title"><strong>Proposition 7.2</strong></span> Todos os estados de uma mesma classe possuem o mesmo período.</p>
 </div>
 <p><strong>Demonstração intuitiva.</strong> Considere <span class="math inline">\(i\)</span> um estado dentro de uma classe <span class="math inline">\(C\)</span> e que <span class="math inline">\(d_i=k\)</span>. Para cada <span class="math inline">\(j\in C\)</span> só é possível sair de <span class="math inline">\(i\)</span> e chegar em <span class="math inline">\(j\)</span> em <span class="math inline">\(n_{ij}\)</span> passos e volta para <span class="math inline">\(i\)</span> em <span class="math inline">\(n_{ji}\)</span> passos se <span class="math inline">\(n_{ij}+n_{ji}=n_j\)</span> é um múltiplo de <span class="math inline">\(k\)</span>. Agora, seja <span class="math inline">\(m\)</span> um valor tal que <span class="math inline">\(p_{jj}^{(m)}&gt;0\)</span>. Considere então um passeio maior, saindo de <span class="math inline">\(i\)</span> echegando em <span class="math inline">\(j\)</span> em <span class="math inline">\(n_{ij}\)</span> passos, retornando para <span class="math inline">\(j\)</span> depois de <span class="math inline">\(m\)</span> passos e e finalmente chegando de <span class="math inline">\(i\)</span> em <span class="math inline">\(n_{ji}\)</span> passos. Então, esse passeio, com <span class="math inline">\(n_j+m\)</span> passos, também deve ser múltiplo de <span class="math inline">\(k\)</span>, o que implica que <span class="math inline">\(m\)</span> também é múltiplo de <span class="math inline">\(k\)</span> e, portanto <span class="math inline">\(d_j=k\)</span>.</p>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 8.8</strong></span> Considere a cadeia de Markov com as seguintes probabilidades de transição</p>
+<p><span class="theorem-title"><strong>Exercise 7.8</strong></span> Considere a cadeia de Markov com as seguintes probabilidades de transição</p>
 <p><span class="math display">\[\begin{array}{c|cccccc}\hline
 i\setminus j &amp; 0 &amp; 1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 \\ \hline
 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
@@ -556,8 +557,8 @@ i\setminus j &amp; 0 &amp; 1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 \\ \hline
 </ol>
 </div>
 </section>
-<section id="distribuição-estacionária" class="level2" data-number="8.4">
-<h2 data-number="8.4" class="anchored" data-anchor-id="distribuição-estacionária"><span class="header-section-number">8.4</span> Distribuição estacionária</h2>
+<section id="distribuição-estacionária" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="distribuição-estacionária"><span class="header-section-number">7.4</span> Distribuição estacionária</h2>
 <p>Até o presente momento, as cadeias de Markov foram caracterizadas pela probabilidade de transição. De fato, a probabilidade do processo estar no estado <span class="math inline">\(j\)</span> no tempo <span class="math inline">\(n\)</span> é dada por</p>
 <p><span class="math display">\[P(X_n=j)=\sum_{i=-\infty}^\infty p_{ij}^{(n)}P(X_0=i),\]</span> de modo que, em princípio, essa probabilidade é calculável apenas quando a função de probabilidade de <span class="math inline">\(X_0\)</span> é conhecida.</p>
 <p>Considere o caso particular, no qual <span class="math inline">\(P(X_n=j)=\pi_j\)</span> não depende de <span class="math inline">\(n\)</span>. Isso implica que</p>
@@ -566,11 +567,11 @@ i\setminus j &amp; 0 &amp; 1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 \\ \hline
 <p><span class="math display">\[\begin{align}\pi_j=\sum_{i=-\infty}^\infty\left[\lim_{n\to\infty}p_{ij}^{(n)}\right]\pi_i=a_j\sum_{i=-\infty}^\infty \pi_i=a_j,\end{align}\]</span> e, portanto, <span class="math display">\[\pi_j=\lim_{n\rightarrow\infty}p_{ij}^{(n)}.\]</span></p>
 <p>Portanto, a existência da distribuição estacionária está intimamente relacionada com o comportamento de <span class="math inline">\(p_{ij}^{(n)}\)</span> quando <span class="math inline">\(n\to\infty\)</span>.</p>
 <div id="prp-" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 8.3</strong></span> Estados transientes não podem ter distribuição estacionária.</p>
+<p><span class="theorem-title"><strong>Proposition 7.3</strong></span> Estados transientes não podem ter distribuição estacionária.</p>
 <p><strong>Demonstração intuitiva.</strong> Se <span class="math inline">\(j\)</span> é transiente, então <span class="math inline">\(f_j&lt;1\)</span>, o que implica que, em algum momento, esse estado nunca mais será visitado. Portanto <span class="math inline">\(p_{ij}^{(n)}\to 0\)</span> quando <span class="math inline">\(n\to \infty\)</span>.</p>
 </div>
 <div id="prp-" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 8.4</strong></span> Cadeias com mais de uma classe não tem distribuição estacionária.</p>
+<p><span class="theorem-title"><strong>Proposition 7.4</strong></span> Cadeias com mais de uma classe não tem distribuição estacionária.</p>
 <p><strong>Demonstração intuitiva.</strong> Suponha que a cadeia possui duas classes, <span class="math inline">\(C_1\)</span> e <span class="math inline">\(C_2\)</span>. Como os estados entre as classes não se comunicam, temos as seguintes situações:</p>
 <ul>
 <li><p>Uma classe é recorrente e a outra transiente: nesse caso, por causa dos estados transientes, não há distribuição estacionária.</p></li>
@@ -578,11 +579,11 @@ i\setminus j &amp; 0 &amp; 1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 \\ \hline
 </ul>
 </div>
 <div id="prp-" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 8.5</strong></span> Considere uma cadeia com apenas uma classe recorrente, com período maior que 1. Então, não há distribuição estacionária.</p>
+<p><span class="theorem-title"><strong>Proposition 7.5</strong></span> Considere uma cadeia com apenas uma classe recorrente, com período maior que 1. Então, não há distribuição estacionária.</p>
 <p><strong>Demonstração intuitiva.</strong> Se o período de <span class="math inline">\(j\)</span> é <span class="math inline">\(k&gt;1\)</span>, então <span class="math inline">\(p_{ij}^{(n)}=0\)</span> para todo <span class="math inline">\(n\)</span> não múltiplo de <span class="math inline">\(k\)</span>. Logo para a sequência <span class="math inline">\(p_{ij}^{(1)},p_{ij}^{(2)},\ldots\)</span> existe uma subsequência que converge para zero e, portanto, não pode existir <span class="math inline">\(\lim_{n\rightarrow\infty}p_{ij}^{(n)}\)</span>.</p>
 </div>
 <div id="prp-" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 8.6</strong></span> Cadeias com uma única classe, recorrente e aperiódica, com um número finito de estados, tem distribuição estacionária.</p>
+<p><span class="theorem-title"><strong>Proposition 7.6</strong></span> Cadeias com uma única classe, recorrente e aperiódica, com um número finito de estados, tem distribuição estacionária.</p>
 </div>
 <p>Para uma cadeia com estados <span class="math inline">\(\{0,1,\ldots,m\}\)</span>, auando a distribuição estacionária existe, ela pode ser encontrada resolvendo</p>
 <p><span class="math display">\[\pi_{j}=\sum_{i=0}^m p_{ij}\pi_i\]</span> com a restrição <span class="math inline">\(\sum_{i=1}^m\pi_i=1\)</span>.</p>
@@ -590,7 +591,7 @@ i\setminus j &amp; 0 &amp; 1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 \\ \hline
 <p><strong>Importante.</strong> A distribuição estacionária é interpretada como distribuição em longo prazo, pois as frequências relativas dos estados da cadeia tendem para a distribuição estacionária.</p>
 </div>
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Example 8.6</strong></span> Considere a cadeia de Markov com as seguintes probabilidades de transição <span class="math inline">\(p_{ij}\)</span>:</p>
+<p><span class="theorem-title"><strong>Example 7.6</strong></span> Considere a cadeia de Markov com as seguintes probabilidades de transição <span class="math inline">\(p_{ij}\)</span>:</p>
 <p><span class="math display">\[\begin{array}{c|cc}\hline
 i\setminus j &amp; 0 &amp; 1 \\ \hline
 0 &amp; 0,2 &amp; 0,8 \\
@@ -602,7 +603,7 @@ i\setminus j &amp; 0 &amp; 1 \\ \hline
 <p><span class="math display">\[(1-\pi_1)=0,2(1-\pi_1)+0,7\pi_1\Rightarrow \pi_1=\frac{8}{15}\]</span> e, por consequência, <span class="math inline">\(\pi_0=7/15\)</span>.</p>
 </div>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 8.9</strong></span> Uma empresa de streaming classifica seus clientes em três estados mensais:</p>
+<p><span class="theorem-title"><strong>Exercise 7.9</strong></span> Uma empresa de streaming classifica seus clientes em três estados mensais:</p>
 <ul>
 <li><p>Estado 0 (Inativo): O cliente não assinou o serviço.</p></li>
 <li><p>Estado 1 (Básico): O cliente assinou o plano simples.</p></li>
@@ -617,7 +618,7 @@ i\setminus j &amp; 0 &amp; 1 \\ \hline
 </ol>
 </div>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 8.10</strong></span> Uma fábrica monitora uma máquina essencial que pode estar em três estados:</p>
+<p><span class="theorem-title"><strong>Exercise 7.10</strong></span> Uma fábrica monitora uma máquina essencial que pode estar em três estados:</p>
 <ul>
 <li><p>Estado 0: Operando perfeitamente.</p></li>
 <li><p>Estado 1: Operando com falhas menores (requer atenção).</p></li>
@@ -632,8 +633,60 @@ i\setminus j &amp; 0 &amp; 1 \\ \hline
 <li><p>Se o custo de manter a máquina parada (estado 2) é de R$ 10.000,00 por semana, qual é o gasto médio semanal esperado com quebras no longo prazo?</p></li>
 </ol>
 </div>
+</section>
+<section id="exercícios-de-fixação" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="exercícios-de-fixação"><span class="header-section-number">7.5</span> Exercícios de fixação</h2>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 7.11</strong></span> Um prédio possui 3 andares (0, 1 e 2). Um elevador se movimenta da seguinte forma: se ele está no andar 0, no próximo passo ele vai para o andar 1 com probabilidade 1. Se ele está no andar 2, ele vai para o andar 1 com probabilidade 1. Se ele está no andar 1, ele escolhe o próximo andar (0 ou 2) com probabilidade 0,5 para cada. Defina o conjunto de estados <span class="math inline">\(\mathcal{S}\)</span> e encontre as probabilidaes de transição.</p>
+</div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 7.12</strong></span> Uma loja de eletrônicos tem capacidade para 2 consoles em estoque. No fim de cada dia, se o estoque estiver zerado (estado 0), a loja recebe 2 novos consoles para o dia seguinte. Se houver 1 ou 2 consoles, a loja não faz pedido. A probabilidade de um cliente comprar um console em um dia é 0,4 (supunha que no máximo 1 cliente tenta comprar por dia).</p>
+<ol type="a">
+<li><p>Construa o grafo desta cadeia de Markov com os estados {0, 1, 2}.</p></li>
+<li><p>Determine as probabilidades de transição <span class="math inline">\(p_{02}\)</span> e <span class="math inline">\(p_{10}\)</span>.</p></li>
+</ol>
+</div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 7.13</strong></span> Considere uma cadeia de Markov com as seguintes probabilidades de transição:</p>
+<p><span class="math display">\[\begin{array}{c|cccc}\hline
+i\setminus j &amp; 0 &amp; 1 &amp; 2 &amp; 3 \\ \hline
+0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\
+1&amp; 0,2 &amp; 0,3 &amp; 0,5 &amp; 0 \\
+2&amp;0 &amp; 0 &amp; 0,4 &amp; 0,6 \\
+3&amp; 0 &amp; 0 &amp; 0 &amp; 1 \\ \hline \end{array}\]</span></p>
+<ol type="a">
+<li><p>Desenhe o grafo da cadeia.</p></li>
+<li><p>Identifique as classes.</p></li>
+<li><p>Classifique cada classe como transiente ou recorrente e encontre seu período.</p></li>
+</ol>
+</div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 7.14</strong></span> Determine o período (<span class="math inline">\(d_i\)</span>) do estado 0 para as seguintes situações:</p>
+<ol type="a">
+<li><p><span class="math inline">\(p_{01}=1, p_{12}=1, p_{20}=1\)</span>.</p></li>
+<li><p><span class="math inline">\(p_{01}=1, p_{10}=0,5, p_{12}=0,5, p_{20}=1\)</span>.</p></li>
+<li><p>O estado 0 possui um arco para si mesmo (<span class="math inline">\(p_{00} &gt; 0\)</span>). Qual é o seu período?</p></li>
+</ol>
+</div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 7.15</strong></span> Em uma cidade, o clima pode ser Seco (0) ou Chuvoso (1). As probabilidades de transição são</p>
+<p><span class="math display">\[\begin{array}{c|cc}\hline i\setminus j &amp; 0 &amp; 1 \\\hline  0 &amp;0,8 &amp; 0,2 \\ 1&amp;0,4 &amp; 0,6 \\ \hline\end{array}\]</span></p>
+<ol type="a">
+<li><p>Calcule a distribuição estacionária <span class="math inline">\((\pi_0, \pi_1)\)</span>.</p></li>
+<li><p>Um vendedor de sorvetes lucra R$200,00 em dias secos e perde R$ 50,00 em dias chuvosos. Qual o lucro médio diário esperado no longo prazo?</p></li>
+</ol>
+</div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 7.16</strong></span> Três operadoras de celular (A, B e C) disputam o mercado. As probabilidades de transição mensal dos clientes são entre as operadoras são:</p>
+<ul>
+<li><p>De <span class="math inline">\(A\)</span>: 70% ficam na <span class="math inline">\(A\)</span>, 20% vão para <span class="math inline">\(B\)</span>, 10% vão para <span class="math inline">\(C\)</span>.</p></li>
+<li><p>De <span class="math inline">\(B\)</span>: 10% vão para <span class="math inline">\(A\)</span>, 80% ficam na <span class="math inline">\(B\)</span>, 10% vão para <span class="math inline">\(C\)</span>.</p></li>
+<li><p>De <span class="math inline">\(C\)</span>: 10% vão para <span class="math inline">\(A\)</span>, 10% vão para <span class="math inline">\(B\)</span>, 80% ficam na <span class="math inline">\(C\)</span>.</p></li>
+</ul>
+<p>Pergunta: No longo prazo, qual operadora terá a maior fatia de mercado? :::</p>
 
 
+</div>
 </section>
 
 </main> <!-- /main -->
@@ -1039,13 +1092,13 @@ i\setminus j &amp; 0 &amp; 1 \\ \hline
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./provas.html" class="pagination-link" aria-label="Provas anteriores resolvidas">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Provas anteriores resolvidas</span></span>
+      <a href="./convergencia.html" class="pagination-link" aria-label="Convergência de variáveis aleatórias">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Convergência de variáveis aleatórias</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./references.html" class="pagination-link" aria-label="References">
-        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./provas.html" class="pagination-link" aria-label="Provas anteriores resolvidas">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Provas anteriores resolvidas</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

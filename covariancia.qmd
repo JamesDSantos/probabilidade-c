@@ -428,3 +428,37 @@ $$Var(X)=E(Var(X|Y))+Var(E(X|Y)).$$
 
 :::
 
+
+## Exercícios de fixação
+
+::: {#exr-} 
+
+Seja $X$ uma variável aleatória tal que $E(X) = 0$ e $Var(X) = 9$. Considere $Y = -2X$. Encontre  $Cov(X,Y)$ e $\rho(X,Y)$
+
+:::
+
+::: {#exr-}
+Seja a função de densidade conjunta de $(X, Y)$ dada por:$$f(x,y) = (x + y) \cdot I_{(0,1)}(x) \cdot I_{(0,1)}(y).$$
+
+Calcule $Cov(X, Y)$ e determine se as variáveis tendem a variar no mesmo sentido ou em sentidos opostos.
+:::
+
+::: {#exr-}
+Suponha que $X$ tenha uma distribuição simétrica em relação a zero (ou seja, $E(X) = E(X^3) = 0$) e defina $Y = X^2$.
+
+a) Mostre que $Cov(X, Y) = 0$.
+
+b) Explique por que, apesar da covariância nula, $X$ e $Y$ não são independentes.
+:::
+
+::: {#exr-}
+Considere três variáveis $X, Y$ e $Z$ tais que $Var(X)=4, Var(Y)=9, Var(Z)=1$ e todas são independentes entre si. Defina $U = 2X - Y$ e $V = X + 3Z$.Calcule $Cov(U, V)$.
+:::
+
+::: {#exr-}
+A correlação entre o consumo de combustível ($X$) e a distância percorrida ($Y$) é $\rho(X, Y) = 0,85$. Se mudarmos a unidade de $X$ de litros para galões (multiplicando por $0,26$) e subtrairmos uma taxa fixa de manutenção de $Y$, qual será a nova correlação? Justifique com base nas propriedades de invariância.
+:::
+
+::: {#exr-}
+Seja $(X, Y)$ tal que $Y \sim \text{Exponencial}(1)$ e, dado $Y=y$, a variável $X$ tem distribuição Uniforme no intervalo $(0, y)$. Encontre $E(X|Y=y)$.
+:::

@@ -14,8 +14,8 @@ book:
     - vetores_mistos.qmd
     - covariancia.qmd
     - convergencia.qmd
-    - provas.qmd
     - cadeias_de_markov.qmd
+    - provas.qmd
     - references.qmd
 
 bibliography: references.bib

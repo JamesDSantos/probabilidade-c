@@ -30,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./provas.html" rel="next">
+<link href="./cadeias_de_markov.html" rel="next">
 <link href="./covariancia.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -184,14 +184,14 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./provas.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Provas anteriores resolvidas</span></span></a>
+  <a href="./cadeias_de_markov.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Introdução às cadeias de Markov</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./cadeias_de_markov.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Introdução às cadeias de Markov</span></span></a>
+  <a href="./provas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Provas anteriores resolvidas</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -502,7 +502,7 @@ P(\xi)&amp; \frac{1}{36} &amp; \frac{2}{36} &amp; \frac{3}{36} &amp;\frac{4}{36}
 <p><span class="math display">\[Z_n=\sqrt{\frac{n}{\bar{X}_n}}\left(\bar{X}_n-\lambda\right).\]</span> (<strong>Nota.</strong> Esse resultado é utilizado para fazer inferências sobre <span class="math inline">\(\lambda\)</span> sem que o mesmo apareça na variância).</p>
 </div>
 <div id="exr-" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 6.12</strong></span> Sejam <span class="math inline">\(X_1, X_2, \ldots\)</span> variáveis aleatórias independentes com distribuição Exponencial<span class="math inline">\((\lambda)\)</span>, com função densidade dada por</p>
+<p><span class="theorem-title"><strong>Exercise 6.14</strong></span> Sejam <span class="math inline">\(X_1, X_2, \ldots\)</span> variáveis aleatórias independentes com distribuição Exponencial<span class="math inline">\((\lambda)\)</span>, com função densidade dada por</p>
 <p><span class="math display">\[f(x)=\lambda e^{-\lambda x}I_{(0,\infty)}(x).\]</span></p>
 <ol type="1">
 <li><p>Utilize o Teorema Central do Limite para encontrar a distribuição limite de <span class="math display">\[Z_n = \sqrt{n} \lambda \left( \bar{X}_n - \frac{1}{\lambda} \right)\]</span></p></li>
@@ -514,9 +514,23 @@ P(\xi)&amp; \frac{1}{36} &amp; \frac{2}{36} &amp; \frac{3}{36} &amp;\frac{4}{36}
 </ol>
 <p><span class="math display">\[W_n = \frac{\sqrt{n} \left( \bar{X}_n - \frac{1}{\lambda} \right)}{\bar{X}_n}\]</span></p>
 <p>(<strong>Nota</strong>: Observe que, assim como nos exercícios anteriores, o parâmetro <span class="math inline">\(\lambda\)</span> “sumiu” do denominador, permitindo que utilizemos apenas a média amostral <span class="math inline">\(\bar{X}_n\)</span> para estimar a variabilidade da estimativa).</p>
+<section id="exercícios-de-fixação" class="level2" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="exercícios-de-fixação"><span class="header-section-number">6.6</span> Exercícios de fixação</h2>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 6.12</strong></span> Seja <span class="math inline">\(X_1, X_2, \ldots\)</span> uma sequência de variáveis aleatórias i.i.d. com distribuição Exponencial(<span class="math inline">\(\lambda\)</span>). Sabemos que <span class="math inline">\(E(X_i) = 1/\lambda\)</span> e <span class="math inline">\(Var(X_i) = 1/\lambda^2\)</span>. Defina a estatística:<span class="math display">\[K_n = \frac{1}{n} \sum_{i=1}^n \sqrt{X_i}\]</span> Considerando que <span class="math inline">\(E(\sqrt{X_i}) = \Gamma(3/2)/\sqrt{\lambda} = \frac{\sqrt{\pi}}{2\sqrt{\lambda}}\)</span>, determine para qual valor constante <span class="math inline">\(c\)</span> a sequência <span class="math inline">\(K_n\)</span> converge em probabilidade quando <span class="math inline">\(n \to \infty\)</span>. Justifique citando a Lei Fraca utilizada.</p>
+</div>
+<div id="exr-" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 6.13</strong></span> Considere uma sequência <span class="math inline">\(X_1, X_2, \ldots\)</span> de variáveis aleatórias independentes com distribuição Qui-quadrado com <span class="math inline">\(k=1\)</span> grau de liberdade (<span class="math inline">\(X_i \sim \chi^2_1\)</span>). Sabe-se que <span class="math inline">\(E(X_i) = 1\)</span> e <span class="math inline">\(Var(X_i) = 2\)</span>.</p>
+<ol type="a">
+<li><p>Pelo TCL, qual a distribuição limite de <span class="math inline">\(Z_n = \sqrt{n} \frac{(\bar{X}_n - 1)}{\sqrt{2}}\)</span>?</p></li>
+<li><p>Mostre que <span class="math inline">\(\bar{X}_n^2 \xrightarrow{P} 1\)</span>.</p></li>
+<li><p>Utilizando o Teorema de Slutsky, encontre a distribuição limite de:<span class="math display">\[W_n = \sqrt{n} \frac{(\bar{X}_n - 1)}{\sqrt{2}\bar{X}_n}\]</span></p></li>
+</ol>
 </div>
 
 
+</section>
+</div>
 </section>
 
 </main> <!-- /main -->
@@ -927,8 +941,8 @@ P(\xi)&amp; \frac{1}{36} &amp; \frac{2}{36} &amp; \frac{3}{36} &amp;\frac{4}{36}
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./provas.html" class="pagination-link" aria-label="Provas anteriores resolvidas">
-        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Provas anteriores resolvidas</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./cadeias_de_markov.html" class="pagination-link" aria-label="Introdução às cadeias de Markov">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Introdução às cadeias de Markov</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
