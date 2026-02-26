@@ -191,3 +191,160 @@ logo
 $$\begin{align}f_Y(y)&=\frac{e^{-y^2}}{\pi}\int_\mathbb{R}e^{-2\left(x_2-\frac{y}{2}\right)^2+\frac{y^2}{2}}dx_2\\&=\frac{e^{-\frac{y^2}{2}}}{\pi}\int_\mathbb{R}e^{-2\left(x_2-\frac{y}{2}\right)^2}dx_2\\&=\frac{e^{-\frac{y^2}{2}}}{\pi}\sqrt{2\pi/4}=\frac{1}{\sqrt{2\pi}}e^{-\frac{y^2}{2}},\;\;y\in\mathbb{R}\end{align}$$
 
 :::
+
+## Parcial II - 2025/2--Férias
+
+
+::: {.panel-tabset}
+	
+### Questão 1
+
+Sejam $X,Y,Z$ variáveis aleatórias com as seguintes características: $Cov(X,Y)=-2$, $E(Z)=0$, $E(Z^2)=2$. Além disso, $Z$ é independente de $X$ e de $Y$. Sejam $A=3X-5Z$ e $B=Z-5Y+10$. Encontre $Cov(A,B)$.
+
+### Solução
+
+
+$$\begin{align}
+Cov(A,B)&=Cov(3X-5Z,Z-5Y+10), \\
+&=Cov(3X-5Z,Z-5Y),\hbox{ (pela propriedade da constante)}\\
+&=Cov(3X,Z)+Cov(3X,-5Y)+Cov(-5Z,Z)+Cov(-5Z,-5Y),\hbox{ (pela aditividade )}\\
+&=3Cov(X,Z)-15Cov(X,Y)-5Cov(Z,Z)+25Cov(Z,Y),\hbox{ (pelo escalonamento)}\\
+&=-15Cov(X,Y)-5Cov(Z,Z),\hbox{   (pela independência )}\\
+&=-15Cov(X,Y)-5Var(Z),\hbox{ (pela identidade )}\\&=-15(-2)-5(E(Z^2))=30-10=20
+\end{align}$$
+:::
+
+::: {.panel-tabset}
+
+### Questão 2 (1 ponto) 
+
+Sejam $X$ e $Y$ variáveis aleatórias onde $Y$ é a temperatura de certa substância, medida em Fahrenheit. Sabendo que a correlação entre $X$ e $Y$ é 0,7 e que a temperatura em graus Celsius é dada por
+	$$Z=\frac{5}{9}(Y-32),$$
+	qual é a correlação entre $X$ e $Z$? 
+
+### Solução
+
+A correlação é invariante a transformações de locação e tem seu sinal alterado dependendo do valor da transformação de escala. Assim
+
+$$\begin{align}\rho\left(X,Z\right)&=\rho\left(X,\frac{5}{9}(Y-32)\right)\\&=\rho\left(X,\frac{5}{9}Y\right)=\rho(X,Y)=0,7. \end{align}$$
+
+:::
+
+::: {.panel-tabset}
+
+### Questão 3 (2 pontos) 
+
+Seja $X_1,X_2,\ldots$ uma sequência de variáveis aleatórias independentes, todas com distribuição Gama($\alpha$,$\beta$). Sabendo que $E(X_i)=\alpha/\beta$ e $Var(X_i)=\alpha/\beta^2$, encontre a distribuição limite de 
+	
+	$$W_n=\sqrt{n}\frac{\bar{X}_n-\frac{\alpha}{\beta}}{S_n},$$ 
+	
+	onde $S_n$ é o desvio padrão amostral.
+
+
+### Solução
+
+Pelo TCL, temos que
+$$Z_n=\sqrt{n}\frac{\bar{X}_n-\frac{\alpha}{\beta}}{\sqrt{\alpha/\beta^2}}\stackrel{D}{\to}N(0,1)$$
+
+quando $n\to\infty$. Deste modo,
+
+$$W_n=\sqrt{n}\frac{\bar{X}_n-\frac{\alpha}{\beta}}{\sqrt{\alpha/\beta^2}}\frac{\sqrt{\alpha/\beta^2}}{S_n}=Z_n\frac{\sqrt{\alpha/\beta^2}}{S_n}.$$ 
+
+Pela Lei Fraca dos Grande Números, $S_n^2 \stackrel{P}{\to}\alpha/\beta^2$. Logo, 
+
+$$\frac{\sqrt{\alpha/\beta^2}}{S_n}\stackrel{P}{\to}1$$
+quando $n\to\infty$ e, pelo Teorema de Slutsky, $W_n\stackrel{D}{\to}N(0,1)$.
+
+
+:::
+
+::: {.panel-tabset}
+
+### Questão 4
+
+Sejam $X$ e $Y$ variáveis aleatórias contínuas com 
+	$$f_Y(y)=e^{-y}I_{(0,\infty)}(y)$$
+	e
+	$$f_{X|Y=y}(x|y)=\frac{y^{1/2}}{\sqrt{\pi}}e^{-yx^2}I_{(-\infty,\infty)}(x)$$
+	
+	Encontre $E(Y|X=x)$.
+	
+	**Dica**: Talvez você precise lembrar que $\int_0^\infty z^{a-1}e^{-bz}dz=\Gamma(a)/b^a$ e que $\Gamma(a+1)=a\Gamma(a)$. 
+
+### Solução
+
+A densidade conjunta de $X$ e $Y$ é
+$$f(x,y)=\frac{y^{1/2}}{\sqrt{\pi}}e^{-y(x^2+1)}I_{(-\infty,\infty)}(x)I_{(0,\infty)}(y)$$
+e a densidade marginal de $X$ é
+
+$$\begin{align}f_X(x)&=\int_0^\infty f(x,y)dy=\\
+&=I_{(-\infty,\infty)}(x)\int_0^\infty\frac{y^{1/2}}{\sqrt{\pi}}e^{-y(x^2+1)}dy\\&=\frac{\Gamma(3/2)}{\sqrt{\pi}}[1+x^2]^{-3/2}I_{(-\infty,\infty)}(x)\end{align}$$
+e a densidade conjunta de $Y|X=x$ é
+$$f_{Y|X=x}(y|x)=\frac{f(x,y)}{f_X(x)}=\frac{[1+x^2]^{3/2}}{\Gamma(3/2)}y^{1/2}e^{-y(1+x^2)}I_{(0,\infty)}(y)$$
+e
+
+$$\begin{align}E(Y|X=x)&=\frac{[1+x^2]^{3/2}}{\Gamma(3/2)}\int_0^\infty y^{3/2}e^{-y(1+x^2)}dy\\&=\frac{\Gamma(1+3/2)}{\Gamma(3/2)}\frac{[1+x^2]^{3/2}}{[1+x^2]^{1+3/²}}\\&=\frac{3}{2[1+x^2]}\end{align}$$
+:::	
+
+::: {.panel-tabset}
+
+### Questão 5
+
+Ao final do dia, uma ação negociada na bolsa de valores tem seu preço  classificado em dois estados:
+	
+* 0 (em baixa) - nesse caso, o preço final da ação é menor do que o valor do preço final no dia anterior.
+
+* 1 (em alta) - nesse caso, o preço final da ação é maior do que o valor do preço final no dia anterior.
+
+	Estando em alta, a probabilidade da ação fechar em alta no dia seguinte é de 0,7. Estando em baixa, a probabilidade da ação fechar em baixa no dia seguinte é de 0,6. Em longo prazo, qual é a probabilidade da ação fechar em alta?
+	
+### Solução
+As probabilidades de transição são:
+$$\begin{align}p_{00}=0,6\\p_{01}=0,4\\p_{10}=0,3\\p_{11}=0,7\end{align}$$
+
+Como $p_{01}>0$ e $p_{10}$, temos que todos os estados se comunicam e a cadeia é recorrente. Como $p_{00}>0$, temos que a cadeia é aperiódica. Portanto, existe distribuição estacionária. Vejamos:
+
+$$\begin{cases}\pi_0=0,6\pi_0+0,3\pi_1\\\pi_0+\pi_1=1\end{cases}\Rightarrow\begin{cases}0,4\pi_0=0,3\pi_1\\\pi_0+\pi_1=1\end{cases},$$
+disto, $\pi_0=3\pi_1/4$ e,
+$$\pi_0+\pi_1=1\Rightarrow \pi_1\left(\frac{3}{4}+1\right)=1\Rightarrow\pi_1=\frac{4}{7}$$
+Portanto, em longo prazo, a probabilidade da ação fechar em alta é de 4/7.
+
+:::
+
+::: {.panel-tabset}
+
+### Questão 6  
+
+A tabela abaixo apresenta a probabilidade de transição de uma cadeia de Markov ($p_{ij}$). Encontre as classes de estados. classifique-as como transientes ou recorrentes e encontre seu período.
+	   
+
+$$
+\begin{array}{c|cccccccccc}\hline
+			i \setminus j & 0   & 1   & 2 & 3  & 4  & 5 & 6  & 7 & 8 & 9 \\ \hline
+			              0 & 0 & 1 & 0 & 0  & 0  & 0 &0   &0  & 0 & 0\\
+			              1 & 1   & 0   &0  &0   &0   &0  &0   &0  & 0 & 0\\
+                          2 & 0   & 0,5 &0  &0   &0,5 &0  &0   &0  & 0 & 0\\
+                          3 & 0   & 0   &0  & 1  &0   &0  &0   &0  & 0 & 0\\
+                          4 & 0   & 0   &0  & 0  &0,9 &0,1&0   &0  & 0 & 0\\
+                          5 & 0   & 0   &0  & 0  &0   &0  &1   &0  & 0 & 0\\ 
+                          6 & 0   & 0   &0  & 0  &0   &0  &0   &1  & 0 & 0\\ 
+                          7 & 0   & 0   &0  & 0  &0   &0  &0   &0  & 1 & 0\\
+                          8 & 0   & 0   &0  & 0  &0   &0  &0   &0  & 0 & 1\\
+                          9 & 0   & 0   &0  & 0  &0   &0,5&0   &0,5& 0 & 0\\ \hline                       
+     \end{array}
+$$
+
+### Solução
+
+Após construir o grafo da cadeia, é simples encontrar as seguintes classes
+
+* $\{0,1\}$: recorrente com período 2
+
+* $\{2\}$: transiente com período 0
+
+* $\{3\}$: recorrente (absorvente) com período 1
+
+* $\{4\}$: transiente com período 1
+
+* $\{5,6,7,8,9\}$: recorrente com período 1.
+:::

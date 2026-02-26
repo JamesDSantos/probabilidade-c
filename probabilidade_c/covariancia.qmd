@@ -1,0 +1,464 @@
+# Covariância, correlação e esperança condicional
+
+
+
+Neste capítulo, estamos interessados na definição de covariância e correlação para um par $(X,Y)$ de variáveis aleatórias, assim como as propriedade de $E(Y|X=x)$. É possível estender esses resultados de modo natural para o par $(\textbf{X},\textbf{Y})$ de vetores aleatórios, mas isso será feito no curso de Estatística Multivariada I
+
+## Covariância
+
+Seja $\textbf{x}$ um vetor de comprimento $n$. A distância de $\textbf{x}$ até a origem é denominada **norma** e é calculada por
+
+$$||\textbf{x}||=\sqrt{\sum_{i=1}^n x_i^2}.$$
+ 
+Agora, considerando outro vetor $\textbf{y}$, também de comprimento $n$, definimos o produto interno de $\text{x}$ e $\textbf{y}$ por
+
+$$\langle\textbf{x},\textbf{y}\rangle=\sum_{i=1}^n x_iy_i.$$
+Pode-se mostrar que
+
+$$\langle\textbf{x},\textbf{y}\rangle=||\textbf{x}||||\textbf{y}||\cos\theta,$$
+onde $\theta$ é o ângulo formado entre os vetores $\textbf{x}$ e $\textbf{y}$. Portanto, o produto interno possui interpretação direta com a relação entre as direções de $\textbf{x}$ e $\textbf{y}$: a) se $\langle\textbf{x},\textbf{y}\rangle$ é positivo, então os vetores apontam para o mesmo sentido (b) se negativo, eles apontam para o sentidos contrários e (c) se nulo, eles são ortogonais. É imediato que
+
+$$||\textbf{x}||=\sqrt{\langle \textbf{x},\textbf{x}\rangle}.$$
+
+
+Agora, sem perda de generalidade, assuma que $X$ e $Y$ são variáveis aleatórias discretas com **média zero**. 
+
+Defina o produto interno ponderado
+
+$$\langle \textbf{x},\textbf{y}\rangle_P=\sum_{(x,y)\in\mathbb{Z}^2}xyP(X=x,Y=y)=E(XY),$$
+onde pode-se notar que cada combinação possível de $(x,y)$ é ponderada com sua respectiva probabilidade. Observe que
+
+$$||\textbf{x}||_P=\sqrt{\langle \textbf{x},\textbf{x}\rangle_P}=\sqrt{E(X^2)}=\sqrt{Var(X)},$$
+onde a última igualdade é válida porque $E(X)=0$. Essa quantidade, conhecida como desvio padrão, é interpretada como a norma do vetor $\textbf{x}$, o que explica porque o desvio padrão é considerado uma medida de distância. Se considerarmos que $E(X)=\mu$, o centro de massa não é mais zero. Podemos definir o vetor centrado em $\mu$, $\tilde{\textbf{x}}=\textbf{x}-\mu$. A norma deste vetor considerando o produto interno ponderado é  
+
+$$||\tilde{\textbf{x}}||_P=\sqrt{\langle \textbf{x}-\mu,\textbf{x}-\mu\rangle_P}=\sqrt{E((X-\mu)^2)}=\sqrt{Var(X)},$$
+que é o desvio padrão tradicional.
+
+Se consideramos que $E(X)=\mu_X$ e $E(Y)=\mu_Y$ são diferentes de zero, o produto interno ponderado dos vetores centrados $\tilde{\textbf{x}}=\textbf{x}-\mu_X$ e $\tilde{\textbf{y}}=\textbf{y}-\mu_Y$, teremos
+
+$$\langle \tilde{\textbf{x}},\tilde{\textbf{y}}\rangle_P=\sum_{(x,y)\in\mathbb{Z}^2} (x-\mu_X)(y-\mu_Y)P(X=x,Y=y)=E\left((X-\mu_X)(Y-\mu_Y)\right).$$
+Observe que a definição do produto interno ponderado pode ser modificada para um par $(X,Y)$ de variáveis aleatórias contínuas:
+
+$$\langle \textbf{x},\textbf{y}\rangle_P=\int_{\mathbb{R}^2}xyf(x,y)dxdy=E(XY),$$
+o que gera as mesmas interpretações dadas para o caso discreto. Podemos então definir formalmente a covariância entre $X$ e $Y$.
+
+::: {#def-}
+Sejam $X$ e $Y$ duas variáveis aleatórias quaisquer. Então, a covariância entre $X$ e $Y$ é dada por
+
+$$Cov(X,Y)=E((X−E(X))(Y−E(Y))),$$
+:::
+
+Pode-se mostrar que 
+
+$$Cov(X,Y)=E(XY)-E(X)E(Y),$$
+o que é, em geral, mais simples de se obter. Na prática, a covariância dá a relação entre as variáveis $X$ e $Y$ centradas em seus respectivos centros de massa: (a) Se $Cov(X,Y)<0$, então espera-se que o aumento(decrescimento) de $X$ implique em um decrescimento(aumento) de $Y$, (b) se $Cov(X,Y)>0$, então espera-se que o aumento(decrescimento) de $X$ implique em um aumento(decrescimento) de $Y$ e (c) $Cov(X,Y)=0$ implica na ausência de relação linear entre $X$ e $Y$.
+
+
+::: {#exm-}
+A tabela abaixo mostra a função de probabilidade conjunta 
+$$\begin{array}{|c|ccc|c|}
+\hline
+X \setminus Y & 1 & 2 & 3 & P(X=x) \\ \hline
+0 & 0,1 & 0,2 & 0,3 & \mathbf{0,6} \\
+1 & 0,2 & 0,1 & 0,1 & \mathbf{0,4} \\ \hline
+P(Y=y) & \mathbf{0,3} & \mathbf{0,3} & \mathbf{0,4} & \mathbf{1,0} \\ \hline
+\end{array}$$
+
+Vamos encontrar a covariância de $(X,Y)$:
+
+* Esperanças marginais:
+
+$$\begin{align}E(X)&=0\cdot 0,6+1\cdot0,4=0,4\\
+E(Y)&=1\cdot0,3+2\cdot0,3+3\cdot0,4=2,1\end{align}$$
+
+* Esperança do produto
+
+$$\begin{align}E(XY)&=\sum_{x=0}^1\sum_{y=1}^2P(X=x,Y=y)\\&=\sum_{y=1}^2 0\cdot yP(X=0,Y=y)+\sum_{y=1}^2 1\cdot yP(X=0,Y=y)\\&=1\cdot0,2+2\cdot0,1+3\cdot0,1=0,7\end{align}$$
+* Resultado da Covariância
+
+$$Cov(X, Y) = 0,7 - 0,4\cdot 2,1=0,7-0,84 = -0,14$$
+
+* Interpretação: A covariância negativa indica que as variáveis tendem a se mover em direções opostas. 
+
+:::
+
+::: {#exr-}
+A tabela abaixo apresenta a função de probabilidade conjunta para $(X,Y)$.$$\begin{array}{|c|ccc|c|}
+\hline
+X \setminus Y & 1 & 2 & 3 & P(X=x) \\ \hline
+0 & 0,05 & 0,15 & 0,30 & \mathbf{0,50} \\
+1 & 0,25 & 0,15 & 0,10 & \mathbf{0,50} \\ \hline
+P(Y=y) & \mathbf{0,30} & \mathbf{0,30} & \mathbf{0,40} & \mathbf{1,00} \\ \hline
+\end{array}$$
+
+Determine a covariância $Cov(X, Y)$ e interprete o resultado.
+:::
+
+::: {#exm-}
+Seja a função de densidade de probabilidade conjunta de $(X, Y)$ dada por:
+
+$$f(x,y) = \frac{3}{2}(x^2 + y^2)I_{(0,1)}(x)I_{(0,1)}(y).$$
+
+Vamos encontrar a covariância de $(X, Y)$ e interpretar o resultado. Para evitar realizar muitas integrais, vamos encontrar 
+
+$$E(X^a Y^b)=\int_{\mathbb{R}^2} f(x,y)dxdy,$$
+para $a,b\geq 0$. Observe que escolhendo $a=1$ e $b=0$ teremos $E(X^aY^b)=E(X)$ e, de modo semelhante, podemos obter a esperança de $E(Y)$ e $E(XY)$. 
+
+$$\begin{align}E(X^a Y^b) &= \frac{3}{2}\int_{0}^{1}\int_0^1 x^a y^b(x^2 + y^2) dxdy \\&= \frac{3}{2}\int_0^1 \left[ \frac{x^{a+3}}{a+3}y^{b} + \frac{x^{a+1}}{a+1}y^{2+b} \right]_0^1dy \\&= \frac{3}{2}\int_0^1  \frac{1}{a+3}y^{b} + \frac{1}{a+1}y^{2+b} dy\\ &=\frac{3}{2}\left[ \frac{1}{a+3}\frac{y^{b+1}}{b+1} + \frac{1}{a+1}\frac{y^{3+b}}{3+b} \right]_0^1\\&=\frac{3}{2}\left( \frac{1}{(a+3)(b+1)} + \frac{1}{(a+1)(3+b)} \right).\end{align}$$
+
+Disto, teremos que
+$$E(X)=\frac{3}{2}\left( \frac{1}{4\cdot 1} + \frac{1}{2\cdot3} \right)=\frac{5}{8}$$
+e, $E(Y)=5/8$. Já 
+
+$$E(XY) = \frac{3}{2}\left( \frac{1}{4\cdot 2} + \frac{1}{2\cdot 4} \right)=\frac{3}{8}$$
+
+e a covariância de $(X,Y)$ é
+
+$$Cov(X,Y)=E(XY)-E(X)E(Y)=\frac{3}{8}-\frac{5}{8}\cdot\frac{5}{8}=-\frac{1}{64}$$
+Como o valor é negativo, existe uma tendência de que, quando $X$ aumenta, $Y$ diminua (e vice-versa), embora a magnitude seja muito pequena.
+
+:::
+
+::: {#exr-}
+Seja
+
+$$f(x,y)=2xy+\frac{1}{2},$$
+para $(x,y)\in(0,1)$. Encontre a covariância de $(X,Y)$ e interprete o resultado.
+:::
+
+
+
+<div class='alert alert-success'>
+**Proposição** Se $X$ e $Y$ são independentes, então $Cov(X,Y)=0$.
+
+
+**Importante**: $Cov(X,Y)=0$ não implica em $X$
+ e $Y$ serem independentes!
+</div>
+
+::: {#exm-}
+Suponha que
+
+$$P(X=x,Y=y)=\frac{1}{4}$$,
+com $(x,y)\in\{−1,1\}^2$. Então
+
+$$P(X=x)P(Y=y)=P(X=x,Y=−1)+P(X=x,Y=1)=\frac{1}{2}=P(X=−1,Y=y)+P(X=1,Y=y)=\frac{1}{2}.$$
+Como
+
+$$\frac{1}{4}=P(X=x,Y=y)=\frac{1}{2}\frac{1}{2}=P(X=x)P(Y=y),$$
+temos que $X$ e $Y$ são independentes e, portanto $Cov(X,Y)=0$.
+:::
+
+
+::: {#exr-} 
+Suponha que $X$ e $Y$ assumem valores em $\{−1,0,1\}$
+ com a seguinte função de probabilidade conjunta:
+ 
+$$P(X=x,Y=y)=\frac{1}{5}$$
+se, $(x,y)\in\{(1,1),(−1,1),(1,−1),(−1,−1),(0,0)\}$ e $P(X=x,Y=y)=0$ em  caso contrário. Mostre que $X$ e $Y$ não são independentes e que $Cov(X,Y)=0$.
+:::
+
+::: {#exr-}
+Considere a densidade conjunta
+
+$$f(x,y)=\frac{1}{y}e^{−(y+xy)}$$,
+para $x,y>0$. Encontre Cov(X,Y). É possível mostrar que $X$ não é independente de $Y$ através deste resultado?
+:::
+
+
+<div class='alert alert-success'>
+**Propriedades**
+
+1. $Cov(X,X)=Var(X)$ (Identidade)
+
+2. Para $a$e $b$ constantes e reais, $Cov(aX,bY)=abCov(X,Y)$ (Escalonamento)
+
+3. Para $a$ constante real, $Cov(X,a)=0$ (Constante)
+
+4. $Cov(X+Y,Z)=Cov(X,Z)+Cov(Y,Z)$ e $Cov(X,Z+Y)=Cov(X,Z)+Cov(X,Y)$ (Aditividade bilinear)
+</div>
+
+::: {#exm-}
+
+Suponha que as variáveis aleatórias $X$, $Y$ e $Z$ possuam as seguintes características:
+
+1. $\text{Cov}(X, Y) = 5$
+
+2. $\text{Cov}(X, Z) = -2$
+
+3. $\text{Var}(X) = 4$
+
+Calcule os valores solicitados abaixo:
+
+a) $\text{Cov}(3X, Y)$
+
+b) $\text{Cov}(X, X)$
+
+c) $\text{Cov}(X, Y + Z)$
+
+d) $\text{Cov}(2X, 4)$
+
+e) $\text{Cov}(4X, 2Y - 3Z)$
+
+**Solução**
+
+a) Pela Propriedade 2 (Escalonamento):
+
+$$\text{Cov}(3X, Y) = 3 \cdot \text{Cov}(X, Y)= 3 \cdot 5 = 15$$
+
+b) Pela Propriedade 1 (Identidade):
+
+$$\text{Cov}(X, X) = \text{Var}(X)=4$$
+
+c) Pela Propriedade 4 (Aditividade bilinear):
+
+$$\text{Cov}(X, Y + Z) = \text{Cov}(X, Y) + \text{Cov}(X, Z)= 5 + (-2) = 3$$
+
+d) Pela Propriedade 3 (Constante): como 4 é uma constante,
+
+$$\text{Cov}(2X, 4) = 0$$
+
+e) Pelas Propriedades 2 e 4:
+
+$$\begin{align}\text{Cov}(4X, 2Y - 3Z) &= \text{Cov}(4X, 2Y) + \text{Cov}(4X, -3Z)\\&= 4 \cdot 2 \cdot \text{Cov}(X, Y) + 4 \cdot (-3) \cdot \text{Cov}(X, Z)\\&= 8 \cdot (5) + (-12) \cdot (-2)= 40 + 24 = 64\end{align}$$
+
+:::
+
+::: {#exr-}
+Sabe-se que: 
+
+1. $\text{Cov}(X, Y) = -3$
+
+2. $\text{Cov}(X, Z) = 4$
+
+3. $\text{Cov}(Y, Z) = 1$
+
+4. $\text{Var}(X) = 9$
+
+5. $\text{Var}(Y) = 16$
+
+Utilizando as propriedades de covariância, determine o valor das seguintes expressões:
+
+a) $\text{Cov}(X, 5Y)$
+
+b) $\text{Cov}(X, X + Y)$
+
+c) $\text{Cov}(2X, 3Z)$
+
+d) $\text{Cov}(Y, -2)$
+
+e) $\text{Cov}(X - Z, Y)$
+:::
+
+
+::: {#exr-}
+Verifique
+
+a. $Cov(X,Y)=Cov(Y,X)$
+
+b. $Cov(X,X)=Var(X)$
+
+c. $Cov(aX,Y)=Cov(X,aY)=aCov(X,Y)$, $a$ constante.
+
+Conclua que $Cov(aX,bY)=abCov(X,Y)$, com $a,b$ constantes.
+:::
+
+::: {#exr-}
+Sejam $X_1,\ldots,X_n$ variáveis aleatórias. 
+Mostre que
+
+a) $Var(X_1+X_2)=Var(X_1)+Var(X_2)+2Cov(X_1,X_2).$$
+
+b) Mostre por indução que $Var(\sum_{i=1}^n X_i)=\sum_{i=1}^nVar(X_i)+\sum_{i=1}^n\sum_{j=1}^nCov(X_i,X_j).$
+:::
+
+
+## Correlação 
+
+Recorde que, para o produto interno entre vetores, é verdadeiro que
+
+$$\langle \textbf{x},\textbf{y}\rangle=||\textbf{x}||||\textbf{y}||\cos\theta,$$
+onde $\theta$ é o ângulo formado entre os dois vetores. Logo, tem-se que
+
+$$\cos\theta=\frac{\langle \textbf{x},\textbf{y}\rangle}{||\textbf{x}||||\textbf{y}||},$$
+
+Em particular, se $|\cos\theta|=1$, então $\textbf{x}$ e $\textbf{y}$ são paralelos, o que implica que existe $b$ tal que $\textbf{y}=v\textbf{x}$ e $b$ possui o mesmo sinal do cosseno.
+
+Podemos estender essa noção para o par de variáveis aleatórias $(X,Y)$, definindo o **coeficiente de correlação de Pearson**:
+
+$$\rho_{XY}=\frac{Cov(X,Y)}{\sqrt{Var(X)Var(Y)}},$$
+que é o cosseno do ângulo entre as variáveis centralizadas $X-E(X)$ e $Y-E(Y)$. Esse coeficiente mede o quanto $Y$ e $X$ podem ser escritas como função linear uma da outra. De fato, se $|\rho_{XY}|=1$, então existem $a$ e $b$ tais que
+
+$$P(Y=a+bX)=1,$$
+onde o sinal de $b$ é o mesmo de $\rho_{XY}$. Além disso, $\rho = 0$ implica em ausência de relação linear
+
+
+<div class='alert alert-success'>
+**Propriedades.** Sejam $X$ e $Y$ variáveis aleatórias e sejam $a,b,c$ e $d$ constantes conhecidas. Então, o coeficiente de correlação possui as seguintes propriedades:
+
+1. Limitação do Intervalo:
+
+$$-1 \leq \rho(X,Y) \leq 1$$
+
+2. Invariância por mudança de locação e escala: Sejam $U = aX + b$ e $V = cY + d$. Então 
+$$\rho(aX + b, cY + d) = \text{sinal}(a \cdot c) \cdot \rho(X,Y).$$
+A função $\text{sinal}(x)$ retorna 1 se $x>0$, $-1$ se $x<0$ e 0 em caso contrário. Se $a$ e $c$ tiverem o mesmo sinal ($ac > 0$), a correlação não muda. Se $a$ e $c$ tiverem sinais opostos ($ac < 0$), a correlação inverte o sinal. As constantes somadas ($b$ e $d$) não afetam o resultado.
+
+3. Simetria: 
+
+$$\rho(X,Y) = \rho(Y,X)$$
+
+4. Correlação com a própria variável: 
+
+$$\rho(X,X) = 1$$
+</div>
+
+::: {#exm-}
+Suponha que a correlação entre a variável $X$ e $Y$ seja $\rho(X,Y) = 0,6$. Determine:
+
+a) $\rho(2X, Y)$
+
+b) $\rho(X + 10, Y - 5)$
+
+c) $\rho(-3X, Y)$
+
+d) $\rho(-2X, -4Y)$
+
+
+**Solução.**
+
+a) Como o coeficiente de $X$ é positivo ($2$), a correlação permanece idêntica.
+
+b) Somar ou subtrair constantes não altera a correlação.
+
+c) Como multiplicamos uma das variáveis por um número negativo (sinais opostos), o sinal da correlação inverte. Resultado: $-0,6$
+
+d) Ambos os coeficientes são negativos. Como o produto de dois negativos é positivo ($ac > 0$), o sinal original se mantém. Resultado: $0,6$
+:::
+
+
+::: {#exr-}
+Sejam $X$ e $Y$ variáveis aleatórias com 
+$\text{Var}(X) = 25$, $\text{Var}(Y) = 16$, $\text{Cov}(X, Y) = 12$ e$\rho(X, Y) = 0,6$. Utilizando as propriedades, determine os novos valores para as situações abaixo:
+
+a) $\text{Cov}(2X, 3Y)$ 
+
+b) $\text{Cov}(X + 5, Y - 10)$
+
+c) $\text{Cov}(X, X + Y)$
+
+d) $\rho(4X, Y)$
+
+e) $\rho(-X, Y)$
+
+f) $\rho(X - 100, 2Y + 30)$
+:::
+
+## Esperança condicional
+
+A esperança $X$ condicionada à $Y=y$ é denotada por $E(X|Y=y)$ e se refere à esperança obtida a partir da distribuição de $(X|Y=y)$. Se $X$ é uma variável aleatória contínua, a esperança condicional é dada por
+
+$$E(X|Y=y)=\int_{\mathbb{R}}x f(x|y)dx, $$
+e se $X$ for discreta,
+$$E(X|Y=y)=\sum_{x\in\mathbb{Z}} xP(X=x|Y=y).$$
+
+De modo análogo, para qualquer função real $g(.)$
+ podemos definir $E(g(X)|Y=y)$.
+ 
+::: {#exm-}
+Seja $(X,Y)$ um vetor aleatório com função de probabilidade conjunta dada por
+
+$$P(X=x,Y=y)=\frac{1}{2^yy}I_{\{1,\ldots,y\}}(x)I_{\{1,2,\ldots\}}(y).$$
+
+Vamos encontrar $E(X|Y=y)$. A função de probabilidade marginal de $Y$ é 
+
+$$\begin{align}P(Y=y)&=\sum_{x=-\infty}^\infty\frac{1}{2^yy}I_{\{1,\ldots,y\}}(x)I_{\{1,2,\ldots\}}(y)\\&=\frac{1}{2^y}I_{\{1,2,\ldots,\}}(y)\sum_{x=1}^y\frac{1}{y}\\&=\frac{1}{2^y}I_{\{1,2,\ldots,\}}(y)\end{align}$$
+logo,
+
+$$P(X=x|Y=y)=\frac{\frac{1}{2^yy}I_{\{1,\ldots,y\}}(x)I_{\{1,2,\ldots\}}(y)}{\frac{1}{2^y}I_{\{1,2,\ldots,\}}(y)}=\frac{1}{y}I_{\{1,\ldots,y\}}(x),$$
+e
+
+$$E(X|Y=y)=\sum_{x=-\infty}^\infty x\frac{1}{y}I_{\{1,\ldots,y\}}(x)=\frac{1}{y}\sum_{x=1}^y x=\frac{1+y}{2}.$$
+:::
+ 
+::: {#exr-}
+Seja $(X,Y)$ um vetor aleatório com função de probabilidade conjunta dada por
+
+$$P(X=x,Y=y)=\frac{e^{-2}2^y}{y!y}I_{\{1,\ldots,y\}}(x)I_{\mathbb{N}}(y).$$
+
+Encontre $E(X|Y=y)$.
+:::
+
+::: {#exm-}
+Seja $(X,Y)$ um vetor aleatório com função densidade conjunta dada por
+
+$$f(x,y)=e^{-x}I_{(y,\infty)}(x)I_{(0,\infty)}(y)$$
+Vamos encontrar $E(X|Y=y)$. Primeiro, a função densidade marginal de $Y$ é dada por
+
+$$f_Y(y)=I_{(0,\infty)}(y)\int_\mathbb{R}e^{-x}I_{(y,\infty)}(x)dx=I_{(0,\infty)}(y)\int_y^\infty e^{-x}dx=e^{-y}I_{(0,\infty)}(y),$$
+logo, a função densidade condicional de $X|Y=y$ é
+
+$$f(x|y)=\frac{e^{-x}I_{(y,\infty)}(x)I_{(0,\infty)}(y)}{e^{-y}I_{(0,\infty)}(y)}=e^{-(x-y)}I_{(y,\infty)}(x)$$
+e
+
+$$\begin{align}E(X|Y=y)&=\int_y^\infty xe^{-(x-y)}dx=\int_0^\infty (u+y)e^{-u}du\\&=1+y\end{align}$$
+:::
+
+::: {#exr-}
+Seja $(X,Y)$ um vetor aleatório com função densidade conjunta dada por
+
+$$f(x,y)=\frac{1}{y^3}I_{(0,y)}(x)I_{(1,\infty)}(y)$$
+Vamos encontrar $E(X|Y=y)$.
+
+:::
+
+Obviamente, outros momentos além do primeiro podem ser calculados. Disto, por exemplo, temos que
+
+$$Var(X|Y=y)=E(X^2|Y=y)−E(X|Y=y)^2.$$
+
+
+::: {#prp-}
+Sejam $X$ e $Y$ variáveis aleatórias com esperança finita. Então,
+
+$$E(X)=E(E(X|Y)).$$
+
+Além disso, se a variância for finita, então,
+
+$$Var(X)=E(Var(X|Y))+Var(E(X|Y)).$$
+
+:::
+
+
+## Exercícios de fixação
+
+::: {#exr-} 
+
+Seja $X$ uma variável aleatória tal que $E(X) = 0$ e $Var(X) = 9$. Considere $Y = -2X$. Encontre  $Cov(X,Y)$ e $\rho(X,Y)$
+
+:::
+
+::: {#exr-}
+Seja a função de densidade conjunta de $(X, Y)$ dada por:$$f(x,y) = (x + y) \cdot I_{(0,1)}(x) \cdot I_{(0,1)}(y).$$
+
+Calcule $Cov(X, Y)$ e determine se as variáveis tendem a variar no mesmo sentido ou em sentidos opostos.
+:::
+
+::: {#exr-}
+Suponha que $X$ tenha uma distribuição simétrica em relação a zero (ou seja, $E(X) = E(X^3) = 0$) e defina $Y = X^2$.
+
+a) Mostre que $Cov(X, Y) = 0$.
+
+b) Explique por que, apesar da covariância nula, $X$ e $Y$ não são independentes.
+:::
+
+::: {#exr-}
+Considere três variáveis $X, Y$ e $Z$ tais que $Var(X)=4, Var(Y)=9, Var(Z)=1$ e todas são independentes entre si. Defina $U = 2X - Y$ e $V = X + 3Z$.Calcule $Cov(U, V)$.
+:::
+
+::: {#exr-}
+A correlação entre o consumo de combustível ($X$) e a distância percorrida ($Y$) é $\rho(X, Y) = 0,85$. Se mudarmos a unidade de $X$ de litros para galões (multiplicando por $0,26$) e subtrairmos uma taxa fixa de manutenção de $Y$, qual será a nova correlação? Justifique com base nas propriedades de invariância.
+:::
+
+::: {#exr-}
+Seja $(X, Y)$ tal que $Y \sim \text{Exponencial}(1)$ e, dado $Y=y$, a variável $X$ tem distribuição Uniforme no intervalo $(0, y)$. Encontre $E(X|Y=y)$.
+:::

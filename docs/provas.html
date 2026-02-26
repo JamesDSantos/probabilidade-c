@@ -211,6 +211,7 @@ window.Quarto = {
    
   <ul>
   <li><a href="#parcial-i---20252férias" id="toc-parcial-i---20252férias" class="nav-link active" data-scroll-target="#parcial-i---20252férias"><span class="header-section-number">8.1</span> Parcial I - 2025/2–Férias</a></li>
+  <li><a href="#parcial-ii---20252férias" id="toc-parcial-ii---20252férias" class="nav-link" data-scroll-target="#parcial-ii---20252férias"><span class="header-section-number">8.2</span> Parcial II - 2025/2–Férias</a></li>
   </ul>
 </nav>
     </div>
@@ -396,6 +397,125 @@ f(x, y) =
 <p>note que</p>
 <p><span class="math display">\[2x_2^2-2x_2y=2\left(x_2^2 -2x_2\frac{y}{2}\right)=2\left(x_2^2 -2x_2\frac{y}{2}\pm\frac{y^2}{4}\right)=2\left(x_2-\frac{y}{2}\right)^2-\frac{y^2}{2}\]</span> logo</p>
 <p><span class="math display">\[\begin{align}f_Y(y)&amp;=\frac{e^{-y^2}}{\pi}\int_\mathbb{R}e^{-2\left(x_2-\frac{y}{2}\right)^2+\frac{y^2}{2}}dx_2\\&amp;=\frac{e^{-\frac{y^2}{2}}}{\pi}\int_\mathbb{R}e^{-2\left(x_2-\frac{y}{2}\right)^2}dx_2\\&amp;=\frac{e^{-\frac{y^2}{2}}}{\pi}\sqrt{2\pi/4}=\frac{1}{\sqrt{2\pi}}e^{-\frac{y^2}{2}},\;\;y\in\mathbb{R}\end{align}\]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="parcial-ii---20252férias" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="parcial-ii---20252férias"><span class="header-section-number">8.2</span> Parcial II - 2025/2–Férias</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true" href="">Questão 1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false" href="">Solução</a></li></ul>
+<div class="tab-content">
+<div id="tabset-6-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-6-1-tab">
+<p>Sejam <span class="math inline">\(X,Y,Z\)</span> variáveis aleatórias com as seguintes características: <span class="math inline">\(Cov(X,Y)=-2\)</span>, <span class="math inline">\(E(Z)=0\)</span>, <span class="math inline">\(E(Z^2)=2\)</span>. Além disso, <span class="math inline">\(Z\)</span> é independente de <span class="math inline">\(X\)</span> e de <span class="math inline">\(Y\)</span>. Sejam <span class="math inline">\(A=3X-5Z\)</span> e <span class="math inline">\(B=Z-5Y+10\)</span>. Encontre <span class="math inline">\(Cov(A,B)\)</span>.</p>
+</div>
+<div id="tabset-6-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-2-tab">
+<p><span class="math display">\[\begin{align}
+Cov(A,B)&amp;=Cov(3X-5Z,Z-5Y+10), \\
+&amp;=Cov(3X-5Z,Z-5Y),\hbox{ (pela propriedade da constante)}\\
+&amp;=Cov(3X,Z)+Cov(3X,-5Y)+Cov(-5Z,Z)+Cov(-5Z,-5Y),\hbox{ (pela aditividade )}\\
+&amp;=3Cov(X,Z)-15Cov(X,Y)-5Cov(Z,Z)+25Cov(Z,Y),\hbox{ (pelo escalonamento)}\\
+&amp;=-15Cov(X,Y)-5Cov(Z,Z),\hbox{   (pela independência )}\\
+&amp;=-15Cov(X,Y)-5Var(Z),\hbox{ (pela identidade )}\\&amp;=-15(-2)-5(E(Z^2))=30-10=20
+\end{align}\]</span></p>
+</div>
+</div>
+</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true" href="">Questão 2 (1 ponto)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false" href="">Solução</a></li></ul>
+<div class="tab-content">
+<div id="tabset-7-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-7-1-tab">
+<p>Sejam <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> variáveis aleatórias onde <span class="math inline">\(Y\)</span> é a temperatura de certa substância, medida em Fahrenheit. Sabendo que a correlação entre <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> é 0,7 e que a temperatura em graus Celsius é dada por <span class="math display">\[Z=\frac{5}{9}(Y-32),\]</span> qual é a correlação entre <span class="math inline">\(X\)</span> e <span class="math inline">\(Z\)</span>?</p>
+</div>
+<div id="tabset-7-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-2-tab">
+<p>A correlação é invariante a transformações de locação e tem seu sinal alterado dependendo do valor da transformação de escala. Assim</p>
+<p><span class="math display">\[\begin{align}\rho\left(X,Z\right)&amp;=\rho\left(X,\frac{5}{9}(Y-32)\right)\\&amp;=\rho\left(X,\frac{5}{9}Y\right)=\rho(X,Y)=0,7. \end{align}\]</span></p>
+</div>
+</div>
+</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-8-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-1" role="tab" aria-controls="tabset-8-1" aria-selected="true" href="">Questão 3 (2 pontos)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-2" role="tab" aria-controls="tabset-8-2" aria-selected="false" href="">Solução</a></li></ul>
+<div class="tab-content">
+<div id="tabset-8-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-8-1-tab">
+<p>Seja <span class="math inline">\(X_1,X_2,\ldots\)</span> uma sequência de variáveis aleatórias independentes, todas com distribuição Gama(<span class="math inline">\(\alpha\)</span>,<span class="math inline">\(\beta\)</span>). Sabendo que <span class="math inline">\(E(X_i)=\alpha/\beta\)</span> e <span class="math inline">\(Var(X_i)=\alpha/\beta^2\)</span>, encontre a distribuição limite de</p>
+<pre><code>$$W_n=\sqrt{n}\frac{\bar{X}_n-\frac{\alpha}{\beta}}{S_n},$$ 
+
+onde $S_n$ é o desvio padrão amostral.</code></pre>
+</div>
+<div id="tabset-8-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-8-2-tab">
+<p>Pelo TCL, temos que <span class="math display">\[Z_n=\sqrt{n}\frac{\bar{X}_n-\frac{\alpha}{\beta}}{\sqrt{\alpha/\beta^2}}\stackrel{D}{\to}N(0,1)\]</span></p>
+<p>quando <span class="math inline">\(n\to\infty\)</span>. Deste modo,</p>
+<p><span class="math display">\[W_n=\sqrt{n}\frac{\bar{X}_n-\frac{\alpha}{\beta}}{\sqrt{\alpha/\beta^2}}\frac{\sqrt{\alpha/\beta^2}}{S_n}=Z_n\frac{\sqrt{\alpha/\beta^2}}{S_n}.\]</span></p>
+<p>Pela Lei Fraca dos Grande Números, <span class="math inline">\(S_n^2 \stackrel{P}{\to}\alpha/\beta^2\)</span>. Logo,</p>
+<p><span class="math display">\[\frac{\sqrt{\alpha/\beta^2}}{S_n}\stackrel{P}{\to}1\]</span> quando <span class="math inline">\(n\to\infty\)</span> e, pelo Teorema de Slutsky, <span class="math inline">\(W_n\stackrel{D}{\to}N(0,1)\)</span>.</p>
+</div>
+</div>
+</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-9-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-1" role="tab" aria-controls="tabset-9-1" aria-selected="true" href="">Questão 4</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-2" role="tab" aria-controls="tabset-9-2" aria-selected="false" href="">Solução</a></li></ul>
+<div class="tab-content">
+<div id="tabset-9-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-9-1-tab">
+<p>Sejam <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> variáveis aleatórias contínuas com <span class="math display">\[f_Y(y)=e^{-y}I_{(0,\infty)}(y)\]</span> e <span class="math display">\[f_{X|Y=y}(x|y)=\frac{y^{1/2}}{\sqrt{\pi}}e^{-yx^2}I_{(-\infty,\infty)}(x)\]</span></p>
+<pre><code>Encontre $E(Y|X=x)$.
+
+**Dica**: Talvez você precise lembrar que $\int_0^\infty z^{a-1}e^{-bz}dz=\Gamma(a)/b^a$ e que $\Gamma(a+1)=a\Gamma(a)$. </code></pre>
+</div>
+<div id="tabset-9-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-9-2-tab">
+<p>A densidade conjunta de <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> é <span class="math display">\[f(x,y)=\frac{y^{1/2}}{\sqrt{\pi}}e^{-y(x^2+1)}I_{(-\infty,\infty)}(x)I_{(0,\infty)}(y)\]</span> e a densidade marginal de <span class="math inline">\(X\)</span> é</p>
+<p><span class="math display">\[\begin{align}f_X(x)&amp;=\int_0^\infty f(x,y)dy=\\
+&amp;=I_{(-\infty,\infty)}(x)\int_0^\infty\frac{y^{1/2}}{\sqrt{\pi}}e^{-y(x^2+1)}dy\\&amp;=\frac{\Gamma(3/2)}{\sqrt{\pi}}[1+x^2]^{-3/2}I_{(-\infty,\infty)}(x)\end{align}\]</span> e a densidade conjunta de <span class="math inline">\(Y|X=x\)</span> é <span class="math display">\[f_{Y|X=x}(y|x)=\frac{f(x,y)}{f_X(x)}=\frac{[1+x^2]^{3/2}}{\Gamma(3/2)}y^{1/2}e^{-y(1+x^2)}I_{(0,\infty)}(y)\]</span> e</p>
+<p><span class="math display">\[\begin{align}E(Y|X=x)&amp;=\frac{[1+x^2]^{3/2}}{\Gamma(3/2)}\int_0^\infty y^{3/2}e^{-y(1+x^2)}dy\\&amp;=\frac{\Gamma(1+3/2)}{\Gamma(3/2)}\frac{[1+x^2]^{3/2}}{[1+x^2]^{1+3/²}}\\&amp;=\frac{3}{2[1+x^2]}\end{align}\]</span></p>
+</div>
+</div>
+</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-10-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-1" role="tab" aria-controls="tabset-10-1" aria-selected="true" href="">Questão 5</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-10-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-2" role="tab" aria-controls="tabset-10-2" aria-selected="false" href="">Solução</a></li></ul>
+<div class="tab-content">
+<div id="tabset-10-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-10-1-tab">
+<p>Ao final do dia, uma ação negociada na bolsa de valores tem seu preço classificado em dois estados:</p>
+<ul>
+<li><p>0 (em baixa) - nesse caso, o preço final da ação é menor do que o valor do preço final no dia anterior.</p></li>
+<li><p>1 (em alta) - nesse caso, o preço final da ação é maior do que o valor do preço final no dia anterior.</p>
+<p>Estando em alta, a probabilidade da ação fechar em alta no dia seguinte é de 0,7. Estando em baixa, a probabilidade da ação fechar em baixa no dia seguinte é de 0,6. Em longo prazo, qual é a probabilidade da ação fechar em alta?</p></li>
+</ul>
+</div>
+<div id="tabset-10-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-10-2-tab">
+<p>As probabilidades de transição são: <span class="math display">\[\begin{align}p_{00}=0,6\\p_{01}=0,4\\p_{10}=0,3\\p_{11}=0,7\end{align}\]</span></p>
+<p>Como <span class="math inline">\(p_{01}&gt;0\)</span> e <span class="math inline">\(p_{10}\)</span>, temos que todos os estados se comunicam e a cadeia é recorrente. Como <span class="math inline">\(p_{00}&gt;0\)</span>, temos que a cadeia é aperiódica. Portanto, existe distribuição estacionária. Vejamos:</p>
+<p><span class="math display">\[\begin{cases}\pi_0=0,6\pi_0+0,3\pi_1\\\pi_0+\pi_1=1\end{cases}\Rightarrow\begin{cases}0,4\pi_0=0,3\pi_1\\\pi_0+\pi_1=1\end{cases},\]</span> disto, <span class="math inline">\(\pi_0=3\pi_1/4\)</span> e, <span class="math display">\[\pi_0+\pi_1=1\Rightarrow \pi_1\left(\frac{3}{4}+1\right)=1\Rightarrow\pi_1=\frac{4}{7}\]</span> Portanto, em longo prazo, a probabilidade da ação fechar em alta é de 4/7.</p>
+</div>
+</div>
+</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-11-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-1" role="tab" aria-controls="tabset-11-1" aria-selected="true" href="">Questão 6</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-11-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-2" role="tab" aria-controls="tabset-11-2" aria-selected="false" href="">Solução</a></li></ul>
+<div class="tab-content">
+<div id="tabset-11-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-11-1-tab">
+<p>A tabela abaixo apresenta a probabilidade de transição de uma cadeia de Markov (<span class="math inline">\(p_{ij}\)</span>). Encontre as classes de estados. classifique-as como transientes ou recorrentes e encontre seu período.</p>
+<p><span class="math display">\[
+\begin{array}{c|cccccccccc}\hline
+            i \setminus j &amp; 0   &amp; 1   &amp; 2 &amp; 3  &amp; 4  &amp; 5 &amp; 6  &amp; 7 &amp; 8 &amp; 9 \\ \hline
+                          0 &amp; 0 &amp; 1 &amp; 0 &amp; 0  &amp; 0  &amp; 0 &amp;0   &amp;0  &amp; 0 &amp; 0\\
+                          1 &amp; 1   &amp; 0   &amp;0  &amp;0   &amp;0   &amp;0  &amp;0   &amp;0  &amp; 0 &amp; 0\\
+                          2 &amp; 0   &amp; 0,5 &amp;0  &amp;0   &amp;0,5 &amp;0  &amp;0   &amp;0  &amp; 0 &amp; 0\\
+                          3 &amp; 0   &amp; 0   &amp;0  &amp; 1  &amp;0   &amp;0  &amp;0   &amp;0  &amp; 0 &amp; 0\\
+                          4 &amp; 0   &amp; 0   &amp;0  &amp; 0  &amp;0,9 &amp;0,1&amp;0   &amp;0  &amp; 0 &amp; 0\\
+                          5 &amp; 0   &amp; 0   &amp;0  &amp; 0  &amp;0   &amp;0  &amp;1   &amp;0  &amp; 0 &amp; 0\\
+                          6 &amp; 0   &amp; 0   &amp;0  &amp; 0  &amp;0   &amp;0  &amp;0   &amp;1  &amp; 0 &amp; 0\\
+                          7 &amp; 0   &amp; 0   &amp;0  &amp; 0  &amp;0   &amp;0  &amp;0   &amp;0  &amp; 1 &amp; 0\\
+                          8 &amp; 0   &amp; 0   &amp;0  &amp; 0  &amp;0   &amp;0  &amp;0   &amp;0  &amp; 0 &amp; 1\\
+                          9 &amp; 0   &amp; 0   &amp;0  &amp; 0  &amp;0   &amp;0,5&amp;0   &amp;0,5&amp; 0 &amp; 0\\ \hline                       
+     \end{array}
+\]</span></p>
+</div>
+<div id="tabset-11-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-11-2-tab">
+<p>Após construir o grafo da cadeia, é simples encontrar as seguintes classes</p>
+<ul>
+<li><p><span class="math inline">\(\{0,1\}\)</span>: recorrente com período 2</p></li>
+<li><p><span class="math inline">\(\{2\}\)</span>: transiente com período 0</p></li>
+<li><p><span class="math inline">\(\{3\}\)</span>: recorrente (absorvente) com período 1</p></li>
+<li><p><span class="math inline">\(\{4\}\)</span>: transiente com período 1</p></li>
+<li><p><span class="math inline">\(\{5,6,7,8,9\}\)</span>: recorrente com período 1.</p></li>
+</ul>
 </div>
 </div>
 </div>

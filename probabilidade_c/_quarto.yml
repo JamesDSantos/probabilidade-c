@@ -1,0 +1,26 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  title: "Probabilidade C"
+  author: "James D Santos"
+  date: "05/01/2026"
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - vetores_aleatorios_discretos.qmd
+    - vetores_aleatorios_continuos.qmd
+    - vetores_mistos.qmd
+    - covariancia.qmd
+    - convergencia.qmd
+    - cadeias_de_markov.qmd
+    - provas.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    css: styles.css
+ 

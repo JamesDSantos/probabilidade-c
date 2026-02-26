@@ -1,0 +1,41 @@
+# Introdução
+
+## Vetores aleatórios
+
+Neste curso vamos utilizar o negrito para designar um vetor. Por exemplo,
+
+$$\textbf{x}=(x_1,…,x_n)$$,
+é um vetor de comprimento $n$.
+
+Agora, sejam $X_1,…,X_n$ variáveis aleatórias. Então, dizemos que
+
+$$\textbf{X}=(X_1,…,X_n)$$
+é um vetor aleatório (também é usual o termo variável aleatória $n$
+-dimensional).
+
+::: {#exm}
+Dois dados de seis faces são lançados. Sejam $X_1$ 
+ e $X_2$  os resultados do dado 1 e 2, respectivamente. Então, $\textbf{X}=(X_1,X_2)$ 
+ é um vetor aleatório.
+:::
+
+
+Utilizamos a vírgula para denotar a interseção de eventos relacionados aos vetores aleatórios. Por exemplo,  
+
+$$P(X_1\in A,X_2\in B)=P(\{X_1\in A\}\cap\{X_2\in B\})$$,
+
+::: {#exm}
+Dois dados de seis faces são lançados. Sejam $X_1$ e $X_2$
+ os resultados do dado 1 e 2, respectivamente. Então, $P(X_1=3,X_2=5)$ 
+ é o mesmo que $P(\{X_1=3\}\cap\{X_2=5\})$. Em palavras, este número representa a probabilidade de sair 3 no primeiro dado e 5 no segundo.
+:::
+
+Assim como as variáveis aleatórias, os vetores aleatórios possuem funções de densidade/probabilidade e funções de distribuição. Para frisar que mais de uma variável está sendo considerada, utilizamos o adjetivo **conjunta**. Deste modo, existem para os vetores aleatórias a função de **distribuição conjunta** e a função de **densidade/probabilidade conjunta**. Por sua vez, a distribuição de um subvetor de $\textbf{X}$ é denominada **marginal**.   
+
+Também é possível encontrar funções de distribuição ou densidade/probabilidade para o vetor aleatório $\textbf{X}$ condicionado com o vetor aleatório $\textbf{Y}$.
+
+Uma vez que essas funções, já conhecidas para o caso univariado, possuem seu equivalente para vetores, é natural expandir conceitos como espança e variância para vetores, assim como a esperança e variância para distribuições condicionais. Nesse momento, novas medidas que medem o relacionamento entre variáveis aleatórias, como covariância e correlação, serão apresentadas. 
+
+## Teoremas limites
+
+## Cadeias de Markov

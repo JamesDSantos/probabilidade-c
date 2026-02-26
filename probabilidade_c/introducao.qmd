@@ -1,0 +1,1341 @@
+# 1. Vetores aleatórios e suas distribuições
+
+## 1.1 Introdução
+
+Neste curso vamos utilizar o negrito para designar um vetor. Por exemplo,
+
+$$\textbf{x}=(x_1,…,x_n)$$,
+é um vetor de comprimento $n$.
+
+Agora, sejam $X_1,…,X_n$ variáveis aleatórias. Então, dizemos que
+
+$$\textbf{X}=(X_1,…,X_n)$$
+é um vetor aleatório (também é usual o termo variável aleatória $n$
+-dimensional).
+
+::: {#exm}
+Dois dados de seis faces são lançados. Sejam $X_1$ 
+ e $X_2$  os resultados do dado 1 e 2, respectivamente. Então, $\textbf{X}=(X_1,X_2)$ 
+ é um vetor aleatório.
+:::
+
+
+Utilizamos a vírgula para denotar a interseção de eventos relacionados aos vetores aleatórios. Por exemplo,  
+
+$$P(X_1\in A,X_2\in B)=P(\{X_1\in A\}\cap\{X_2\in B\})$$,
+
+::: {#exm}
+Dois dados de seis faces são lançados. Sejam $X_1$ e $X_2$
+ os resultados do dado 1 e 2, respectivamente. Então, $P(X_1=3,X_2=5)$ 
+ é o mesmo que $P(\{X_1=3\}\cap\{X_2=5\})$. Em palavras, este número representa a probabilidade de sair 3 no primeiro dado e 5 no segundo.
+:::
+
+## 1.2 Distribuição conjunta
+
+
+###1.2.2 Função de densidade conjunta
+
+Seja $\textbf{X}=(X_1,…,X_n)$ um vetor de variáveis aleatórias absolutamente contínuas. Dizemos que a função contínua
+
+$$f(\textbf{x})=f(x_1,…,x_n)$$
+é a função de densidade conjunta de $\textbf{X}$ se
+
+$$P(X_1\in A_1,\ldots,X_n\in A_n)=\int_{A_1}\cdots\int_{A_n}f(\textbf{x})d\textbf{x}.$$
+
+::: {#exm}
+Duas máquinas do mesmo tipo são ligadas simultaneamente. Seja $\textbf{X}=(X_1,X_2)$
+ o vetor aleatório do tempo de vida destas máquinas (ou seja, $X_i$
+ 
+## 1.4 Vetores com variáveis mistas
+
+É possível que o vetor $X$ seja composto de variáveis aleatórias discretas ou contínuas. Neste caso, apenas a função de distribuição pode ser definida.
+
+::: {#exm-}
+Seja $\textbf{X}=(Y,Z)$ um vetor aleatório com função de distribuição conjunta dada por,
+
+$$F(y,z)=\sum_{u=0}^y\int_0^z\frac{e^{-2v}v^u}{u!}dv.$$
+com $y=0,1,\ldots$ e $z>0$. Neste caso, teremos que $Y$
+ é uma variável discreta e $Z$
+ uma contínua. Além disso, podemos determinar que
+
+$$F_Y(y)=\lim_{z\rightarrow\infty}F(y,z)=\sum_{u=0}^y\frac{1}{u!}\int_0^\infty e^{-2v}v^udv=\sum_{u=0}^y\frac{\Gamma(u+1)}{2^{u+1}u!}=\sum_{u=0}^y\frac{1}{2^{u+1}},$$
+e, portanto,
+$$P(Y=y)=\frac{1}{2^{y+1}},$$
+o que implica que $Y\sim\hbox{Geometrica}(1/2)$. Além disso,
+
+
+$$F_Z(z)=\lim_{y\rightarrow\infty}F(y,z)=\int_0^ze^{-2v}\sum_{u=0}^\infty\frac{v^u}{u!}dv=\int_0^ze^{-v}dv,$$
+o que implica que $Z\sim\hbox{Exponencial}(1)$.
+</div>
+
+
+## 1.5 Exercícios de Fixação
+
+<div class='alert alert-danger'>
+**Exercício 1**
+Suponha que três bolas são selecionadas ao acaso de uma urna contendo três bolas vermelhas, quatro brancas e cinco azuis. Sejam $X$
+ e $Y$
+ o número de bolas vermelhas e o número de bolas brancas selecionadas. Determine:
+
+a. A função de probabildade de $(X,Y)$
+
+b. A função de probabilidade marginal de $X$ e $Y$
+
+c. $P(X=Y)$
+</div>
+
+<div class='alert alert-danger'>
+**Exercício 2**
+Em um pacote com 5 transistores, 2 estão defeituosos. Os transistores devem ser testados, um de cada vez, até que aqueles defeituosos sejam identificados. Seja $N_1$
+ o número de testes necessários para que o primeiro transistor defeituoso seja localizado e seja $N_2$
+ o número de testes adicionais para encontrar o segundo. Determine a função de probabilidade conjunta de $(N_1,N_2)$.
+</div>
+
+<div class='alert alert-danger'>
+**Exercício 3**
+Um dado honesto é lançado uma única vez. Sejam $X=1$ se o valor obtido é maior que 3 e $X=0$
+ em caso contrário e $Y=1$ se o número é par e $Y=0$em caso contrário. $X$
+ e $Y$ são independentes?
+</div>
+
+<div class='alert alert-danger'>
+**Exercício 4**
+Suponha que o vetor $(X,Y)$
+ de variáveis aleatórias possui distribuição uniforme no retângulo $0<x<2$
+ e $0<y<1$. Encontre a densidade conjunta de $(X,Y)$.
+</div>
+
+<div class='alert alert-danger'>
+**Exercício 5**
+Suponha que $(X,Y)$ tem função de probabilidade conjunta dada por
+
+$$P(X=x,Y=y)=\left\{\begin{array}{ll}c|x+y|,&x\in\{−2,−1,0,1,2\}\;,\; y\in\{−2,−1,0,1,2\}\\0,&\hbox{caso contrário}\end{array}\right.$$
+Determine o valor da constante $c$.
+</div>
+
+<div class='alert alert-danger'>
+**Exercício 6**
+Suponha que $(X,Y)$ tem função densidade conjunta dada por
+
+$$f(x,y)=\left\{\begin{array}{ll}cy^2,& 0<x<2 \hbox{ e } 0<y<1\\ 0,&\hbox{caso contrário}\end{array}\right.$$
+Determine o valor da constante $c$.
+</div>
+
+<div class='alert alert-danger'>
+**Exercício 7**
+Suponha que $(X,Y)$
+ tem função densidade conjunta dada por
+$$f(x,y)=\left\{\begin{array}{ll}c(x^2+y),& 0<y<1-x^2 \hbox{ e } 0<x<1\\ 0,&\hbox{caso contrário}\end{array}\right.$$
+Determine o valor da constante $c$.
+</div>
+
+# 2. Distribuição condicional de vetores aleatórios
+
+Sejam $\textbf{X}$ e $\textbf{Y}$ vetores aleatórios. Sabemos de cursos anteriores que,
+
+$$P(\textbf{X}\in A|\textbf{Y}\in B)=\frac{P(\textbf{X}\in A,\textbf{Y}\in B)}{P(\textbf{Y}\in B)}$$
+é a probabilidade de $\textbf{X}\in A$ condicionada à ocorrência de $\textbf{Y}\in B$  (supondo que $B\neq \varnothing$). Além disso, podemos utilizar o Teorema de Bayes
+
+$$P(\textbf{X}\in A|\textbf{Y}\in B)=\frac{P(\textbf{Y}\in B|\textbf{X}\in A)P(\textbf{X}\in A)}{P(\textbf{Y}\in B)}.$$
+
+Vamos utilizar essa função para definir as distribuições condicionais, dividindo a discussão nos seguintes casos especiais:
+
+* $\textbf{X}$ e $\textbf{Y}$ são vetores de variáveis aleatórias discretas
+
+* $\textbf{X}$ e $\textbf{Y}$ são vetores variáveis aleatórias contínuas
+
+* $\textbf{X}$ é uma variável aleatória discreta e $\textbf{Y}$ uma contínua
+
+
+## 2.1 Caso I: dois vetores discretos
+
+::: {#def-}
+Sejam $\textbf{X}$ e $\textbf{Y}$ vetores aleatórios discretos. Então, a distribuição de probabilidade condicional de $\textbf{X}$ dado $\textbf{Y=y}$ é definida por
+
+$$P(\textbf{X}=\textbf{x}|\textbf{Y}=\textbf{y})=\frac{P(\textbf{X}=\textbf{x},\textbf{Y}=\textbf{y})}{P(\textbf{Y}=\textbf{y})},$$
+e a respectiva função distribuição é dada por
+
+$$F(\textbf{x}|\textbf{y})=P(\textbf{X}\leq \textbf{x}|\textbf{Y}=\textbf{y}).$$
+
+:::
+
+::: {#exm-}
+Considere a seguinte distribuição conjunta:
+
+$$P(X=x,Y=y)=\left\{\begin{array}{ll}0,1,&x=0,y=0\\
+0,2,&x=0,y=1\\
+0,3,&x=1,y=0\\
+0,4,&x=1,y=1\\
+0,&\hbox{caso contrário}\end{array}\right.$$
+
+Qual é a distribuição de $Y$ dado $X=1$?
+
+**Solução:**
+Primeiro, temos que
+$$P(X=1)=P(X=1,Y=0)+P(X=1,Y=1)=0,7$$
+logo,
+$$P(Y=y|X=1)=\left\{\begin{array}{ll}
+\frac{3}{7},&y=0\\
+\frac{4}{7},&y=1\\
+0,&\hbox{caso contrário}\end{array}\right.$$
+:::
+
+<div class='alert alert-warning'>
+**Exercício 2.1** Considere a função de probabilidade abaixo:
+$$P(X=x,Y=y)={y \choose x}\frac{1}{2^{2y}}$$
+onde $x=0,\ldots,y$ e $y=1,2,\ldots$. Encontre a função de probabilidade de $X$
+ dado $Y=y$.
+</div>
+
+<div class='alert alert-warning'>
+**Exercício 2.2** Sejam
+
+$$P(X=x|Y=y)={y\choose x}\frac{1}{2^y}$$
+onde $x=0,\ldots,y$ e
+$$P(Y=y)=\frac{e^{−1}}{y!},$$
+onde $y=0,1,\ldots$. Encontre a função de probabilidade de $Y$ dado $X=x$.
+</div>
+**Solução**
+
+
+## 2.2. Caso II: dois vetores contínuos
+
+Sejam $\textbf{X}$ e $\textbf{Y}$ vetores aleatórios contínuos. Sabemos que
+
+$$P(\textbf{X}\leq \textbf{x}|\textbf{Y}\in B)=\frac{P(\textbf{X}\leq\textbf{x},\textbf{Y}\in B)}{P(\textbf{Y}\in B)}.$$
+
+Como $\textbf{Y}$ é uma vetor de variáveis aleatórias contínias, sabemos que $P(\textbf{Y}=\textbf{y})=0$. Entretanto, a probabilidade $P(\textbf{X}\leq \textbf{x}|\textbf{Y}=\textbf{y})$ faz todo o sentido. Para mostrar este fato, seja
+$B(\varepsilon)$ uma bola fechada de raio $\varepsilon$ e centro $\textbf{y}$. Pelo Teorema do Valor Médio, existe $\tilde{y}\in B(\varepsilon)$ tal que
+
+$$P(\textbf{Y}\in B(\varepsilon) )=\int_{B(\varepsilon)} f_{\textbf{Y}}(\textbf{u})d\textbf{u}=\hbox{Vol}(B(\varepsilon))f_{\textbf{Y}}(\tilde{\textbf{y}})$$
+e
+
+$$P(\textbf{X}\leq \textbf{x},\textbf{Y}\in B(\varepsilon) )=\int_{\textbf{v}\leq \textbf{x}}\int_{B(\varepsilon)} f_{\textbf{X},\textbf{Y}}(\textbf{v},\textbf{u})d\textbf{u}d\textbf{v}=\hbox{Vol}(B(\varepsilon))\int_{\textbf{v}\leq \textbf{x}}f_{\textbf{X},\textbf{Y}}(\textbf{v},\tilde{\textbf{y}}_{\textbf{v}})d\textbf{v}.$$
+Portanto,
+
+$$P(\textbf{X}\leq \textbf{x}|\textbf{Y}\in B(\varepsilon) )=\frac{\hbox{Vol}(B(\varepsilon))\int_{\textbf{v}\leq \textbf{x}}f_{\textbf{X},\textbf{Y}}(\textbf{v},\tilde{\textbf{y}})d\textbf{v}}{\hbox{Vol}(B(\varepsilon))f_{\textbf{Y}}(\tilde{\textbf{y}})}=\int_{\textbf{v}\leq \textbf{x}}\frac{f_{\textbf{X},\textbf{Y}}(\textbf{v},\tilde{\textbf{y}}_{\textbf{v}})}{f_{\textbf{Y}}(\tilde{\textbf{y}})}d\textbf{v}.$$
+Agora, note que $B(\varepsilon)\rightarrow\textbf{y}$ quando $\varepsilon\rightarrow0$, logo $\tilde{\textbf{y}}\rightarrow\textbf{y}$ e $\tilde{\textbf{y}}_{\textbf{v}}\rightarrow\textbf{y}$ para todo $\textbf{v}$, o que implica em
+
+$$\lim_{\varepsilon\rightarrow 0}P(\textbf{X}\leq \textbf{x}|\textbf{Y}\in B(\varepsilon) )=P(\textbf{X}\leq \textbf{x}|\textbf{Y}= \textbf{y})=F(\textbf{x}|\textbf{y})=\int_{\textbf{v}\leq \textbf{x}}\frac{f_{\textbf{X},\textbf{Y}}(\textbf{v},{\textbf{y}})}{f_{\textbf{Y}}({\textbf{y}})}d\textbf{v}.$$
+o que implica em
+
+$$f(\textbf{x}|\textbf{y})=\frac{f_{\textbf{X},\textbf{Y}}(\textbf{x},\textbf{y})}{f_{\textbf{Y}}(\textbf{y})}.$$
+
+::: {#exm-}
+
+Seja 
+$$f(x,y)=21x^2y^3,$$
+se $0<x<y<1$. Encontre a densidade condicional de $Y|X=x$.
+
+**Solução.**
+
+Primeiro, vamos encontrar a densidade marginal de $X$:
+
+$$f(x)=21x^2\int_x^1 y^3dy=\frac{21}{4}x^2(1-x^4),$$
+
+para $x\in(0,1)$. Portanto,
+
+$$f(y|x)=\frac{f(x,y)}{f(x)}=\frac{21x^2y^3}{\frac{21}{4}x^2(1-x^4)}=\frac{4y^3}{(1-x^4)},$$
+com $0<x<y<1$.
+
+<div class='alert alert-warning'>
+**Exercício 2.** Suponha que
+
+$$f(x,y)=\frac{1}{2\pi}\exp\left\{−\frac{1}{2}(x^2+2y^2−2xy)\right\},$$
+com $(x,y)\in\mathbb{R}^2$. Encontre a densidade de $X|Y=y$.
+</div>
+
+
+## 2.3. Caso III: um vetor discreto e outro contínuo
+
+É comum o caso no qual há o interesse na distribuição de conjunta de $\textbf{X}$
+ dado $\textbf{Y}$, onde um destes é discreto e o outro contínuo. Entretanto, note que não é possível descrever uma função densidade ou de probabilidade conjunta para $(\textbf{X},\textbf{Y})$. Deste modo, devemos encontrar outro meio de representar esta quantidade.
+
+Sem perda de generalidade, vamos mostrar como representar as respectivas densidades e funções de probabilidade condicionais para um vetor aleatório $\textbf{X}$ de variáveis contínuas e outro $\textbf{Y}$ de variáveis discretas. Seja $B(\varepsilon)$ uma bola fechada de raio $\varepsilon$ e cento $\textbf{x}$. Então,
+
+$$P(\textbf{X}\in B(\varepsilon),\textbf{Y}=\textbf{y})=P(\textbf{X}\in B(\varepsilon)|\textbf{Y}=\textbf{y})P(\textbf{Y}=\textbf{y})$$
+ou ainda
+$$P(\textbf{X}\in B(\varepsilon),\textbf{Y}=\textbf{y})=P(\textbf{Y}=\textbf{y}|\textbf{X}\in B(\varepsilon))P(\textbf{X}\in B(\varepsilon))$$
+Então, teremos que
+
+$$P(\textbf{X}\in B(\varepsilon)|\textbf{Y}=\textbf{y})=\frac{P(\textbf{X}\in B(\varepsilon),\textbf{Y}=\textbf{y})}{P(\textbf{Y}=\textbf{y})}=\frac{P(\textbf{Y}=\textbf{y}|\textbf{X}\in B(\varepsilon))P(\textbf{X}\in B(\varepsilon))}{P(\textbf{Y}=\textbf{y})},$$
+ou ainda 
+$$\int_{B(\varepsilon)}f(\textbf{x}|\textbf{y})d\textbf{x}=\frac{P(\textbf{X}\in B(\varepsilon),\textbf{Y}=\textbf{y})}{P(\textbf{Y}=\textbf{y})}=\frac{P(\textbf{Y}=\textbf{y}|\textbf{X}\in B(\varepsilon))}{P(\textbf{Y}=\textbf{y})}\int_{B(\varepsilon)} f(\textbf{x} )d\textbf{x},$$
+
+Pelo Teorema do Valor Médio, existem $\tilde{\textbf{x}}$ e $\tilde{\textbf{x}}_{\textbf{y}}$ pertencentes à $B(\varepsilon)$ tais que
+
+$$\int_{B(\varepsilon)}f(\textbf{x}|\textbf{y})d\textbf{x}=\hbox{Vol}(B(\varepsilon))f(\tilde{\textbf{x}}_{\textbf{y}}|\textbf{y}),\hbox{  e  }\int_{B(\varepsilon)}f(\textbf{x}|\textbf{y})d\textbf{x}=\hbox{Vol}(B(\varepsilon))f(\tilde{\textbf{x}})$$
+
+logo,
+$$\hbox{Vol}(B(\varepsilon))f(\tilde{\textbf{x}}_{\textbf{y}}|\textbf{y})=\frac{P(\textbf{Y}=\textbf{y}|\textbf{X}\in B(\varepsilon))}{P(\textbf{Y}=\textbf{y})}\hbox{Vol}(B(\varepsilon))f(\tilde{\textbf{x}}),$$
+ou ainda,
+$$f(\tilde{\textbf{x}}_{\textbf{y}}|\textbf{y})=\frac{P(\textbf{Y}=\textbf{y}|\textbf{X}\in B(\varepsilon))}{P(\textbf{Y}=\textbf{y})}f(\tilde{\textbf{x}}).$$
+Fazendo $\varepsilon\rightarrow 0$, teremos que $B(\varepsilon)\rightarrow\textbf{x}$,  $\tilde{\textbf{x}}\rightarrow\textbf{x}$ e $\tilde{\textbf{x}}_{\textbf{y}}\rightarrow\textbf{x}$ para todo $\textbf{y}$ no espaço amostral. Portanto,
+
+$$f(\textbf{x}|\textbf{y})=\frac{P(\textbf{Y}=\textbf{y}|\textbf{X}= \textbf{x})}{P(\textbf{Y}=\textbf{y})}f(\textbf{x}).$$
+
+Além disso, podemos reorganizar a expressão acima, como segue:
+
+$$P(\textbf{Y}=\textbf{y}|\textbf{X}=\textbf{x})=\frac{f(\textbf{x}|\textbf{y})P(\textbf{Y}=\textbf{y})}{f(\textbf{x})}.$$
+
+Dos resultados anteriores, podemos escrever as seguintes relações:
+
+
+* Densidade marginal de $\textbf{X}$:
+
+$$f(\textbf{x})=\sum_{\textbf{y}} f(\textbf{x}|\textbf{y})P(\textbf{Y}=\textbf{y})$$
+
+* Função de probabilidade marginal de $\textbf{Y}$:
+
+$$P(\textbf{Y}=\textbf{y})=\int P(\textbf{Y}=\textbf{y}|\textbf{X}=\textbf{x})f(\textbf{x})d\textbf{x}.$$
+
+Exercício
+Solução
+Exercício 2.4Suponha que
+P(X=x)=12,
+com x=0,1
+. Suponha ainda que Y|X=x∼Normal(x,1)
+. Mostre que
+
+P(X=0|Y=y)=(1+exp{y−12})−1
+
+Exercício
+Solução
+Exercício 2.5Suponha que X∼Gama(2,1)
+ e Y|X=x∼Poisson(x)
+. Encontre a densidade de X|Y=y
+.
+
+## 2.4 Independência entre vetores aleatórios
+
+Dizemos que dois vetores aleatórios $\textbf{X}$ e $\textbf{Y}$ são independentes se
+
+$$F(\textbf{x}|\textbf{y})=F(\textbf{x})$$
+para todo $\textbf{y}$. Isto implica que, para quaisquer $A$
+ e $B$ definidos no espaço amostral,
+
+$$P(\textbf{X}\in A,\textbf{Y}\in B)=P(\textbf{X}\in A)P(\textbf{Y}\in B).$$
+
+Disto, podemos encontrar as seguintes fatorações da conjunta:
+
+1. Sejam $\textbf{X}$ e $\textbf{Y}$ dois vetores aleatórios discretos. Dizemos que eles são independentes, se e somente se
+
+$$P(\textbf{X}=\textbf{x},\textbf{Y}=\textbf{y})=P(\textbf{X}=\textbf{x})P(\textbf{Y}=\textbf{y}).$$
+
+2. Sejam $\textbf{X}$ e $\textbf{Y}$ dois vetores aleatórios contínuos. Dizemos que eles são independentes, se e somente se
+
+$$f(\textbf{x},\textbf{y})=f_{\textbf{X}}(\textbf{x})f_{\textbf{Y} }(\textbf{y}).$$
+
+Note que a definição de independência não depende da natureza discreta/contínua dos vetores envolvidos. Portanto, a fatoração da conjunta ainda existe, por exemplo, quando $\textbf{X}$ é discreta e $\textbf{Y}$ contínua. É possível mostrar que existe uma função $h(\textbf{x},\textbf{y})$ tal que, 
+
+$$h(\textbf{x},\textbf{y})=f_{\textbf{Y}}(\textbf{y})P(\textbf{X}=\textbf{x}).$$
+Tal função é entendida como uma densidade em relação à medida de contagem para $\mathbf{X}$ e à medida de Lebesgue para $\mathbf{Y}$, mas seu estudo está além do escopo deste curso.
+
+
+Exercícios de Fixação
+
+Para n>0
+ inteiro, suponha que X∼Gama(n+1,x)
+. Além disso, suponha que dado x
+, Y1,…,Yn
+ são variáveis aleatórias independentes que possuem a seguinte densdidade condicional:
+f(yi|x)=1x,
+para 0<yi<x
+.
+Determine a densidade marginal do vetor (Y1,…,Yn)
+
+Determine a densidade condicional de X
+ dado os valores de Y1,…,Yn
+.
+
+Seja X
+ uma variável aleatória contínua. Sejam X1=X2=X
+. Mostre que X=(X1,X2)
+ não tem densidade conjunta.
+
+Considere o seguinte experimento realizado em duas etapas. Primeiro, escolhe-se um ponto x
+ ao acaso no conjunto {0,1,…,10}
+. Em seguida, escolhe-se ao acaso um ponto no conjunto {−x,−x+1,…,0,…,x}
+. Seja (X,Y)
+ o resultado do experimento. Determine (a) a distribuição de probabilidade de (X,Y)
+ (b) a distribuição marginal de Y
+ (c) X
+ e Y
+ são independentes?
+
+Considere a densidade conjunta
+f(x,y)=67(x2+xy2)
+para 0<x<1
+ e 0<y<2
+. a) verifique que f(x,y)
+ é de fato uma função densidade conjunta b) encontra a função densidade de X
+ c) Calcule P(X>Y)
+
+Considere a densidade conjunta
+f(x,y)=18(x−y),
+para 0<x<2
+, −x<y<x
+. Verifique que f(x,y)
+ é de fato uma função densidade e encontre as densidades marginais de X
+ e Y
+.
+
+Selecione um ponto X
+ com distribuição Uniforme(0,1). Após o valor x
+ ter sido observado, um ponto Y
+ é escolhido ao acaso no intervalo (x,1)
+. Encontre a distribuição marginal de Y
+.
+
+Sejam X1,…,Xn|Y=y
+ variáveis aleatórias independentes com distribuição Bernoulli(y
+) e seja Y∼Beta(α,β)
+. Prove que Y|x1,…,xn∼Beta(α+∑ni=1xi,β+n−∑ni=1xi).
+
+
+
+# 4. Funções de vetores aleatórios
+
+## 4.1 Funções de vetores aleatórios discretos
+
+
+
+## 4.2 Função de vetores aleatórios contínuos
+
+
+Suponha que $X$  é uma variável aleatória contínua e $g(.)$
+ uma função real e contínua. Considerando a variável aleatória $Y=g(X)$, teremos que
+
+$$P(Y\in A)=P(g(X)\in A)=\int_{x:g(x)\in A}f_X(x)dx.$$
+
+Em particular,
+
+$$F_Y(y)=P(Y\leq y)=P(g(X)\leq y)=\int_{x:g(x)\leq y}f_X(x)dx.$$
+
+Agora, suponha $g(.)$ possui inversa. Então, podemos utilizar o método integral por substituição. Fazendo $u=g(x)$, teremos que $x=g^{−1}(u)$ e $dx=\frac{d}{du}g^{−1}(u)du$. Além disso,
+
+$$\{x:g(x)\leq y\}\equiv\{u\leq y\},$$
+o que implica em
+
+$$F_Y(y)=\int_{-\infty}^y f_X(g^{−1}(u))\left|\frac{d}{du}g^{−1}(u)\right|du$$
+logo,
+$$f_Y(y)=f_X(g^{−1}(y))\left|\frac{d}{dy}g^{−1}(y)\right|.$$
+O termo dentro do módulo é denominado **Jacobiano da transformação** e a obtenção da densidade por esse método é denominada **método do Jacobiano**.
+
+::: {#exm-}
+Suponha que $X\sim\hbox{Normal}(0,1)$. Considere a transformação $Y=e^{X}$. Como $g^{-1}(y)=\log(y)$, teremos que
+
+
+$$f_Y(y)=f_X(\log y )\left|\frac{d}{dy}\log y\right|=\frac{1}{y\sqrt{2\pi}}e^{-\frac{1}{2}\log y^2}.$$
+Essa distribuição é denominada Lognormal(0,1).
+:::
+
+
+Assim como no caso discreto, a extensão para vetores também é natural. Seja $\textbf{X}$
+ um vetor aleatório de comprimento $n$
+ e considere a nova variável $\textbf{Y}=g(X)$, onde $g:\mathbb{R}^n\rightarrow \mathbb{R}^m$
+ é uma função real. Então 
+
+$$P(\textbf{Y}\in A)=P(g(\textbf{X})\in A)=\int_{\{\textbf{x}:g(\textbf{x})\in A\}}f_\textbf{X}(\textbf{x})d\textbf{x}.$$
+
+Agora, suponha que $g(.)$ possui inversa (o que implica que $g:\mathbb{R}^n\rightarrow \mathbb{R}^n$). Então, pelo método da integral por substituição, teremos que $\textbf{u}=g^{-1}(\textbf{y})$, $d\textbf{x}=|\mathcal{J}g^{-1}(\textbf{u})|d\textbf{u}$ e $\{\textbf{x}:g(\textbf{x})\in A\}=\{\textbf{u}\in A\}$, o que implica em
+
+$$P(\textbf{Y}\in A)=\int_{A}f_\textbf{X}(g^{-1}(\textbf{u})|\mathcal{J}g^{-1}(\textbf{u})|d\textbf{u}.$$
+
+onde $\mathcal{J}g^{-1}(\textbf{u})$ é denominada matriz Jacobiana, cujo o elemento $(i,j)$ é dado por
+$$\frac{\partial^2}{\partial u_i\partial u_j}g^{-1}(\textbf{u}).$$
+
+Em particular, teremos que
+
+$$F_{\textbf{Y}}(\textbf{y})=\int_{-\infty}^{y_1}\cdots \int_{-\infty}^{y_n}f_\textbf{X}(g^{-1}(\textbf{u}))|\mathcal{J}g^{-1}(\textbf{u})|d\textbf{u}.$$
+
+Portanto, concluímos que
+$$f_\textbf{Y}(\textbf{y})=f_\textbf{X}(g^{−1}(\textbf{y}))|\mathcal{J}g^{-1}(\textbf{y})|.$$
+
+::: {#exm-}
+Sejam $X_1$ e $X_2$ variáveis aleatórias independentes com distribuição Normal(0,1). Vamos encontrar a função densidade conjunta de $\textbf{Y}=(X_1+X_2,Y2=X_1−X_2)$.
+
+
+Primeiro, temos que encontrar a função inversa:
+
+$$\begin{array}{c}
+Y_1=X_1+X_2\\
+Y_2=X_1-X_2\\
+\end{array} \Leftrightarrow \begin{array}{c}X_1=0,5(Y_1+Y_2)\\ X_2=0,5(Y_1-Y_2)\end{array}$$
+
+e o Jacobiano da transformação é dado por
+
+$$\mathcal{J}g^{-1}(\textbf{y})=\left[\begin{array}{cc} 0,5 & 0,5 \\ 0,5 & - 0,5 \end{array}\right],$$
+
+cujo determinante é igual a 1/2. Logo,
+
+$$\begin{align}f_\textbf{Y}(\textbf{y})&=f_{X_1}(0,5(y_1+y_2)f_{X_2}(0,5(y_1−y2_2)\frac{1}{2}=\frac{1}{4\pi}e^{-\frac{1}{8}[(y_1-y_2)^2+(y_1+y_2)^2]}\\&=\frac{1}{4\pi}e^{-\frac{1}{4}(y_1^2+y_2^2)}\end{align}$$
+Podemos notar que a densidade conjunta fatora em duas normais, ou seja $Y_1$
+ e $Y2_$ são independentes com marginais Normal(0,2).
+:::
+
+Exercício
+Solução
+Sejam X1
+ e X2
+ variáveis aleatórias independentes com distribuição Normal(0,1).
+
+Encontre a função densidade conjunta de Y1=aX1+X2
+ e Y2=X1−X2
+, onde a
+ é uma constante.
+
+Quais são os valores de a
+ tais que Y1
+ é independente de Y2
+?
+Exemplo
+Solução
+Sejam X
+ e Y
+ variáveis aleatórias independentes com distribuição Exponencial(1). Determine a distribuição conjunta de U=X+Y
+ e V=Y/X
+.
+
+Antes de prosseguirmos, é importante relembrar alguns resultados sobre funções indicadoras.
+
+Seja I(x∈A)
+ a função indicadora, onde
+I(x∈A)={1,0, se x∈A em caso contrário.
+Em particular, se x∈(a,b)
+, podemos escrever I(a<x<b)
+. Então, é verdade que
+
+I(a1<x<b1)I(a2<x<b2)=I(max{a1,a2}<x<min{b1,b2}).
+
+<div class="alert alert-success>
+∫RI(a<x<b)h(x)dx=∫bah(x)dx.
+Considere o agora que g:Rm→Rn
+, onde m>n
+. Nesse caso, Y=g(X)
+ ainda é um vetor aleatório, mas podemos aplicar o método discutido nesta seção porque g(.)
+ não tem inversa. Neste caso, adicionamos um vetor W=h(X)
+ de dimensão m−n
+ tal que a função g∗(X)=(g(X),h(X))
+ tenha inversa. Então, obtemos a densidade conjunta de (Y,W)
+ através do método discutido anteriormente, ou seja
+
+fY,W(y,w)=fX(g∗−1(y,w))|J(y,w)|.
+Em seguida, podemos encontrar a densidade conjunta de Y
+ integrando a conjunta acima em W
+:
+
+fY(y)=∫fX(g∗−1(y,w))|J(y,w)|dw.
+Exemplo. Sejam X1
+ e X2
+ variáveis aleatórias independentes com distribuição Exponencial(1). Vamos encontrar a densidade de Y=X1+X2
+.
+
+Note que não há inversa (ou seja, não é possível escrever X1
+ e X2
+ como função apenas de Y
+). Vamos introduzir a variável auxilar W=X2
+. Então,
+
+{Y=X1+X2W=X2⇒{X1=Y−WX2=W
+
+O jacobiano da transformação será
+J(y,w)=∣∣∣10−11∣∣∣=1
+e
+
+fY,W(y,w)=fX1,X2(y−w,w)|J(y,w)|=fX1(y−w)fX2(w)
+Lembremos que a densidade da Exponencial(1) é dada por
+fX(x)=e−x,
+para x>0
+. Isso é o mesmo que escrever
+fX(x)=e−xI(x>0).
+Agora, podemos escrever a densidade conjunta de (Y,W):
+fY,W(y,w)=e−(y−w)I(y−w>0)e−wI(w>0)=e−yI(y−w>0)I(w>0).
+Vamos encontrar a marginal de Y
+ integrando o resultado acima em w:
+ 
+ $$fY(y)=∫e−yI(y−w>0)I(w>0)dw=∫e−yI(w<y)I(0<w)dw=∫e−yI(−∞<w<y)I(0<w<∞)dw=∫e−yI(max{−∞,0}<w<min{y,∞})dw=∫e−yI(0<w<y)dw=∫y0e−ydw=e−y∫y0dw=ye−y.$$
+
+Exercício
+Sejam X1
+ e X2
+ variáveis aleatórias independentes com distribuição Uniforme(0,1). Encontre a distribuição de Y=X1+X2
+.
+Solução
+Considere a variável auxiliar W=X1
+. Neste caso,
+X1X2=W,=Y−W.
+e o Jacobiano da transformação será
+∣∣∣∣∂x1∂y∂x2∂y∂x1∂w∂x2∂w∣∣∣∣=∣∣∣011−1∣∣∣=1
+
+Como
+fX1,X2(x1,x2)=fX1(x1)fX2(x2)=1
+se 0<x<1
+ e 0<y<1
+ e 0 em caso contrário, teremos que
+
+fY,W(y,w)=fX1,X2(w,y−w)J(y,w)=I(0<w<1)I(0<y−w<1),
+
+se 0<w<1
+ e 0<y−w<1
+ e 0 em caso contrário.
+
+Agora, vamos encontrar a densidade de Y
+:
+
+fY(y)=∫RI(0<w<1)I(0<y−w<1)dw=∫RI(0<w<1)I(y−1<w<y)dw=∫RI(max{0,y−1}<w<min{1,y})dw=∫min{1,y}max{0,y−1}1dw=min{1,y}−max{0,y−1},
+
+se 0<y<2
+ e zero em caso contrário.
+
+Exercícios de fixação
+
+Sejam X1,X2,X3
+ variáveis contínuas com função densidade conjunta dada por
+f(x1,x2,x3)=8x1x2x3,
+para (x1,x2,x3)∈(0,1)3
+. Sejam Y1=X1
+, Y2=X1X2
+ e Y3=X1X2X3
+. Encontre a denside conjunta de (Y1,Y2,Y3)
+.
+
+Sejam X1
+ e X2
+ variáveis contínuas com função densidade conjunta dada por
+f(x1,x2)=x1+x2,
+com 0<x1<1
+ e 0<x2<1
+. Encontre a função densidade de Y=X1X2
+.
+
+Sejam X1
+ e X2
+ variáveis aleatórias independentes com distribuição Exponencial(1). Encontre a função densidade de Y=X1−X2
+.
+
+Sejam X
+ e Y
+ variáveis aleatórias com função densidade conjunta dada por
+
+f(x,y)=2(x+y),
+com 0<x<y<1
+. Encontre a função densidade de Z=X+Y
+.
+
+Sejam X
+ e Y
+ variáveis aleatórias independentes com distribuição Uniforme(0,1) e Exponencial(1), respectivamente. Determine a distribuição (marginal) de Z=X+Y
+ e W=X/Y
+.
+
+Sejam X
+ e Y
+ variáveis aleatórias independentes com distribuição Exponencial(λ
+). Determine a distribuição (marginal) de Z=X+Y
+ e W=X/(X+Y)
+.
+
+Sejam X1,X2,X3
+ variáveis aleatórias independentes com distribuição Normal(0,σ2
+). Encontre a densidade de Y=X21+X22+X23−−−−−−−−−−−−√.
+
+## 4.3 Utilizando a função geratriz de momentos para identificar a distribuição de Y=X1+⋯+Xn
+
+A função geratriz de momentos de X
+ é definida por
+
+ϕX(t)=E(etX).
+Consideramos que essa função existe se existe ε>0
+ tal que a esperança acima é finita para |t|<ε.
+ Além disso, se ϕX(t)<∞
+, então a função geratriz de momentos identifica a distribuição de X
+.
+
+Proposição
+Demonstração
+Sejam X1,…,Xn
+ variáveis aleatórias independentes e sejam ϕX1(t),…,ϕXn(t)
+ suas respectivas funções geratrizes de momentos. Então a função geratriz de momentos de $S_n=X_1++X_n $ é dada por
+
+ϕSn(t)=∏i=1nϕXi(t).
+Além disso, se as variáveis forem identicamente distribuídas, então
+
+ϕSn(t)=[ϕX1(t)]n.
+
+ϕX(t)=E(etX).
+
+Exemplo. Sejam X1,…,Xn
+ variáveis aleatórias independentes com distribuição Exponencial(θ
+). Vamos mostrar que Sn=X1+⋯+Xn
+ tem distribuição Gama(n
+,θ
+). Vamos começar encontrando a função geratriz de momentos da Exponencial:
+
+ϕX(t)=E(etX)=∫∞0etxθe−θxdx=θ∫∞0e−x(θ−t)dx=θθ−t,
+para |t|<θ
+. Logo,
+ϕSn(t)=(θθ−t)n.
+Agora, considere que Y∼Gama(n,θ)
+. Então,
+ϕY(t)=∫∞0etyθnΓ(n)yn−1e−yθdy=θnΓ(n)∫∞0yn−1e−y(θ−t)dy=(θθ−t)n.
+Como ϕY(t)=ϕSn(t)
+, concluímos que Y
+ e Sn
+ possuem a mesma distribuição.
+
+Exercício
+Solução
+Sejam X1,…,Xn
+ variáveis independentes com Xi∼Gama(ai,b)
+. Mostre que Sn=X1+⋯+Xn∼Gama(∑ni=1ai,b)
+.
+
+Exercício
+Solução
+Sejam X1,…,Xn
+ variáveis independentes com Xi∼Normal(μi,σ2i)
+. Mostre que Sn=X1+⋯+Xn∼Normal(∑ni=1μi,∑ni=1σ2i)
+.
+
+Princípio da substituição
+Considere a seguinte probabilidade:
+
+P(X+Y≤w|Y=y).
+Note que a mesma é calculada supondo que a variável Y
+ assume o valor y
+. Deste modo, podemos trocar o valor de Y
+ por y
+ no lado esquerdo da barra da condicional:
+P(X+Y≤w|Y=y)=P(X+y≤w|Y=y)=P(X≤w−y|Y=y).
+Esta mudança é conhecida como princípio da substituição.
+
+Sejam X1
+ e X2
+ variáveis aleatórias independentes com Xi∼Poisson(λi)
+. Vamos encontrar a distribuição de X1+X2
+ utilizando o princípio da substituição.
+
+P(X1+X2=m)=∑x1∈ZP(X1+X2=m|X1=x1)P(X1=x1)∑x1∈ZP(X2=m−x1|X1=x1)P(X1=x1)=∑x1∈ZP(X2=m−x1)P(X1=x1)=∑x1∈Ze−λ2λm−x12(m−x1)!I(m−x1≥0)e−λ1λx11x1!I(x1≥0)=∑x1∈Ze−λ2λm−x12(m−x1)!e−λ1λx11x1!I(0≤x1≤m)=∑x1=0me−λ2λm−x12(m−x1)!e−λ1λx11x1!=e−λ1−λ2∑x1=0mλm−x12(m−x1)!λx11x1!=e−λ1−λ2m!∑x1=0mm!x1!(m−x1)!λm−x12λx11=e−λ1−λ2m!∑x1=0m(mx1)λm−x12λx11=e−λ1−λ2m!(λ1+λ2)m
+logo, X1+X2∼Poisson(λ1+λ2)
+. <>
+
+A partir do exemplo acima, um simples argumento de indução nos leva ao seguinte resultado:
+
+Sejam $X_1$ e $X_2$ variáveis aleatórias discretas independentes. Encontre a distribuição de $X_1|X_1+X_2=m$. Solução:
+P(X1=x1|X1+X2=m)=P(X1=x1,X1+X2=m)P(X1+X2=m)=P(X1+X2=m|X1=x1)P(X1=x1)P(X1+X2=m)=P(x1+X2=m|X1=x1)P(X1=x1)P(X1+X2=m)=P(X2=m−x1|X1=x1)P(X1=x1)P(X1+X2=m)=P(X2=m−x1)P(X1=x1)P(X1+X2=m)
+Exercício
+Sejam X1
+ e X2
+ variáveis aleatórias independentes com distribuição Xi∼Poisson(λi)
+. Encontre a distribuição de X1|X1+X2=m
+.
+
+Solução
+Utilizando os dois exemplos anteriores, teremos que
+P(X1=x1|X1+X2=m)=P(X2=m−x1)P(X1=x1)P(X1+X2=m)=e−λ2λm−x12(m−x1)!e−λ1λx11(x1)!e−λ1−λ2(λ1+λ2)mm!=(mx1)(λ1λ1+λ2)x1(λ2λ1+λ2)m−x1
+
+Sejam X1
+ e X2
+ variáveis aleatórias independentes com distribuição Exponencial(λ
+). Vamos encontrar a densidade de Y=X1+X2
+ pelo método da substituição. Como as variáveis envolvidas são contínuas, devemos trabalhar com a função de distribuição:
+
+FY(y)=P(X1+X2≤y)=∫∞0P(X1+X2≤y|X1=x1)fX1(x1)dx1=∫∞0P(X2≤y−x1|X1=x1)λe−λx1dx1=∫∞0P(X2≤y−x1)λe−λx1dx1=∫∞0(1−e−λ(y−x1))I(y−x1>0)λe−λx1dx1=∫y0(1−e−λ(y−x1))λe−λx1dx1=∫y0λe−λx1−λe−λydx1=∫y0λe−λx1dx1−λe−λy∫y0dx1=1−e−λy−λye−λy=1−(1+λy)e−λy
+e
+fY(y)=ddyFY(y)=−λe−λy+λ(1+λy)e−λy=λ2ye−λy
+ou ainda, Y∼Gama(2,λ)
+.
+
+# 5. Convergência de variáveis aleatórias
+
+Seja $X_1,\ldots,X_n$ uma amostra de variáveis aleatórias (dizemos que esta amostra tem tamanho $n$). Qualquer função desta amostra é denominada estatística. Exemplos de estatística são a média amostral, variância amostral, mediana amostral etc. Por serem funções de variáveis aleatórias, qualquer estatística também será uma variável aleatória. Seja $T_n$ uma estatística baseada em $X_1,\ldots,X_n$. A intuição nos diz que o aumento de $n$ deve trazer alguma vantagem. Estamos então interessados em entender o comportamento de $P(T_n<t)$ quando $n\rightarrow \infty$. 
+
+A discussão aciam é apenas um exemplo da importância do estudo de convergência de variáveis aleatórias, que é o tópico desse capítulo.
+
+Neste tópico iremos discutir:
+
+* a noção de limite tradicional
+
+* a noção de limite em probabilidade
+
+* a noção de limite em distribuição
+
+* a Lei Fraca de Tchebychev
+
+* o Teorema Central do Limite para o caso de variáveis independentes e identicamente distribúidas.
+
+## 5.1. A noção de limite tradicional
+
+Dizemos que $L$ é o limite de $f(x)$ quando $x$ se aproxima de $x_0$ se, para todo $\varepsilon>0$, existe $\delta>0$ tal que
+
+se $0<|x-x_0|<\delta\Rightarrow |f(x)−L|<\varepsilon$
+
+A notação 
+$$\lim_{x\rightarrow x_0}f(x)=L$$
+é a  mais usual em livros de cálculo mas nos será mais conveniente escrever $f(x)\rightarrow L$ quando $x\rightarrow x_0$ (lê-se $f(x)$ tende a $L$ quando $x$ tende a $x_0$).
+
+Estamos interessados no caso em que $x \rightarrow \infty$. Dizemos que $f(x) \rightarrow L$ quando $x \rightarrow \infty$ se, para todo $\epsilon > 0$, existe $x_0$ tal que:$$\text{se } x > x_0 \Rightarrow |f(x) - L| < \epsilon$$
+
+::: {#exm-}
+Vamos mostrar que $f(x)=1/x$ tende a zero quando $x\rightarrow\infty$. 
+
+
+Isto implica em mostrar que, para qualquer $\varepsilon>0$ 
+ deve existir $x_0$ tal que, para qualquer $x>x_0$
+ 
+$$\left|\frac{1}{x}\right|<\varepsilon$$.
+
+Note que, para qualquer $x_0>0$ arbitrário, é verdade que
+
+$$x>x_0\Rightarrow \frac{1}{x}<\frac{1}{x_0},$$
+Logo, para qualquer $\varepsilon>0$, podemos fazer $x_0=\varepsilon^{-1}$ de modo que
+
+$$x>x_0\Rightarrow \left|\frac{1}{x}-0\right|<\frac{1}{x_0}=\varepsilon,$$
+o que implica que o limite de $1/x$ quando $x\rightarrow\infty$  é igual a 0.
+:::
+
+::: {#thm-}
+Teorema do Confronto (ou do Sanduíche)Suponha que, para todo $x$ suficientemente grande, tenhamos:$$0 \leq |f(x)| \leq g(x)$$Se $\lim_{x\rightarrow\infty} g(x) = 0$, então:$$\lim_{x\rightarrow\infty} f(x) = 0$$
+:::
+::: {#exr-limite-x2}
+**Limite de $1/x^2$**
+
+a) Se $x > 1$, mostre que $x^2 > x$.  
+b) Utilizando o resultado do item (a) e o **Teorema do Confronto**, prove que:
+$$\lim_{x \to \infty} \frac{1}{x^2} = 0$$
+*(Dica: Lembre-se que $0 < \frac{1}{x^2} < \frac{1}{x}$ para $x > 1$)*.
+:::
+
+::: {#exr-limite-racional}
+**Limite de função racional**
+
+a) Se $x > 1$, mostre que $x^2 + 1 > x$.  
+b) Utilizando o resultado do item (a) e o **Teorema do Confronto**, mostre que:
+$$\frac{x}{x^2 + 1} \to 0 \text{ quando } x \to \infty$$
+:::
+
+::: {#exr-limite-exponencial}
+**Limite da função exponencial**
+
+Seja $0 < a < 1$. Mostre que:
+$$a^x \to 0 \text{ quando } x \to \infty$$
+*(Dica: Escreva $a = \frac{1}{1+b}$ onde $b > 0$ e utilize a desigualdade de Bernoulli $(1+b)^x > 1 + xb$ para aplicar o Teorema do Confronto)*.
+:::
+
+##5.2. Convergência em probabilidade
+
+Sejam $X_1,X_2,\ldots$ uma sequência de variáveis aleatórias definidas no mesmo espaço de probabilidade da variável aleatória $X$. Dizemos que $X_n$ converge em probabilidade para a variável aleatória $X$ quando $n\rightarrow\infty$ se para todo $\varepsilon>0$
+
+$$P(|X_n−X|\geq \varepsilon)\rightarrow 0,$$
+quando $n\rightarrow\infty$. Neste caso, utilizamos a notação $X_n\stackrel{P}{\rightarrow}X$ quando $n\rightarrow \infty$(lê-se $X_n$ converge em probabilidade para $X$ quando $n$ tende ao infinito).
+
+Note que se $X_n$ converge em probabilidade para $X$, então a probabilidade do evento $X_n\in(X−\varepsilon,X+\varepsilon)$ ocorrer tende a 1. De modo equivalente, podemos dizer que $X_n\stackrel{P}{\rightarrow}X$ se
+
+$$P(|X_n−X|<\varepsilon)\rightarrow1,$$
+quando $n\rightarrow\infty$.
+
+
+::: {#exm-}
+Sejam $X_1,X_2,\ldots$  uma sequência de variáveis aleatórias com
+$X_n\sim\hbox{Bernoulli}(1/n)$. Intuitivamente, a probabilidade de sucesso será cada vez menor, até chegar ao ponto no qual apenas o fracesso será possível. Isto nos leva a considerar que $X_n\stackrel{P}{\rightarrow}0$ quando $n\rightarrow\infty$. Vamos mostrar que isso é verdade.
+
+Primeiro, fixe um valor qualquer para $\varepsilon>0$. Note que
+
+$$|X_n−0|\geq \varepsilon\equiv|X_n|\geq \varepsilon>0.$$
+Ora, $|Xn|=Xn$, pois a variávei é sempre não negativa. Além disso, $X_n\geq \varepsilon>0$
+ implica que $X_n>0$, e por sua vez, apenas é $X_n=1$ é possível. Assim
+
+
+$$P(|X_n−0|\geq \varepsilon)=P(X_n>0)=P(X_n=1)=\frac{1}{n}\rightarrow 0,$$
+quando $n\rightarrow\infty$. Portanto, $X_n\stackrel{P}{\rightarrow}0$.
+:::
+
+::: {#exm-}
+Sejam $X_1,X_2,\ldots$ uma sequência de variáveis aleatórias com distribuição Uniforme(0,$\theta$). No problema de inferência estatística, $\theta$ é desconhecido. Considere a estatística
+
+$$T_n=\hbox{max}\{X_1,\ldots,X_n\}.$$
+Vamos mostrar que $T_n\stackrel{P}{\rightarrow}\theta$. Primeiro, lembremos que
+
+$$|X−a|>b\Rightarrow −b>X−a \hbox{   ou   } b<X−a,$$
+e que
+$$Tn<\theta\Rightarrow X_1<\theta,\ldots ,X_n<\theta.$$
+
+Então, para qualquer $\varepsilon>0$,
+
+
+$$\begin{align}P(|T_n−\theta|>\varepsilon)&=P(T_n−\theta>\varepsilon)+P(T_n−\theta<−\varepsilon)\\&=P(T_n−\theta<−\varepsilon)=P(T_n<−\varepsilon+\theta)\\&
+=P(X_1<−\varepsilon+\theta,\ldots,X_n<−\varepsilon+\theta)\\
+&=\prod_{i=1}^n P(X_i<−\varepsilon+\theta)=F(-\varepsilon+θ)^n=\left(\frac{−\varepsilon+\theta}{\theta}\right)^n\\&=\left(1-\frac{\varepsilon}{\theta}\right)^n\rightarrow 0\end{align}$$
+quando $n\rightarrow\infty$. Portanto, $T_n\stackrel{P}{\rightarrow}\theta$.
+:::
+
+::: {#exr-}
+Seja $X_1,X_2,\ldots,$ uma sequência de variáveis aleatórias independentes e identicamente distribuídas, com $X_n\leq θ$ para todo $n\geq 1$. Seja
+$T_n=\max\{X_1,…,X_n\}.$ Mostre que $T_n\stackrel{P}{\rightarrow}\theta$ quando $n\rightarrow\infty$. Esse resultado mostra que o máximo amostral é uma estatística consistente para estimar $\theta$.
+:::
+
+::: {#thm-}
+Se $X_n\stackrel{P}{\rightarrow}b$, onde $b$ é constante e se $g$ é uma função real contínua em $b$, então então $g(X_n)\stackrel{P}{\rightarrow}g(b)$.
+:::
+
+
+Exercícios de fixação
+
+Sejam X1,X2,…
+ variáveis aleatórias independentes e identicamente distribuídas com distribuição Uniforme(0,1). Sejam Yn=max{X1,…,Xn}
+ e Zn=min{X1,…,Xn}
+, para n=1,2,….
+ Prove que Yn→P1
+ e Zn→P0
+.
+
+Seja Z1,Z2,…
+ uma sequência de variávies aleatórias com
+P(Zn=n2)=1n e P(Zn=0)=1−1n.
+Mostre que
+limn→∞E(Zn)=∞
+mas Z→P0
+.
+
+Seja Z1,Z2,…
+ uma sequência de variávies aleatórias com
+P(Zn=n2)=1n e P(Zn=0)=1−1n.
+Encontre o limite em probabilidade de Zn
+.
+
+
+
+## 5.3. Lei Fraca dos Grandes Números
+
+Foi John Graunt, um mercador de tecidos, que em 1662 publicou o primeiro trabalho utilizando a proporção amostral como uma probabilidade. A ideia funcionou perfeitamente, mas não se sabia o motivo até a publicação do *Ars Conjectandi*, de Jacob Bernoulli, em 1713. Ao terminar sua demonstração, ele diz: “Considero que não fiz muita coisa, somente demonstrei o que é conhecimento de todos”. Hoje, seu resultado é um dentro de uma coleção de teoremas denominada Leis dos Grandes Números.
+
+::: {#thm-}
+**Lei (Fraca) dos Grandes Números de Jacob Bernoulli.** Sejam $X_1,X_2,\ldots$ uma sequência de variáveis aleatórias independentes com $X_i\sim\hbox{Bernoulli}(p)$. Então
+
+$$\bar{X}_n=\sum_{i=1}^n \frac{X_i}{n}\stackrel{P}{\rightarrow}{p}$$
+quando $n\rightarrow\infty$.
+:::
+
+Em resumo, uma Lei dos Grandes Números é um teorema sobre a convergência de $\bar{X}_n$ quando $n\rightarrow\infty$. Se o limite for em probabilidade, a lei é denominada fraca (existem as leis fortes, mas não serão tratadas nesse curso). 
+Foi Simeón Poisson (1837) que cunhou o termo Lei dos Grandes Números e foi o primeiro a generalizar a lei para o caso no qual a sequência as variáveis não era identicamente distribuída. Contudo, esse resultado é mais conhecido como Lei Fraca de Chebyshev, devido à sua demonstração mais simples em 1867. Antes de introduzir essa lei, vamos mostrar o resultado-chave desenvolvido por Chebyshev.
+
+::: {#thm-}
+**Desigualdade de Chebyshev** Seja $X$  uma variável aleatória com média $\mu$ e variância $\sigma^2$. Então, para qualquer $\varepsilon>0$, 
+$$P(|X-\mu|\geq \varepsilon)\leq \frac{\sigma^2}{\varepsilon^2}.$$
+:::
+
+Vamos fazer a prova da desigualdade. Sem perda de generalidade, assuma que ela é contínua. Então, para qualquer $\varepsilon>0$,
+
+$$\sigma^2=\int_{\mathbb{R}}(x-\mu)^2f(x)dx\geq \int_{\{x:|x-\mu|\geq \varepsilon\}}(x-\mu)^2f(x)dx\geq \varepsilon^2P(|X−\mu|\geq \varepsilon)$$
+logo,
+$$P(|X-\mu|\geq \varepsilon)\leq \frac{\sigma^2}{\varepsilon^2}.$$
+
+Agora vamos enunciar formalmente a Lei Fraca de Chebyshev.
+
+::: {#thm-}
+**Lei Fraca de Chebyshev.**
+Sejam $X_1,X_2,\ldots$ uma sequência de variáveis aleatórias não correlacionadas com $E(X_n)=\mu$ e $Var(X_n)<c<\infty$. Então
+
+$$\bar{X}_n=\sum_{i=1}^n\frac{X_i}{n}\stackrel{P}{\rightarrow}\mu,$$
+quando $n\rightarrow\infty$.
+:::
+
+Vamos demonstrar a Lei Fraca de Chebyshev. Observe que, pela desigualdade de Chebyshev,
+
+$$P(|\bar{X}_n-\mu|\geq\varepsilon)\leq \frac{Var(\bar{X}_n)}{\varepsilon^2}=\frac{\sum_{i=1}^nVar(X_i)}{n^2\varepsilon^2}<\frac{c}{n\varepsilon^2}\rightarrow 0$$
+quando $n\rightarrow\infty$, o que prova que $\bar{X}_n\stackrel{P}{\rightarrow}\mu$.
+
+## 5.4. Convergência em distribuição
+
+Definilção. Dizemos que a sequência X1,X2,…
+ de variáveis aleatórias converge para X
+ em distribuição se
+limn→∞FXn(x)=FX(x)
+para todo x
+ tal que FX(.)
+ é contínua. Notação: Xn→DX
+. Neste caso, X
+ é denominada limite em distirbuição de Xn
+.
+
+Exemplo. Seja X1,X2,…
+ uma sequência de variáveis aleatórias independentes e identicamente distribuídas, com X1∼Uniforme(0,1)
+. Seja ainda
+X(1)=min{X1,…,Xn}.
+Vamos encontrar o limite em distribuição de Yn=nX(1)
+ Como
+1−FYn(y)=P(X(1)>y/n)=P(X1>y/n,…,Xn>y/n)=∏i=1nP(X>y/n)=(1−yn)n,
+teremos que
+FYn(y)=1−(1−yn)n→1−e−y,
+quando n→∞
+. Portanto, Yn=nX(1)
+ converge em distribuição para a Exponencial(1).
+
+Teorema. Seja X1,X2…,
+ uma sequência de variáveis aleatórias e sejam ϕX1(.),ϕX2(.),…
+ suas respectivas funções geratrizes de momentos (supondo que elas existem). Então Xn→DX
+ se e somente se
+limn→∞ϕXn(t)=ϕX(t)
+para todo t
+, onde ϕX(.)
+ é a função geratriz de momentos de X
+.
+
+Teorema. Se Xn→PX
+, então Se Xn→DX
+.
+
+## 5.5. Teorema Central do Limite
+
+Os astrônomos perceberam cedo que as medições feitas sobre o mesmo corpo celeste geralmente apresentavam erros. Em uma linguagem moderna, eles acreditavam que a verdadeira medida era $\theta$, enquanto que a medida observada $x_i$ era contaminada por um erro $\xi_i$, em uma relação aditiva, ou seja
+
+$$x_i=\theta+\xi_i.$$
+Thomas Simpson escreveu em 1755 "A vantagem de calcular a média na astronomia prática". Nesse trabalho, ele assumiu que os erros $\xi_i$ deviam (a) ter natureza aleatória, (b) ser simétricos em torno de zero e (c) ter uma moda em 0, com as probabilidades decaindo à medida que nos afastamos da moda. Sua distribuição de erro era
+
+$$\begin{array}{c|ccccccccccc}\hline
+\xi & -5 & -4 & -3 & -2 & -1 & 0 & 1 & 2 & 3 & 4 & 5 \\ \hline
+P(\xi)& \frac{1}{36} & \frac{2}{36} & \frac{3}{36} &\frac{4}{36} & \frac{5}{36} & \frac{6}{36}&\frac{5}{36}&\frac{4}{36}&\frac{3}{36}&\frac{2}{36}&\frac{1}{36}\\ \hline
+\end{array}$$
+
+Assumindo essa lei, ele mostrou que calcular a média de triplicatas da medição diminuiria o erro. Atualmente, seria algo como
+
+$$\bar{x}_3=\theta+\bar{\xi_3}$$
+
+Abaixo, apresentamos o gráfico da função de probabilidade de $\bar{\xi}_3$. Note, por exemplo, que a probabilidade de ocorrer um erro igual a -5 ou 5 é significativamente menor se considerarmos $\bar{x}_3$.
+
+```{r echo = FALSE, warning=FALSE}
+# Definição da PMF de um único erro de Simpson xi (de -5 a 5)
+xi_val <- -5:5
+pmf_xi <- c(1, 2, 3, 4, 5, 6, 5, 4, 3, 2, 1) / 36
+
+# Função para realizar a convolução de duas PMFs
+convolucao <- function(val1, prob1, val2, prob2) {
+  res_val <- outer(val1, val2, "+")
+  res_prob <- outer(prob1, prob2, "*")
+  df <- aggregate(as.vector(res_prob) ~ as.vector(res_val), FUN = sum)
+  colnames(df) <- c("val", "prob")
+  return(df)
+}
+
+# 1. Calcular a soma S2 = xi1 + xi2
+s2 <- convolucao(xi_val, pmf_xi, xi_val, pmf_xi)
+
+# 2. Calcular a soma S3 = S2 + xi3
+s3 <- convolucao(s2$val, s2$prob, xi_val, pmf_xi)
+
+# 3. Transformar para a média (xi_barra = S3 / 3)
+s3$media <- s3$val / 3
+
+# Criar o Gráfico
+library(ggplot2)
+
+ggplot(s3, aes(x = media, y = prob)) +
+  geom_segment(aes(xend = media, yend = 0), color = "steelblue", size = 1) +
+  geom_point(color = "darkblue", size = 2) +
+  scale_x_continuous(breaks = seq(-5, 5, 1)) +
+  labs(
+    title = expression(paste("Função de Probabilidade do Erro Médio ", bar(xi)[3])),
+    subtitle = "Baseado na distribuição original de Thomas Simpson (1755)",
+    x = expression(bar(xi)[3]),
+    y = "P(X = x)"
+  ) +
+  theme_minimal()
+```
+
+
+Note que, embora fundamentada, a escolha de Simpson para a distribuição dos erros foi arbitrária. De modo não relacionado, De Moivre, na tentativa de calcular $P(X=x)$ quando $X\sim\hbox{Binomial}(n,1/2)$ e $n$ é grande, publica em 1733 a expressão 
+
+$$P(X=x)\approx\frac{2}{\sqrt{2\pi n}}e^{-\frac{2}{n}\left(x-\frac{n}{2}\right)^2},$$
+algo que identificaríamos hoje em dia com a densidade da Normal$(n/2, n/4)$. Voltando ao problema dos erros, em 1805 é publicado o  método dos mínimos quadrados, com o qual prova-se que o valor de $\theta$ que minimiza $\sum_{i=1}^n \xi_i^2$ é, de fato
+$\bar{x}_n$, o que corrobora o trabalho de Simpson. Em 1805, com a introdução do Método dos Mínimos Quadrados, provou-se que o valor de $\theta$ que minimiza a soma dos quadrados dos erros é a média aritmética $\bar{x}_n$. Gauss, ao unir essas pontas, demonstrou que se os erros seguem a distribuição normal, a média não é apenas uma escolha intuitiva, mas o estimador que maximiza a probabilidade dos dados observados.
+
+Contudo, a escolha da distribuição dos erros ainda parecia depender de suposições específicas até o trabalho de Laplace em 1812 (Théorie Analytique des Probabilités). Nele, Laplace demonstrou que a distribuição da média de um grande número de erros independentes tende à distribuição normal, independentemente da forma da distribuição original dos erros. Esse resultado, que hoje conhecemos como Teorema Central do Limite, forneceu a base teórica definitiva para o uso da média aritmética e da curva normal na ciência.
+
+::: {#thm-}
+**Teorema Central do Limite.** Sejam $X_1,X_2\ldots,$ uma sequência de variáveis aleatórias independentes e identicamente distribuídas com $E(X_1)=\mu$ e $Var(X_1)=\sigma^2$. Então
+
+$$\sqrt{n}\frac{\bar{X}_n-\mu}{\sigma}\stackrel{D}{\rightarrow}\hbox{Normal}(0,1),$$
+quando $n\rightarrow\infty$.
+:::
+
+É importante ressaltar que, assim como ocorre com as Leis dos Grandes Números, existe uma coleção de resultados intitulados Teorema Central do Limite. O que difere esses teoremas são as condições impostas sobre a sequência $X_1, X_2, \ldots$, permitindo, em versões mais generalizadas, que as variáveis tenham distribuições distintas ou até mesmo algum grau de dependência. Abaixo, demonstramos o teorema enunciado.
+
+
+Demonstração (rascunho)
+Sejam X1,X2,…
+ variáveis aleatórias independentes e identicamente distribuídas, com E(X)=μ
+ e Var(X)=σ2<∞
+. Seja Sn=∑ni=1Xi
+. Então,
+Zn=Sn−nμσn−−√→DN(0,1).
+
+Com um pouco de álgebra, é fácil ver que
+
+Zn=Sn−nμσn−−√=n−−√X¯n−μσ→DN(0,1).
+o que implica que, para n
+ suficientemente grande,
+X¯n≈N(μ,σ2n).
+
+Exemplo. Um dado é lançado 2500 vezes. Calcule a probabilidade de que a soma dos resultados seja menor que 8850 usando a aproximação normal.
+
+(Solução) Seja Xn
+ o resultado do n
+-ésimo lançamento do dado. E(X)=7/2
+ e Var(X)=35/12
+. Então, fazendo Sn=∑ni=1Xi
+, teremos que
+Sn−7n235n/12−−−−−−√→DN(0,1)
+então,
+P(Sn<8850)=P⎛⎝⎜Sn−25007225003512−−−−−−√<8850−25007225003512−−−−−−√⎞⎠⎟≈P⎛⎝⎜Z<8850−25007225003512−−−−−−√⎞⎠⎟=P(Z<1,17108)=0,879.
+onde Z∼N(0,1)
+.
+
+Exercícios de Fixação
+
+1. Suponha que X∼Poisson(λ)
+. Mostre que
+
+P(X≤0,5λ)≤4λ
+
+P(X≥2λ)≤1λ
+
+2. Suponha que X
+ tem função geratriz de momentos. Prove que P(X>x0)=ϕ(t)e−tx0
+ (neste caso, dizemos que X
+ tem cauda leve, pois o decaimento desta probabilidade é exponencial).
+
+3. Sejam X1,X2,…
+ variáveis aleatórias independentes e identicamente distribuídas com distribuição Uniforme(0,1). Seja Zn=min{X1,…,Xn}
+, para n=1,2,….
+ Prove que nZn→DZ
+, onde Z∼Exponencial(1)
+.
+
+4. Sejam X1,X2,…
+ variáveis aleatórias independentes e identicamente distribuídas com distribuição Poisson(λ
+). Encontre o limite em probabilidade de
+Yn=X21+⋯+X2nn.
+.
+
+5. Sejam X1,X2,…
+ variáveis aleatórias com distribuição Geométrica(λ/n
+), com 0<λ<n
+.
+
+Mostre que Yn=Xnn→DZ
+, onde Z∼Exponencial(λ)
+.
+
+Mostre que Yn↛DZ
+ (isto é, Yn
+ não converge em probabilidade para Z
+).
+
+6. Sejam X1,X2,…
+ variáveis aleatórias independentes e identicamente distirbuídas, com densidade
+f(x)=e−x+θI(x≥θ).
+Mostre que ∑ni=1Xi/n→P1+θ
+.
+
+7. Suponha que uma amostra de variáveis aleatórias independentes e identicamente distribuídas foi selecionada de um modelo com média μ
+ e variância 9
+.
+
+Utilize a Desiguladade de Tchebychev para determinar o tamanho da amostra necessário para garantir que
+P(|X¯n−μ|<0,3)≥0,95.
+
+Refaça a letra a) utilizando o Teorema Central do Limite no lugar da Desigualdade de Tchebychev.
+
+# 6. Introdução às cadeias de Markov
+
+## 6.1. Definição
+
+## 6.2. Classificação de estados
+
+## 6.3. Distribuição estacionária
+
+
+# Listas de exercícios
+
+---
+title: "Plano de Exercícios - Probabilidade e Processos Estocásticos"
+author: "Curso de 60h"
+output: pdf_document
+---
+
+# Semana 1: Vetores e Condicionais
+
+## Dia 1: Cap. 1 - Vetores Aleatórios (Discreto)
+1. Defina o espaço amostral de um vetor $\textbf{X}=(X_1, X_2)$ onde se lança um dado e uma moeda simultaneamente.
+2. Calcule $P(X_1 + X_2 = 5)$ para dois dados independentes de seis faces.
+3. Dada a função de probabilidade conjunta $P(X,Y) = c(x+y)$ para $x,y \in \{1,2,3\}$, determine a constante $c$.
+4. Mostre formalmente que $P(X \in A, Y \in B) = P(X \in A)P(Y \in B)$ se $X$ e $Y$ são independentes.
+5. Construa a tabela conjunta para o lançamento de 3 moedas (onde $X$ é o número de caras e $Y$ o comprimento da sequência mais longa de resultados iguais).
+6. Determine $P(X > Y)$ no experimento de lançamento de dois dados honestos.
+7. Verifique se a função $P(X,Y) = 1/x^2$ para $x,y \in \{1, 2, ...\}$ pode ser uma função de probabilidade conjunta válida.
+8. Encontre a conjunta $P(X=x, Y=y)$ para a seleção sem reposição de 2 bolas de uma urna com 3 cores distintas.
+9. Deduza a probabilidade da interseção de 3 eventos independentes em um vetor aleatório tridimensional.
+10. Discorra sobre a diferença conceitual entre uma variável aleatória $n$-dimensional e um vetor aleatório.
+
+## Dia 2: Cap. 1 - Densidade Conjunta (Contínuo)
+1. Determine o valor de $k$ para que $f(x,y) = kxy$ seja uma densidade em $0 < x < 1, 0 < y < 1$.
+2. Calcule $P(X < Y)$ para a densidade conjunta $f(x,y) = 2$ definida no suporte $0 < x < y < 1$.
+3. Verifique a condição de normalização para a densidade $f(x,y) = e^{-(x+y)}$ para $x,y > 0$.
+4. Calcule $P(X+Y \leq 1)$ para uma distribuição uniforme definida no quadrado unitário.
+5. Encontre e esboce o suporte da densidade $f(x,y)$ se a condição for $X^2 + Y^2 \leq 1$.
+6. Dada $f(x,y) = c(x+y)$ em $0 < x,y < 1$, calcule o valor de $c$.
+7. Determine $P(X > 2Y)$ para $f(x,y) = 8xy$ no suporte $0 < x < 1, 0 < y < x$.
+8. Deduza o valor de $P(X \in [0, 0.5], Y \in [0, 0.5])$ para a densidade $f(x,y) = 4xy$.
+9. Analise a validade de $f(x,y) = \sin(x+y)$ como densidade no primeiro quadrante limitado por $\pi/2$.
+10. Calcule o volume sob a superfície definida por $f(x,y) = x+y$ no domínio unitário $[0,1] \times [0,1]$.
+
+## Dia 3: Cap. 1 - Distribuições Marginais
+1. Dada $f(x,y) = 6x$, encontre as densidades marginais $f_X(x)$ e $f_Y(y)$ no suporte $0 < x < y < 1$.
+2. Encontre as marginais para a tabela de soma de dados construída no Dia 1.
+3. Mostre que se $f(x,y) = g(x)h(y)$, as marginais são proporcionais às funções $g(x)$ e $h(y)$.
+4. Calcule $f_X(x)$ para a densidade $f(x,y) = e^{-y}$ definida em $0 < x < y < \infty$.
+5. Encontre $f_Y(y)$ para uma densidade uniforme definida no círculo unitário.
+6. A partir de uma função de distribuição conjunta $F(x,y)$, deduza a fórmula de limite para obter $F_X(x)$.
+7. Marginalize a variável $Z$ em um vetor $(X,Y,Z)$ com densidade constante no cubo unitário.
+8. Determine $P(X=x)$ a partir da conjunta hipergeométrica $P(X,Y) = \frac{\binom{n}{x}\binom{m}{y}}{\binom{n+m}{k}}$.
+9. Se $f(x,y) = \frac{1}{2\pi} e^{-(x^2+y^2)/2}$, demonstre que as marginais são normais padrão.
+10. Explique matematicamente por que a função marginal "perde" a informação sobre a dependência entre as variáveis originais.
+
+## Dia 4: Cap. 2 - Distribuição Condicional
+1. Encontre $P(X|Y=2)$ utilizando a tabela conjunta de lançamento de dados.
+2. Calcule a densidade condicional $f(x|y)$ para $f(x,y) = 8xy$ no suporte $0 < x < y < 1$.
+3. Prove que a integral de uma densidade condicional $\int f(x|y) dx$ é sempre igual a 1.
+4. Deduza a forma de $P(Y|X)$ se $X \sim \text{Poisson}(\lambda)$ e $Y|X \sim \text{Binomial}(x, p)$.
+5. Encontre o valor da moda da distribuição condicional $f(y|x)$ calculada no exercício 2.
+6. Determine $P(X > 0.5 | Y = 0.8)$ para uma densidade uniforme definida em um triângulo retângulo.
+7. Se $X|Y \sim \text{Normal}(y, 1)$, escreva a expressão algébrica da densidade condicional.
+8. Explique o papel do Teorema do Valor Médio na derivação rigorosa da função de densidade condicional.
+9. Calcule $P(X=1 | Y=1)$ para um sistema de duas máquinas com falhas dependentes.
+10. Deduza $f(x|y)$ para a densidade conjunta $f(x,y) = x+y$ no quadrado unitário.
+
+## Dia 5: Cap. 2 - Casos Mistos e Independência
+1. Escreva a forma da densidade mista para um vetor onde $X \in \{0,1\}$ e $Y|X=x \sim \text{Normal}(x, 1)$.
+2. Verifique se a densidade $f(x,y) = 4xy$ implica independência no suporte $[0,1]^2$.
+3. Demonstre que se o suporte de uma densidade conjunta não é um retângulo, as variáveis são necessariamente dependentes.
+4. Dada a condição $f(x|y) = f(x)$, prove que as variáveis $X$ e $Y$ são independentes.
+5. Analise a independência na densidade $f(x,y) = e^{-(x+y)}$ para $x,y > 0$.
+6. Defina formalmente a probabilidade condicional $P(X=x | Y=y)$ para o caso em que $X$ é discreta e $Y$ é contínua.
+7. Determine se as variáveis são independentes para $f(x,y) = c(x^2+y^2)$ no quadrado unitário.
+8. Calcule a probabilidade mista $P(X=1, Y < 0.5)$ para um vetor de variáveis mistas definido em aula.
+9. Prove analiticamente que a independência entre $X$ e $Y$ implica que $Cov(X,Y) = 0$.
+10. **Revisão:** Resolva um problema integrando os conceitos de Conjunta, Marginal e Condicional para o suporte $0 < x < y < 1$.
+
+---
+
+# Semana 2: Momentos e Teoremas Limite
+
+## Dia 7: Cap. 3 - Covariância e Correlação
+1. Calcule a covariância $Cov(X,Y)$ para a densidade $f(x,y) = 2$ no suporte $0 < x < y < 1$.
+2. Demonstre a propriedade de linearidade: $Cov(aX, bY) = ab Cov(X,Y)$.
+3. Calcule o coeficiente de correlação $\rho$ para os casos determinísticos $Y=X$ e $Y=-X$.
+4. Encontre o valor de $\rho$ para duas variáveis aleatórias independentes.
+5. Prove a desigualdade $|\rho| \leq 1$ utilizando a Desigualdade de Cauchy-Schwarz.
+6. Determine $Cov(X, X^2)$ para uma variável $X$ com distribuição $\text{Uniforme}(-1,1)$.
+7. Calcule $Var(X+Y)$ dado que $Var(X)=2, Var(Y)=3$ e $Cov(X,Y) = 0.5$.
+8. Interprete geometricamente o "ângulo" entre as variáveis caso o coeficiente de correlação seja $\rho = 0.5$.
+9. Deduza a covariância entre a soma ($S = X+Y$) e a diferença ($D = X-Y$) de duas v.a. independentes.
+10. Mostre que a definição alternativa $\text{Cov}(X,Y) = E[XY] - E[X]E[Y]$ é equivalente à definição por momentos centrais.
+
+## Dia 8: Cap. 3 - Esperança Condicional
+1. Calcule a esperança condicional $E[X|Y=y]$ para $f(x,y) = 8xy$ no suporte $0 < x < y < 1$.
+2. Prove a Lei das Expectativas Iteradas: $E[E[X|Y]] = E[X]$.
+3. Determine a função de regressão $E[Y|X=x]$ para a densidade $f(x,y) = x+y$ no quadrado unitário.
+4. Se $X|Y \sim \text{Binomial}(Y, p)$ e $Y \sim \text{Poisson}(\lambda)$, encontre o valor de $E[X]$.
+5. Defina teoricamente a Variância Condicional $Var(X|Y)$ e sua relação com a esperança condicional.
+6. Encontre a curva de regressão $E[Y|X]$ para uma distribuição uniforme no círculo unitário.
+7. Mostre que $E[g(Y)X | Y] = g(Y)E[X|Y]$ para qualquer função $g$ bem comportada.
+8. Deduza $E[X]$ para o caso onde $X$ é o número de sucessos em $N$ ensaios, sendo $N$ uma variável aleatória.
+9. Calcule a esperança condicional $E[X|Y]$ para o caso em que $X$ e $Y$ são independentes.
+10. Aplique o conceito de esperança condicional para resolver o valor esperado da soma de dois dados dado o valor do primeiro.
+
+## Dia 9: Cap. 4 - Leis dos Grandes Números
+1. Enuncie a Lei de Bernoulli e discorra sobre sua relevância na história da probabilidade.
+2. Utilize a Desigualdade de Chebyshev para estimar o limite superior de $P(|X-\mu| > 2\sigma)$.
+3. Prove que a média amostral $\bar{X}$ converge em probabilidade para $\mu$ se $Var(\bar{X})$ tende a zero.
+4. Explique a diferença teórica entre a Lei Fraca e a Lei Forte dos Grandes Números.
+5. Calcule o tamanho amostral $n$ necessário para que o erro da média seja $<0.1$ com $95\%$ de confiança via Chebyshev.
+6. Discuta as observações de John Graunt sobre a estabilidade das frequências de óbitos no século XVII.
+7. Demonstre que a LGN se aplica a uma sequência de variáveis independentes $X_i \sim \text{Exponencial}(\lambda)$.
+8. Verifique analiticamente por que a LGN falha para a distribuição de Cauchy.
+9. Explique por que a existência de variância finita é uma premissa crucial para a LGN de Chebyshev.
+10. Discuta como a LGN fundamenta cientificamente a realização de censos e pesquisas amostrais.
+
+
+
+## Dia 10: Cap. 5 - TCL (Motivação e História)
+1. Descreva as características da distribuição triangular de erros proposta por Thomas Simpson em 1755.
+2. Calcule a variância da distribuição de erros de Simpson conforme apresentada no texto base.
+3. Demonstre matematicamente como a média de 3 erros independentes ($n=3$) reduz a variância total no modelo de Simpson.
+4. Discuta a transição histórica da aproximação de De Moivre para a distribuição Normal.
+5. Por que Gauss considerava a média aritmética como o estimador de "máxima verossimilhança" para erros normais?
+6. Explique o conceito de "modelo aditivo de erro": $x = \theta + \xi$.
+7. Calcule as probabilidades para a média $\bar{\xi}_3$ utilizando a tabela de erros de Simpson.
+8. Relacione formalmente o Método dos Mínimos Quadrados de Legendre/Gauss com a curva Normal.
+9. O que diferencia o trabalho de Laplace (1812) das demonstrações anteriores de De Moivre?
+10. Discuta a "arbitrariedade" das suposições de erro na ciência antes da consolidação teórica do TCL.
+
+
+
+---
+
+# Semana 3: TCL e Cadeias de Markov
+
+## Dia 11: Cap. 5 - Teorema Central do Limite (Formal)
+1. Enuncie o Teorema Central do Limite de Lindeberg-Lévy e identifique suas premissas.
+2. Realize a padronização da variável soma $S_n = \sum X_i$ para aplicação do TCL.
+3. Aproxime $P(S_{100} > 110)$ para variáveis com $E[X]=1$ e $Var(X)=1$.
+4. Utilize o TCL para aproximar a probabilidade de uma v.a. $\text{Binomial}(100, 0.5)$ ser maior que 60.
+5. Explique o significado matemático da convergência em distribuição ($\stackrel{D}{\rightarrow}$).
+6. Calcule o intervalo de confiança de 95% para a média de uma amostra de 50 observações via TCL.
+7. Demonstre a aproximação da distribuição de Poisson ($\lambda=100$) pela Normal.
+8. Por que o fator $\sqrt{n}$ é o termo de escala correto para a convergência da média amostral?
+9. Discuta a necessidade da correção de continuidade ao aproximar variáveis discretas por contínuas.
+10. Mostre analiticamente que a soma de 12 variáveis $\text{Uniforme}(0,1)$ resulta em uma v.a. com média 6 e variância 1.
+
+
+
+## Dia 12: Cap. 6 - Introdução às Cadeias de Markov
+1. Defina a Propriedade de Markov e dê um exemplo de sua aplicação em sistemas dinâmicos.
+2. O que caracteriza um processo estocástico de tempo discreto e espaço de estados finito?
+3. Construa um exemplo de processo de contagem que NÃO satisfaz a propriedade de Markov.
+4. Defina o conceito de Espaço de Estados ($\mathcal{S}$) e sua cardinalidade.
+5. Construa a matriz de transição de probabilidade para um modelo simplificado de clima (Sol e Chuva).
+6. O que caracteriza uma matriz estocástica e por que a soma de suas linhas deve ser 1?
+7. Diferencie a probabilidade de transição ($p_{ij}$) da probabilidade de estado ($\pi_i$).
+8. Desenhe o diagrama de transição de estados para uma cadeia com 3 estados possíveis.
+9. Explique o conceito de homogeneidade temporal em Cadeias de Markov.
+10. Defina o vetor de distribuição inicial $\pi^{(0)}$ e sua importância para a evolução do processo.
+
+## Dia 13: Cap. 6 - Matrizes de Transição e Chapman-Kolmogorov
+1. Calcule a matriz de transição em dois passos ($P^2$) para uma matriz genérica $2 \times 2$.
+2. Enuncie e explique as Equações de Chapman-Kolmogorov.
+3. Encontre a probabilidade $P(X_2=j | X_0=i)$ a partir dos elementos da matriz $P^2$.
+4. Calcule a probabilidade de chover após 2 dias, dado que hoje faz sol, usando uma matriz de transição.
+5. Prove analiticamente que o produto de duas matrizes estocásticas resulta em uma matriz estocástica.
+6. Deduza a relação recursiva $\pi^{(n)} = \pi^{(0)} P^n$.
+7. Analise o comportamento de uma cadeia de Markov que possui um estado absorvente.
+8. Calcule a matriz $P^3$ para uma caminhada aleatória simples em 3 estados.
+9. Explique como interpretar o limite das linhas da matriz $P^n$ quando $n$ tende ao infinito.
+10. Resolva um problema de transição em 3 passos para uma cadeia de 2 estados com $p=0.5$.
+
+## Dia 14: Cap. 6 - Distribuição Estacionária e Equilíbrio
+1. Defina formalmente o vetor de distribuição estacionária como a solução de $\pi P = \pi$.
+2. Resolva o sistema de equações lineares para encontrar $\pi$ em uma cadeia de 2 estados.
+3. O que caracteriza uma cadeia de Markov como sendo irredutível?
+4. Defina as categorias de estados: recorrente, transitório e periódico.
+5. Encontre a distribuição de equilíbrio de longo prazo para o modelo climático Sol/Chuva.
+6. Explique intuitivamente o conceito de ergodicidade em processos estocásticos.
+7. Classifique os estados de um processo onde a matriz de transição é a Identidade.
+8. Discuta o comportamento limite da matriz $P^n$ para cadeias regulares.
+9. Calcule a distribuição estacionária para o movimento aleatório em um triângulo equilátero.
+10. **Revisão:** Conecte o conceito de média de longo prazo da LGN com a distribuição estacionária de Markov.
+
+Referência
+Ryacas an R interface to the yacas computer algebra system
+

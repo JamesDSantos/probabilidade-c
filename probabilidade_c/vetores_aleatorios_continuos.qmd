@@ -1,0 +1,572 @@
+# Distribuição de vetores aleatórios contínuos
+
+Os objetivos deste capítulo são:
+
+1.  Definir e estudar as propriedades relacionadas a distribuição de vetores aleatórios contínuos
+
+2.  Estudar funções de vetores aleatórios contínuos e apresentar exemplos relevantes de distribuições
+
+## Função de densidade conjunta
+
+Seja $\textbf{X}=(X_1,…,X_n)$ um vetor de variáveis aleatórias absolutamente contínuas. Dizemos que a função contínua
+
+$$f(\textbf{x})=f(x_1,…,x_n)$$
+é a função de densidade conjunta de $\textbf{X}$ se
+
+$$P(X_1\in A_1,\ldots,X_n\in A_n)=\int_{A_1}\cdots\int_{A_n}f(\textbf{x})d\textbf{x}.$$
+
+
+::: {#prp-}
+Dizemos que $f(\textbf{x})$ (contínua) é a função de densidade conjunta para um vetor aleatório $\textbf{X}$ se
+
+$$f(\textbf{x})\geq 0,\;\;\forall\;\textbf{x}\in\mathbb{R}^n$$
+e
+$$\int_{\mathbb{R}^n}f(\textbf{x})d\textbf{x}=1.$$
+:::
+
+<div class='alert alert-success'>
+**Nota importante**
+Observe que
+$$P(\textbf{X}\in A)=\int_{A}f(\textbf{x})d\textbf{x}=\int_{\mathbb{R}^n}f(\textbf{x})I_{A}(\textbf{x})d\textbf{x}.$$
+
+Em palavras, o conjunto da função indicadora é sempre o conjunto de integração.
+
+</div>
+
+::: {#exm-}
+Mostre que
+$$f(x,y)=xe^{−(1+y)x},$$
+com $x,y>0$  é uma função de densidade conjunta.
+
+**Solução.** 
+Note que $x>0$, logo $f(x,y)>0$ para todo $(x,y)>0$. Portanto, basta mostrar que
+
+$$\int_{\mathbb{R}^2} f(x,y)dxdy=\int_{\mathbb{R}^2}xe^{-(1+y)x}I_{\mathbb{R}^+}(x)I_{\mathbb{R}^+}(y)dxdy=\int_0^\infty\int_0^\infty xe^{-(1+y)x}dxdy=1$$
+
+Recorde que, para $a,b>0$,
+$$\int_0^\infty u^{a-1}e^{-bu}du=\frac{\Gamma(a)}{b^a}.$$
+
+Portanto, considerando apenas a integral em $x$, teremos
+
+$$\int_0^\infty xe^{-x(1+y)}dx=\frac{\Gamma(2)}{(1+y)^2}=\frac{1!}{(1+y)^2}=\frac{1}{(1+y)^2}.$$
+Então,
+$$\int_0^\infty\int_0^\infty xe^{-(1+y)x}dxdy=\int_0^\infty \frac{1}{(1+y)^2}dy$$
+
+A integral da direita pode ser resolvida por integração por substituição. Fazendo $u=1+y$, teremos e $du=dy$ e
+
+$$\begin{align}\int_0^\infty \frac{1}{(1+y)^2}I_{\mathbb{R}^+}(y)dy&=\int_0^\infty \frac{1}{u^2}I_{\mathbb{R}^+ }(u-1)du\\&=\int_1^\infty \frac{1}{u^2}du=\left.-\frac{1}{u}\right|_1^\infty=1.\end{align}$$
+Portanto, a função dada é uma densidade conjunta.
+:::
+
+::: {#exr-}
+Mostre que
+$$f(x,y)=x^2e^{−(1+y)x},$$
+com $x,y>0$  é uma função de densidade conjunta.
+
+:::
+
+::: {#exm-}
+Seja 
+$$f(x,y)=kx^2,$$
+onde $x\in(0,1)$ e $y\in(0,x)$. Encontre o valor de  $k$ para que $f(x,y)$ seja uma função densidade.
+
+**Solução.** Como $x>0$, temos que $f(x,y)>0$ sempre que $k>0$. Portanto, basta encontrar o valor $k>0$ tal que
+
+$$\int_{\mathbb{R}^2}f(x,y)dxdy=\int_{\mathbb{R}^2}kx^2 I_{(0,1)}(x)I_{(0,x)}(y)dxdy=\int_0^1\int_0^x kx^2 dydx=1$$
+
+A integral em $y$ é 
+
+$$\int_0^x kx^2 dy=\left.kx^2y\right|_0^x=kx^3$$
+logo,
+$$\int_0^1\int_0^x kx^2 dydx=\int_0^1 kx^3dx=\left.\frac{k}{4}x^4\right|_0^1=\frac{k}{4}.$$
+Portanto, $f(x,y)$ será função densidade conjunta quando $k=4$.
+:::
+
+::: {#exr-}
+Seja 
+$$f(x,y)=k yx^2,$$
+onde $x\in(0,1)$ e $y\in(0,x)$. Encontre o valor de  $k$ para que $f(x,y)$ seja uma função densidade.
+:::
+
+## Função de distribuição conjunta
+
+
+<div class= 'alert alert-success'>
+**Nota importante**
+Recorde que
+$$I_{A\cap B}(\textbf{x})=I_{A}(\textbf{x})I_{B}(\textbf{x}).$$
+Em particular, sejam $A$ e $B$ os intervalos $(a_1,a_2)$ e $(b_1,b_2)$. Então
+
+$$I_{A\cap B}(x)=I_{(a_1,a_2)}(x)I_{(b_1,b_2)}(x)=I_{(\max\{a_1,b_1\},\min\{a_2,b_2\})}(x).$$
+</div>
+
+::: {#exm-}
+**Simplificação de Indicadoras** Simplifique o produto das seguintes funções indicadoras em uma única função indicadora:$$g(x) = I_{(2, 10)}(x)I_{(5, 15)}(x)I_{(-\infty, 8)}(x)$$
+
+**Solução:**
+
+Aplicamos a propriedade da interseção passo a passo, utilizando $I_{A \cap B}(x) = I_{(\max\{a_1,b_1\}, \min\{a_2,b_2\})}(x)$.
+
+* Primeiro par: $I_{(2, 10)}(x)I_{(5, 15)}(x)$
+* Limite inferior: $\max\{2, 5\} = 5$
+* Limite superior: $\min\{10, 15\} = 10$
+* Indicadora resultante: $I_{(5,10)}(x)$ 
+
+Multiplicando pelo terceiro termo: $I_{(5, 10)}(x)I_{(-\infty, 8)}(x)$
+
+*Limite inferior: $\max\{5, -\infty\} = 5$
+*Limite superior: $\min\{10, 8\} = 8$
+*Resultado final: $I_{(5, 8)}(x)$
+:::
+
+::: {#exr-}
+Seja a função $h(x)$ definida pelo produto de três restrições de intervalos:$$h(x) = I_{(-3, 4)}(x)I_{(0, 7)}(x) \cdot I_{(x, \infty)}(2)$$Dica: Note que $I_{(x, \infty)}(2)$ é o mesmo que dizer que $x < 2$.
+
+a) Reescreva $h(x)$ como uma única função indicadora.
+
+b) Determine o valor da integral $\int_{-\infty}^{\infty} h(x) dx$.
+
+:::
+
+::: {#exr-}
+Simplifique a expressão abaixo e determine o valor da função para qualquer $x \in \mathbb{R}$:$$g(x) = I_{(0, 5)}(x)I_{(10, 20)}(x)$$
+:::
+
+:::{#exr-}
+Expresse o produto das indicadoras abaixo como uma única indicadora de $x$, mantendo $y$ como um parâmetro fixo:$$k(x) = I_{(0, \infty)}(x) I_{(-\infty, y)}(x)$$
+
+a) Determine a indicadora resultante.
+
+b) Para quais valores de $y$ a função $k(x)$ é identicamente nula (igual a zero para todo $x$)?
+:::
+
+
+
+Como vimos no capítulo anterior,
+$$F(\textbf{x})=P(\textbf{x}\leq \textbf{x})=P(X_1\leq x_1,\ldots,X_n\leq x_n),$$
+é denominada função de distribuição conjunta (ou ainda função de distribuição multivariada).
+
+::: {#prp-}
+A função de distribuição de um vetor de variáveis aleatórias contínuas é dada por
+$$F(\textbf{x})=\int_{-\infty}^{x_1}\cdots\int_{-\infty}^{x_n}f(y_1,\ldots,y_n)d\textbf{y}.$$
+:::
+
+::: {#exm-}
+Encontre a função distribuição do vetor $(X,Y)$ cuja função de densidade conjunta é 
+
+$$f(x,y)=2xI_{(0,1)}(x)I_{(0,1)}(y).$$
+**Solução.**
+
+$$\begin{align}F(u,v)&=\int_{-\infty}^u\int_{-\infty}^v f(x,y)dydx=\int_{-\infty}^u\int_{-\infty}^v 2xI_{(0,1)}(x)I_{(0,1)}(y)dydx\end{align}$$
+Considerando que $u,v\in(0,1)$, teremos 
+
+$$\begin{align}F(u,v)&=\int_{0}^u\int_{0}^v 2xI_{(0,1)}(x)I_{(0,1)}(y)dydx.\end{align}$$
+A integral em $y$ é
+$$\int_0^{v}2xdy=2x\left.y\right|_{0}^{v}=v$$
+logo,
+$$F(u,v)=2v\int_0^{u}xdx=2v\left.\frac{x^2}{2}\right|_0^u=vu^2$$
+para $u,v\in(0,1)$.
+:::
+
+::: {#exr-}
+Encontre a função de distribuição conjunta a partir da densidade conjunta abaixo:
+
+$$f(x,y)=\frac{3}{80}(x^2+xy)$$,
+com $0<x<2$ e $0<y<4$.
+:::
+
+::: {#exm-}
+Considere o vetor aleatório com função densidade conjunta dada por
+$$f(x,y)=e^{-y}I_{(0,\infty)}(x)I_{(x,\infty)}(y).$$
+Encontre a função de distribuição conjunta.
+
+$$\begin{align}F(u,v)&=\int_{-\infty}^u\int_{-\infty}^v f(x,y)dydx=\int_{-\infty}^u\int_{-\infty}^v e^{-y}I_{(0,\infty)}(x)I_{(x,\infty)}(y)dydx\\&=\int_{-\infty}^uI_{(0,\infty)}(x)\left[\int_{-\infty}^v e^{-y}I_{(x,\infty)}(y)dy\right]dx\end{align}$$
+Observe que podemos fazer
+$$\int_{-\infty}^v e^{-y}I_{(x,\infty)}dy=\int_\mathbb{R}e^{-y}I_{(x,\infty)}(y)I_{\mathbb{R}^+}(y)dy$$
+Note que $I_{(-\infty,v)}(y)I_{(x,\infty)}(y)=1$ somente se $x<v$. Isso é o mesmo que escrever
+
+$$1=I_{(-\infty,v)}(y)I_{(x,\infty)}(y)I_{(-\infty,v)}(x)=I_{(x,v)}(y)I_{(-\infty,v)}(x).$$
+Então,
+
+$$\begin{align}\int_{-\infty}^v e^{-y}I_{(x,\infty)}dy&=I_{(-\infty),v}(x)\int_x^ve^{-y}dy=I_{(-\infty,v)}\left[\left.-e^{-y}\right|_{x}^v\right]\\&=\left(e^{-x}-e^{-v}\right)I_{(-\infty,v)}(x)\end{align}$$
+
+Então
+$$\begin{align}F(u,v)&=\int_{-\infty}^{u}I_{(0,\infty)}(x)I_{(-\infty,v)}(x)\left(e^{-x}-e^{-v}\right)dx\\&=\int_{-\infty}^{u}I_{(0,v)}(x)\left(e^{-x}-e^{-v}\right)dx\\&=\int_0^{\min\{u,v\}}(e^{-x}-e^{-v})dx\\&=\int_0^{\min\{u,v\}}e^{-x}dx-\int_0^{\min\{u,v\}}e^{-v}dx\\&=\left[\left.-e^{-x}\right|_0^{\min\{u,v\}}\right]- \min\{u,v\}e^{-v}\\&=1-e^{-\min\{u,v\}}-\min\{u,v\}e^{-v}\end{align}$$
+para $u,v>0$.
+:::
+
+::: {#exr-}
+Considere o vetor aleatório $(X, Y)$ com função densidade conjunta dada por:$$f(x, y) = 2e^{-(x+y)} I_{(0, y)}(x) I_{(0, \infty)}(y)$$
+
+Encontre a função de distribuição conjunta.
+:::
+
+::: {#exr-}
+Seja a função densidade conjunta:$$f(x, y) =\frac{3}{2}I_{(-1,1)}(x)I_{(x^2,1)}(y).$$ Encontre a função de distribuição.
+:::
+
+
+:::
+::: {#prp-} 
+Se $\textbf{X}$ é um vetor aleatório comprimento $n$, então
+
+$$f(\textbf{x})=\frac{\partial}{\partial x_1}\cdots \frac{\partial}{\partial x_n} F(\textbf{x}).$$
+
+:::
+
+::: {#exr-} 
+Seja
+
+$$F(x,y)=1−e^{−x}−e^{−y}+e^{-(x+y)},$$
+com $(x,y)\in\mathbb{R}^2_+$. Encontre a densidade conjunta correspondente.
+:::
+
+
+## Distribuições Marginais
+
+Seja $\textbf{X}$ um vetor aleatório de dimensão $n$. A distribuição de uma coordenada qualquer de $\textbf{X}$ é denominada distribuição marginal. 
+
+Como em geral utilizamos as letras $F$, $P$ e $f$ para designar as funções de distribuição, probabilidade e densidade, é importante acrescentar uma notação que identifique explicitamente a variável. Quando isto for necessário, adicionaremos a letra que designa a variável subscrita na função. Por exemplo, $F_{X_1}(x)$ é a função de distribuição marginal de $X_1$.
+
+
+::: {#prp-} 
+Seja $\textbf{X}=(\textbf{X}_a,\textbf{X}_b)$ 
+ um vetor de variáveis aleatórias contínuas. A função de densidade marginal do subvetor $\textbf{X}_a$ é dada por
+$$f_{\textbf{X}_a}(\textbf{x}_a)=\int f(\textbf{x})d\textbf{x}_{b}.$$
+:::
+
+::: {#exm-}
+Seja $(X,Y)$
+ um par de variáveis aleatórias com densidade conjunta dada por
+$$f(x,y)=8xyI_{(0,y)}(x)I_{(0,1)}(y),$$
+Determine as densidades marginais de $X$
+ e $Y$.
+
+
+**Solução**
+A densidade marginal de $Y$ é
+
+$$\begin{align}f_Y(y)&=\int_{\mathbb{R}}f(x,y)dx=8yI_{(0,1)}(y)\int_\mathbb{R} I_{(0,y)}(x)xdx\\&=8yI_{(0,1)}(y)\int_0^y xdx=8yI_{(0,1)}(y)\left.\frac{x^2}{2}\right|_0^y=4y^3I_{(0,1)}(y).\end{align}$$
+
+Para determinar a marginal de $X$, observe que
+
+$$I_{(0,y)}(x)I_{(0,1)}(y)=1\Rightarrow 0<x<y\hbox{ e } 0<y<1$$
+note que é possível inferir que: $0<x<1$ e $x<y<1$. Portanto,
+
+$$I_{(0,y)}(x)I_{(0,1)}(y)=I_{(x,1)}(y)I_{(0,1)}(x),$$
+logo
+$$f_X(x)=\int_x^1 f(x,y)dx=8xI_{(0,1)}(x)\left.\frac{y^2}{2}\right|_{x}^1=4x(1-x^2)I_{(0,1)}(x).$$
+:::
+
+
+
+::: {#exr-}
+Seja a função densidade conjunta:$$f(x, y) =\frac{3}{2}I_{(-1,1)}(x)I_{(x^2,1)}(y).$$ Encontre as densidades marginais de $X$ e $Y$.
+:::
+
+
+::: {#exr-} 
+Considere a seguinte função de densidade conjunta,
+$$f(x,y)=xy^2e^{−y(x+1)}.$$
+onde $x,y>0$. Encontre a função densidade marginal de $X$
+ e $Y$.
+:::
+
+
+::: {#exr-}
+Considere a densidade conjunta
+$$f(x,y)=\frac{6}{7}\left(x^2+\frac{xy}{2}\right)$$
+para $0<x<1$  e $0<y<2$
+
+a) verifique que $f(x,y)$ é de fato uma função densidade conjunta .
+
+b) encontre a função densidade marginal de $X$.
+
+c) Calcule $P(X>Y)$.
+:::
+
+
+## Distribuição condicional
+
+Sejam $\textbf{X}$ e $\textbf{Y}$ vetores aleatórios contínuos. Sabemos que
+
+$$P(\textbf{X}\leq \textbf{x}|\textbf{Y}\in B)=\frac{P(\textbf{X}\leq\textbf{x},\textbf{Y}\in B)}{P(\textbf{Y}\in B)}.$$
+
+Como $\textbf{Y}$ é um vetor de variáveis aleatórias contínuas, sabemos que $P(\textbf{Y}=\textbf{y})=0$. Entretanto, a probabilidade $P(\textbf{X}\leq \textbf{x}|\textbf{Y}=\textbf{y})$ faz todo o sentido. Para mostrar este fato, seja
+$B(\varepsilon)$ uma bola fechada de raio $\varepsilon$ e centro $\textbf{y}$. Pelo Teorema do Valor Médio, existe $\tilde{y}\in B(\varepsilon)$ tal que
+
+$$P(\textbf{Y}\in B(\varepsilon) )=\int_{B(\varepsilon)} f_{\textbf{Y}}(\textbf{u})d\textbf{u}=\hbox{Vol}(B(\varepsilon))f_{\textbf{Y}}(\tilde{\textbf{y}})$$
+e
+
+$$P(\textbf{X}\leq \textbf{x},\textbf{Y}\in B(\varepsilon) )=\int_{\textbf{v}\leq \textbf{x}}\int_{B(\varepsilon)} f_{\textbf{X},\textbf{Y}}(\textbf{v},\textbf{u})d\textbf{u}d\textbf{v}=\hbox{Vol}(B(\varepsilon))\int_{\textbf{v}\leq \textbf{x}}f_{\textbf{X},\textbf{Y}}(\textbf{v},\tilde{\textbf{y}}_{\textbf{v}})d\textbf{v}.$$
+Portanto,
+
+$$P(\textbf{X}\leq \textbf{x}|\textbf{Y}\in B(\varepsilon) )=\frac{\hbox{Vol}(B(\varepsilon))\int_{\textbf{v}\leq \textbf{x}}f_{\textbf{X},\textbf{Y}}(\textbf{v},\tilde{\textbf{y}})d\textbf{v}}{\hbox{Vol}(B(\varepsilon))f_{\textbf{Y}}(\tilde{\textbf{y}})}=\int_{\textbf{v}\leq \textbf{x}}\frac{f_{\textbf{X},\textbf{Y}}(\textbf{v},\tilde{\textbf{y}}_{\textbf{v}})}{f_{\textbf{Y}}(\tilde{\textbf{y}})}d\textbf{v}.$$
+Agora, note que $B(\varepsilon)\rightarrow\textbf{y}$ quando $\varepsilon\rightarrow0$, logo $\tilde{\textbf{y}}\rightarrow\textbf{y}$ e $\tilde{\textbf{y}}_{\textbf{v}}\rightarrow\textbf{y}$ para todo $\textbf{v}$, o que implica em
+
+$$\lim_{\varepsilon\rightarrow 0}P(\textbf{X}\leq \textbf{x}|\textbf{Y}\in B(\varepsilon) )=P(\textbf{X}\leq \textbf{x}|\textbf{Y}= \textbf{y})=F(\textbf{x}|\textbf{y})=\int_{\textbf{v}\leq \textbf{x}}\frac{f_{\textbf{X},\textbf{Y}}(\textbf{v},{\textbf{y}})}{f_{\textbf{Y}}({\textbf{y}})}d\textbf{v}.$$
+o que implica em
+
+$$f(\textbf{x}|\textbf{y})=\frac{f_{\textbf{X},\textbf{Y}}(\textbf{x},\textbf{y})}{f_{\textbf{Y}}(\textbf{y})}.$$
+
+::: {#exm-}
+Seja 
+$$f(x,y)=21x^2y^3,$$
+se $0<x<y<1$. Encontre a densidade condicional de $Y|X=x$.
+
+**Solução.**
+
+Primeiro, vamos encontrar a densidade marginal de $X$:
+
+$$\begin{align}f_X(x)&=21x^2I_{(0,1)}(x)\int_\mathbb{R} y^3I_{(x,1)}(y)dy=21x^2I_{(0,1)}(x)\int_x^1 y^3dy\\&=21\left[\left.\frac{y^4}{4}\right|_{x}^1\right]I_{(0,1)}(x)\\&=\frac{21}{4}x^2(1-x^4)I_{(0,1)}(x),\end{align}$$
+
+para $x\in(0,1)$. Portanto,
+
+$$f(y|x)=\frac{f(x,y)}{f_X(x)}=\frac{21x^2y^3}{\frac{21}{4}x^2(1-x^4)}=\frac{4y^3}{(1-x^4)}I_{(x,1)}(y),$$
+:::
+
+::: {#exr-}
+Suponha que
+
+$$f(x,y)=\frac{1}{2\pi}\exp\left\{−\frac{1}{2}(x^2+2y^2−2xy)\right\},$$
+com $(x,y)\in\mathbb{R}^2$. Encontre a densidade de $X|Y=y$.
+:::
+
+::: {#exr-}
+Para $n>0$  inteiro, suponha que $X\sim\hbox{Gama}(n+1,x)$. Além disso, suponha que dado $x$, $Y_1,\ldots,Y_n$
+ são variáveis aleatórias independentes que possuem a seguinte densdidade condicional:
+
+$$f(y_i|x)=\frac{1}{x},$$
+para $0<y_i<x$.
+
+a) Determine a densidade marginal do vetor $(Y_1,\ldots,Y_n)$
+
+b) Determine a densidade condicional de $X$ dado os valores de $Y_1,\ldots,Y_n$
+:::
+
+
+## Função de vetores aleatórios contínuos
+
+### Caso para uma variável
+
+Suponha que $X$  é uma variável aleatória contínua e $g(.)$
+ uma função real e contínua. Considerando a variável aleatória $Y=g(X)$, teremos que
+
+$$P(Y\in A)=P(g(X)\in A)=\int_{\{x:g(x)\in A\}}f_X(x)dx.$$
+
+Em particular,
+
+$$F_Y(y)=P(Y\leq y)=P(g(X)\leq y)=\int_{\{x:g(x)\leq y\}}f_X(x)dx.$$
+
+Agora, suponha $g(.)$ possui inversa. Então, podemos utilizar o método integral por substituição. Fazendo $u=g(x)$, teremos que $x=g^{−1}(u)$ e $dx=\frac{d}{du}g^{−1}(u)du$. Além disso,
+
+$$\{x:g(x)\leq y\}\equiv\{u\leq y\},$$
+o que implica em
+
+$$F_Y(y)=\int_{-\infty}^y f_X(g^{−1}(u))\left|\frac{d}{du}g^{−1}(u)\right|du$$
+logo,
+$$f_Y(y)=f_X(g^{−1}(y))\left|\frac{d}{dy}g^{−1}(y)\right|.$$
+O termo dentro do módulo é denominado **Jacobiano da transformação** e a obtenção da densidade por esse método é denominada **método do Jacobiano**.
+
+::: {#exm-}
+Suponha que $X\sim\hbox{Normal}(0,1)$. Considere a transformação $Y=e^{X}$. Como $g^{-1}(y)=\log(y)$, teremos que
+
+
+$$f_Y(y)=f_X(\log y )\left|\frac{d}{dy}\log y\right|=\frac{1}{y\sqrt{2\pi}}e^{-\frac{1}{2}(\log y)^2}.$$
+Essa distribuição é denominada Lognormal(0,1).
+:::
+
+::: {#exr-}
+Seja $X$ uma variável aleatória com distribuição Uniforme no intervalo $(0, 1)$, ou seja, sua função de densidade de probabilidade é:
+$$f_X(x) = I_{(0,1)}(x).$$
+Encontre a função densidade de $Y = -\ln(X)$.
+:::
+
+### Caso vetorial com $g$ invertível
+
+Assim como no caso discreto, a extensão para vetores também é natural. Seja $\textbf{X}$
+ um vetor aleatório de comprimento $n$
+ e considere a nova variável $\textbf{Y}=g(X)$, onde $g:\mathbb{R}^n\rightarrow \mathbb{R}^m$
+ é uma função real. Então 
+
+$$P(\textbf{Y}\in A)=P(g(\textbf{X})\in A)=\int_{\{\textbf{x}:g(\textbf{x})\in A\}}f_\textbf{X}(\textbf{x})d\textbf{x}.$$
+
+Agora, suponha que $g(.)$ possui inversa (o que implica que $g:\mathbb{R}^n\rightarrow \mathbb{R}^n$). Então, pelo método da integral por substituição, teremos que $\textbf{u}=g^{-1}(\textbf{y})$, $d\textbf{x}=|\mathcal{J}g^{-1}(\textbf{u})|d\textbf{u}$ e $\{\textbf{x}:g(\textbf{x})\in A\}=\{\textbf{u}\in A\}$, o que implica em
+
+$$P(\textbf{Y}\in A)=\int_{A}f_\textbf{X}(g^{-1}(\textbf{u})|\det\mathcal{J}g^{-1}(\textbf{u})|d\textbf{u}.$$
+
+onde $\mathcal{J}g^{-1}(\textbf{u})$ é denominada **matriz Jacobiana**, cujo o elemento $(i,j)$ é dado por
+$$\mathcal{J}_{i,j}=\frac{\partial x_i}{\partial u_j}.$$
+
+Em particular, teremos que
+
+$$F_{\textbf{Y}}(\textbf{y})=\int_{-\infty}^{y_1}\cdots \int_{-\infty}^{y_n}f_\textbf{X}(g^{-1}(\textbf{u}))|\det\mathcal{J}g^{-1}(\textbf{u})|d\textbf{u}.$$
+
+Portanto, concluímos que
+$$f_\textbf{Y}(\textbf{y})=f_\textbf{X}(g^{−1}(\textbf{y}))|\det\mathcal{J}g^{-1}(\textbf{y})|.$$
+
+::: {#exm-}
+Sejam $X_1$ e $X_2$ variáveis aleatórias independentes com distribuição Normal(0,1). Vamos encontrar a função densidade conjunta de $\textbf{Y}=(X_1+X_2,Y2=X_1−X_2)$.
+
+
+Primeiro, temos que encontrar a função inversa:
+
+$$\begin{array}{c}
+Y_1=X_1+X_2\\
+Y_2=X_1-X_2\\
+\end{array} \Leftrightarrow \begin{array}{c}X_1=0,5(Y_1+Y_2)\\ X_2=0,5(Y_1-Y_2)\end{array}$$
+
+e o Jacobiano da transformação é dado por
+
+$$\mathcal{J}g^{-1}(\textbf{y})=\left[\begin{array}{cc} 0,5 & 0,5 \\ 0,5 & - 0,5 \end{array}\right],$$
+
+cujo determinante é igual a -1/2. Logo,
+
+$$\begin{align}f_\textbf{Y}(\textbf{y})&=f_{X_1}(0,5(y_1+y_2)f_{X_2}(0,5(y_1−y_2)\frac{1}{2}\\&=\frac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}[0,5(y_1+y_2)]^2}I_{\mathbb{R}}(0,5(y_1+y_2))\frac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}[0,5(y_1-y_2)]^2}I_{\mathbb{R}}(0,5(y_1-y_2))\frac{1}{2}\\&=\frac{1}{4\pi}e^{-\frac{1}{8}[(y_1-y_2)^2+(y_1+y_2)^2]}I_{\mathbb{R}}(y_1)I_{\mathbb{R}}(y_2)\\&=\frac{1}{4\pi}e^{-\frac{1}{4}(y_1^2+y_2^2)}I_{\mathbb{R}}(y_1)I_{\mathbb{R}}(y_2).\end{align}$$
+Podemos notar que a densidade conjunta fatora em duas normais, ou seja $Y_1$
+ e $Y_2$ são independentes com marginais Normal(0,2).
+:::
+
+
+:::{#exr-}
+Sejam $X_1$ e $X_2$
+ variáveis aleatórias independentes com distribuição Normal(0,1).
+
+a) Encontre a função densidade conjunta de $Y_1=aX_1+X_2$
+ e $Y_2=X_1−X_2$, onde $a$
+ é uma constante.
+
+b) Quais são os valores de $a$
+ tais que $Y_1$
+ é independente de $Y_2$?
+:::
+
+
+::: {#exm-}
+Sejam $X$ e $Y$
+ variáveis aleatórias independentes com distribuição Exponencial(1). Vamos determinar a distribuição conjunta de $U=X+Y$
+ e $V=Y/X$.
+
+Como $X$ e $Y$ são independentes, sua densidade conjunta é 
+$$f(x,y)=f_X(x)f_Y(y)=e^{-x}e^{-y}I_{(0,\infty)}(x)I_{(0,\infty)}(y).$$
+
+Vamos escrever $(x,y)$ como função de $(u,v)$. Primeiro,
+$$u=x+y\Rightarrow x=u-y.$$
+Substituindo $x=u-y$ em  $v=y/x$, teremos que
+
+$$y=vx=v(u-y)\Rightarrow y(1+v)=vu\Rightarrow y=\frac{uv}{1+v}$$
+logo
+$$\begin{cases}
+x=\frac{u}{1+v}\\
+y=\frac{uv}{1+v}
+\end{cases}$$
+o que implica na matriz jacobiana
+
+$$\mathcal{J}=\left|\begin{array}{cc}\frac{\partial x}{\partial u} & \frac{\partial x}{\partial v}\\ \frac{\partial y}{\partial u} & \frac{\partial y}{\partial v} \end{array}\right|=\left|\begin{array}{cc}\frac{1}{1+v}&-\frac{u}{(1+v)^2 } \\ \frac{v}{1+v} & \frac{u}{(1+v)^2}\end{array}\right|$$
+
+cujo módulo do determinante é
+$$|\det\mathcal{J}| = \left| \frac{u}{(1+v)^3} - \left( -\frac{uv}{(1+v)^3} \right) \right| = \left| \frac{u(1+v)}{(1+v)^3} \right| = \frac{u}{(1+v)^2}$$
+Então,
+
+$$\begin{align}f_{U,V}(u,v)&=f_X\left(\frac{u}{1+v}\right)f_Y\left(\frac{uv}{1+v}\right)|\det\mathcal{J}|\\&=e^{-\left(\frac{u}{1+v}\right)}I_{(0,\infty)}\left(\frac{u}{1+v}\right)e^{-\left(\frac{uv}{1+v}\right)}I_{(0,\infty)}\left(\frac{uv}{1+v}\right)\frac{u}{(1+v)^2}\\&=e^{-\left(\frac{u}{1+v}+\frac{uv}{1+v}\right)}I_{(0,\infty)}\left(\frac{u}{1+v}\right)I_{(0,\infty)}\left(\frac{uv}{1+v}\right)\frac{u}{(1+v)^2}\\&=\frac{u}{(1+v)^2}e^{-u}I_{(0,\infty)}\left(\frac{u}{1+v}\right)I_{(0,\infty)}\left(\frac{uv}{1+v}\right)\end{align}$$
+e, notando que as indicadoras são iguais a um quando $u,v>0$, teremos
+
+
+$$\begin{align}f_{U,V}(u,v)=\frac{u}{(1+v)^2}e^{-u}I_{(0,\infty)}\left(u\right)I_{(0,\infty)}\left(v\right)\end{align}$$
+:::
+
+::: {#exr-}
+Sejam $X$ e $Y$ variáveis aleatórias independentes, ambas com distribuição Gama de parâmetros $\a$ e $b$, especificamente $X \sim \text{Gama}(a, 1)$ e $Y \sim \text{Gama}(b, 1)$. Considere as seguintes transformações:$$U = X + Y \quad \text{e} \quad V = \frac{X}{X+Y}$$Determine a densidade conjunta $f_{U,V}(u, v)$.Verifique se $U$ e $V$ são independentes.Identifique as distribuições marginais de $U$ e $V$
+
+**Nota** A função densidade da distribuição Gamma($a,b$) é
+$$f(x)=\frac{b^a}{\Gamma(a)}x^{a-1}e^{-bx}I_{(0,\infty)}(x),$$
+com $a,b>0$.
+:::
+
+
+### Caso vetorial com $g:\mathbb{R}^n\rightarrow\mathbb{R}^n$, com $n>m$
+Considere o agora que $g:\mathbb{R}^n\rightarrow\mathbb{R}^m$, onde $n>m$. Nesse caso, $\textbf{Y}=g(\textbf{X})$ ainda é um vetor aleatório, mas não podemos aplicar a integral por substitição $g(.)$ não tem inversa. Neste caso, adicionamos um vetor $\textbf{W}=h(X)$ de dimensão $n−m$ tal que a função $$g_*(\textbf{X})=(g(\textbf{X}),h(\textbf{X}))=(\textbf{y},\textbf{w})$$ tenha inversa. Então, obtemos a densidade conjunta de $(\textbf{Y},\textbf{W})$ através do método discutido anteriormente, ou seja
+
+$$f_{\textbf{Y},\textbf{W}}(\textbf{y},\textbf{w})=f_X(g_ *^{−1}(\textbf{y},\textbf{w}))|\det \mathcal{J}g_ *^{−1}|.$$
+Em seguida, podemos encontrar a densidade marginal de $\textbf{Y}$
+ integrando a conjunta acima em $\textbf{W}$:
+
+$$f_\textbf{Y}(\textbf{y})=\int f_\textbf{X}(g_*^{−1}(\textbf{y},\textbf{w}))|\det\mathcal{J}g_*^{-1}(\textbf{y},\textbf{w})|d\textbf{w}.$$
+::: {#exm-}
+**Soma de duas variáveis aletórias contínuas independentes.** Sejam $X_1,X_2$ variáveis aleatórias independentes e considere o problema de encontrar a função densidade de $Y=X_1+X_2$.
+
+Como $y=g(x_1,x_2)=x_1+x_2$ não tem inversa, vamos utilizar a função $g_*(x_1,x_2)=(x_1+x_2,x_2)=(y,w)$ ( como a escolha de $w=x_2$ é arbitrária, aqui o fizemos de modo conveniente). Teremos que
+
+$$\begin{cases}
+y&= x_1+x_2\\ w &= x_1 \end{cases}\Rightarrow\begin{cases}x_1&=y-w\\ x_2&=w\end{cases}$$
+
+O determinante da matriz Jacobiana é
+
+$$\det\mathcal{J}g_*^{-1}=\left|\begin{array}{cc}\frac{\partial{x_1}}{\partial{y}} & \frac{\partial{x_1}}{\partial{w}} \\ \frac{\partial{x_2}}{\partial{y}} & \frac{\partial{x_2}}{\partial{w}} \end{array}\right|=\det\left|\begin{array}{cc}1 & -1 \\ 0 & 1\end{array}\right|=1$$
+
+(aqui, fica claro que $w=x_2$ foi escolhido de modo a simplificar o derteminante), logo
+
+$$f_{Y,W}(y,w)=f_{X_1}(y-w)f_{X_2}(w)$$
+e a função densidade desejada é
+
+$$f_{Y}(y)=\int_{\mathbb{R}}f_{X_1}(y-w)f_{X_2}(w)dw.$$
+
+:::
+
+::: {#exr-}
+Sejam $X_1$ e $X_2$ variáveis aleatórias independentes com distribuição Exponencial(1), cuja função densidade é 
+$$f(x)=e^{-x}I_{(0,\infty)}(x).$$
+
+Encontre a função densidade de $Y=X_1+X_2$.
+:::
+
+
+::: {#exr-}
+Sejam $X_1$ e $X_2$ variáveis aleatórias independentes com distribuição Uniforme(0,1), cuja função densidade é
+
+$$f(x)=I_{(0,1)}(x)$$
+Encontre a função densidade de $Y=X_1+X_2$.
+:::
+
+### Casos especiais
+
+::: {#exr-}
+**Soma de normais independentes.** 
+
+a) Sejam $X_1,X_2$ variáveis aleatórias independentes com $X_i\sim\hbox{Normal}(\mu_i,\sigma^2_i)$. Mostre que $Y=X_1+X_2\sim\hbox{Normal}(\mu_1+\mu_2,\sigma_1^2+\sigma_2^2)$.
+
+b) Sejam $X_1,\ldots,X_n$ variáveis aleatórias independentes com $X_i\sim\hbox{Normal}(\mu_i,\sigma^2_i)$. Mostre por indução que $Y=X_1+\cdots+X_n\sim\hbox{Normal}(\sum_{i=1}^n \mu_i,\sum_{i=1}^n \sigma^2_i)$
+:::
+
+::: {#exr-}
+**Distribuição Chi Quadrado.** A função densidade da distribuição $\chi^2_\nu$ é 
+
+$$f(x) = \frac{1}{2^{\nu/2} \Gamma(\nu/2)} x^{\nu/2 - 1} e^{-x/2}I_{(0,\infty)}(x),$$
+onde $\nu>0$.
+
+a) Sejam $X_1,X_2$ variáveis aleatórias independentes com $X_i\sim\chi^2_{\nu_i}$. Mostre que $Y=X_1+X_2\sim\chi^2_{\nu_1+\nu_2}$.
+
+b) Sejam $X_1,\ldots,X_n$ variáveis aleatórias independentes com $X_i\sim\chi^2_{\nu_i}$. Mostre, por indução, que $Y=\sum_{i=1}^{n}X_i\sim\chi^2_{\sum_{i=1}^n \nu_i}$.
+
+c) Sejam $Z_i\sim\hbox{Normal}(0,1)$ variáveis independentes. Sabendo que $Z_i^2\sim\chi^2_1$, qual é a distribuição de $Z_1^2+\cdots+Z_n^2?$
+:::
+
+::: {#exr-}
+**Distribuição t-Student.** Sejam $X\sim\hbox{Normal}(0,1)$ e $Y\sim\chi^2_{\nu}$ variáveis independentes. Mostre que a função densidade de 
+
+$$T=\frac{X}{\sqrt{Y/\nu}}$$
+é
+
+$$f(t)= \frac{\Gamma\left(\frac{\nu+1}{2}\right)}{\sqrt{\nu\pi} \, \Gamma\left(\frac{\nu}{2}\right)} \left(1 + \frac{t^2}{\nu}\right)^{-\frac{\nu+1}{2}}I_\mathbb{R}(t).$$
+
+**Sugestão.** Considere a função $g_*(x,y)=(x/\sqrt{y/\nu}, y)=(t,w)$. 
+:::
+
+::: {#exr-f-snedecor}
+**Distribuição F de Snedecor.** Sejam $U$ e $V$ variáveis aleatórias independentes tais que $U \sim \chi^2_{\nu_1}$ e $V \sim \chi^2_{\nu_2}$. A distribuição F de Snedecor com $\nu_1$ e $\nu_2$ graus de liberdade é definida pela transformação:$$W = \frac{U/\nu_1}{V/\nu_2}$$
+
+a) Para encontrar a densidade de $W$, defina uma variável auxiliar $Z = V$. Encontre a densidade conjunta $f_{W,Z}(w, z)$ utilizando o método do Jacobiano.
+
+b) Mostre que a densidade marginal de $W$ é dada por:$$f_W(w) = \frac{\Gamma\left(\frac{\nu_1+\nu_2}{2}\right)}{\Gamma\left(\frac{\nu_1}{2}\right)\Gamma\left(\frac{\nu_2}{2}\right)} \left(\frac{\nu_1}{\nu_2}\right)^{\frac{\nu_1}{2}} \frac{w^{\frac{\nu_1}{2}-1}}{\left(1 + \frac{\nu_1}{\nu_2}w\right)^{\frac{\nu_1+\nu_2}{2}}} I_{(0, \infty)}(w)$$
+
+c) Como a distribuição $F$ se relaciona com a distribuição $t$ de Student? (Dica: Observe a definição de $T$ no exercício anterior e considere o que ocorre com $T^2$).:::
